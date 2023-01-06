@@ -40,7 +40,40 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 ### [Day 9] Requests
 
+Machine IP:
 
+**10.10.169.100**
+
+1. What is the value of the flag?
+
+I had issues connecting to the machine (yes my VPN was turned on). There was no response using the script or through the browser.
+Doing a quick nmap scan did reveal the machine to exist with port 3000. However, it was listed as filtered. This probably means the machine or service is not active anymore. It is a room from 2019 so..
+
+![nmap host discovery scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/662ac889742dbaa306d7446d36e33af4036bf853/25daysofchristmas/Day%2009/nmap_host_discovery.png)
+
+Anyway, by using the [supplied documentation](https://docs.google.com/document/d/1FyAnxlQpzh0Cy17cKLsUZYCYqUA3eHu2hm0snilaPL0/) I came up with the following [script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/662ac889742dbaa306d7446d36e33af4036bf853/25daysofchristmas/Day%2009/Script.py) which would have hopefully found the flag.
+
+```python
+import requests
+
+path = ''
+host = 'http://10.10.169.100:3000/'
+
+values = ''
+
+response = requests.get(host + path)
+print(response)
+json_respons = response.json()
+path = "/" + json_respons["next"]
+if path != "/end":
+	values += json_respons["value"]
+
+print("The flag is " + values)
+```
+
+Since this room is now probably not useable anymore, I think it wouldn't be a problem to post the flag itself to allow others to finish this room.
+
+>sCrIPtKiDd
 
 ### [Day 10] Metasploit-a-ho-ho-ho
 
