@@ -77,7 +77,7 @@ Since this room is now probably not useable anymore, I think it wouldn't be a pr
 
 ### [Day 10] Metasploit-a-ho-ho-ho
 
-In this task we need to find an exploit for the webserver and gain access using Metasploit.
+In this task we need to find an exploit for the webserver and gain access using Metasploit. We can use this [blog post](https://blog.tryhackme.com/metasploit/) to guide us.
 
 Machine IP:
 
