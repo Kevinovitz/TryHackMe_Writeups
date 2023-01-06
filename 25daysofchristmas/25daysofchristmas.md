@@ -93,7 +93,7 @@ So open up Metasploit with the `msfconsole` command and type `search struts2` to
 
 ![Metasploit module search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_search.png)
 
-For this task we will be using the `exploit/multi/http/struts2_content_type_ognl` module. Type `use` and the moduke name to select it.
+For this task we will be using the `exploit/multi/http/struts2_content_type_ognl` module. Type `use` and the module name to select it.
 
 ![Select module and show options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_options.png)
 
@@ -112,26 +112,48 @@ Now we have our session running on the target machine.
 
 To find the flag we will use the `find` command. However, we first need to change our meterpreter session to a regular shell by using typing `shell` into our session.
 
-![]()
-
+![Metasploit flag search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_flag.png)
 
 >THM{3ad96bb13ec963a5ca4cb99302b37e12}
 
 2. Now you've compromised the web server, get onto the main system. What is Santa's SSH password?
 
+Going through some of the directories, we find a file called `ssh-creds.txt`. This look interesting. Inside we find some credentials we can use to ssh into the machine.
 
+![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_searchcreds.png)
 
 >rudolphrednosedreindeer
 
 3. Who is on line 148 of the naughty list?
 
+In terminal window (not meterpreter) we can ssh into the machine and look around for the files. We spot two lists here.
 
+![Directory files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_directory.png)
+
+To see who is on line 148 of the naughty list we could just count the lines, but using cat with some extra options will be easier.
+
+```bash
+cat -n naughty_list.txt | grep -i 148
+```
+
+The `-n` argument shows line numbers in the output which we can use to search with `grep`.
+
+Produces
+
+![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_naughty.png)
 
 >Melisa Vanhoose
 
 4. Who is on line 52 of the nice list?
 
+Same command can be used here.
 
+```bash
+cat -n nice_list.txt | grep -i 52
+```
+Produces
+
+![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_nice.png)
 
 >Lindsey Gaffney
 
