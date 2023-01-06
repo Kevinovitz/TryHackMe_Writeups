@@ -77,7 +77,63 @@ Since this room is now probably not useable anymore, I think it wouldn't be a pr
 
 ### [Day 10] Metasploit-a-ho-ho-ho
 
+In this task we need to find an exploit for the webserver and gain access using Metasploit.
 
+Machine IP:
+
+**10.10.154.103**
+
+First we run an nmap scan to find out more about our target machine.
+
+![nmap host discovery](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/nmap_host_discovery.png)
+
+We can see there is an Apache Coyote 1.1 service running on port 80 which is of interest to us. From the documentation we find we will be exploiting the struts2  vulnerability.
+
+So open up Metasploit with the `msfconsole` command and type `search struts2` to find any modules we can use.
+
+![Metasploit module search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_search.png)
+
+For this task we will be using the `exploit/multi/http/struts2_content_type_ognl` module. Type `use` and the moduke name to select it.
+
+![Select module and show options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_options.png)
+
+Next we will fill out the required information for our payload. Type `show options` to list all the options.
+In our example we will set the RHOST, RPORT, and TARGETURI. The LHOST was set correctly. If not, use `ifconfig` to find your ip address under eth0 or tun0 (deppending other wether or not you are using a VPN. After that is done type `run` to run the exploit.
+
+![Add information and run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_setandrun.png)
+
+In our case the TARGETURI will be `/showcase.action` as this is the base address for the webserver.
+
+![Browser view of our webserver](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/browser_webapplication.png)
+
+Now we have our session running on the target machine.
+
+1. Compromise the web server using Metasploit. What is flag1?
+
+To find the flag we will use the `find` command. However, we first need to change our meterpreter session to a regular shell by using typing `shell` into our session.
+
+![]()
+
+
+>THM{3ad96bb13ec963a5ca4cb99302b37e12}
+
+2. Now you've compromised the web server, get onto the main system. What is Santa's SSH password?
+
+
+
+>rudolphrednosedreindeer
+
+3. Who is on line 148 of the naughty list?
+
+
+
+>Melisa Vanhoose
+
+4. Who is on line 52 of the nice list?
+
+
+
+>Lindsey Gaffney
 
 ### [Day 11] Elf Applications
 
