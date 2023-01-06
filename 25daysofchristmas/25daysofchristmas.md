@@ -122,6 +122,8 @@ Going through some of the directories, we find a file called `ssh-creds.txt`. Th
 
 ![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_searchcreds.png)
 
+![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_sshcreds.png)
+
 >rudolphrednosedreindeer
 
 3. Who is on line 148 of the naughty list?
