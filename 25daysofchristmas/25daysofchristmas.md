@@ -46,34 +46,34 @@ Machine IP:
 
 1. What is the value of the flag?
 
-I had issues connecting to the machine (yes my VPN was turned on). There was no response using the script or through the browser.
-Doing a quick nmap scan did reveal the machine to exist with port 3000. However, it was listed as filtered. This probably means the machine or service is not active anymore. It is a room from 2019 so..
+   I had issues connecting to the machine (yes my VPN was turned on). There was no response using the script or through the browser.
+   Doing a quick nmap scan did reveal the machine to exist with port 3000. However, it was listed as filtered. This probably means the machine or service is not active anymore. It is a room from 2019 so..
 
-![nmap host discovery scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/662ac889742dbaa306d7446d36e33af4036bf853/25daysofchristmas/Day%2009/nmap_host_discovery.png)
+   ![nmap host discovery scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/662ac889742dbaa306d7446d36e33af4036bf853/25daysofchristmas/Day%2009/nmap_host_discovery.png)
 
-Anyway, by using the [supplied documentation](https://docs.google.com/document/d/1FyAnxlQpzh0Cy17cKLsUZYCYqUA3eHu2hm0snilaPL0/) I came up with the following [script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/662ac889742dbaa306d7446d36e33af4036bf853/25daysofchristmas/Day%2009/Script.py) which would have hopefully found the flag.
+   Anyway, by using the [supplied documentation](https://docs.google.com/document/d/1FyAnxlQpzh0Cy17cKLsUZYCYqUA3eHu2hm0snilaPL0/) I came up with the following [script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/662ac889742dbaa306d7446d36e33af4036bf853/25daysofchristmas/Day%2009/Script.py) which would have hopefully found the flag.
 
-```python
-import requests
+   ```python
+   import requests
 
-path = ''
-host = 'http://10.10.169.100:3000/'
+   path = ''
+   host = 'http://10.10.169.100:3000/'
 
-values = ''
+   values = ''
 
-response = requests.get(host + path)
-print(response)
-json_respons = response.json()
-path = "/" + json_respons["next"]
-if path != "/end":
-	values += json_respons["value"]
+   response = requests.get(host + path)
+   print(response)
+   json_respons = response.json()
+   path = "/" + json_respons["next"]
+   if path != "/end":
+   	values += json_respons["value"]
 
-print("The flag is " + values)
-```
+   print("The flag is " + values)
+   ```
 
-Since this room is now probably not useable anymore, I think it wouldn't be a problem to post the flag itself to allow others to finish this room.
+   Since this room is now probably not useable anymore, I think it wouldn't be a problem to post the flag itself to allow others to finish this room.
 
->sCrIPtKiDd
+   >sCrIPtKiDd
 
 ### [Day 10] Metasploit-a-ho-ho-ho
 
@@ -110,54 +110,54 @@ Now we have our session running on the target machine.
 
 1. Compromise the web server using Metasploit. What is flag1?
 
-To find the flag we will use the `find` command. However, we first need to change our meterpreter session to a regular shell by using typing `shell` into our session.
+   To find the flag we will use the `find` command. However, we first need to change our meterpreter session to a regular shell by using typing `shell` into our session.
 
-![Metasploit flag search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_flag.png)
+   ![Metasploit flag search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_flag.png)
 
->THM{3ad96bb13ec963a5ca4cb99302b37e12}
+   >THM{3ad96bb13ec963a5ca4cb99302b37e12}
 
 2. Now you've compromised the web server, get onto the main system. What is Santa's SSH password?
 
-Going through some of the directories, we find a file called `ssh-creds.txt`. This look interesting. Inside we find some credentials we can use to ssh into the machine.
+   Going through some of the directories, we find a file called `ssh-creds.txt`. This look interesting. Inside we find some credentials we can use to ssh into the machine.
 
-![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_searchcreds.png)
+   ![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_searchcreds.png)
 
-![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_sshcreds.png)
+   ![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_sshcreds.png)
 
->rudolphrednosedreindeer
+   >rudolphrednosedreindeer
 
 3. Who is on line 148 of the naughty list?
 
-In terminal window (not meterpreter) we can ssh into the machine and look around for the files. We spot two lists here.
+   In terminal window (not meterpreter) we can ssh into the machine and look around for the files. We spot two lists here.
 
-![Directory files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_directory.png)
+   ![Directory files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_directory.png)
 
-To see who is on line 148 of the naughty list we could just count the lines, but using cat with some extra options will be easier.
+   To see who is on line 148 of the naughty list we could just count the lines, but using cat with some extra options will be easier.
 
-```bash
-cat -n naughty_list.txt | grep -i 148
-```
+   ```bash
+   cat -n naughty_list.txt | grep -i 148
+   ```
 
-The `-n` argument shows line numbers in the output which we can use to search with `grep`.
+   The `-n` argument shows line numbers in the output which we can use to search with `grep`.
 
-Produces
+   Produces
 
-![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_naughty.png)
+   ![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_naughty.png)
 
->Melisa Vanhoose
+   >Melisa Vanhoose
 
 4. Who is on line 52 of the nice list?
 
-Same command can be used here.
+   Same command can be used here.
 
-```bash
-cat -n nice_list.txt | grep -i 52
-```
-Produces
+   ```bash
+   cat -n nice_list.txt | grep -i 52
+   ```
+   Produces
 
-![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_nice.png)
+   ![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_nice.png)
 
->Lindsey Gaffney
+   >Lindsey Gaffney
 
 ### [Day 11] Elf Applications
 
@@ -177,71 +177,71 @@ Here we can see we have three services running on their default ports. FTP on po
 
 1. What is the password inside the creds.txt file?
 
-To get the password we need to access the NFS service. First we need to find out which shares are available for us to mount
+   To get the password we need to access the NFS service. First we need to find out which shares are available for us to mount
 
-```bash
-showmount -e 10.10.223.45
-```
+   ```bash
+   showmount -e 10.10.223.45
+   ```
 
-Now we can mount this share to our system.
+   Now we can mount this share to our system.
 
-```bash
-sudo mount 10.10.223.45:/opt/files /mnt
-```
+   ```bash
+   sudo mount 10.10.223.45:/opt/files /mnt
+   ```
 
-![Mounting NFS share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_Mount.png)
+   ![Mounting NFS share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_Mount.png)
 
-Now we can go to the newly mounted directory and read the contents of the file.
+   Now we can go to the newly mounted directory and read the contents of the file.
 
-![Read file from NFS share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_Open_File.png)
+   ![Read file from NFS share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_Open_File.png)
 
-The file can also be opened from the folder itself.
+   The file can also be opened from the folder itself.
 
-![Access NFS through folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_File_Directory.png)
+   ![Access NFS through folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_File_Directory.png)
 
->securepassword123
+   >securepassword123
 
 2. What is the name of the file running on port 21?
 
-The FTP service is active on port 21, so we will see if we can login anonymously.
+   The FTP service is active on port 21, so we will see if we can login anonymously.
 
-![Login anynomously to FTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_Login.png)
+   ![Login anynomously to FTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_Login.png)
 
-Success! No lets search for the file and copy it to our machine with the `get` command.
+   Success! No lets search for the file and copy it to our machine with the `get` command.
 
-![Download FTP file](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_FIle_Download.png)
+   ![Download FTP file](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_FIle_Download.png)
 
->file.txt
+   >file.txt
 
 3. What is the password after enumerating the database?
 
-Reading the `file.txt` file we found on the FTP server, we see it contains some credentials for a SQL service. Lets see if they still work.
+   Reading the `file.txt` file we found on the FTP server, we see it contains some credentials for a SQL service. Lets see if they still work.
 
-![FTP file contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_File_Open.png)
+   ![FTP file contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_File_Open.png)
 
-```bash
-mysql -u root -p 10.10.223.445
-```
+   ```bash
+   mysql -u root -p 10.10.223.445
+   ```
 
-![MySQL Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Login.png)
+   ![MySQL Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Login.png)
 
-Now we need to see which database we need by running the `show databases` command.
+   Now we need to see which database we need by running the `show databases` command.
 
-![MySQL Show Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Show_Databases.png)
+   ![MySQL Show Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Show_Databases.png)
 
-After trying several databases we find another one that might be interesting. Lets change to use that one.
+   After trying several databases we find another one that might be interesting. Lets change to use that one.
 
-![MySQL Use Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Change_DB.png)
+   ![MySQL Use Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Change_DB.png)
 
-Does is contain any interesting tables? It looks like it! Lets enumerate the content of the table.
+   Does is contain any interesting tables? It looks like it! Lets enumerate the content of the table.
 
-```sql
-SELECT * FROM USERS
-```
+   ```sql
+   SELECT * FROM USERS
+   ```
 
-![MySQL User Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_User_Creds.png)
+   ![MySQL User Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_User_Creds.png)
 
->bestpassword
+   >bestpassword
 
 ### [Day 12] Elfcryption
 
