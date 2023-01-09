@@ -203,13 +203,43 @@ The file can also be opened from the folder itself.
 
 2. What is the name of the file running on port 21?
 
+The FTP service is active on port 21, so we will see if we can login anonymously.
 
+![Login anynomously to FTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_Login.png)
+
+Success! No lets search for the file and copy it to our machine with the `get` command.
+
+![Download FTP file](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_FIle_Download.png)
 
 >file.txt
 
 3. What is the password after enumerating the database?
 
+Reading the `file.txt` file we found on the FTP server, we see it contains some credentials for a SQL service. Lets see if they still work.
 
+![FTP file contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_File_Open.png)
+
+```bash
+mysql -u root -p 10.10.223.445
+```
+
+![MySQL Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Login.png)
+
+Now we need to see which database we need by running the `show databases` command.
+
+![MySQL Show Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Show_Databases.png)
+
+After trying several databases we find another one that might be interesting. Lets change to use that one.
+
+![MySQL Use Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Change_DB.png)
+
+Does is contain any intersting tables? It looks like it! Lets enumerate the content of the table.
+
+```sql
+SELECT * FROM USERS
+```
+
+![MySQL User Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_User_Creds.png)
 
 >bestpassword
 
