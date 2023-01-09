@@ -161,7 +161,57 @@ Produces
 
 ### [Day 11] Elf Applications
 
+In this task we need to access some services on the target machine. See the accompanying [documentation](https://docs.google.com/document/d/1qCMuPwBR0gWIDfk_PXt0Jr220JIJAQ-N4foDZDVX59U/edit#) for mor help.
+Machine IP:
+10.10.223.45
 
+We first run an nmap scan to find all available services on the target machine by running:
+
+```bash
+nmap -sV 10.10.223.45
+```
+
+![Nmap host scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_Nmap_Scan.png)
+
+Here we can see we have three services running on their default ports. FTP on port 21, NFS on port 111, and MySQL on port 3306.
+
+1. What is the password inside the creds.txt file?
+
+To get the password we need to access the NFS service. First we need to find out which shares are available for us to mount
+
+```bash
+showmount -e 10.10.223.45
+```
+
+Now we can mount this share to our system.
+
+```bash
+sudo mount 10.10.223.45:/opt/files /mnt
+```
+
+![Mounting NFS share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_Mount.png)
+
+Now we can go to the newly mounted directory and read the contents of the file.
+
+![Read file from NFS share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_Open_File.png)
+
+The file can also be opened from the folder itself.
+
+![Access NFS through folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_File_Directory.png)
+
+>securepassword123
+
+2. What is the name of the file running on port 21?
+
+
+
+>file.txt
+
+3. What is the password after enumerating the database?
+
+
+
+>bestpassword
 
 ### [Day 12] Elfcryption
 
