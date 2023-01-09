@@ -233,7 +233,7 @@ After trying several databases we find another one that might be interesting. Le
 
 ![MySQL Use Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_Change_DB.png)
 
-Does is contain any intersting tables? It looks like it! Lets enumerate the content of the table.
+Does is contain any interesting tables? It looks like it! Lets enumerate the content of the table.
 
 ```sql
 SELECT * FROM USERS
