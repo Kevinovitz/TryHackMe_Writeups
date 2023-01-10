@@ -245,7 +245,41 @@ Here we can see we have three services running on their default ports. FTP on po
 
 ### [Day 12] Elfcryption
 
+In this task we will look at various encryption techniques to decrypt some files we received. The supporting documentation can be found [here](https://docs.google.com/document/d/1xUOtEZOTS_L8u_S5Fbs1Wof7mdpWQrj2NkgWLV9tqns/edit?usp=sharing).
 
+We first unzip the contents of the file using either the `unzip tosend.zip` command or through the GUI.
+
+1. What is the md5 hashsum of the encrypted note1 file?
+
+   To read the md5 hash of the `note1.txt.gpg` file we use the following command:
+   
+   ```bash
+   md5sum note1.txt.gpg
+   ```
+   
+   ![GPG File Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2012/Encryption_GPG_Hash.png)
+
+   >24cf615e2a4f42718f2ff36b35614f8f
+
+2. Where was elf Bob told to meet Alice?
+
+   To decrypt the file we need a passphrase. I didn't know what it was so I used to one provided by the hint: `25daysofchristmas`. Now we can decrypt it by using typing `gpg -d note1.txt.gpg1` and entering the passphrase when prompted.
+   
+   ![GPG File Decrypt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2012/Encryption_GPG_Decrypt.png)
+
+   >santa's grotto
+
+3. Decrypt note2 and obtain the flag!
+
+   To decrypt the message we use the command as specified in the supporting material. Again, we use the passphrase supplied by the hint `hello`.
+   
+   ```bash
+   openssl rauthl -decrypt -inkey private.key -in note2_encrypted.txt -out note2_decrypted.txt
+   ```
+   
+   ![AES File Decrypt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2012/Encryption_AES_Decrypt.png)
+
+   >THM{ed9ccb6802c5d0f905ea747a310bba23}
 
 ### [Day 13] Accumulate
 
