@@ -1,3 +1,7 @@
+<p align="center">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Advent_of_Cyber_1_2019_Logo.png" alt="Advent of Cyber 1 2019 Logo">
+</p>
+
 # Advent of Cyber 1 [2019]
 
 This guide contains the answer and steps necessary to get to them for the [Advent of Cyber](https://tryhackme.com/room/25daysofchristmas) room.
@@ -38,7 +42,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 
 
-### [Day 9] Requests
+### [Day 9] [Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2009)
 
 Machine IP:
 
@@ -75,7 +79,7 @@ Machine IP:
 
    >sCrIPtKiDd
 
-### [Day 10] Metasploit-a-ho-ho-ho
+### [Day 10] [Metasploit-a-ho-ho-ho](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2010)
 
 In this task we need to find an exploit for the webserver and gain access using Metasploit. We can use this [blog post](https://blog.tryhackme.com/metasploit/) to guide us.
 
@@ -159,7 +163,7 @@ Now we have our session running on the target machine.
 
    >Lindsey Gaffney
 
-### [Day 11] Elf Applications
+### [Day 11] [Elf Applications](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2011)
 
 In this task we need to access some services on the target machine. See the accompanying [documentation](https://docs.google.com/document/d/1qCMuPwBR0gWIDfk_PXt0Jr220JIJAQ-N4foDZDVX59U/edit#) for mor help.
 Machine IP:
@@ -243,7 +247,7 @@ Here we can see we have three services running on their default ports. FTP on po
 
    >bestpassword
 
-### [Day 12] Elfcryption
+### [Day 12] [Elfcryption](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2012)
 
 In this task we will look at various encryption techniques to decrypt some files we received. The supporting documentation can be found [here](https://docs.google.com/document/d/1xUOtEZOTS_L8u_S5Fbs1Wof7mdpWQrj2NkgWLV9tqns/edit?usp=sharing).
 
@@ -281,7 +285,7 @@ We first unzip the contents of the file using either the `unzip tosend.zip` comm
 
    >THM{ed9ccb6802c5d0f905ea747a310bba23}
 
-### [Day 13] Accumulate
+### [Day 13] [Accumulate](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2013)
 
 In this task we are asked to use our previously gathered knowledge to gain access to a system with only its IP address.
 
@@ -373,7 +377,7 @@ Here we see a server running on port 80. Remember the other service for later.
 
    >THM{COIN_OPERATED_EXPLOITATION}
 
-### [Day 14] Unknown Storage
+### [Day 14] [Unknown Storage](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2014)
 
 In this task we will need to look for leaked information from an improperly configured AWS bucket. The supporting material can be found [here](https://docs.google.com/document/d/13uHBw3L9wdDAFboErSq_QV8omb3yCol0doo6uMGzJWo/edit#).
 
