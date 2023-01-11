@@ -283,7 +283,95 @@ We first unzip the contents of the file using either the `unzip tosend.zip` comm
 
 ### [Day 13] Accumulate
 
+In this task we are asked to use our previously gathered knowledge to gain access to a system with only its IP address.
 
+The first thing we do, is run a network scan to find all open ports and their services.
+
+```bash
+nmap -sV 10.10.85.141
+```
+
+![Nmap Network Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Nmap_scan.png)
+
+Here we see a server running on port 80. Remember the other service for later. 
+
+1. A web server is running on the target. What is the hidden directory which the website lives on?
+
+   Lets open the browser and navigate to the machine's IP and port 80. Here we indeed find a page for windows server. None of the links on this page will lead us anywhere, as there is no internet connections. Instead we will use a tool we used in day 2 of this challenge `dirsearch`. With the following command we can enumerate different directories present on the server.
+   
+   ```bash
+   dirsearch -u 10.10.85.141:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+   ```
+   
+   ![DirSearch Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Dirsearch_Enumeration.png)
+   
+   This quickly gives us a directory to use. When navigating to the website, we see this is indeed available!
+   
+   ![Retro Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Website.png)
+
+   >/retro
+
+2. Gain initial access and read the contents of user.txt
+
+   We need to find a way into the system and read its contents. First we start looking around for any interesting information on the blog. None of the posts have anything of interest. However, we can also see a comment posted by Wade the author. This seems to hold some private stuff you would not want out in the open. Could it possibly be a password?
+   
+   ![Website Comment](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Website_Comment.png)
+   
+   After some searching we find a login page for the Wordpress website. We can indeed login using the password we found earlier and username Wade. However, this will again lead us nowhere, as we cannot access the files from here. Remember the other service we found running on port 3389? A quick Google search tells us this is used for RPD connections, how fortunate!
+   
+   Using Remmina with `remmina -c rdp:wade@10.10.85.141:80` to login to the machine we need to supply a password at the prompt.
+   
+   ![RDP Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_RDP_Login.png)
+   
+   Here we find a conveniently placed file on our desktop. Sweet!
+
+   >THM{HACK_PLAYER_ONE}
+
+3. [Optional] Elevate privileges and read the content of root.txt
+
+   This question was a though one, as there was no possibility for me to find out where to go next without a guide. The hint mentioned we should look for what the user was searching for. So the first thing I did was opening Internet Explorer to find any browser hidtory. This was empty.. Looking at other people's writeups, I saw they also had Chrome installed. I, unfortunately, didn't.
+   
+   ![Desktop Screen](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_RDP_Screen.png)
+   
+   I took the liberty of viewing the users browser history another user [posted](https://muirlandoracle.co.uk/2020/01/06/tryhackme-christmas-2019-challenge-write-up/#Day_Thirteen_-_Accumulate). Apparently, they were searching for a CVE. Perhaps the system is vulnerable to it.
+   
+   After another Google [search](https://github.com/nobodyatall648/CVE-2019-1388) I learned we could exploit the vulnerability to obtain a cmd shell with elevated priveleges through the UAC window.
+   
+   I this case we can open the `.exe` file on the desktop to open a UAC prompt and view the certificate.
+   
+   ![View Certificate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Root_Certificate.png)
+   
+   Clicking on the link for the certificate issuer should spawn a browser instance with elevated priveleges as it originates from the `.exe`.
+   
+   **Important note!** `Make sure no browser window is currently open before visiting the link. Otherwise, the link will be opened in the browser instance without priveleges.`
+   
+   In the opened browser window we get a connection error, but we can ignore that. We need to save this page as. Either through the menu or with `Ctrl + S`. 
+   
+   ![Save as Prompt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Root_Save.png)
+   
+   In the path bar we write: `C:\Windows\System32\cmd.exe` and press Enter.
+   
+   A cmd shell should openen with elevated priveleges. Lets check.
+   
+   ![Cmd Window](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Root_Cmd.png)
+   
+   Lets find out which admin user we should login to.
+   
+   ![Cmd Window Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Root_Admin.png)
+   
+   Looks like it is called `Administrator`. 
+   
+   Moving into this directory we can search for the text file using:
+   
+   ```bat
+   dir "root.txt" /S
+   ```
+   
+   ![Cmd Root File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Root_File.png)
+   
+   Now we can open this file and read the flag!
+
+   >THM{COIN_OPERATED_EXPLOITATION}
 
 ### [Day 14] Unknown Storage
 
