@@ -375,7 +375,25 @@ Here we see a server running on port 80. Remember the other service for later.
 
 ### [Day 14] Unknown Storage
 
+In this task we will need to look for leaked information from an improperly configured AWS bucket. The supporting material can be found [here](https://docs.google.com/document/d/13uHBw3L9wdDAFboErSq_QV8omb3yCol0doo6uMGzJWo/edit#).
 
+1. What is the name of the file you found?
+
+   All we need here is the name of the bucket `advent-bucket-one`.
+   
+   We can navigate to `advent-bucket-one.s3.amazonaws.com` to see if the bucket is publicly accessible. And if so, which file is available.
+   
+   ![AWS Bucket Information](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2014/Storage_AWS_Bucket.png)
+   
+   >employee_names.txt
+
+2. What is in the file?
+
+   To view a certain file, we can either use the AWS CLI (account necessary) or through the browser. In this case it is easier to use the browser.
+   
+   `advent-bucket-one.s3.amazonaws.com/employee_names.txt`
+   
+   >mcchef
 
 ### [Day 15] LFI
 
