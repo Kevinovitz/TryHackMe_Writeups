@@ -467,7 +467,32 @@ In this task, we will use Local File Inclusion in order to find a password to a 
 
 ### [Day 16] File Confusion
 
+In this task we are using python to automate several tasks on some zipped files. The suppoting documentation can be found [here](https://docs.google.com/document/d/13eYEcqpyp3fIAnaDR8PHz6qibBJJwf2Vp5M77KkEKtw/edit#).
 
+1. How many files did you extract(excluding all the .zip files)
+
+   The following code was used to unzip all files.
+
+   ```python
+   ListofZips = os.listdir("/Files/")
+   for m in ListofZips:
+      with zipfile.ZipFile('/Files/' + m , 'r') as zip_files:
+      zip_files.extractall('/Files/')
+   ```
+
+   ><details><summary>Click for answer</summary>50</details>
+
+2. How many files contain Version: 1.1 in their metadata?
+
+   I could not get the exiftool installed properly and it would not import in my script.
+
+   ><details><summary>Click for answer</summary>3</details>
+
+3. Which file contains the password?
+
+   T.b.d.
+
+   ><details><summary>Click for answer</summary>dL6w.txt</details>
 
 ### [Day 17] Hydra-ha-ha-haa
 
@@ -503,3 +528,5 @@ In this task, we will use Local File Inclusion in order to find a password to a 
 
 ### [Day 25] Challenge-less 
 
+
+><details><summary>Click for answer</summary></details>
