@@ -401,7 +401,63 @@ In this task we will need to look for leaked information from an improperly conf
 
 ### [Day 15] LFI
 
+In this task, we will use Local File Inclusion in order to find a password to a server. Use the supporting information found [here](https://blog.tryhackme.com/lfi/).
 
+**Machine IP: 10.10.253.159**
+
+1. What is Charlie going to book a holiday to?
+
+   When we open the ip address in our browser we can see the notes Charlie has been taken.
+   
+   ![Website Notes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_Website.png)
+
+   ><details><summary>Click for answer</summary>Hawaii</details>
+
+2. Read /etc/shadow and crack Charlies password.
+
+   Looking at the source code of the website, we notice this piece of code.
+   
+   ![Website Source Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_Source_Code.png)
+   
+   Looks like it is loading in content from other files. It uses the `/get-file/` command followed by the patch of the file. Let try reading the `/etc/shadow` file for some passwords.
+   
+   **Note.** This can also be done using Burpsuite's Intercept function.
+   
+   ![Website Shadow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_Shadow.png)
+   
+   Here we find a password for the user Charlie. Looks like it is a hashed password. From Hashcats [examples](https://hashcat.net/wiki/doku.php?id=example_hashes) page, this looks like a SHA512 hash (1800).
+   
+   Copy and save the password to a file to be used with Hashcat.
+   
+   **Note!** Make sure you copy to entire (and correct) part of the hash. Everything between ':' and ':'. Otherwise the length might not be what is expected by Hashcat.
+   
+   Using hascat with the following command, we can try to find out what the password was (hashcat didn't work on a VM, so I had to switch to Windows).
+   
+   ```cmd
+   hashcat.exe -m 1800 password.txt rockyou.txt
+   ```
+   
+   ![Hashcat Progress](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_Hashcat_Cracked.png)
+
+   ><details><summary>Click for answer</summary>password1</details>
+
+3. What is flag1.txt?
+
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_Nmap_Scan.png)
+   
+   From our previously done Nmap scan, we see port 22 is open for an SSH connection. Lets try our credentials here.
+   
+   ```cmd
+   ssh charlie@10.10.259.143
+   ```
+   
+   ![SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_SSH_Login.png)
+   
+   Now we just need to find and read the flag.
+   
+   ![SSH File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2015/LFI_SSH_File.png)
+   
+   ><details><summary>Click for answer</summary>THM{4ea2adf842713ad3ce0c1f05ef12256d}</details>
 
 ### [Day 16] File Confusion
 
