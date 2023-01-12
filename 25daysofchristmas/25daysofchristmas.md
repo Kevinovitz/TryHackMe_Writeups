@@ -6,7 +6,13 @@
 
 This guide contains the answer and steps necessary to get to them for the [Advent of Cyber](https://tryhackme.com/room/25daysofchristmas) room.
 
-### [Day 1] Inventory Management
+Table of contents
+
+- [[Day 1] Inventory Management](#day-1-inventory-management)
+- [[Day 
+- 
+- [[Day 9] Requests](#day-9-requests)
+
 
 
 
