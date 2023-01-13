@@ -101,7 +101,7 @@ Machine IP:
 
    Since this room is now probably not useable anymore, I think it wouldn't be a problem to post the flag itself to allow others to finish this room.
 
-   >sCrIPtKiDd
+   ><details><summary>Click for answer</summary>sCrIPtKiDd</details>
 
 ### [Day 10] [Metasploit-a-ho-ho-ho](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2010)
 
@@ -142,7 +142,7 @@ Now we have our session running on the target machine.
 
    ![Metasploit flag search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_flag.png)
 
-   >THM{3ad96bb13ec963a5ca4cb99302b37e12}
+   ><details><summary>Click for answer</summary>THM{3ad96bb13ec963a5ca4cb99302b37e12}</details>
 
 2. Now you've compromised the web server, get onto the main system. What is Santa's SSH password?
 
@@ -152,7 +152,7 @@ Now we have our session running on the target machine.
 
    ![SSH credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/msfconsole_sshcreds.png)
 
-   >rudolphrednosedreindeer
+   ><details><summary>Click for answer</summary>rudolphrednosedreindeer</details>
 
 3. Who is on line 148 of the naughty list?
 
@@ -162,7 +162,7 @@ Now we have our session running on the target machine.
 
    To see who is on line 148 of the naughty list we could just count the lines, but using cat with some extra options will be easier.
 
-   ```bash
+   ```cmd
    cat -n naughty_list.txt | grep -i 148
    ```
 
@@ -172,20 +172,20 @@ Now we have our session running on the target machine.
 
    ![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_naughty.png)
 
-   >Melisa Vanhoose
+   ><details><summary>Click for answer</summary>Melisa Vanhoose</details>
 
 4. Who is on line 52 of the nice list?
 
    Same command can be used here.
 
-   ```bash
+   ```cmd
    cat -n nice_list.txt | grep -i 52
    ```
    Produces
 
    ![Naughty list result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2010/ssh_nice.png)
 
-   >Lindsey Gaffney
+   ><details><summary>Click for answer</summary>Lindsey Gaffney</details>
 
 ### [Day 11] [Elf Applications](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2011)
 
@@ -195,7 +195,7 @@ Machine IP:
 
 We first run an nmap scan to find all available services on the target machine by running:
 
-```bash
+```cmd
 nmap -sV 10.10.223.45
 ```
 
@@ -207,13 +207,13 @@ Here we can see we have three services running on their default ports. FTP on po
 
    To get the password we need to access the NFS service. First we need to find out which shares are available for us to mount
 
-   ```bash
+   ```cmd
    showmount -e 10.10.223.45
    ```
 
    Now we can mount this share to our system.
 
-   ```bash
+   ```cmd
    sudo mount 10.10.223.45:/opt/files /mnt
    ```
 
@@ -227,7 +227,7 @@ Here we can see we have three services running on their default ports. FTP on po
 
    ![Access NFS through folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_NFS_File_Directory.png)
 
-   >securepassword123
+   ><details><summary>Click for answer</summary>securepassword123</details>
 
 2. What is the name of the file running on port 21?
 
@@ -239,7 +239,7 @@ Here we can see we have three services running on their default ports. FTP on po
 
    ![Download FTP file](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_FIle_Download.png)
 
-   >file.txt
+   ><details><summary>Click for answer</summary>file.txt</details>
 
 3. What is the password after enumerating the database?
 
@@ -247,7 +247,7 @@ Here we can see we have three services running on their default ports. FTP on po
 
    ![FTP file contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_FTP_File_Open.png)
 
-   ```bash
+   ```cmd
    mysql -u root -p 10.10.223.445
    ```
 
@@ -269,7 +269,7 @@ Here we can see we have three services running on their default ports. FTP on po
 
    ![MySQL User Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2011/Elf_Applications_SQL_User_Creds.png)
 
-   >bestpassword
+   ><details><summary>Click for answer</summary>bestpassword</details>
 
 ### [Day 12] [Elfcryption](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2012)
 
@@ -281,13 +281,13 @@ We first unzip the contents of the file using either the `unzip tosend.zip` comm
 
    To read the md5 hash of the `note1.txt.gpg` file we use the following command:
    
-   ```bash
+   ```cmd
    md5sum note1.txt.gpg
    ```
    
    ![GPG File Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2012/Encryption_GPG_Hash.png)
 
-   >24cf615e2a4f42718f2ff36b35614f8f
+   ><details><summary>Click for answer</summary>24cf615e2a4f42718f2ff36b35614f8f</details>
 
 2. Where was elf Bob told to meet Alice?
 
@@ -295,19 +295,19 @@ We first unzip the contents of the file using either the `unzip tosend.zip` comm
    
    ![GPG File Decrypt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2012/Encryption_GPG_Decrypt.png)
 
-   >santa's grotto
+   ><details><summary>Click for answer</summary>santa's grotto</details>
 
 3. Decrypt note2 and obtain the flag!
 
    To decrypt the message we use the command as specified in the supporting material. Again, we use the passphrase supplied by the hint `hello`.
    
-   ```bash
+   ```cmd
    openssl rauthl -decrypt -inkey private.key -in note2_encrypted.txt -out note2_decrypted.txt
    ```
    
    ![AES File Decrypt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2012/Encryption_AES_Decrypt.png)
 
-   >THM{ed9ccb6802c5d0f905ea747a310bba23}
+   ><details><summary>Click for answer</summary>THM{ed9ccb6802c5d0f905ea747a310bba23}</details>
 
 ### [Day 13] [Accumulate](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2013)
 
@@ -315,7 +315,7 @@ In this task we are asked to use our previously gathered knowledge to gain acces
 
 The first thing we do, is run a network scan to find all open ports and their services.
 
-```bash
+```cmd
 nmap -sV 10.10.85.141
 ```
 
@@ -327,7 +327,7 @@ Here we see a server running on port 80. Remember the other service for later.
 
    Lets open the browser and navigate to the machine's IP and port 80. Here we indeed find a page for windows server. None of the links on this page will lead us anywhere, as there is no internet connections. Instead we will use a tool we used in day 2 of this challenge `dirsearch`. With the following command we can enumerate different directories present on the server.
    
-   ```bash
+   ```cmd
    dirsearch -u 10.10.85.141:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
    ```
    
@@ -337,7 +337,7 @@ Here we see a server running on port 80. Remember the other service for later.
    
    ![Retro Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2013/Accumulate_Website.png)
 
-   >/retro
+   ><details><summary>Click for answer</summary>/retro</details>
 
 2. Gain initial access and read the contents of user.txt
 
@@ -353,7 +353,7 @@ Here we see a server running on port 80. Remember the other service for later.
    
    Here we find a conveniently placed file on our desktop. Sweet!
 
-   >THM{HACK_PLAYER_ONE}
+   ><details><summary>Click for answer</summary>THM{HACK_PLAYER_ONE}</details>
 
 3. [Optional] Elevate privileges and read the content of root.txt
 
@@ -399,7 +399,7 @@ Here we see a server running on port 80. Remember the other service for later.
    
    Now we can open this file and read the flag!
 
-   >THM{COIN_OPERATED_EXPLOITATION}
+   ><details><summary>Click for answer</summary>THM{COIN_OPERATED_EXPLOITATION}</details>
 
 ### [Day 14] [Unknown Storage](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2014)
 
@@ -413,7 +413,7 @@ In this task we will need to look for leaked information from an improperly conf
    
    ![AWS Bucket Information](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2014/Storage_AWS_Bucket.png)
    
-   >employee_names.txt
+   ><details><summary>Click for answer</summary>employee_names.txt</details>
 
 2. What is in the file?
 
@@ -421,7 +421,7 @@ In this task we will need to look for leaked information from an improperly conf
    
    `advent-bucket-one.s3.amazonaws.com/employee_names.txt`
    
-   >mcchef
+   ><details><summary>Click for answer</summary>mcchef</details>
 
 ### [Day 15] LFI
 
