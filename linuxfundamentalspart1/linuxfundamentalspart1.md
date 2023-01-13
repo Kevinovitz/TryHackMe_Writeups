@@ -15,7 +15,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 - [Interacting With the Filesystem!](#interacting-with-the-filesystem)
 - [Searching for Files](#searching-for-files)
 - [An Introduction to Shell Operators](#an-introduction-to-shell-operators)
-- [Conclusions & Summaries](#conclusions-and-summaries)
+- [Conclusions & Summaries](#conclusions--summaries)
 - [Linux Fundamentals Part 2](#linux-fundamentals-part-2)
 
 ### Introduction
