@@ -6,15 +6,33 @@
 
 This guide contains the answer and steps necessary to get to them for the [Advent of Cyber](https://tryhackme.com/room/25daysofchristmas) room.
 
-Table of contents
+## Table of contents
 
 - [[Day 1] Inventory Management](#day-1-inventory-management)
-- [[Day 
-- 
+- [[Day 2] Arctic Forum](#day-2-arctic-forum)
+- [[Day 3] Evil Elf](#day-3-evil-elf)
+- [[Day 4] Training](#day-4-training)
+- [[Day 5] Ho-Ho-Hosint](#day-5-ho-ho-hosint)
+- [[Day 6] Data Elf-iltration](#day-6-data-elf-iltration)
+- [[Day 7] Skilling Up](#day-7-skilling-up)
+- [[Day 8] SUID Shenanigans](#day-8-suid-shenanigans)
 - [[Day 9] Requests](#day-9-requests)
-
-
-
+- [[Day 10] Metasploit-a-ho-ho-ho](#day-10-metasploit-a-ho-ho-ho)
+- [[Day 11] Elf Applications](#day-11-elf-applications)
+- [[Day 12] Elfcryption](#day-12-elfcryption)
+- [[Day 13] Accumulate](#day-13-accumulate)
+- [[Day 14] Unknown Storage](#day-14-unknown-storage)
+- [[Day 15] LFI](#day-15-lfi)
+- [[Day 16] File Confusion](#day-16-file-confusion)
+- [[Day 17] Hydra-ha-ha-haa](#day-17-hydra-ha-ha-haa)
+- [[Day 18] ELF JS](#day-18-elf-js)
+- [[Day 19] Commands](#day-19-commands)
+- [[Day 20] Cronjob Privilege Escalation](#day-20-cronjob-privilege-escalation)
+- [[Day 21] Reverse Elf-ineering](#day-21-reverse-elf-ineering)
+- [[Day 22] If Santa, Then Christmas](#day-22-if-santa-then-christmas)
+- [[Day 23] LapLANd (SQL Injection)](#day-23-lapland-sql-injection)
+- [[Day 24] Elf Stalk](#day-24-elf-stalk)
+- [[Day 25] Challenge-less](#day-25-challenge-less)
 
 ### [Day 1] Inventory Management
 
