@@ -619,7 +619,43 @@ In this task we will exploit an XXS vulnerability using Javasctipt to get access
    
 ### [Day 19] Commands
 
+In this task we will explore the possibilities of using system commands through a web application. The supporting material can be found [here](https://docs.google.com/document/d/1W65iKmUMtz-srteErhrGFJkWBXJ4Xk5PYlCZVMIZgs8/edit).
 
+1. What are the contents of the user.txt file?
+
+   When accessing the website on ip address 3000 we only see some text.
+   
+   ![Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_Website.png)
+   
+   We are told, something intersting was found on the `api/cmd/` endpoint. Navigating there we find the following:
+   
+   ![Website Endpoint](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_Directory.png)
+   
+   Eventhough this doesn't give us anything, we can see from a quick dirsearch, that it does indeed exist. In fact, we see various names that look like commands which we might be able to use.
+   
+   ![Website Dirsearch](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_DirSearch.png)
+   
+   After testing a few, this does in deed looks to be the case.
+   
+   ![Website LS](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_Ls.png)
+   
+   Lets try a command to find our text file, since we know what it is called. We use `find -name user.txt` to get the following:
+   
+   ![Find File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_Find_File.png)
+   
+   Now we know where we can find it, we will try reading the file using `cat`. However, this time `cat /home/bestadmin/user.txt` didn't work.
+   
+   ![URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_URL.png)
+   
+   So we need to encode the URL ('/' and 'space'). We can do so using CyberChef.
+   
+   ![URL Encode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_URL_Encode.png)
+   
+   Now we can read the file with the encoded URL.
+   
+   ![Flag Text](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2019/Commands_Flag_Text.png)
+
+   ><details><summary>Click for answer</summary>5W7WkjxBWwhe3RNsWJ3Q</details>
 
 ### [Day 20] Cronjob Privilege Escalation
 
