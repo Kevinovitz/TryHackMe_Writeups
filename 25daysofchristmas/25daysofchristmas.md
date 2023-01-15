@@ -423,7 +423,7 @@ In this task we will need to look for leaked information from an improperly conf
    
    ><details><summary>Click for answer</summary>mcchef</details>
 
-### [Day 15] LFI
+### [Day 15] [LFI](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2015)
 
 In this task, we will use Local File Inclusion in order to find a password to a server. Use the supporting information found [here](https://blog.tryhackme.com/lfi/).
 
@@ -483,7 +483,7 @@ In this task, we will use Local File Inclusion in order to find a password to a 
    
    ><details><summary>Click for answer</summary>THM{4ea2adf842713ad3ce0c1f05ef12256d}</details>
 
-### [Day 16] File Confusion
+### [Day 16] [File Confusion](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2016)
 
 In this task we are using python to automate several tasks on some zipped files. The suppoting documentation can be found [here](https://docs.google.com/document/d/13eYEcqpyp3fIAnaDR8PHz6qibBJJwf2Vp5M77KkEKtw/edit#).
 
@@ -512,7 +512,7 @@ In this task we are using python to automate several tasks on some zipped files.
 
    ><details><summary>Click for answer</summary>dL6w.txt</details>
 
-### [Day 17] Hydra-ha-ha-haa
+### [Day 17] [Hydra-ha-ha-haa](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2017)
 
 In this task we will be using [Hydra](https://en.kali.tools/?p=220) (can be downloaded [here](https://github.com/vanhauser-thc/thc-hydra) if needed) to brute force a password for someones web application login and SSH login. The supporting material can be found [here](https://tryhackme.com/resources/blog/hydra).
 
@@ -571,7 +571,7 @@ With a quick Nmap scan we can see there are indeed two open ports (22 and 80).
 
    ><details><summary>Click for answer</summary>THM{c8eeb0468febbadea859baeb33b2541b}</details>
 
-### [Day 18] ELF JS
+### [Day 18] [ELF JS](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2018)
 
 In this task we will exploit an XXS vulnerability using Javasctipt to get access to the admin cookie. The supporting documentation can be found [here](https://docs.google.com/document/d/19TJ6ANmM-neOln0cDh7TPMbV9rsLkSDKS3nj0eJaxeg/edit#).
 
@@ -617,7 +617,7 @@ In this task we will exploit an XXS vulnerability using Javasctipt to get access
 
    ><details><summary>Click for answer</summary>2564799a4e6689972f6d9e1c7b406f87065cbf65</details>
    
-### [Day 19] Commands
+### [Day 19] [Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2019)
 
 In this task we will explore the possibilities of using system commands through a web application. The supporting material can be found [here](https://docs.google.com/document/d/1W65iKmUMtz-srteErhrGFJkWBXJ4Xk5PYlCZVMIZgs8/edit).
 
