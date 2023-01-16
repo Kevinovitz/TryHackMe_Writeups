@@ -34,13 +34,75 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 24] Elf Stalk](#day-24-elf-stalk)
 - [[Day 25] Challenge-less](#day-25-challenge-less)
 
-### [Day 1] Inventory Management
+### [Day 1] [Inventory Management](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2001)
 
+In this task we need to use cookies to account another users account.
 
+1. What is the name of the cookie used for authentication?
 
-### [Day 2] Arctic Forum
+   First we need to create an account on the website to view the cookie we get.
+   
+   ![Register]()
+   
+   Now we login and open the developer tools to look at the cookie stored in our browser. Here we find its name.
+   
+   ![Cookie]()
 
+   ><details><summary>Click for answer</summary>authid</details>
 
+2. If you decode the cookie, what is the value of the fixed part of the cookie?
+
+   We can decode the cookie using Cyber Chef. It looks like a Base64 encoding and this is exactly what Cyber Chef suggest.
+   
+   ![Cyber Chef Decoding]()
+   
+   We see the cookie is our username and a random string of characters. Could this be a fixed part for all cookies?
+
+   ><details><summary>Click for answer</summary>v4er9ll1!ss</details>
+   
+3. After accessing his account, what did the user mcinventory request?
+
+   Lets find out. Adding the username `mcinventory` in front of the fixed part of the cookie and decoding it through Cyber Chef we get the following cookie:
+   
+   ![Cyber Chef Encoding]()
+   
+   Change the value of our existing cookie to the value we just created and reload the page. Looks like we are now logged in as mcinventory. On the home page we can see what het requested.
+   
+   ![Item]()
+
+   ><details><summary>Click for answer</summary>firewall</details>
+
+### [Day 2] [Arctic Forum](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2002)
+
+In this task we will be using brute forcing to find hidden webpages.
+
+1. What is the path of the hidden page?
+
+   We will use DirSearch to find any hidden directories on the server. Using the following command:
+   
+   ```cmd
+   dirsearch -u 10.10.101.69:3000 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r
+   ```
+   
+   ![DirSearch Results]()
+
+   ><details><summary>Click for answer</summary>/sysadmin</details>
+
+2. What is the password you found?
+
+   Doing a little bit of OSINT research, we can look at the source of the website. Looks like there is a reference to a developer github page. Searching for `Arctic Digital Design` we find the following Github page with some default credentials.
+   
+   ![Default Credentials]()
+
+   ><details><summary>Click for answer</summary>defaultpass</details>
+
+3. What do you have to take to the 'partay'
+
+   Using the default credentials we found, we can login to the sysadmin page. On this page we find what to bring to the party.
+   
+   ![Entry]()
+
+   ><details><summary>Click for answer</summary>Eggnog</details>
 
 ### [Day 3] Evil Elf
 
