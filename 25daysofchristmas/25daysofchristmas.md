@@ -657,9 +657,58 @@ In this task we will explore the possibilities of using system commands through 
 
    ><details><summary>Click for answer</summary>5W7WkjxBWwhe3RNsWJ3Q</details>
 
-### [Day 20] Cronjob Privilege Escalation
+### [Day 20] [Cronjob Privilege Escalation](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2020)
 
+In this task we are tasked to hack into Sam's account and elevate our priveleges usin a running cronjob.
+There is no supporting material for this task, but I used [this](https://vk9-sec.com/exploiting-the-cron-jobs-misconfigurations-privilege-escalation/) to help me understand how to exploit cronjobs to elevate our priveleges.
 
+1. What port is SSH running on?
+
+   First thing to do is an nmap scan to find any open ports and running services te determine on which port ssh is running.
+   
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_Nmap_Scan.png)
+
+   ><details><summary>Click for answer</summary>4567</details>
+
+2. Crack sam's password and read flag1.txt
+
+   If Sam uses an easy password, logging into their account shouldn't be too difficult with Hydra. We can use the following command to have Hydra crack Sam's password.
+   
+   ```cmd
+   hydra -l sam -P /usr/share/wordlists/ 10.10.72.36 ssh -t 4 -s 4567
+   ```
+   
+   ![Hydra Crack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_Hydra_Crack.png)
+   
+   Now we can ssh into the machine and find the flag.
+   
+   ![SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_SSH_Login.png)
+   
+   ![First Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_Flag1.png)
+
+   ><details><summary>Click for answer</summary>THM{dec4389bc09669650f3479334532aeab}</details>
+
+3. Escalate your privileges by taking advantage of a cronjob running every minute. What is flag2?
+
+   Now we need to find out what cronjob is running and which it is executing. For this we can use `crontab -l`. Unfortunately, nothing is listed here. Neither does `cat /etc/crontab`. Lets try to use `find /home -name *sh` to find any scripts.
+   
+   ![Find Scripts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_Find_Scripts.png)
+   
+   Looks like a recurring task script to me. From the supplied website we found how to add a user to the list of sudoers. Add this to the script.
+   
+   ```cmd
+   echo "sam ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+   ```
+   
+   ![Edit Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_Edit_Script.png)
+   
+   Now we just have to wait a minute before we can continue. We can do a quick check to see if it working with `sudo -i` or `sudo -l`.
+   
+   To read the file we just need the following command `sudo cat /home/ubuntu/flag2.txt`.
+   
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2020/CronJob_Flag2.png)
+
+   ><details><summary>Click for answer</summary>THM{b27d33705f97ba2e1f444ec2da5f5f61}</details>
 
 ### [Day 21] Reverse Elf-ineering
 
