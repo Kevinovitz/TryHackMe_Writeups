@@ -42,11 +42,11 @@ In this task we need to use cookies to account another users account.
 
    First we need to create an account on the website to view the cookie we get.
    
-   ![Register]()
+   ![Register](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2001/Inventory_Register.png)
    
    Now we login and open the developer tools to look at the cookie stored in our browser. Here we find its name.
    
-   ![Cookie]()
+   ![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2001/Inventory_Cookie.png)
 
    ><details><summary>Click for answer</summary>authid</details>
 
@@ -54,7 +54,7 @@ In this task we need to use cookies to account another users account.
 
    We can decode the cookie using Cyber Chef. It looks like a Base64 encoding and this is exactly what Cyber Chef suggest.
    
-   ![Cyber Chef Decoding]()
+   ![Cyber Chef Decoding](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2001/Inventory_Cyber_Chef.png)
    
    We see the cookie is our username and a random string of characters. Could this be a fixed part for all cookies?
 
@@ -62,13 +62,13 @@ In this task we need to use cookies to account another users account.
    
 3. After accessing his account, what did the user mcinventory request?
 
-   Lets find out. Adding the username `mcinventory` in front of the fixed part of the cookie and decoding it through Cyber Chef we get the following cookie:
+   Lets find out. Adding the username `mcinventory` in front of the fixed part of the cookie and encoding it through Cyber Chef we get the following cookie:
    
-   ![Cyber Chef Encoding]()
+   ![Cyber Chef Encoding](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2001/Inventory_New_Cookie.png)
    
    Change the value of our existing cookie to the value we just created and reload the page. Looks like we are now logged in as mcinventory. On the home page we can see what het requested.
    
-   ![Item]()
+   ![Item](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2001/Inventory_Item.png)
 
    ><details><summary>Click for answer</summary>firewall</details>
 
@@ -84,7 +84,7 @@ In this task we will be using brute forcing to find hidden webpages.
    dirsearch -u 10.10.101.69:3000 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r
    ```
    
-   ![DirSearch Results]()
+   ![DirSearch Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2002/Forum_DirSearch.png)
 
    ><details><summary>Click for answer</summary>/sysadmin</details>
 
@@ -92,7 +92,7 @@ In this task we will be using brute forcing to find hidden webpages.
 
    Doing a little bit of OSINT research, we can look at the source of the website. Looks like there is a reference to a developer github page. Searching for `Arctic Digital Design` we find the following Github page with some default credentials.
    
-   ![Default Credentials]()
+   ![Default Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2002/Forum_Default_Creds.png)
 
    ><details><summary>Click for answer</summary>defaultpass</details>
 
@@ -100,7 +100,7 @@ In this task we will be using brute forcing to find hidden webpages.
 
    Using the default credentials we found, we can login to the sysadmin page. On this page we find what to bring to the party.
    
-   ![Entry]()
+   ![Entry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2002/Forum_Entry.png)
 
    ><details><summary>Click for answer</summary>Eggnog</details>
 
