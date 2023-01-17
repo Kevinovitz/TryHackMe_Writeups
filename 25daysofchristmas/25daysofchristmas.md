@@ -104,29 +104,57 @@ In this task we will be using brute forcing to find hidden webpages.
 
    ><details><summary>Click for answer</summary>Eggnog</details>
 
-### [Day 3] Evil Elf
+### [Day 3] [Evil Elf](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2003)
 
+In this task we will investigate a networp capture using Wireshark. The supporting documentation can be found [here](https://docs.google.com/document/d/1ZVsOtW7mM-4neZZ4QtYCEp__exiMrvlUCXTxhB-zyxk/edit?usp=sharing).
 
+1. Whats the destination IP on packet number 998?
+
+   Looking at entry `998` we can see its destination ip in the destination column.
+
+   ><details><summary>Click for answer</summary>63.32.89.195</details>
+
+2. What item is on the Christmas list?
+
+   After opening the capture file in Wireshark, we can filter on either `http` or `telnet` to find any plain-text data. Sure enough, we get three hits for `telnet`. In the first one, we see a command which writes an item to the christmas list.
+   
+   ![Evil Wireshark List](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2003/Evil_Wireshark_Christmas.png)
+
+   ><details><summary>Click for answer</summary>ps4</details>
+
+3. Crack buddy's password!
+
+   In the next entries we see a command to lookup the users in the `shadow` file. Here we see a hashed password for buddy.
+   
+   ![Evil Wireshark Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2003/Evil_Wireshark_Password.png)
+   
+   Using hashcat we can crack this password with the following command:
+   
+   ```cmd
+   hashcat -m 1800 password.txt /usr/share/wordlists/rockyou.txt
+   ```
+
+   ><details><summary>Click for answer</summary>rainbow</details>
 
 ### [Day 4] Training
 
-
+><details><summary>Click for answer</summary></details>
 
 ### [Day 5] Ho-Ho-Hosint
 
-
+><details><summary>Click for answer</summary></details>
 
 ### [Day 6] Data Elf-iltration
 
-
+><details><summary>Click for answer</summary></details>
 
 ### [Day 7] Skilling Up
 
-
+><details><summary>Click for answer</summary></details>
 
 ### [Day 8] SUID Shenanigans
 
-
+><details><summary>Click for answer</summary></details>
 
 ### [Day 9] [Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2009)
 
