@@ -772,9 +772,57 @@ There is no supporting material for this task, but I used [this](https://vk9-sec
 
    ><details><summary>Click for answer</summary>THM{b27d33705f97ba2e1f444ec2da5f5f61}</details>
 
-### [Day 21] Reverse Elf-ineering
+### [Day 21] [Reverse Elf-ineering](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2021)
 
+In this task we will take a look at reverse engineering binaries. We will use [Radare2](https://rada.re/n/radare2.html) for this. The supporting documentation can be found [here](https://drive.google.com/file/d/1maTcdquyqnZCIcJO7jLtt4cNHuRQuK4x/view?usp=sharing).
 
+We will start by opening the file for debugging in Radare2 with the command: `r2 -d challenge1`. Then we tell the program to analyze the file and search for an entry point named main with `aa` and `afl | grep main`.
+
+![R2 Opening](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2021/Reverse_Open_Analyze.png)
+
+Now we can look at the assembly code by typing `pdf @main`.
+
+![R2 Functions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2021/Reverse_Functions.png)
+
+To answer the questions we can simply look through the code. But I will also do a check to see if we are correct by running the coding and inspecting the registers and memory. This is done by placing a breakpoint before the `mov eax` line.
+
+```cmd
+db 0x00400b69
+```
+
+Use `pdf @main` again to check the placement of the breakpoint (displayed as `b`). And `dc` to run the program up until the breakpoint.
+
+![R2 Breakpoint](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2021/Reverse_Breakpoint.png)
+
+1. What is the value of local_ch when its corresponding movl instruction is called(first if multiple)?
+
+   On the third line we see that `1` is placed into the variable `var_ch`.
+   
+   To check, we symply type: `px @rbp-0xc` to view the variable.
+   
+   ![R2 Var ch](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2021/Reverse_Var_ch.png)
+
+   ><details><summary>Click for answer</summary>1</details>
+
+2. What is the value of eax when the imull instruction is called?
+
+   On the fourth line the value 8 is placed in `var_8h`. On line five, `eax` is set as `1`. At the imull instruction, `eax` is multiplied by `var_8h`.
+   
+   To check we type `dr` to view the registers (rax=eax).
+   
+   ![R2 Eax](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2021/Reverse_Eax.png)
+
+   ><details><summary>Click for answer</summary>6</details>
+
+3. What is the value of local_4h before eax is set to 0?
+
+   On the next line `var_4h` is set as `eax`.
+   
+   To check, we type: `px @rbp-0x4`.
+   
+   ![R2 Var 4h](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2021/Reverse_Var_4.png)
+
+   ><details><summary>Click for answer</summary>6</details>
 
 ### [Day 22] If Santa, Then Christmas
 
