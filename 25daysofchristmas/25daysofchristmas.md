@@ -824,9 +824,39 @@ Use `pdf @main` again to check the placement of the breakpoint (displayed as `b`
 
    ><details><summary>Click for answer</summary>6</details>
 
-### [Day 22] If Santa, Then Christmas
+### [Day 22] [If Santa, Then Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2022)
 
+In this task we have a similar challenge only with an added if-statement in the code. The supporting documentation can be found [here](https://docs.google.com/document/d/1cIHd_YQ_PHhkUPMrEDWAIfQFb9M9ge3OFr22HHaHQOU/edit?usp=sharing).
 
+Like the previous task, we will open the file for debugging, analyze it, and search for a main entry point.
+
+![If Santa Opening](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2022/If_Santa_Open_Analyze.png)
+
+Next we can look at the code with `pdf @main`.
+
+![If Santa Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2022/If_Santa_Breakpoint.png)
+
+1. what is the value of local_8h before the end of the main function?
+
+   First, `var_8h` is set to `8` and `var_4h` is set to `2`. Then `eax` is set as `var_8h`.
+   
+   Then `if eax (8) is less or equal to var_4h (2): jump to [..]`. As this statement is false, it moves on to add `1` to `var_8h`. Then it jumps to the end.
+   
+   To check we set a breakpoint before the final instruction: `db 0x00400b71`. And check its value with: `px @rbp-0x8`.
+   
+   ![If Santa Var 8h](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2022/If_Santa_Var_8h.png)
+
+   ><details><summary>Click for answer</summary>9</details>
+   
+2. what is the value of local_4h before the end of the main function?
+
+   From the first question we see `var_4h` is set as `2` and is never changed before the end. 
+   
+   To check this we type: `px @rbp-0x4`.
+   
+   ![If Santa Var 8h](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2022/If_Santa_Var_4h.png)
+
+   ><details><summary>Click for answer</summary>2</details>
 
 ### [Day 23] LapLANd (SQL Injection)
 
