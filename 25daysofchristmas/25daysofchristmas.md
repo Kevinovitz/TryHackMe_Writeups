@@ -902,7 +902,7 @@ In this task we are using SQL injection to enumerate databases without logging i
 
    To get the email address, we will enumerate the databases and find any tables which contain user information. To start I run the following command to exploit the vulnerability and enumerate all the databases.
    
-   **Note! This can also be done with the wizard `sqlmap --wizard`. I used that the first time. But you have more granular control over the output doing it yourself.
+   **Note! This can also be done with the wizard `sqlmap --wizard`. I used that the first time. But you have more granular control over the output doing it yourself.**
    
    ```cmd
    sqlmap -u http://10.10.104.79 --forms --batch --dbs
