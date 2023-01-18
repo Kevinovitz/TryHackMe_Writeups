@@ -890,6 +890,36 @@ Next we can look at the code with `pdf @main`.
 
 
 
+1. Which field is SQL injectable? Use the input name used in the HTML code.
+
+   On the login page we can see two fields. Email and password. It could be either one of these. Through sqlmap we found it to be the email field. Remember to use the name as used in the html file.
+
+   ><details><summary>Click for answer</summary>log_email</details>
+
+2. What is Santa Claus' email address?
+
+   
+
+   ><details><summary>Click for answer</summary>bigman@shefesh.com</details>
+
+3. What is Santa Claus' plaintext password?
+
+
+
+   ><details><summary>Click for answer</summary>saltnpepper</details>
+
+4. Santa has a secret! Which station is he meeting Mrs Mistletoe in?
+
+
+
+   ><details><summary>Click for answer</summary>Waterloo</details>
+
+5. Once you're logged in to LapLANd, there's a way you can gain a shell on the machine! Find a way to do so and read the file in /home/user/
+
+
+
+   ><details><summary>Click for answer</summary>THM{SHELLS_IN_MY_EGGNOG}</details>
+
 ### [Day 24] Elf Stalk
 
 
