@@ -886,37 +886,91 @@ Next we can look at the code with `pdf @main`.
 
    ><details><summary>Click for answer</summary>2</details>
 
-### [Day 23] LapLANd (SQL Injection)
+### [Day 23] [LapLANd (SQL Injection)](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2023)
 
-
+In this task we are using SQL injection to enumerate databases without logging in. Then we use our found credentials to find more information on the subject. The supporting documentation can be found [here](https://docs.google.com/document/d/15XH_T1o6FLvnV19_JnXdlG2A8lj2QtepXMtVQ32QXk0/edit?usp=sharing).
 
 1. Which field is SQL injectable? Use the input name used in the HTML code.
 
    On the login page we can see two fields. Email and password. It could be either one of these. Through sqlmap we found it to be the email field. Remember to use the name as used in the html file.
+   
+   ![Sqlmap_Field](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Field.png)
 
    ><details><summary>Click for answer</summary>log_email</details>
 
 2. What is Santa Claus' email address?
 
+   To get the email address, we will enumerate the databases and find any tables which contain user information. To start I run the following command to exploit the vulnerability and enumerate all the databases.
    
+   **Note! This can also be done with the wizard `sqlmap --wizard`. I used that the first time. But you have more granular control over the output doing it yourself.
+   
+   ```cmd
+   sqlmap -u http://10.10.104.79 --forms --batch --dbs
+   ```
+   
+   ![Sqlmap Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Databases.png)
+   
+   The `social` database looks like a good place to start. Lets enumerate it find the following command:
+   
+   ```cmd
+   sqlmap -u http://10.10.104.79 --forms --batch --tables -D social
+   ```
+   
+   ![Sqlmap Social](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Social.png)
+   
+   In this database we see a table called `users`. Lets continue with that one.
+   
+   ```cmd
+   sqlmap -u http://10.10.104.79 --forms --batch -D social -T users --dump
+   ```
+   
+   The table is dumped to a file which we can open or we can use the result printed in the terminal
+   
+   ![Sqlmap Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Users.png)
 
    ><details><summary>Click for answer</summary>bigman@shefesh.com</details>
 
 3. What is Santa Claus' plaintext password?
 
-
+   In the previous step we also found santa's hashed password. We need to crack it with Hashcat. From their examples page, the hash looks like an MD5 hash. Using the following command we can find out what the plain-text password is.
+   
+   ```cmd
+   hashcat -m 0 password.txt /usr/share/wordlists/rockyou.txt
+   ```
+   
+   ![Hashcat Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Password_Crack.png)
 
    ><details><summary>Click for answer</summary>saltnpepper</details>
 
 4. Santa has a secret! Which station is he meeting Mrs Mistletoe in?
 
-
+   With these credentials we can login to the website. Looking around for any messages we find the following.
+   
+   ![Website Messages](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Message.png)
 
    ><details><summary>Click for answer</summary>Waterloo</details>
 
 5. Once you're logged in to LapLANd, there's a way you can gain a shell on the machine! Find a way to do so and read the file in /home/user/
 
-
+   Since this application is based on PHP, we can use the PHP reverse shell found in `/usr/share/webshells/...`. We substitute the IP address for ours and the port for any port number (10.18.78.136:1337). Save it and upload it to the website. We also need to open a listener on port 1337 using Netcat.
+   
+   ```cmd
+   nc -nlvp 1337
+   ```
+   
+   ![Upload Attempt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Upload_Attempt.png)
+   
+   ![Upload Failed](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Upload_Failed.png)
+   
+   Looks like the `.php` extension is blocked. Lets change the file type and try again.
+   
+   ![Upload Attempt 4](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_Upload_Attempt_4.png)
+   
+   This seems to work and we can see an incomming connection.
+   
+   ![Nc Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2023/lapland_NC_Connection.png)
+   
+   Now all we need to do, is navigate to the flag and open it.
 
    ><details><summary>Click for answer</summary>THM{SHELLS_IN_MY_EGGNOG}</details>
 
