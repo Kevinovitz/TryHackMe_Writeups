@@ -136,17 +136,198 @@ In this task we will investigate a networp capture using Wireshark. The supporti
 
    ><details><summary>Click for answer</summary>rainbow</details>
 
-### [Day 4] Training
+### [Day 4] [Training](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2004)
 
-><details><summary>Click for answer</summary></details>
+In this task we will be learning some more basic commands to use in Linux.
 
-### [Day 5] Ho-Ho-Hosint
+1. How many visible files are there in the home directory(excluding ./ and ../)?
 
-><details><summary>Click for answer</summary></details>
+   To find the files in the `home` directory we use the following command: `ls`.
+   
+   ![Find File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_Find_File.png)
 
-### [Day 6] Data Elf-iltration
+   ><details><summary>Click for answer</summary>8</details>
 
-><details><summary>Click for answer</summary></details>
+2. What is the content of file5?
+
+   To view the contents of `file5` we use the following command:
+   
+   ```cmd
+   cat file5
+   ```
+   
+   ![File5](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_File5.png)
+
+   ><details><summary>Click for answer</summary>recipes</details>
+
+3. Which file contains the string ‘password’?
+
+   To find which file contains a specific string, we can use the following command:
+   
+   ```cmd
+   grep -l -e "password" -f *
+   
+   -l -> Only show matching files
+   -e -> Regex pattern to use
+   -f -> Files to look through
+   ```
+   
+   ![Find Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_Password.png)
+
+   ><details><summary>Click for answer</summary>file6</details>
+
+4. What is the IP address in a file in the home folder?
+
+   To find the IP address in one of the files, we use the following command:
+   
+   ```cmd
+   cat * | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" -o
+   
+   -E -> Extended Regex pattern to use
+   -o -> Only show the matching string
+   ```
+   
+   ![Find IP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_IP.png)
+
+   ><details><summary>Click for answer</summary>10.0.0.05</details>
+
+5. How many users can log into the machine?
+
+   We can look for any users folders in the `home` directory.
+   
+   ```cmd
+   ls -la /home
+   
+   -l -> Display in a long listing format
+   -a -> Also show (hidden) files starting with `.`
+   ```
+   
+   ![Find Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_Users.png)
+
+   ><details><summary>Click for answer</summary>3</details>
+
+6. What is the sha1 hash of file8?
+
+   To find the hash we can use `sha1sum` with the following command: `sha1sum file8`.
+   
+   ![Shasum](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_Shasum.png)
+
+   ><details><summary>Click for answer</summary>fa67ee594358d83becdd2cb6c466b25320fd2835</details>
+
+7. What is mcsysadmin’s password hash?
+
+   This is something we can usually find in the `shadow` file. Unfortunately, we don't have permission to access it. Maybe there is a backup file laying around somewhere. Lets look for it using:
+   
+   ```cmd
+   find / 2>/dev/null grep "shadow.bak"
+   
+   cat /var/shadow.bak | grep "mcsysadmin"
+   ```
+   
+   The `2>/dev/null` part make sure we only see entries which are true (for our search).
+   
+   ![Find Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2004/Training_Password.png)
+
+   ><details><summary>Click for answer</summary>$6$jbosYsU/$qOYToX/hnKGjT0EscuUIiIqF8GHgokHdy/Rg/DaB.RgkrbeBXPdzpHdMLI6cQJLdFlS4gkBMzilDBYcQvu2ro/</details>
+
+### [Day 5] [Ho-Ho-Hosint](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2005)
+
+In this task we will be using OSINT to find more information about our target. The first thing to do, is to reveal any metadata in the provided image.
+
+```cmd
+exiftool thegrinch.jpg
+```
+
+![Image Exiftool](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2005/Hosint_Image_Exif.png)
+
+Looks like the photographer is `JLolax1`. After searching for her, we find her Twitter profile. Here we can easiliy find the answers to questions 1, 2, and 3.
+
+![Twitter Profile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2005/Hosint_Twitter.png)
+
+1. What is Lola's date of birth? Format: Month Date, Year(e.g November 12, 2019)
+
+   ><details><summary>Click for answer</summary>December 29, 1900</details>
+
+2. What is Lola's current occupation?
+
+   ><details><summary>Click for answer</summary>Santa's Helper</details>
+
+3. What phone does Lola make?
+
+   ><details><summary>Click for answer</summary>iPhone X</details>
+
+4. What date did Lola first start her photography? Format: dd/mm/yyyy
+
+   Here we need to dig a little deeper. Following the link in her bio, we get to her Wordpress website. Nothing is stated about when she started photography. But we can search for some interesting information through the Waybackmachine. Here we can see this not on a previous version.
+   
+   ![(Wayback Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2005/Hosint_Wayback.png)
+
+   ><details><summary>Click for answer</summary>23/10/2014</details>
+
+5. What famous woman does Lola have on her web page?
+
+   To find out who is on the image, we can run it through Google image search or [TinEye](https://tineye.com).
+   
+   ![Tineye Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2005/Hosint_Image.png)
+
+   ><details><summary>Click for answer</summary>ada lovelace</details>
+
+### [Day 6] [Data Elf-iltration](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2006)
+
+In this task we are looking at a network capture to identify any information we need.
+
+1. What data was exfiltrated via DNS?
+
+   Filtering the data on DNS traffic we find multiple entries with the same, seemingly, random string. Lets decode it using CyberChef.
+   
+   ![Random String](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2006/Data_Random_String.png)
+   
+   ![Cyber Chef String](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2006/Data_Chef_String.png)
+
+   ><details><summary>Click for answer</summary>Candy Cane Serial Number 8491</details>
+
+2. What did Little Timmy want to be for Christmas?
+
+   Looking further in the `telnet` and `http` traffic we find a zip archive and an image. We can save these objects to our computer.
+   
+   ![Export Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2006/Data_Export.png)
+   
+   To crack the archive, we can use `fcrackzip`.
+   
+   ```cmd
+   fcrackzip -b -D -p /usr/share/wordlists/rockyou.txt christmaslists.zip
+   
+   -b -> specify bruteforce attack
+   -D -> specify using a dictionary
+   -p -> specify dictionary file to use
+   ```
+   
+   Now unzip the archive and view Timmy's lists.
+   
+   ```cmd
+   unzip christmaslists.zip
+   
+   cat christmaslisttimmy.txt
+   ```
+   
+   ![Christmas List](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2006/Data_Christmaslists.png)
+
+   ><details><summary>Click for answer</summary>PenTester</details>
+
+3. What was hidden within the file?
+
+   To find any hidden data in the image, we can use `steghide`.
+   
+   ```cmd
+   steghide extract -sf ~/Downloads/TryHackMe.jpg
+   
+   extract  -> specifies extracting hidden data
+   -sf      -> specifies file to extract from
+   ```
+   
+   ![Stegography](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2006/Data_Stegography.png)
+
+   ><details><summary>Click for answer</summary>RFC527</details>
 
 ### [Day 7] Skilling Up
 
