@@ -32,7 +32,6 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 22] If Santa, Then Christmas](#day-22-if-santa-then-christmas)
 - [[Day 23] LapLANd (SQL Injection)](#day-23-lapland-sql-injection)
 - [[Day 24] Elf Stalk](#day-24-elf-stalk)
-- [[Day 25] Challenge-less](#day-25-challenge-less)
 
 ### [Day 1] [Inventory Management](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2001)
 
