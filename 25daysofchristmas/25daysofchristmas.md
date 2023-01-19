@@ -1256,11 +1256,60 @@ In this task we are using SQL injection to enumerate databases without logging i
 
    ><details><summary>Click for answer</summary>THM{SHELLS_IN_MY_EGGNOG}</details>
 
-### [Day 24] Elf Stalk
+### [Day 24] [Elf Stalk](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2024)
+
+In this task we only get some information about the target machine and that we need to find a way to uncover sensitive information.
 
 
 
-### [Day 25] Challenge-less 
 
 
-><details><summary>Click for answer</summary></details>
+1. Find the password in the database
+
+   The first thing I did was a nmap scan to uncover any services running on the machine. `nmap -sV 10.10.77.2`.
+   
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Nmap.png)
+   
+   Looks like we have an ElasticSearch service running on 9200 and a Kibana-log on 8000. This might come in handy later. Lets focus on the database first. 
+   
+   From the [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-your-data.html), we can see they use some sort of `GET` request, which we may be able to alter.
+   
+   ![Elastic Documentation](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Elastic_Documentation.png)
+   
+   Using `_search`, we can see we indeed get a response.
+   
+   ![Elastic Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Elastic_Search.png)
+   
+   Now that we have seen the structure of the data, we can try to look for a password in one of the messages.
+   
+   ```cmd
+   _search?q=message:password
+   ```
+   
+   ![Elastic Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Elastic_Password.png)
+   
+   Nice!
+
+   ><details><summary>Click for answer</summary>9Qs58Ol3AXkMWLxiEyUyyf</details>
+
+2. Read the contents of the /root.txt file
+
+   Now lets foccus on the Kibana instance. We didn't find anything yet, but a more indepth nmap scan releaved a service running on port 5601.
+   
+   ![Nmap Scan More](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Nmap_More.png)
+   
+   This can be confirmed from the log file we found earlier.
+   
+   ![Kibana Log](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Kibana_Log.png)
+   
+   The version looks to be 6.4.2. Searching for an exploit yielded this result on [Github](https://github.com/mpgn/CVE-2018-17246).
+   
+   Apparently we can use a path traversal exploit to look at the data on the machine. Let try with a file that probably will exist as a proof of concept.
+   
+   ```cmd
+   
+   ```
+   
+   ![]()
+
+   ><details><summary>Click for answer</summary>someELKfun</details>
