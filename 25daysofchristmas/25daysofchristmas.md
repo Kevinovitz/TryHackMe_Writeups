@@ -329,13 +329,114 @@ In this task we are looking at a network capture to identify any information we 
 
    ><details><summary>Click for answer</summary>RFC527</details>
 
-### [Day 7] Skilling Up
+### [Day 7] [Skilling Up](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2007)
 
-><details><summary>Click for answer</summary></details>
+In this task we will be using `nmap` to perform several scan of the target machine. The first 3 questions can be answered with one command:
 
-### [Day 8] SUID Shenanigans
+```cmd
+nmap -sT -sV -p1-1000 -O 10.10.74.77
 
-><details><summary>Click for answer</summary></details>
+-sT   -> Perform a TCP scan
+-sV   -> Look for more info on the services
+-p    -> Specify port numbers to search for
+-O    -> Find more info on the host OS
+```
+
+But they can also be performed individually.
+
+1. how many TCP ports under 1000 are open?
+
+   ```cmd
+   nmap -sT -p1-1000 10.10.74.77
+   ```
+   
+   ![Nmap Services](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2007/Skillingup_Nmap_Services.png)
+
+   ><details><summary>Click for answer</summary>3</details>
+
+2. What is the name of the OS of the host?
+
+   ```cmd
+   nmap -sT -O 10.10.74.77
+   ```
+   
+   ![Nmap Host](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2007/Skillingup_Nmap_Host.png)
+
+   ><details><summary>Click for answer</summary>Linux</details>
+
+3. What version of SSH is running?
+
+   ```cmd
+   nmap -sT -sV 10.10.74.77
+   ```
+   
+   ![Nmap SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2007/Skillingup_Nmap_SSH.png)
+
+   ><details><summary>Click for answer</summary>7.4</details>
+
+4. What is the name of the file that is accessible on the server you found running?
+
+   During the Nmap scan we found a webserver running on port 999. Visiting this server in the browser, we find the file.
+   
+   ![Website File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2007/Skillingup_File.png)
+
+   ><details><summary>Click for answer</summary>interesting.file</details>
+
+### [Day 8] [SUID Shenanigans](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2008)
+
+In this task we must ssh into the target machine and use SUID exploitation to read the flags we don't have permission for.
+
+Username: holly
+
+Password: tuD@4vt0G*TU
+
+1. What port is SSH running on?
+
+   Running `nmap -sV 10.10.75.216` didn't give us a result. So we have to increase our port search area with:
+   
+   ```cmd
+   nmap -sV -p1-65535 10.10.75.216
+   ```
+   
+   ![Nmap Scan]()
+
+   ><details><summary>Click for answer</summary>65534</details>
+
+2. Find and run a file as igor. Read the file /home/igor/flag1.txt
+
+   First we need to find which binaries run as igor. We can do this with the following command:
+   
+   ```cmd
+   find / -user igor -perm 4000 -exec ls -ldb {} \; 2>/dev/null
+   ```
+   
+   We see we can run the `find` command to view the flag. `find /home/igor/flag1/txt -exec cat {} \;`.
+   
+   ![SUID Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2008/SUID_Flag1.png)
+
+   ><details><summary>Click for answer</summary>THM{d3f0708bdd9accda7f937d013eaf2cd8}</details>
+
+3. Find another binary file that has the SUID bit set. Using this file, can you become the root user and read the /root/flag2.txt file?
+
+   Running the command again but searching for `root` we find the following:
+   
+   ```cmd
+   find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null
+   ```
+   
+   ![SUID Root]()
+   
+   The `system-control` binary could be what we look for. To read the flag we can take one of two approaches.
+   
+   We either read the flag directly through `system-control`.
+   
+   ![SUID Flag 2_2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2008/SUID_Flag2_2.png)
+   
+   Or we can use `su` to switch to `root` and read the flag.
+   
+   ![SUID Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Day%2008/SUID_Flag2.png)
+
+   ><details><summary>Click for answer</summary>THM{8c8211826239d849fa8d6df03749c3a2}</details>
 
 ### [Day 9] [Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/25daysofchristmas/Day%2009)
 
