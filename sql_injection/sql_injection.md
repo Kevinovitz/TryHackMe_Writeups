@@ -6,10 +6,10 @@
 
 ## Table of Contents
 
-- [In-Band SQLi](in-band-sqli)
-- [Blind SQLi - Authentication Bypass](blind-sqli-authentication-bypass)
-- [Blind SQLi - Boolean Based](blind-sqli-boolean-based)
-- [Blind SQLi - Time Based](blind-sqli-time-Based)
+- [In-Band SQLi](#in-band-sqli)
+- [Blind SQLi - Authentication Bypass](#blind-sqli-authentication-bypass)
+- [Blind SQLi - Boolean Based](#blind-sqli-boolean-based)
+- [Blind SQLi - Time Based](#blind-sqli-time-Based)
 
 ## In-Band SQLi
 
