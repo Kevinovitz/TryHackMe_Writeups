@@ -8,4 +8,5 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md)
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md)
+- [SQL Injection](sql_injection/sql_injection.md)
 - more to come
