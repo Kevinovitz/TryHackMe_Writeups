@@ -13,7 +13,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 3] Christmas Chaos](#day-3-christmas-chaos)
 - [[Day 4] Santa's watching](#day-4-santas-watching)
 - [[Day 5] Someone stole Santa's gift list!](#day-5-someone-stole-santas-gift-list)
-- [[Day 6] ](#day-6-)
+- [[Day 6] Be careful with what you wish on a Christmas night](#day-6-be-careful-with-what-you-wish-on-a-christmas-night)
 - [[Day 7] ](#day-7-)
 - [[Day 8] ](#day-8-)
 - [[Day 9] ](#day-9-)
@@ -305,11 +305,37 @@ Some usefull resources:
 
    ><details><summary>Click for answer</summary>EhCNSWzzFP6sc7gB</details>
 
-### [Day 6] []()
+### [Day 6] [Be careful with what you wish on a Christmas night](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2005)
 
 
 
-1. 
+Extra resources:
+
+- [OWASP Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Input_Validation_Cheat_Sheet.md)
+- [Guide about XSS](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection)
+- [Payload List](https://github.com/payloadbox/xss-payload-list)
+
+1. What vulnerability type was used to exploit the application?
+
+   Since we can use comments to exploit XSS, this type is stored XSS.
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What query string can be abused to craft a reflected XSS?
+
+   When looking through the source code for the webpage, we find the name of the comment field as `q`.
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Run a ZAP (zaproxy) automated scan on the target. How many XSS alerts are in the scan?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. Explore the XSS alerts that ZAP has identified, are you able to make an alert appear on the "Make a wish" website?
+
+
 
    ><details><summary>Click for answer</summary></details>
 
