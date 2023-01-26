@@ -11,7 +11,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 1] A Christmas Crisis](#day-1-a-christmas-crisis)
 - [[Day 2] The Elf Strikes Back!](#day-2-the-elf-strikes-back)
 - [[Day 3] Christmas Chaos](#day-3-christmas-chaos)
-- [[Day 4] ](#day-4-)
+- [[Day 4] Santa's watching](#day-4-santas-watching)
 - [[Day 5] ](#day-5-)
 - [[Day 6] ](#day-6-)
 - [[Day 7] ](#day-7-)
@@ -145,7 +145,7 @@ Bypass the filter and upload a reverse shell.
 
    ><details><summary>Click for answer</summary>THM{MGU3Y2UyMGUwNjExYTY4NTAxOWJhMzhh}</details>
 
-### [Day 3] [Christmas Chaos](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%200)
+### [Day 3] [Christmas Chaos](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2003)
 
 In this task we will be using BurpSuite to brute force the logging on a website with a dictionary.
 
@@ -173,13 +173,57 @@ In this task we will be using BurpSuite to brute force the logging on a website 
 
    ><details><summary>Click for answer</summary>THM{885ffab980e049847516f9d8fe99ad1a}</details>
 
-### [Day 4] []()
+### [Day 4] [Santa's watching](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2004)
 
+In this task we will be using `gobuster` or `dirsearch` to find hidden directories and `wfuzz` to enumerate further to get to the flag.
 
+1. Given the URL "http://shibes.xyz/api.php", what would the entire wfuzz command look like to query the "breed" parameter using the wordlist "big.txt" (assume that "big.txt" is in your current directory)
 
-1. 
+**Note:** For legal reasons, do **not** actually run this command as the site in question has not consented to being fuzzed!
 
-   ><details><summary>Click for answer</summary></details>
+   Looking at the information provided to us in this task we can construct the command needed for `wfuzz`.
+
+   ><details><summary>Click for answer</summary>wfuzz -c -z file,big.txt http://shibes.xyz/api.php?breed=FUZZ</details>
+
+2. Use GoBuster (against the target you deployed -- not the shibes.xyz domain) to find the API directory. What file is there?
+
+   Since `Gobuster` wasn't yet installed, I used `DirSearch` instead, but the method shouldn't be to different. Our first command will be used to find any hidden directories.
+   
+   ```cmd
+   dirsearch -u 10.10.205.182 -w /usr/share/wordlists/dirb/big.txt -r
+   
+   or
+   
+   gobuster dir -u 10.10.205.182 -w /usr/share/wordlists/dirb/big.txt
+   ```
+   
+   Navigating to this directory we can find the file present.
+  
+  ![Dir Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Directory.png)
+
+   ><details><summary>Click for answer</summary>site-log.php</details>
+
+3. Fuzz the date parameter on the file you found in the API directory. What is the flag displayed in the correct post?
+
+   Here, I used the wordlist provided by TryHackMe and `date` as the parameter for the api. This results in the following command:
+   
+   ```cmd
+   wfuzz -c -z file,/usr/share/wordlists/tryhackme/wordlist.txt -u http://10.10.205.182/api/site-log.php/?date=FULL --hw 0
+   ```
+   
+   The `--hw o` argument filters out any responses which are empty. `--hc 404` or similar will probably not work as the api still returns information, it is just empty.
+   
+   ![Api Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Api_Parameter.png)
+   
+   Now we can look for the correct log with the date we found. Either use `curl` to retrieve the information,
+   
+   ![Curl Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Curl.png)
+   
+   or navigate to the page in the browser.
+   
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{D4t3_AP1}</details>
 
 ### [Day 5] []()
 
