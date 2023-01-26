@@ -12,7 +12,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 2] The Elf Strikes Back!](#day-2-the-elf-strikes-back)
 - [[Day 3] Christmas Chaos](#day-3-christmas-chaos)
 - [[Day 4] Santa's watching](#day-4-santas-watching)
-- [[Day 5] ](#day-5-)
+- [[Day 5] Someone stole Santa's gift list!](#day-5-someone-stole-santas-gift-list)
 - [[Day 6] ](#day-6-)
 - [[Day 7] ](#day-7-)
 - [[Day 8] ](#day-8-)
@@ -225,13 +225,85 @@ In this task we will be using `gobuster` or `dirsearch` to find hidden directori
 
    ><details><summary>Click for answer</summary>THM{D4t3_AP1}</details>
 
-### [Day 5] []()
+### [Day 5] [Someone stole Santa's gift list!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2005)
 
+In this task we will be using SQL injection to bypass the login page and find the information we are after.
 
+Some usefull resources:
 
-1. 
+- [List of SQL Commands](https://www.codecademy.com/articles/sql-commands)
+- [SQLMap Command Snippet Cheat Sheet](https://www.security-sleuth.com/sleuth-blog/2017/1/3/sqlmap-cheat-sheet)
+- [SQL Injection Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection)
+- [Payload Lists](https://github.com/payloadbox/sql-injection-payload-list)
+- [SQL Injection Tutorial](https://tryhackme.com/room/sqlibasics)
 
-   ><details><summary>Click for answer</summary></details>
+**Database Type:** sqlite
+**Bypass WAF:** `--tamper=space2comment`
+
+1. Without using directory brute forcing, what's Santa's secret login panel?
+
+   To find the hidden page, we can try and combine several terms we find in this task.
+
+   ><details><summary>Click for answer</summary>/santapanel</details>
+
+2. How many entries are there in the gift database?
+
+   Logging into the application can be done by supplying the `' or 1=1;--` command.
+   
+   ![Log In Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_Panel.png)
+   
+   Here we can use SQLi to get results from the webpage itself by using the following command:
+   
+   ```cmd
+   ' union select 1,2;--
+   ```
+   
+   ![Column Enumeration](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_Column_Numbers.png)
+   
+   However, for this task we will use `sqlmap` to find more information about the database. First we create a request file for `sqlmap` to use with BurpSuite. Enable the proxy, enter something arbitrary into the search field and click search. Now we intercepted the request in BurpSuite, we can save it as an item in a folder of our choice.
+   
+   ![Save Item](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_Save_Item.png)
+   
+   Now we use `sqlmap` to dump all information of the database.
+   
+   ```cmd
+   sqlmap -r database.request --dump-all -batch --tamper=space2comment -dbms sqlite
+   
+   --dump-all              -> Dump information for the entire database
+   -batch                  -> Uses default answers and doesn't prompt the user
+   --tamper=space2comment  -> This comes from the note and bypasses the WAF
+   -dbms                   -> This specifies the database type, also from our note
+   ```
+   
+   ![Sqlmap Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Command.png)
+   
+   In the results, we can see the table entries.
+   
+   ![Sqlmap Table](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Table.png)
+
+   ><details><summary>Click for answer</summary>22</details>
+
+3. What did Paul ask for?
+
+   We can use the results from the previous question to answer this question.
+
+   ><details><summary>Click for answer</summary>Github Ownership</details>
+
+4. What is the flag?
+
+   `sqlmap` also found a hidden table. This seems to contain a flag.
+   
+   ![Sqlmap Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Flag.png)
+
+   ><details><summary>Click for answer</summary>thmfox{All_I_Want_for_Christmas_Is_You}</details>
+
+5. What is admin's password?
+
+   Another table `sqlmap` found, `users`, contains the credentials for the admin user.
+   
+   ![Sqlmap Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Credentials.png)
+
+   ><details><summary>Click for answer</summary>EhCNSWzzFP6sc7gB</details>
 
 ### [Day 6] []()
 
