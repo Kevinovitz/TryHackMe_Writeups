@@ -8,9 +8,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 ## Table of contents
 
-- [[Day 1] [A Christmas Crisis](#day-1-a-christmas-crisis)
-- [[Day 2] [The Elf Strikes Back!](#day-2-the-elf-strikes-back)
-- [[Day 3] [Christmas Chaos](#day-3-christmas-chaos)
+- [[Day 1] A Christmas Crisis](#day-1-a-christmas-crisis)
+- [[Day 2] The Elf Strikes Back!](#day-2-the-elf-strikes-back)
+- [[Day 3] Christmas Chaos](#day-3-christmas-chaos)
 - [[Day 4] ](#day-4-)
 - [[Day 5] ](#day-5-)
 - [[Day 6] ](#day-6-)
@@ -147,11 +147,31 @@ Bypass the filter and upload a reverse shell.
 
 ### [Day 3] [Christmas Chaos](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%200)
 
+In this task we will be using BurpSuite to brute force the logging on a website with a dictionary.
 
+1. What is the flag?
 
-1. 
+   After navigating to the login page, we activate the proxy for Firefox. We then supply some arbitrary credentials and hit the login button. Our request is intercepted by BurpSuite and Firefox is waiting.
+   
+   ![Intercept](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Intercept.png)
+   
+   Now we send this request to intruder, select `Cluster bomb` as attack type and select the `username` and `password` values as our positions.
+   
+   ![Positions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Positions.png)
+   
+   Next we need to add all the entries we want to try for both positions in the payload tab.
+   
+   ![Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Payloads.png)
+   
+   Now we run the attack and wait for the results to come in. The results with a different length or status than the rest would indicate to be a working combination.
+   
+   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Credentials.png)
+   
+   After logging in to the website with the found credentials, we can find the flag as well.
+   
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Flag.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{885ffab980e049847516f9d8fe99ad1a}</details>
 
 ### [Day 4] []()
 
