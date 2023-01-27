@@ -2,28 +2,65 @@
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Cover.png" alt="SQL Injection Cover">
 </p>
 
-# SQL Injection
+# [SQL Injection](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/sql_injection)
 
 ## Table of Contents
 
 - [In-Band SQLi](#in-band-sqli)
 - [Blind SQLi - Authentication Bypass](#blind-sqli---authentication-bypass)
 - [Blind SQLi - Boolean Based](#blind-sqli---boolean-based)
-- [Blind SQLi - Time Based](#blind-sqli---time-Based)
+- [Blind SQLi - Time Based](#blind-sqli---time-based)
 
 ## In-Band SQLi
 
 1. What is the flag after completing level 1?
 
+   In this task we will retrieve a users password by using the information returned to us when exploiting the SQL queries.
+   
+   To start we add an `'` after the `id=1` statement in the browser to see if it is vulnerable to SQLi. Since we get an error, there is probably no proper filtering put in place. We can use the `UNION argument to get extra information. We first need to find the number of columns. Using the following command, adding numbers until we get no error message.
+   
+   ```cmd
+   ' UNION SELECT 1,2,3;--
+   ```
+   
+   No we can get more information on the database. To suppress the output of the article we can add `0'` in front of the query.
+   
+   ```cmd
+   0' UNION SELECT 1,2,database();--
+   ```
+   
+   This gives us the name of the database, which is `sqli_one`. Next we need to find the table names.
+   
+   ```cmd
+   0' UNION SELECT 1,2,group_concat(table_name) FROM information_schema.tables WHERE table_schema='sqli_one';--
+   ```
+   
+   This uses `information_schema` to display information about the database and its entries. Here we find the tables `article` and `staff_users`. The latter one is of more interest to us if we want to find someones credentials. Now we move on the find the folumn names in the `staff_users` table.
+   
+   ```cmd
+   0' UNION SELECT 1,2,group_concat(column_name) FROM information_schema.columns WHERE table_name = 'staff_users';--
+   ```
+   
+   This gives us three columns: `id`, `username`, and `password`. Now we can enumerate the conents of this table while using some formatting to make it readable.
+   
+   ```cmd
+   0' UNION SELECT 1,2,group_concat(username, ':', password SEPARATOR '<br>') FROM staff_users;--
+   
+   ![SQLi In Band](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Inband_Found.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{SQL_INJECTION_3840}</details>
 
 ## Blind SQLi - Authentication Bypass
 
 1. What is the flag after completing level two? (and moving to level 3)
 
+   In this task we are facing blind SQLi, where we don't get any feedback from our query. This is often the case when attempting to bypass login screesns. One of the most common/basic methods is to make sure the statement is always true. We can do this by escaping the query and writing a statement which is always true.
    
+   ```cmd
+   ' OR 1=1;--
+   ```
+   
+   ![SQLi Authentication Bypass](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Authentication_Bypass_Found.png)
 
    ><details><summary>Click for answer</summary>THM{SQL_INJECTION_9581}</details>
 
