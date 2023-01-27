@@ -14,8 +14,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 4] Santa's watching](#day-4-santas-watching)
 - [[Day 5] Someone stole Santa's gift list!](#day-5-someone-stole-santas-gift-list)
 - [[Day 6] Be careful with what you wish on a Christmas night](#day-6-be-careful-with-what-you-wish-on-a-christmas-night)
-- [[Day 7] ](#day-7-)
-- [[Day 8] ](#day-8-)
+- [[Day 7] The Grinch Really Did Steal Christmas](#day-7-the-grinch-really-did-steal-christmas)
+- [[Day 8] What's Under the Christmas Tree?](#day-8=whats-under-the-christmas-tree)
 - [[Day 9] ](#day-9-)
 - [[Day 10] ](#day-10-)
 - [[Day 11] ](#day-11-)
@@ -305,9 +305,9 @@ Some usefull resources:
 
    ><details><summary>Click for answer</summary>EhCNSWzzFP6sc7gB</details>
 
-### [Day 6] [Be careful with what you wish on a Christmas night](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2005)
+### [Day 6] [Be careful with what you wish on a Christmas night](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2006)
 
-
+In this task we will be using XSS exploiting to cause un-intended functioning on the website.
 
 Extra resources:
 
@@ -319,41 +319,128 @@ Extra resources:
 
    Since we can use comments to exploit XSS, this type is stored XSS.
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Stored cross-site scripting</details>
 
 2. What query string can be abused to craft a reflected XSS?
 
    When looking through the source code for the webpage, we find the name of the comment field as `q`.
+   
+   ![XSS Field](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2006/Whish_XSS_Field.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>q</details>
 
 3. Run a ZAP (zaproxy) automated scan on the target. How many XSS alerts are in the scan?
 
+   After opening ZAP and entering the url of the website, we can a result for the number of XSS exploits present.
+   
+   ![OWASP ZAP Exploits](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2006/Whish_XSS_Exploits.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>2</details>
 
 4. Explore the XSS alerts that ZAP has identified, are you able to make an alert appear on the "Make a wish" website?
 
+   For this we can try multiple things. One of them is listed in ZAP and is adding the following command behind the URL of the website:
+   
+   ```cmd
+   /?q=<script>alert('Hello World')</script>
+   ```
 
+### [Day 7] [The Grinch Really Did Steal Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2007)
 
-   ><details><summary>Click for answer</summary></details>
+In this task we will be investigating some network traffic to find some interesting information.
 
-### [Day 7] []()
+1. Open "pcap1.pcap" in Wireshark. What is the IP address that initiates an ICMP/ping?
 
+   After opening the pcap file in Wireshark we can filter the traffic on the `ICMP` protocol. Here we can see the source ip for the machine initiating the ping.
+   
+   ![Wireshark ICMP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_ICMP.png)
 
+   ><details><summary>Click for answer</summary>10.11.3.2</details>
 
-1. 
+2. If we only wanted to see HTTP GET requests in our "pcap1.pcap" file, what filter would we use?
 
-   ><details><summary>Click for answer</summary></details>
+   We would use `http-request.method` as the filter and `GET` as the value.
 
-### [Day 8] []()
+   ><details><summary>Click for answer</summary>http.request.method == GET</details>
 
+3. Now apply this filter to "pcap1.pcap" in Wireshark, what is the name of the article that the IP address "10.10.67.199" visited?
 
+   Using the above filter as well as `&& ip.src == 10.10.67.199` we can narrow down the the traffic even more.
+   
+   ![Wireshark HTTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_GET_Article.png)
 
-1. 
+   ><details><summary>Click for answer</summary>reindeer-of-the-week</details>
 
-   ><details><summary>Click for answer</summary></details>
+4. Let's begin analysing "pcap2.pcap". Look at the captured FTP traffic; what password was leaked during the login process?
+
+   Here we can filter on FTP traffic containing something related to a password. Such as `pass`.
+   
+   ![Wireshark FTP Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_FTP.png)
+
+   ><details><summary>Click for answer</summary>plaintext_password_fiasco</details>
+
+5. Continuing with our analysis of "pcap2.pcap", what is the name of the protocol that is encrypted?
+
+   If we remove all filters we can see the first entry being an encrypted SSH connection.
+   
+   ![Wireshark SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_SSH.png)
+
+   ><details><summary>Click for answer</summary>SSH</details>
+
+6. What is on Elf McSkidy's wishlist that will be used to replace Elf McEager?
+
+   To find any files we can filter on any plain text protocols such as `http`, `dns`, or `telnet`. Looks like there might be a list on `http` traffic. Lets save it to our machine.
+   
+   ![Wireshark HTTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_HTTP.png)
+   
+   Now we can extract the archive and read the file.
+   
+   ![Wireshark File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_File.png)
+
+   ><details><summary>Click for answer</summary>Rubber ducky</details>
+
+### [Day 8] [What's Under the Christmas Tree?](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2008)
+
+In this task we will be using `nmap` to find more information on the target machine.
+
+1. When was Snort created?
+
+   A quick Google search can give us the answer.
+
+   ><details><summary>Click for answer</summary>1998</details>
+
+2. Using Nmap on 10.10.77.254 , what are the port numbers of the three services running?  (Please provide your answer in ascending order/lowest -> highest, separated by a comma)
+
+   Use the following command to find any running services and some more information:
+   
+   ```cmd
+   sudo nmap -sS -sV 10.10.77.254
+   ```
+   
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_1.png)
+
+   ><details><summary>Click for answer</summary>80,2222,3389</details>
+
+3. Use Nmap to determine the name of the Linux distribution that is running, what is reported as the most likely distribution to be running?
+
+   This information can be found on the previous images.
+
+   ><details><summary>Click for answer</summary>ubuntu</details>
+
+4. Use Nmap's Network Scripting Engine (NSE) to retrieve the "HTTP-TITLE" of the webserver. Based on the value returned, what do we think this website might be used for?
+
+   For this we can use the `--script=http-title` argument
+   
+   ![Nmap Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Script.png)
+
+   ><details><summary>Click for answer</summary>blog</details>
+
+5. Now use different scripts against the remaining services to discover any further information about them
+
+   The `-A` or `-sC` argument can be used to let nmap execute several default scripts. Doing so gives some more information.
+   
+   ![Nmap Scipts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Scripts.png)
+
 
 ### [Day 9] []()
 
