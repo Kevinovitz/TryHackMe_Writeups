@@ -17,7 +17,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 7] The Grinch Really Did Steal Christmas](#day-7-the-grinch-really-did-steal-christmas)
 - [[Day 8] What's Under the Christmas Tree?](#day-8=whats-under-the-christmas-tree)
 - [[Day 9] Anyone can be Santa!](#day-9-anyone-can-be-santa)
-- [[Day 10] ](#day-10-)
+- [[Day 10] Don't be sElfish!](#day-10-dont-be-selfish)
 - [[Day 11] ](#day-11-)
 - [[Day 12] ](#day-12-)
 - [[Day 13] ](#day-13-)
@@ -500,13 +500,77 @@ In this task we will be using `nmap` to find more information on the target mach
 
    ><details><summary>Click for answer</summary>THM{even_you_can_be_santa}</details>
 
-### [Day 10] []()
+### [Day 10] [Don't be sElfish!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2010)
 
+In this task we will be exploiting a vulnerability in the Samba file sharing protocol.
 
+1. Using enum4linux, how many users are there on the Samba server (MACHINE_IP)?
 
-1. 
+   Here we can use `enum4linux` to find out more information about the shares using:
+   
+   ```cmd
+   enum4linux -S -G -U 10.10.111.166
+   ```
+   
+   Under the users section we get a list of the available users on the shares.
+   
+   ![Samba Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Users.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>3</details>
+
+2. Now how many "shares" are there on the Samba server?
+
+   We can use the results from the previous question to get the shares available. This is located in the Share Enumeration section.
+   
+   ![Samba Enumeration](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Enumeration.png)
+   
+   Another method we can use is via the `smbclient` command with the following arguments:
+   
+   ```cmd
+   smbclient -N -L 10.10.111.166
+   ```
+   
+   Then we get a similar result as with `enum4linux`.
+
+   ><details><summary>Click for answer</summary>4</details>
+
+3. Use smbclient to try to login to the shares on the Samba server (MACHINE_IP). What share doesn't require a password?
+
+   In the session check section we can see the server allows logging in with empty username and password.
+   
+   ![Samba Session Check](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Credentials.png)
+   
+   From the enumeration section it looks like the santa share was accessible without a password.
+   
+   Using the following command we can try and log in to this share:
+   
+   ```cmd
+   smbclient //10.10.111.166/tbfc-santa
+   ```
+   
+   ![Samba Share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Share.png)
+
+   ><details><summary>Click for answer</summary>tbfc-santa</details>
+
+4. Log in to this share, what directory did ElfMcSkidy leave for Santa?
+
+   After enumerating the directory in the previous question we can download the text file and view its contents.
+   
+   ```cmd
+   mget *
+   
+   or
+   
+   get note_from_mcskidy.txt
+   ```
+   
+   ![Samba File Get](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_File_Get.png)
+   
+   After viewing the file, it looks like it is related to the folder found in the same share.
+   
+   ![Samba File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_File.png)
+
+   ><details><summary>Click for answer</summary>jingle-tunes</details>
 
 ### [Day 11] []()
 
