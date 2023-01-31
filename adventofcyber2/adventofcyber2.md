@@ -18,7 +18,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 8] What's Under the Christmas Tree?](#day-8=whats-under-the-christmas-tree)
 - [[Day 9] Anyone can be Santa!](#day-9-anyone-can-be-santa)
 - [[Day 10] Don't be sElfish!](#day-10-dont-be-selfish)
-- [[Day 11] ](#day-11-)
+- [[Day 11] The Rogue Gnome](#day-11-the-rogue-gnome)
 - [[Day 12] ](#day-12-)
 - [[Day 13] ](#day-13-)
 - [[Day 14] ](#day-14-)
@@ -572,11 +572,29 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
 
    ><details><summary>Click for answer</summary>jingle-tunes</details>
 
-### [Day 11] []()
+### [Day 11] [The Rogue Gnome](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2011)
 
 
 
-1. 
+**Machine IP:** `10.10.119.248`
+**SSH Username:** `cmnatic`
+**SSH Password:** `aoc2020`
+
+1. What type of privilege escalation involves using a user account to execute commands as an administrator?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the name of the file that contains a list of users who are a part of the sudo group?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What are the contents of the file located at /root/flag.txt?
+
+
 
    ><details><summary>Click for answer</summary></details>
 
