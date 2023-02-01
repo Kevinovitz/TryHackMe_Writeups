@@ -574,7 +574,15 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
 
 ### [Day 11] [The Rogue Gnome](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2011)
 
+In this task we will be trying to escalate our privileges after first loggin into the machine using the SUID of a binary. [Here](https://gtfobins.github.io/) we can see more about different binaries and how to exploit them.
 
+More information on how to make your reverse shell [interactive](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys). Download LinEnum from [here](https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh).
+
+some checklists that can be used as a cheatsheet for the enumeration stage of privilege escalation:
+
+- [g0tmi1k](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation)
+- [payatu](https://payatu.com/guide-linux-privilege-escalation)
+- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md#linux---privilege-escalation)
 
 **Machine IP:** `10.10.119.248`
 **SSH Username:** `cmnatic`
@@ -582,21 +590,47 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
 
 1. What type of privilege escalation involves using a user account to execute commands as an administrator?
 
+   The answer to this can be found in todays challenge. Or from Google. Two types of escalation exist.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Vertical</details>
 
 2. What is the name of the file that contains a list of users who are a part of the sudo group?
 
+   This can also be found in the challenge description (or from Google). 
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>sudoers</details>
 
 5. What are the contents of the file located at /root/flag.txt?
 
+   After a quick Nmap scan, we can see the ssh service is indeed open op port 22.
+   
+   ![Rogue Gnome Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_Nmap.png)
+   
+   So we can ssh into the machine we the supplied credentials with the following command:
+   
+   ```cmd
+   ssh cmnatic@10.10.119.248
+   ```
+   
+   ![Rogue Gnome SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_SSH.png)
+   
+   After a quick check with `echo $0`, we can see that our shell is already `bash`, so there is no need for us to make it interactive.
+   
+   ![Gnome Shell Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_Shell_Type.png)
+   
+   As per the instructions we are looking for any binary that has its SUID bit set. So we executed the following command on the machine:
+   
+   ```cmd
+   find / -perm -4000 2>/dev/null
+   ```
+   
+   ![Gnome SUID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_SUID.png)
+   
+   Using `GTFOBins` we can find out which of these binaries can be used for privelege escalation. Looks like `bash` is an intersting candidate. Unfortunately, I made some mistakes with the command, so it didn't work for me at first. This threw me of a little and sent me in the wrong direction as I tried to upload the `LinEnum.sh` script to the machine and execute it. This also didn't give anything. But I will list the steps I took as a PoC
+   
+   [](https://stackoverflow.com/questions/63689353/suid-binary-privilege-escalation)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>thm{2fb10afe933296592}</details>
 
 ### [Day 12] []()
 
