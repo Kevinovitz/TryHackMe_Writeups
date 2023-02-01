@@ -644,11 +644,11 @@ In this task we will be using MetaSploit to get access to our target machine.
    nmap -sV 10.10.1.196 -Pn
    ```
    
-   [Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Nmap.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Nmap.png)
    
    Navigating to the webserver, we can find the version of the server.
    
-   [Server Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Server_Version.png)
+   ![Server Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Server_Version.png)
 
    ><details><summary>Click for answer</summary>9.0.17</details>
 
@@ -687,7 +687,7 @@ In this task we will be using MetaSploit to get access to our target machine.
    
    Using the information gathered, we can search MetaSploit for any usefull modules. Open MetaSploit using `msfconsole`. Since we know we are working with an Apache server and cgi vulnerabilities (from the CVE), we can use the following:
    
-   ``cmd
+   ```cmd
    search apache cgi
    ```
    
