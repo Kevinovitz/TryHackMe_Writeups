@@ -19,7 +19,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 9] Anyone can be Santa!](#day-9-anyone-can-be-santa)
 - [[Day 10] Don't be sElfish!](#day-10-dont-be-selfish)
 - [[Day 11] The Rogue Gnome](#day-11-the-rogue-gnome)
-- [[Day 12] Ready, set, elf.](#day-12-eady-set-elf)
+- [[Day 12] Ready, set, elf.](#day-12-ready-set-elf)
 - [[Day 13] ](#day-13-)
 - [[Day 14] ](#day-14-)
 - [[Day 15] ](#day-15-)
