@@ -127,7 +127,7 @@ In this task we will exploit the filtering of a file upload form to get a revers
 
    To get into the system we can use a `php-reverse-shell`. These can be found in `/usr/share/webshells/`. We just need to edit the file to contain our machines IP address and a port we want to use.
    
-   ![Reverse Shell]https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/vulnversity/Vulnversity_Reverse_Shell_Script.png)
+   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/vulnversity/Vulnversity_Reverse_Shell_Script.png)
    
    After uploading we start a listener on port 1337 with netcat and navigate to `internal/uploads` to access our shell.
    
