@@ -12,4 +12,5 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [WiP]
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [SQL Injection](sql_injection/sql_injection.md)
+- [Vulnversity](vulnversity/vulnversity.md)
 - more to come
