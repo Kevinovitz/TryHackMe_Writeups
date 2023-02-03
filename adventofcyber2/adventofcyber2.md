@@ -772,7 +772,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
 
    ![System Info](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Release.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>ubuntu 12.04</details>
 
 6. Who got here first?
 
@@ -861,73 +861,153 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
 
 ### [Day 14] [Where's Rudolph?](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2014)
 
+In this task we will be using OSINT to find out where Rudolph is. The only thing we are provided here is his username for Reddit.
+
 **Username:** `IGuidetheClaus2020`
 
 1. What URL will take me directly to Rudolph's Reddit comment history?
 
+   After we find the page for 'IGuidetheClaus2020' we can click on the comments tab to view his comment history.
+   
+   ![Reddit Comment History](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Reddit_History.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>https://www.reddit.com/user/IGuidetheClaus2020/comments/</details>
 
 2. According to Rudolph, where was he born?
 
+   Looking at some of his comments, we find the following:
+   
+   ![Reddit Born](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Reddit_Born.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Chicago</details>
 
 3. Rudolph mentions Robert.  Can you use Google to tell me Robert's last name?
 
+   In the last comment he also mentioned his creator Robert. An online search can give us his last name.
+   
+   ![Creator Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Creator_Name.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>May</details>
 
 4. On what other social media platform might Rudolph have an account?
 
+   We can use several of the mentioned websites and programs to find any related user accounts for Rudolph. We manage to find an account on Twitter.
+   
+   ![Accounts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Accounts.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>twitter</details>
 
 5. What is Rudolph's username on that platform?
 
+   After a search for his username on twitter we find his handle on Twitter.
+   
+   ![Twitter Handle](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Twitter.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>IGuideClaus2020</details>
 
 6. What appears to be Rudolph's favorite TV show right now?
 
+   Going through some of his tweets, we can find out what his recent favorite show is. The message is from nov 2020, but for this challenge that was about a month ago.
+   
+   ![Favorite Show](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_TV_Show.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Bachelorette</details>
 
 7. Based on Rudolph's post history, he took part in a parade.  Where did the parade take place?
 
+   We also find several posts about a parade he took part in. We can do a reverse image search on these images to find out where this was taken.
+   
+   ![Reverse Image Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Reverse_Image.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Chicago</details>
 
 8. Okay, you found the city, but where specifically was one of the photos taken?
 
+   One Twitter post revealed a larger image, which could possibly contain some interesting data. 
+   
+   ![Large Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Large_Image.png)
+   
+   Although the coordinates where quickly found using `exiftools`, I had a hard time getting the right answer in the correct format, as many websites converted it slightly different.
+   
+   ![Exif Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Exif.png)
+   
+   Plugging the results into Google Maps yielded something close, but it wasn't correct (it was of by only 0.000001).
+   
+   ![Coordinates 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_1.png)
+   
+   Another website was slightly off as well (by 0.000002).
+   
+   ![Coordinates 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_2.png)
+   
+   A third site contained a link to Google Maps which was correct at last!
+   
+   ![Coordinates 3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_3.png)
+   
+   ![Coordinates 4](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_4.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>41.891815,-87.624277</details>
 
 9. Did you find a flag too?
 
+   The exif tool from the previous question also found us a flag in the copyright field.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>{FLAG}ALWAYSCHECKTHEEXIFD4T4</details>
 
 10. Has Rudolph been pwned? What password of his appeared in a breach?
 
+    We can do a search on [https://haveibeenpwned.com/](https://haveibeenpwned.com/) for the email address we found on twitter.
+    
+    ![Email Address](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Email.png)
+    
+    Although, it did mention a breach, no passwords were shown. Unfortunately, the provided site [http://scylla.so/](http://scylla.so/) was currently offline. So I had to find an alternative website. I searched through several of the below alternatives I could find:
+    
+    ![H8mail Sites](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_h8mail.png)
+    
+    Only [https://breachdirectory.org/](https://breachdirectory.org/) seemed to work. Unfortunately, it only showed a partial password associated with the email. 
+    
+    ![Breached Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Passwords.png)
+    
+    Doing a quick search through the `rockyou` password list, we found several hits. We could just try all there, but that wouldn't be practical in other situations.
+    
+    ![Rockyou Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Rockyou.png)
+    
+    Luckily, it does show us the SHA1 hash of the password. This means we can use `hashcat` to possibly crack the password. We can do a normal hashcat search with the following command after saving the hashes to a file:
+    
+    ![Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hashes.png)
+    
+    ```cmd
+    hashcat -m 100 rudolphpass.txt /usr/share/wordlists/rockyou.txt
+    ```
+    
+    However, since we have a partial password, I wanted to try and make a bit more elegant solution. Completely unnecessary, since it would normally complete in a short time, but it was a fun way to learn more about the various commands used. Using the following commands we can pipe all entries from the `rockyou` list shich could be our password to a separate list (heck, lets try both passwords we found).
+    
+    ```cmd
+    cat /usr/share/wordlists/rockyou.txt | grep "^spyg...$" > rudolphpass.txt
+    
+    cat /usr/share/wordlists/rockyou.txt | grep "^liv............$" >> rudolphpass.txt
+    ```
+    
+    With some clever regexing we get a list with all possible passwords. Now we can run the following command with our custom word list and the saved hashes.
+    
+    ```cmd
+    hashcat -m 100 rudolphpass.hash rudolphpass.txt
+    ```
+    
+    ![Hashcat Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hashcat_1.png)
+    
+    Boom, we managed to find our password, unfortunately, the second one was not found. Luckily, the first one was all we needed for the question.
+    
+    ![Hashcat Result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hashcat_2.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>spygame</details>
 
 11. Based on all the information gathered.  It's likely that Rudolph is in the Windy City and is staying in a hotel on Magnificent Mile.  What are the street numbers of the hotel address?
 
+    In one of his Twitter posts, he mentioned something about the Marriott hotel. Lets find any hotels in this area.
+    
+    ![Marriott Hotel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hotel.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>540</details>
 
 ### [Day 15] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2015)
 
