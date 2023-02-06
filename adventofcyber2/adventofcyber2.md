@@ -23,7 +23,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 13] Coal for Christmas](#day-13-coal-for-christmas)
 - [[Day 14] Where's Rudolph?](#day-14-wheres-rudolph)
 - [[Day 15] There's a Python in my stocking!](#day-15-theres-a-python-in-my-stocking)
-- [[Day 16] ](#day-16-)
+- [[Day 16] Help! Where is Santa?](#day-16-help-where-is-santa)
 - [[Day 17] ](#day-17-)
 - [[Day 18] ](#day-18-)
 - [[Day 19] ](#day-19-)
@@ -1057,13 +1057,70 @@ In this task we will be learning some basics from Python. More resources can be 
 
    ><details><summary>Click for answer</summary>pass by reference</details>
 
-### [Day 16] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2016)
+### [Day 16] [Help! Where is Santa?](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2016)
 
+In this task we will be using the knowledge whe gained about Python from the previous day.
 
+1. What is the port number for the web server?
 
-1. 
+   To get the port number we can run an nmap scan on the target.
+   
+   ![Python Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Nmap.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>80</details>
+
+2. Without using enumerations tools such as Dirbuster, what is the directory for the API?  (without the API key)
+
+   To get the links from the website we can use the `requests` module for Python to write a script:
+   
+   ```cmd
+   from bs4 import BeautifulSoup
+   import requests
+   
+   html = requests.get('http://10.10.137.55:80/static/index.html/').text
+   soup = BeautifulSoup(html, 'lxml')
+   links = soup.find_all('a', href=True)
+   
+   for i in links:
+   	print(i['href'])
+   ```
+   
+   ![Python Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Script.png)
+   
+   Running this gives us a list of links on the webpage, of which one seems to be the correct one.
+   
+   ![Python Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Directory.png)
+
+   ><details><summary>Click for answer</summary>/api/</details>
+
+3. Where is Santa right now?
+
+   To find out the correct key, we can again use the `request` module to make requests to the server until we get a response back that we are looking for.
+   
+   ```cmd
+   from bs4 import BeautifulSoup
+   import requests
+   
+   for key in range(1,100,2):
+	response = requests.get('http://10.10.98.218:80/api/' + str(key))
+	print(response.text)
+   ```
+   
+   The range function gives us all odd numbers from 1-99 for us to iterate through.
+   
+   ![Python Api Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Api_Script.png)
+   
+   ![Python Api Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Api_Key.png)
+
+   ><details><summary>Click for answer</summary>Winter Wonderland, Hyde Park, London.</details>
+
+4. Find out the correct API key. Remember, this is an odd number between 0-100. After too many attempts, Santa's Sled will block you. 
+
+   To unblock yourself, simply terminate and re-deploy the target instance (MACHINE_IP)
+   
+   This answer comes from the result from the previous question.
+
+   ><details><summary>Click for answer</summary>57</details>
 
 ### [Day 17] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2017)
 
