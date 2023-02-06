@@ -22,7 +22,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 12] Ready, set, elf.](#day-12-ready-set-elf)
 - [[Day 13] Coal for Christmas](#day-13-coal-for-christmas)
 - [[Day 14] Where's Rudolph?](#day-14-wheres-rudolph)
-- [[Day 15] ](#day-15-)
+- [[Day 15] There's a Python in my stocking!](#day-15-theres-a-python-in-my-stocking)
 - [[Day 16] ](#day-16-)
 - [[Day 17] ](#day-17-)
 - [[Day 18] ](#day-18-)
@@ -1009,13 +1009,53 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
     ><details><summary>Click for answer</summary>540</details>
 
-### [Day 15] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2015)
+### [Day 15] [There's a Python in my stocking!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2015)
 
+In this task we will be learning some basics from Python. More resources can be found here:
 
+- [Python Zero to Hero](https://polymath.cloud/python/)
+- [Python Moduluo Operator in Practice](https://realpython.com/python-modulo-operator/)
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
 
-1. 
+1. What's the output of True + True?
 
-   ><details><summary>Click for answer</summary></details>
+   ![Python True](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2015/Python_True.png)
+
+   ><details><summary>Click for answer</summary>2</details>
+
+2. What's the database for installing other peoples libraries called?
+
+   This was mentioned in the task description.
+
+   ><details><summary>Click for answer</summary>PyPi</details>
+
+3. What is the output of bool("False")?
+
+   ![Python Bool](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2015/Python_Bool.png)
+
+   ><details><summary>Click for answer</summary>True</details>
+
+4. What library lets us download the HTML of a webpage?
+
+   This was also mentioned in the task description.
+
+   ><details><summary>Click for answer</summary>requests</details>
+
+5. What is the output of the program provided in "Code to analyse for Question 5" in today's material?
+
+   (This code is located above the Christmas banner and below the links in the main body of this task)
+
+   For this we can use the interactive editor or create a script and run that.
+   
+   ![Python Print](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2015/Python_Print.png)
+
+   ><details><summary>Click for answer</summary>[1, 2, 3, 6]</details>
+
+6. What causes the previous task to output that?
+
+   This was also mentioned in the task description.
+
+   ><details><summary>Click for answer</summary>pass by reference</details>
 
 ### [Day 16] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2016)
 
