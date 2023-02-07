@@ -1242,23 +1242,71 @@ For this task we can use either [ILSpy](https://github.com/icsharpcode/ILSpy) or
 
 ### [Day 19] [The Naughty or Nice List](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2019)
 
-
+In this task we will be using Server Side Request Forgery or SSRF to get information out of the system we are not supposed to.
 
 1. What is Santa's password?
 
-
+   After navigating to the website and enter a name we take note of the URL. After decoding it through CyberChef we get a clearer idea.
+   
+   ![URL Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_URL_Decode.png)
+   
+   Looks like a re-direct to a local machine, since .hohoho isn't a valid top-level domain. We could try connecting to the root directory by navigating to the following URL (make sure to properly encode the URL):
+   
+   ```cmd
+   http://10.10.44.100/?proxy=http://list.hohoho:8080/
+   ```
+   
+   ![Modified URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Modified_URL.png)
+   
+   This looks promising as the request was indeed made and a response was returned. Lets try a different port. 80 for the default http traffic.
+   
+   ```cmd
+   http://10.10.44.100/?proxy=http://list.hohoho:80/
+   ```
+   
+   ![Connect 80](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_80_Refused.png)
+   
+   Seems like port 80 is not open for use.
+   
+   Lets try the ssh port 22.
+   
+   ```cmd
+   http://10.10.44.100/?proxy=http://list.hohoho:22/
+   ```
+   
+   ![Connect 22](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_22_Reset.png)
+   
+   The message does suggest the port is open, but did not understand the request. Lets now try connecting to the machine itself through `localhost`.
+   
+   ```cmd
+   http://10.10.44.100/?proxy=http://localhost/
+   ```
+   
+   ![Localhost](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Local.png)
+   
+   Seems like the domain is blocked. The same happens with 127.0.0.1. We will try to bypass it with `localtest.me`. This domain resolves all requests to 127.0.0.1.
+   
+   ```cmd
+   http://10.10.44.100/?proxy=http://list.hohoho.localtest.me/
+   ```
+   
+   ![Localhost](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Localhost.png)
+   
+   Looks like we found our password.
 
    ><details><summary>Click for answer</summary>Be good for goodness sake!</details>
 
 2. What is the challenge flag?
 
-
+   Now we can login into the admin panel. Make sure you are using the original URL.
+   
+   ![Delete List](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Delete.png)
+   
+   After deleting the list, we get our flag.
+   
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{EVERYONE_GETS_PRESENTS}</details>
-
-http://10.10.44.100/?proxy=http%3A%2F%2Flist.hohoho%3A8080%2F
-http://10.10.44.100/?proxy=http%3A%2F%2Flist.hohoho%3A80%2F
-http://10.10.44.100/?proxy=http%3A%2F%2Flist.hohoho%3A22%2F
 
 ### [Day 20] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2020)
 
