@@ -24,8 +24,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 14] Where's Rudolph?](#day-14-wheres-rudolph)
 - [[Day 15] There's a Python in my stocking!](#day-15-theres-a-python-in-my-stocking)
 - [[Day 16] Help! Where is Santa?](#day-16-help-where-is-santa)
-- [[Day 17] ](#day-17-)
-- [[Day 18] ](#day-18-)
+- [[Day 17] The Bits of Christmas](#day-17-the-bits-of-christmas)
+- [[Day 18] The Naughty or Nice List](#day-18-the-naughty-or-nice-list)
 - [[Day 19] ](#day-19-)
 - [[Day 20] ](#day-20-)
 - [[Day 21] ](#day-21-)
@@ -1122,29 +1122,129 @@ In this task we will be using the knowledge whe gained about Python from the pre
 
    ><details><summary>Click for answer</summary>57</details>
 
-### [Day 17] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2017)
+### [Day 17] [ReverseELFneering](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2017)
+
+In this task we will be using Radare2 to reverse engineer an executable to find out how the program works.
+
+We could run this tool on the target machine, but I wanted to have the files on my VM an analyze them from there. Since an ssh service was available on the target machine we can use `scp` to download the files. I first ssh'ed into the machine to find the files and there location and then used the following commands to download them to my machine.
+
+```cmd
+scp elfmceager@10.10.83.125:/home/elfmceager/challenge1 challenge1
+
+scp elfmceager@10.10.83.125:/home/elfmceager/file1 file1
+```
+
+![Download Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Download_Files.png)
+
+Now we can open `challenge1` and analyze it with Radare2.
+
+```cmd
+r2 -d ./challenge1
+
+> aa
+```
+
+![Main Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Main_Script.png)
+
+Now we can search for an entrypoint with `afl | grep "main"`. Then we can view it using `pdf @main`.
+
+1. What is the value of local_ch when its corresponding movl instruction is called (first if multiple)?
+
+   Its first mov instruction is called on the 3rd line. So lets place a breakpoint on the 4th line to evaluate what local_ch is at that point.
+  
+   ```cmd
+   > db 0x00400b58	-> Used to add the breakpoint
+   > pdf @main		-> View the instructions and the breakpoints
+   > dc			-> Execute instruction up to breakpoint
+   > pdf			-> View current state
+   ```
+  
+   ![Breakpoint 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Breakpoint_1.png)
+  
+   As we can see in the image above, the program was stopped at our breakpoint. We can now view the value of local_ch with:
+  
+   ```cmd
+   > px @rbp-0xc
+   ```
+  
+   ![Value 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Value_1.png)
+  
+   Looks like the value is `1`.
+
+   ><details><summary>Click for answer</summary>1</details>
+
+2. What is the value of eax when the imull instruction is called?
+
+   Now we must place another breakpoint after the imul instruction has been called. Check it, then run up to it.
+   
+   ```cmd
+   > db 0x00400b66
+   > pdf @main
+   > dc
+   > pdf
+   ```
+   
+   ![Breakpoint 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Breakpoint_2.png)
+   
+   Now we can view the value of the registry with:
+   
+   ```cmd
+   > dr
+   ```
+  
+   ![Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Registry.png)
+   
+   ><details><summary>Click for answer</summary>6</details>
+
+3. What is the value of local_4h before eax is set to 0?
+
+   From the image above, we can see we only need to move one step furter into the program to get to the specified instruction. To do this we can supply another breakpoint or we can simply use `ds` to move to the next instruction.
+   
+   Then we can view the value of the variable with:
+   
+   ```cmd
+   > px @rbp-0x4
+   ```
+   
+   ![Next Step](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Next_Step.png)
+
+   ><details><summary>Click for answer</summary>6</details>
+
+### [Day 18] [The Bits of Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2018)
 
 
 
-1. 
-
-   ><details><summary>Click for answer</summary></details>
-
-### [Day 18] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2018)
+2. What is Santa's password?
 
 
 
-1. 
+   ><details><summary>Click for answer</summary>santapassword321</details>
 
-   ><details><summary>Click for answer</summary></details>
-
-### [Day 19] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2019)
+3. Now that you've retrieved this password, try to login...What is the flag?
 
 
 
-1. 
+   ><details><summary>Click for answer</summary>thm{046af}</details>
 
-   ><details><summary>Click for answer</summary></details>
+### [Day 19] [The Naughty or Nice List](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2019)
+
+
+
+1. What is Santa's password?
+
+
+
+   ><details><summary>Click for answer</summary>Be good for goodness sake!</details>
+
+2. What is the challenge flag?
+
+
+
+   ><details><summary>Click for answer</summary>THM{EVERYONE_GETS_PRESENTS}</details>
+
+http://10.10.44.100/?proxy=http%3A%2F%2Flist.hohoho%3A8080%2F
+http://10.10.44.100/?proxy=http%3A%2F%2Flist.hohoho%3A80%2F
+http://10.10.44.100/?proxy=http%3A%2F%2Flist.hohoho%3A22%2F
 
 ### [Day 20] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2020)
 
