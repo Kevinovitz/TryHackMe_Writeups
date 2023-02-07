@@ -27,7 +27,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 17] ReverseELFneering](#day-17-reverseelfneering)
 - [[Day 18] The Bits of Christmas](#day-18-the-bits-of-christmas)
 - [[Day 19] The Naughty or Nice List](#day-19-the-naughty-or-nice-list)
-- [[Day 20] ](#day-20-)
+- [[Day 20] PowershELlF to the rescue](#day-20-powershellf-to-the-rescue)
 - [[Day 21] ](#day-21-)
 - [[Day 22] ](#day-22-)
 - [[Day 23] ](#day-23-)
@@ -1308,13 +1308,73 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
 
    ><details><summary>Click for answer</summary>THM{EVERYONE_GETS_PRESENTS}</details>
 
-### [Day 20] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2020)
+### [Day 20] [PowershELlF to the rescue](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2020)
 
+In this task we will be using PowerShell to get information off of the target machine.
 
+**Username:** mceager
+**Password:** r0ckStar!
 
-1. 
+First we log into the machine using ssh.
 
-   ><details><summary>Click for answer</summary></details>
+```cmd
+ssh mceager@10.10.202.160
+```
+
+1. Search for the first hidden elf file within the Documents folder. Read the contents of this file. What does Elf 1 want?
+
+   Next we start PowerShell. Then we can look for any hidden files in Documents.
+   
+   ```cmd
+   Set-Location .\Documents\
+   Get-ChildItem -File -Hidden -ErrorAction SilentlyContinue
+   ```
+   
+   ![Get File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Get_File.png)
+   
+   Now we must get the contents of this file we just found.
+   
+   ```cmd
+   Get-Content -Path e1fone.txt
+   ```
+   
+   ![Hidden File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Hidden_File.png)
+
+   ><details><summary>Click for answer</summary>2 front teeth</details>
+
+2. Search on the desktop for a hidden folder that contains the file for Elf 2. Read the contents of this file. What is the name of that movie that Elf 2 wants?
+
+   First we need to navigate into the correct folder using `..\Desktop`. Then we use the following command to find any hidden folder:
+   
+   ```cmd
+   Get-ChildItem -Directory -Hidden -ErrorAction SilentlyContinue
+   ```
+
+   ><details><summary>Click for answer</summary>Scrooged</details>
+
+3. Search the Windows directory for a hidden folder that contains files for Elf 3. What is the name of the hidden folder? (This command will take a while)
+
+   
+
+   ><details><summary>Click for answer</summary>3lfthr3e</details>
+
+4. How many words does the first file contain?
+
+   
+
+   ><details><summary>Click for answer</summary>9999</details>
+
+5. What 2 words are at index 551 and 6991 in the first file?
+
+   
+
+   ><details><summary>Click for answer</summary>Red Ryder</details>
+
+6. This is only half the answer. Search in the 2nd file for the phrase from the previous question to get the full answer. What does Elf 3 want? (use spaces when submitting the answer)
+
+   
+
+   ><details><summary>Click for answer</summary>Red Ryder bb gun</details>
 
 ### [Day 21] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2021)
 
