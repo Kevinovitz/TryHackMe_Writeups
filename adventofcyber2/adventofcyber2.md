@@ -24,9 +24,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 14] Where's Rudolph?](#day-14-wheres-rudolph)
 - [[Day 15] There's a Python in my stocking!](#day-15-theres-a-python-in-my-stocking)
 - [[Day 16] Help! Where is Santa?](#day-16-help-where-is-santa)
-- [[Day 17] The Bits of Christmas](#day-17-the-bits-of-christmas)
-- [[Day 18] The Naughty or Nice List](#day-18-the-naughty-or-nice-list)
-- [[Day 19] ](#day-19-)
+- [[Day 17] ReverseELFneering](#day-17-reverseelfneering)
+- [[Day 18] The Bits of Christmas](#day-18-the-bits-of-christmas)
+- [[Day 19] The Naughty or Nice List](#day-19-the-naughty-or-nice-list)
 - [[Day 20] ](#day-20-)
 - [[Day 21] ](#day-21-)
 - [[Day 22] ](#day-22-)
@@ -1212,17 +1212,31 @@ Now we can search for an entrypoint with `afl | grep "main"`. Then we can view i
 
 ### [Day 18] [The Bits of Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2018)
 
+In this task we will be using a different tool for decompiling the executable to find stored information in the program.
 
+For this task we can use either [ILSpy](https://github.com/icsharpcode/ILSpy) or [Dotpeek](https://www.jetbrains.com/decompiler/).
 
 2. What is Santa's password?
 
-
+   Lets open ILSpy and open the executable in it. Now we must search through the various entries for anything interesting. After opening the program itself we are immediatly greeted with a log in screen. Looks like we can start our search with the `MainForm`. Here we find a `buttonActivate` entry which could be of interest. Here we can indeed find the string that is used as a comparison.
+   
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Password.png)
+   
+   Using Dotpeek we can find the same result. However, this can be found in the MainForm itself.
+   
+   ![Password 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Password_2.png)
 
    ><details><summary>Click for answer</summary>santapassword321</details>
 
 3. Now that you've retrieved this password, try to login...What is the flag?
 
-
+   On the same entry, we can also find and entry which displays a message with the flag.
+   
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Flag_1.png)
+   
+   However, lets also log into the program and find the flag that way.
+   
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Flag_2.png)
 
    ><details><summary>Click for answer</summary>thm{046af}</details>
 
