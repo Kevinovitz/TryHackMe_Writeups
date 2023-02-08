@@ -28,10 +28,10 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 18] The Bits of Christmas](#day-18-the-bits-of-christmas)
 - [[Day 19] The Naughty or Nice List](#day-19-the-naughty-or-nice-list)
 - [[Day 20] PowershELlF to the rescue](#day-20-powershellf-to-the-rescue)
-- [[Day 21] ](#day-21-)
-- [[Day 22] ](#day-22-)
-- [[Day 23] ](#day-23-)
-- [[Day 24] ](#day-24-)
+- [[Day 21] Time for some ELForensics](#day-21-time-for-some-elforensics)
+- [[Day 22] Elf McEager becomes CyberElf](#day-22-elf-mceager-becomes-cyberelf)
+- [[Day 23] The Grinch strikes again!](#day-23-the-grinch-strikes-again)
+- [[Day 24] The Trial Before Christmas](#day-24-the-trial-before-christmas)
 
 ### [Day 1] [A Christmas Crisis](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2001)
 
@@ -1312,8 +1312,8 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
 
 In this task we will be using PowerShell to get information off of the target machine.
 
-**Username:** mceager
-**Password:** r0ckStar!
+- **Username:** mceager
+- **Password:** r0ckStar!
 
 First we log into the machine using ssh.
 
@@ -1412,7 +1412,132 @@ ssh mceager@10.10.202.160
 
    ><details><summary>Click for answer</summary>Red Ryder bb gun</details>
 
-### [Day 21] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2021)
+### [Day 21] [Time for some ELForensics](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2021)
+
+In this task we will be using PowerShell to get more information about an executable to get access to our list.
+
+- **Username:** littlehelper
+- **Password:** iLove5now!
+
+1. Read the contents of the text file within the Documents folder. What is the file hash for db.exe?
+
+   For this question we simply navigate to the Documents folder and open the text file.
+   
+   ![File Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Hash.png)
+
+   ><details><summary>Click for answer</summary>596690FFC54AB6101932856E6A78E3A1</details>
+
+2. What is the file hash of the mysterious executable within the Documents folder?
+
+   For this we can use PowerShell to analyze the file for a hash.
+   
+   ```cmd
+   Get-FileHash -Algorithm MD5 "C:\Users\littlehelper\Documents\deebee.exe"
+   ```
+   
+   ![Hash Found](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Hash_Found.png)
+
+   ><details><summary>Click for answer</summary>5F037501FB542AD2D9B06EB12AED09F0</details>
+
+3. Using Strings find the hidden flag within the executable?
+
+   We can use the following command to search for any strings within an executable:
+   
+   ```cmd
+   C:\Tools\strings564.exe -accepteula "C:\Users\littlehelper\Documents\deebee.exe"
+   ```
+   
+   ![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Strings.png)
+   
+   As you can see, this gives a lot of results. We can simply scroll through the results or we can pipe the results to `findstr` to look for any strings that could be the flag.
+   
+   ```cmd
+   C:\Tools\strings564.exe -accepteula "C:\Users\littlehelper\Documents\deebee.exe" \ findstr /i THM
+   ```
+   
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Flag1.png)
+
+   ><details><summary>Click for answer</summary>THM{f6187e6cbeb1214139ef313e108cb6f9}</details>
+
+4. What is the flag that is displayed when you run the database connector file?
+
+   From the strings results we can see a command related to ADS (due to the `-stream` argument).
+   
+   ![Database Stream](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Database_Stream.png)
+   
+   We can use powershell to find datastreams in a binary.
+   
+   ```cmd
+   Get-Item -Path "C:\Users\littlehelper\Documents\deebee.exe" -Stream *
+   ```
+   
+   ![Streams](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Streams.png)
+   
+   Looks like there is a second datastream called `hidedb`.
+   
+   We can now execute the hidden file from within the executable.
+   
+   ```cmd
+   wmi process call create $(Resolve-Path C:\Users\littlehelper\Documents\deebee.exe:hidedb)
+   ```
+   
+   ![Execute Stream](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Execute_Stream.png)
+   
+   This executes the file and gives us another window.
+   
+   ![Loading Screen](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Loading.png)
+   
+   After the program has loaded, we can see the flag.
+   
+   ![Menu Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Menu.png)
+
+   ><details><summary>Click for answer</summary>THM{3088731ddc7b9fdeccaed982b07c297c}</details>
+
+### [Day 22] [Elf McEager becomes CyberElf](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2022)
+
+
+
+- **Username:** Administrator
+- **Password:** sn0wF!akes!!!
+- **Master Password:** mceagerrockstar
+
+1. What is the password to the KeePass database?
+
+    
+
+   ><details><summary>Click for answer</summary>thegrinchwashere</details>
+
+2. What is the encoding method listed as the 'Matching ops'?
+   
+   
+
+   ><details><summary>Click for answer</summary>base64</details>
+
+3. What is the decoded password value of the Elf Server?
+
+   
+
+   ><details><summary>Click for answer</summary>sn0wM4n!</details>
+
+4. What is the decoded password value for ElfMail?
+
+   
+
+   ><details><summary>Click for answer</summary>ic3Skating!</details>
+
+5. Decode the last encoded value. What is the flag?
+
+   
+
+   ![Github Flag](https://sckull.github.io/images/posts/thm/aoc2/Screenshotfrom2020-12-2217.54.04.png)
+
+   Courtesy of [sckull](https://sckull.github.io/posts/aoc2020/#day-22---elf-mceager-becomes-cyberelf)
+
+   Answer courtesy of [Dhilip Sanjay S](https://dhilipsanjay.gitbook.io/ctfs/tryhackme/tryhackme/adventofcyber2/day22-elfmceagerbecomescyberelf)
+
+   ><details><summary>Click for answer</summary>THM{657012dcf3d1318dca0ed864f0e70535}</details>
+
+### [Day 23] [The Grinch strikes again!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2023)
 
 
 
@@ -1420,23 +1545,7 @@ ssh mceager@10.10.202.160
 
    ><details><summary>Click for answer</summary></details>
 
-### [Day 22] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2022)
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
-
-### [Day 23] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2023)
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
-
-### [Day 24] [](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2024)
+### [Day 24] [The Trial Before Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2024)
 
 
 
