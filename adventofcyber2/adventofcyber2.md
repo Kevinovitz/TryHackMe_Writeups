@@ -1383,20 +1383,32 @@ ssh mceager@10.10.202.160
    Now we can get the number of words in the first file with:
    
    ```cmd
-   
+   Get-Content -Path 1.txt | Measure-Object -Word
    ```
 
    ><details><summary>Click for answer</summary>9999</details>
 
 5. What 2 words are at index 551 and 6991 in the first file?
 
+   To find out what string is located on a particular index we use the following command:
    
+   ```cmd
+   (Get-Content -Path 1.txt)[551]
+   ```
+   
+   ![Words](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Words.png)
 
    ><details><summary>Click for answer</summary>Red Ryder</details>
 
 6. This is only half the answer. Search in the 2nd file for the phrase from the previous question to get the full answer. What does Elf 3 want? (use spaces when submitting the answer)
 
+   To find out the rest of the answer, I had to try several things before I succeeded. The hint did help in this. Using the search function we can look for a string in a file.
    
+   ```cmd
+   Select-String -Path 2.txt -Pattern 'RedRyder'
+   ```
+   
+   ![Last Word](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Last_Word.png)
 
    ><details><summary>Click for answer</summary>Red Ryder bb gun</details>
 
