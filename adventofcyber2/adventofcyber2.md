@@ -1349,18 +1349,42 @@ ssh mceager@10.10.202.160
    ```cmd
    Get-ChildItem -Directory -Hidden -ErrorAction SilentlyContinue
    ```
+   
+   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Directory.png)
+   
+   After navigating into this folder we can look for any files and view their contents.
+   
+   ![Second File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Second_File.png)
 
    ><details><summary>Click for answer</summary>Scrooged</details>
 
 3. Search the Windows directory for a hidden folder that contains files for Elf 3. What is the name of the hidden folder? (This command will take a while)
 
+   At first I used the `Select-String` cmdlet as a means to search for a specific folder/text. This didn't work though and I found out you could use a filter with the `Get-ChildItem` cmdlet as well. Using the following command, we can look for any folders in the windows directory containing the number `3`.
    
+   ```cmd
+   Get-ChildItem -Directory -Hidden -Filter '*3*' -Recurse -ErrorAction SilentlyContinue
+   ```
+   
+   ![Third Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Third_Folder.png)
 
    ><details><summary>Click for answer</summary>3lfthr3e</details>
 
 4. How many words does the first file contain?
 
+   After finding the directory, we can use `Set-Location` to move into that folder and look for any files using:
    
+   ```cmd
+   Get-ChildItem -Hidden -ErrorAction SilentlyContinue
+   ```
+   
+   ![Hidden Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Third_Hidden_Files.png)
+   
+   Now we can get the number of words in the first file with:
+   
+   ```cmd
+   
+   ```
 
    ><details><summary>Click for answer</summary>9999</details>
 
