@@ -36,7 +36,8 @@
 
 4. There's a share on the user's computer.  What's it called?
 
-   More details here
+   More details [here](https://stawm.design.blog/2020/05/21/anonymous-thm-writeup/)
+   
    Im missing some images it seems
 
    ><details><summary>Click for answer</summary>pics</details>
