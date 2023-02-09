@@ -1495,7 +1495,7 @@ In this task we will be using PowerShell to get more information about an execut
 
 ### [Day 22] [Elf McEager becomes CyberElf](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2022)
 
-
+In this task we must try to decode several passwords for the Keepass database using CyberChef.
 
 - **Username:** Administrator
 - **Password:** sn0wF!akes!!!
@@ -1503,31 +1503,75 @@ In this task we will be using PowerShell to get more information about an execut
 
 1. What is the password to the KeePass database?
 
-    
+   In the Windows machine we find a folder containing the database.
+   
+   ![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Folder.png)
+   
+   Filling in the supplied masterkey we get an error message.
+   
+   ![Old Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Old_Key.png)
+   
+   ![Wrong Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Wrong_Key.png)
+   
+   The folder name looks a little cryptic. Maybe it has a clue for the password. Looking at the name, it looks like a Base64 encoding. Lets open up CyberChef and copy the string. CyberChef will automatically suggest an encoding if it finds a match (even without using the magic recipe). This is indeed Base64 encoded. 
+   
+   ![Decode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Decode.png)
+   
+   Fortunately, we can indeed log in with this password.
+   
+   ![New Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_New_Key.png)
 
    ><details><summary>Click for answer</summary>thegrinchwashere</details>
 
 2. What is the encoding method listed as the 'Matching ops'?
    
-   
+   This is the encoding method we used in the previous step. Using the `magic` recipe we get a suggestion for the matching ops.
 
    ><details><summary>Click for answer</summary>base64</details>
 
 3. What is the decoded password value of the Elf Server?
 
+   If we open the password entry we can see a weird string as password (which probably is not correct) and a note. Judging from the string format it looks like hexadecimal encoding. The note does indeed hint in the direction of Hex encoding.
    
+   ![Elf Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Server.png)
+   
+   We can copy the string into CyberChef and it will also suggest Hex encoding. This yields us the correct password for the server.
+   
+   ![Elf Server Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Server_Decode.png)
 
    ><details><summary>Click for answer</summary>sn0wM4n!</details>
 
 4. What is the decoded password value for ElfMail?
 
+   Opening the mail password entry, we get a hint of `entities`. The string doesn't ring a bell yet. 
    
+   ![Elf Email](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Mail.png)
+   
+   We can put the string into CyberChef and search for `entities`. This will result in `HTML Entinty`. However, CyberChef already suggested this encoding method after pasting the string.
+   
+   ![Elf Mail Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Mail_Decode.png)
 
    ><details><summary>Click for answer</summary>ic3Skating!</details>
 
 5. Decode the last encoded value. What is the flag?
 
+   For the security system, we probably have to use the note as our password.
    
+   ![Elf Security](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security.png)
+   
+   Looks like it is a Charcode encoding. After adding the recipe in CyberChef, we don't have a result yet. I tried several things, but then consulted the documentation for this encoding. We can try different separators and base numbers until we get something coherent. Base 10 seems to be what we are looking for.
+   
+   ![Elf Security Pre Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security_Pre_Decode.png)
+   
+   Since this is not a valid password yet, we can try adding the decode step a second time.
+   
+   ![Elf Security Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security_Decode.png)
+   
+   Looks like we are given a Github page which will contain a flag. Unfortunately, the page has since been removed from Github..
+   
+   ![Gist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Gist.png)
+   
+   Luckily, I managed to find the flag through some searching on Google.
 
    ![Github Flag](https://sckull.github.io/images/posts/thm/aoc2/Screenshotfrom2020-12-2217.54.04.png)
 
