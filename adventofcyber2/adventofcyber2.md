@@ -15,7 +15,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [[Day 5] Someone stole Santa's gift list!](#day-5-someone-stole-santas-gift-list)
 - [[Day 6] Be careful with what you wish on a Christmas night](#day-6-be-careful-with-what-you-wish-on-a-christmas-night)
 - [[Day 7] The Grinch Really Did Steal Christmas](#day-7-the-grinch-really-did-steal-christmas)
-- [[Day 8] What's Under the Christmas Tree?](#day-8=whats-under-the-christmas-tree)
+- [[Day 8] What's Under the Christmas Tree?](#day-8-whats-under-the-christmas-tree)
 - [[Day 9] Anyone can be Santa!](#day-9-anyone-can-be-santa)
 - [[Day 10] Don't be sElfish!](#day-10-dont-be-selfish)
 - [[Day 11] The Rogue Gnome](#day-11-the-rogue-gnome)
@@ -1583,17 +1583,156 @@ In this task we must try to decode several passwords for the Keepass database us
 
 ### [Day 23] [The Grinch strikes again!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2023)
 
+In this task we will be using a Windows feature called Volume Shadow Copy Service (VSS) to restore our encrypted files.
 
+**Username:** administrator
 
-1. 
+**Password:** sn0wF!akes!!!
 
-   ><details><summary>Click for answer</summary></details>
+1. Decrypt the fake 'bitcoin address' within the ransom note. What is the plain text value?
+
+   ![Encoded Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Message.png)
+   
+   On the desktop we can find a ransom note with a bitcoin address. This does, however, look awfully like a base64 encoded string. Lets use CyberChef to find out.
+   
+   ![Decoded Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Message_Decoded.png)
+
+   ><details><summary>Click for answer</summary>nomorebestfestivalcompany</details>
+
+2. At times ransomware changes the file extensions of the encrypted files. What is the file extension for each of the encrypted files?
+
+   Navigating into the Documents folder we can see the extension of the encrypted files.
+   
+   ![File Extension](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_File_Extension.png)
+
+   ><details><summary>Click for answer</summary>.grinch</details>
+
+3. What is the name of the suspicious scheduled task?
+
+   In the scheduled task window we can see several task. One of which seems suspicious.
+   
+   ![Scheduled Task](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Scheduled_Task.png)
+
+   ><details><summary>Click for answer</summary>opidsfsdf</details>
+
+4. Inspect the properties of the scheduled task. What is the location of the executable that is run at login?
+
+   Clicking on the 'Actions' tab for the task gives us information of what happens when the task is triggered.
+   
+   ![File Location](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_File_Location.png)
+
+   ><details><summary>Click for answer</summary>C:\Users\Administrator\Desktop\opidsfsdf.exe</details>
+
+5. There is another scheduled task that is related to VSS. What is the ShadowCopyVolume ID?
+
+   If we look at the task for the VSS service, we can find the Volume ID in the Name field.
+   
+   ![Shadow Task](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Shadow_Task.png)
+   
+   This is identical to the ID listed by `vssadmin`.
+   
+   ![VSS Volumes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_VSS_Volumes.png)
+
+   ><details><summary>Click for answer</summary>7a9eea15-0000-0000-0000-01000000000</details>
+
+6. Assign the hidden partition a letter. What is the name of the hidden folder?
+
+   To make the hidden drive, we must assign it a letter. This can be done by right clicking the partition and clicking 'Change Drive Letter'.
+   
+   ![Assign Letter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Assign_Letter.png)
+   
+   Now we can select a letter which isn't is use yet.
+   
+   ![Drive Letter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Drive_Letter.png)
+   
+   Inside this folder we can check the box to show hidden items. 
+   
+   ![Hidden Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Hidden_Folder.png)
+
+   ><details><summary>Click for answer</summary>confidential</details>
+
+7. Right-click and inspect the properties for the hidden folder. Use the 'Previous Versions' tab to restore the encrypted file that is within this hidden folder to the previous version. What is the password within the file?
+
+   Restoring the encrypted (or the file in the hidden drive) to a previous version did not work for some reason. However, it was possible to simply open the file from the hidden drive to view the password.
+   
+   ![Password Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Password_Decoded.png)
+
+   ><details><summary>Click for answer</summary>m33pa55w0rdIZseecure!</details>
 
 ### [Day 24] [The Trial Before Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2024)
 
 
 
-1. 
+1. Scan the machine. What ports are open?
+
+   
 
    ><details><summary>Click for answer</summary></details>
 
+2. What's the title of the hidden website? It's worthwhile looking recursively at all websites on the box for this step. 
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the name of the hidden php page?
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What is the name of the hidden directory where file uploads are saved?
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+Bypass the filters. Upload and execute a reverse shell. 
+
+5. What is the value of the web.txt flag?
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+Upgrade and stabilize your shell. 
+
+6. Review the configuration files for the webserver to find some useful loot in the form of credentials. What credentials do you find? username:password
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+7. Access the database and discover the encrypted credentials. What is the name of the database you find these in?
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+8. Crack the password. What is it?
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+Use su to login to the newly discovered user by exploiting password reuse. 
+
+9. What is the value of the user.txt flag?
+
+   
+
+   ><details><summary>Click for answer</summary></details>
+
+10. Check the user's groups. Which group can be leveraged to escalate privileges? 
+
+    
+
+    ><details><summary>Click for answer</summary></details>
+
+Abuse this group to escalate privileges to root.
+
+11. What is the value of the root.txt flag?
+
+    
+
+    ><details><summary>Click for answer</summary></details>
