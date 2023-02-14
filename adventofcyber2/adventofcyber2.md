@@ -1661,59 +1661,140 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
 ### [Day 24] [The Trial Before Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2024)
 
-
+In this final task we will be combining the knowledge of previous days to get access to the final machine in this challenge.
 
 1. Scan the machine. What ports are open?
 
+   Use `nmap` to get the open ports on the target machine.
    
+   ```cmd
+   nmap -sV 10.10.12.231
+   ```
+   
+   ![Nmap Result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Nmap.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>80, 65000</details>
 
 2. What's the title of the hidden website? It's worthwhile looking recursively at all websites on the box for this step. 
 
+   When we go the webserver in our browser we see a TryHackMe page. However, looking at the nmap results, we can see there is a second server serving content on port 65000. Navigating to this page directly we get a login page.
    
-
-   ><details><summary>Click for answer</summary></details>
+   ![Register Site](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Register.png)
+  
+   ><details><summary>Click for answer</summary>Light Cycle</details>
 
 3. What is the name of the hidden php page?
 
+   Looking through the assets from the server, we can see there are some images and links related to uploading files which we are interested in. Maybe we can create an account. I register an account with the following credentials:
    
+   **Username:** mcskiddy
+   **Password:** bestfestivalcompany
+   
+   Unfortunately, they probably knew we would try this... Nice..
+   
+   ![Nice](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Nice.png)
+   
+   Lets continue out search with `dirsearch`. Using Dirsearch we can find some hidden directories on the webserver. However, it didn't seem to find any hidden pages.
+   
+   ```cmd
+   dirsearch -u http://10.10.12.231:65000 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r -e php
+   ```
+   
+   ![Dir Search Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Dir_Search.png)
+   
+   So I tried using `dirb`, which did yield a result.
+   
+   ![Dirb Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Dirb_Results.png)
+   
+   ![Upload Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Uploads.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>uploads.php</details>
 
 4. What is the name of the hidden directory where file uploads are saved?
 
-   
+   In the results from `dirb` we also find a directory called `grid`. This is most likely the opload folder as the others contain different data.
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>grid</details>
 
 Bypass the filters. Upload and execute a reverse shell. 
 
 5. What is the value of the web.txt flag?
 
+   In order to get a reverse shell on this machine we should upload a file to it. Unfortunately, it seems not only php files are filtered. Any image file is filtered.
    
+   ![Invalid Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Invalid_Type.png)
+   
+   We need to get rid of the javascript responsible for the filtering. To do this we can use Burpsuite. First we must make some changes to the settings. Remove `^js$|` from the setting.
+   
+   ![Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Burp_Requests.png)
+   
+   Then make sure the next checkbox is checked.
+   
+   ![Responses](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Burp_Responses.png)
+   
+   Now reload the upload page with proxyfoxy turned on. Now we must remove the javescript filter from the response to bypass the filetype filtering.
+   
+   ![Response Edit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Response.png)
+   
+   Now forward the response to the browser and prepare the payload for upload. First copy the php reverse shell and edit it to contain our attack machine ip and a specified port number.
+   
+   ![Shell Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Reverse_Shell_Script.png)
+   
+   Next we change the extension to `png.php` and upload the file to the server.
+   
+   ![Upload Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Upload_Success.png)
+   
+   Now navigate to the upload folder and execute the script **after** setting up a listener on the specified port.
+   
+   ``cmd
+   nc -nlvp 1337
+   ```
+   
+   ![Listener](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Listener.png)
+   
+   Now that we have a shell we can look for the file and reveal its contents.
+   
+   ```cmd
+   find -name "web.txt" 2>/dev/null
+   ```
+   
+   ![Web Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Flag_Web.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{ENTER_THE_GRID}</details>
 
 Upgrade and stabilize your shell. 
+
+The shell we currently have is very rudementary, so we should probably stabalize it for more functionality. This can be done with the following commands.
+
+```cmd
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+
+export TERM=xterm
+
+Ctrl + Z
+
+stty raw -echo; fg
+```
+
+![Stabalize Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Stabalize_Shell.png)
 
 6. Review the configuration files for the webserver to find some useful loot in the form of credentials. What credentials do you find? username:password
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>tron:IFightForTheUsers</details>
 
 7. Access the database and discover the encrypted credentials. What is the name of the database you find these in?
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>tron</details>
 
 8. Crack the password. What is it?
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>@computer@</details>
 
 Use su to login to the newly discovered user by exploiting password reuse. 
 
@@ -1721,13 +1802,13 @@ Use su to login to the newly discovered user by exploiting password reuse.
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{IDENTITY_DISC_RECOGNISED}</details>
 
 10. Check the user's groups. Which group can be leveraged to escalate privileges? 
 
     
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>lxd</details>
 
 Abuse this group to escalate privileges to root.
 
@@ -1735,4 +1816,4 @@ Abuse this group to escalate privileges to root.
 
     
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>THM{FLYNN_LIVES}</details>
