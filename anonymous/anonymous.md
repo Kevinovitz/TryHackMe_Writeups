@@ -36,9 +36,23 @@
 
 4. There's a share on the user's computer.  What's it called?
 
-   More details [here](https://stawm.design.blog/2020/05/21/anonymous-thm-writeup/)
+   We can use smbclient to identify the shares available on the target machine.
    
-   Im missing some images it seems
+   ```cmd
+   smbclient -N //10.10.11.32
+   ```
+   
+   Im missing some images it seems.
+   
+   To view the contents of this share we can use:
+   
+   ```cmd
+   smbclient -N //10.10.11.32/pics
+   ```
+   
+   ![Smb Share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Nmap_Smb.png)
+
+   More details [here](https://stawm.design.blog/2020/05/21/anonymous-thm-writeup/)
 
    ><details><summary>Click for answer</summary>pics</details>
 
