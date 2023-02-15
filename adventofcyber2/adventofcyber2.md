@@ -1746,7 +1746,7 @@ Bypass the filters. Upload and execute a reverse shell.
    
    Now navigate to the upload folder and execute the script **after** setting up a listener on the specified port.
    
-   ``cmd
+   ```cmd
    nc -nlvp 1337
    ```
    
@@ -1780,19 +1780,59 @@ stty raw -echo; fg
 
 6. Review the configuration files for the webserver to find some useful loot in the form of credentials. What credentials do you find? username:password
 
+   For this step we can use our newly created shell to go through the files in the `/www/` folder. One folder in particular is of interest to us. dbauth.php.
    
+   ![DB Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_DB_Authentication_Creds.png)
+   
+   Looks like there are some credentials present in this file we can use to get access to the database.
 
    ><details><summary>Click for answer</summary>tron:IFightForTheUsers</details>
 
 7. Access the database and discover the encrypted credentials. What is the name of the database you find these in?
 
+   To access the database we can use `mysql`. Normally, we would be able to access such a database remotely. However, for this task, we will be accessing it locally. **Note that -u and username have no space between them.**
    
+   ```cmd
+   mysql -utron -p
+   ```
+   
+   ![Login Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Login_Database.png)
+   
+   First we must enumerate the database to find any interesting tables/entries. `show databases` is our first step.
+   
+   ![Show Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Databases.png)
+   
+   Now we can do the same with the `tron` table.
+   
+   ```cmd
+   use tron
+   
+   show tables
+   ```
+   
+   ![Tron Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Tron_User_Creds.png)
 
    ><details><summary>Click for answer</summary>tron</details>
 
 8. Crack the password. What is it?
 
+   We can use `hash-identifier` to find out what hash type this password is in.
    
+   ![Hash Identifier](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hash_Identifier.png)
+   
+   Now we can use `hashcat` to crack this password. Add the hash to a file and run the following command:
+   
+   ![Hash File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hash_File.png)
+   
+   ```cmd
+   hashcat m 0 tron-password.hash /usr/share/wordlists/rockyou.txt
+   ```
+   
+   ![Hash Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hashcat_Command.png)
+   
+   This gives us a result for the password.
+   
+   ![Hashcat Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hashcat_Password.png)
 
    ><details><summary>Click for answer</summary>@computer@</details>
 
@@ -1800,13 +1840,25 @@ Use su to login to the newly discovered user by exploiting password reuse.
 
 9. What is the value of the user.txt flag?
 
+   With these credentials we can try switching use on this machine. First exit the mysql instance then use `su` to switch user.
    
+   ```cmd
+   su flynn
+   ```
+   
+   ![Switch User](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Switch_User.png)
+   
+   Now we can look for the contents of the flag.
+   
+   ![Flynn Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Flynn_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{IDENTITY_DISC_RECOGNISED}</details>
 
 10. Check the user's groups. Which group can be leveraged to escalate privileges? 
 
+    To get the group a user belongs to, we can use `id`. Looks like there is an extra group which we can exploit.
     
+    ![Group ID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_ID.png)
 
     ><details><summary>Click for answer</summary>lxd</details>
 
@@ -1814,6 +1866,61 @@ Abuse this group to escalate privileges to root.
 
 11. What is the value of the root.txt flag?
 
+    To get root access, we will be xploiting a flaw in lxd. These are the steps necessary to perform this exploit. More information can be found [here](https://www.hackingarticles.in/lxd-privilege-escalation/).
     
+    Steps to be performed on the attacking machine:
+    - Download build-alpine on your local machine via the git repository
+    - Execute the script "build -alpine" that will build the latest Alpine image as a compressed file. This must be executed by the root user.
+    - Transfer this newly created tar file to the victim machine
+    
+    Steps to be performed on the victim machine:
+    - Download the alpine image
+    - Import image for lxd
+    - Initialize the image inside a new container <- **Worth checking the already imported/available images as you may be able to skip to this step**
+    - Mount the container inside the /root directory
+    
+    ![Lxc Images](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Lxc_Images.png)
+    
+    Checking for any available images, we can indeed see it is already present on the machine. This saves us a bunch of work and we can continue with initializing the container.
+    
+    ```cmd
+    $ lxc init Alphine letmein -c security.privileged=true
+    
+    $ lxc config device add letmein rightnow disk source=/ path=/mnt/root recursive=true
+    ```
+    
+    ![Lxc Initialize](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Lxc_Initialize.png)
+    
+    Now we can start the container and open a shell through it. Then we should check which user we are with `id`.
+    
+    ```cmd
+    $ lxc start letmein
+    
+    $ lxc exec letmein /bin/sh
+    ```
+    
+    ![Lxc Start](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Lxc_Start_Container.png)
+    
+    Perfect! Now we can navigate to the root flag and view its contents.
+    
+    ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Root_Flag.png)
 
     ><details><summary>Click for answer</summary>THM{FLYNN_LIVES}</details>
+
+**This next part is optional, but I thought it was interesting enough to include here.**
+
+During our directory enumeration, we found some other webpages as well. 
+
+![Optional page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Optional_Site.png)
+
+These seem to contain many links. Of which most probably link to the Rick roll video. We can make a python script to gather all the available links on the page for us to analyze. This is similar to what we did in day 16.
+
+![Python Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Link_Script.png)
+
+Running this we can a whole list of links from the page.
+
+![Links](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Links.png)
+
+Most of these indeed lead to a video, but one of them leads to an interesting discount. Which probably isn't valid anymore. So it is of no use, but it is an interesting exercise.
+
+![Free Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Free_Code.png)
