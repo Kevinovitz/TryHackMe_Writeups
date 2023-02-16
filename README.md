@@ -5,12 +5,15 @@ In this repository you will find various walkthroughs/writeups for various [TryH
 The following rooms are available/in progress:
 
 - [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
-- [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md) [WiP]
+- [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md) [Answered]
 - [Anonymous](anonymous/anonymous.md) [WiP]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
-- [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md)
+- [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [WiP]
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
 - more to come
+
+
+Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.
