@@ -10,13 +10,13 @@ In this room, a number of questions need to be answered by doing a little resear
 
 ## Table of contents
 
-- [Obtaining MD5 Checksums of Provided Files](#Obtaining MD5 Checksums of Provided Files)
-- [Now lets see if the MD5 Checksums have been analysed before](#Now lets see if the MD5 Checksums have been analysed before)
-- [Identifying if the Executables are obfuscated / packed](#Identifying if the Executables are obfuscated / packed)
-- [What is Obfuscation / Packing?](#What is Obfuscation / Packing?)
-- [Introduction to Strings](#Introduction to Strings)
-- [Introduction to Imports](#Introduction to Imports)
-- [Practical Summary](#Practical Summary)
+- [Obtaining MD5 Checksums of Provided Files](#obtaining-md5-checksums-of-provided-files)
+- [Now lets see if the MD5 Checksums have been analysed before](#now-lets-see-if-the-md5-checksums-have-been-analysed-before)
+- [Identifying if the Executables are obfuscated / packed](#identifying-if-the-executables-are-obfuscated--packed)
+- [What is Obfuscation / Packing?](#what-is-obfuscation--packing)
+- [Introduction to Strings](#introduction-to-strings)
+- [Introduction to Imports](#introduction-to-imports)
+- [Practical Summary](#practical-summary)
 
 ## Obtaining MD5 Checksums of Provided Files
 
