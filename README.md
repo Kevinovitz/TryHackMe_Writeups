@@ -7,7 +7,7 @@ The following rooms are available/in progress:
 - [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
 - [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md) [Answered]
 - [Anonymous](anonymous/anonymous.md) [WiP]
-- [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [WiP]
+- [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [WiP]
