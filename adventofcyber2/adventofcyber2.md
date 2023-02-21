@@ -745,6 +745,36 @@ In this task we will be using MetaSploit to get access to our target machine.
    - [Getsystem command for Metasploit - Priv Esc](https://docs.rapid7.com/metasploit/meterpreter-getsystem/)
    - [Windows privilege escalation - Reddit](https://www.reddit.com/r/HowToHack/comments/6zxh68/looking_for_some_help_with_windows_privilege/)
 
+   **UPDATE!**
+   
+   I managed to find a different way that worked by using a local exploit as suggested by the hint. I tried a more specific search string to find a module I could use. Since `PATH` was mentioned in the hint, I tried adding this to my query.
+   
+   ```cmd
+   search exploit windows local path
+   ```
+   
+   ![Priv Esc Module Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Priv_Module_Search.png)
+   
+   Looks like there is another module we can try `unquoted_service_path`.
+   
+   ```cmd
+   use exploit/windows/local/unquoted_service_path
+   
+   options
+   
+   set session 1
+   ```
+   
+   We have now loaded the module and set the necessary options. Our current `user` session on the machine is `1`. Now type `run` to start the exploit.
+   
+   ![Priv Esc Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Priv_Options.png)
+   
+   Looks like it worked. To check, we can run the `getuid` command again to find out which user we are.
+   
+   ![Priv Esc Getuid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Escalated.png)
+   
+   Success! We have now escalated our priveleges on this machine!
+
 ### [Day 13] [Coal for Christmas](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2013)
 
 In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escalate our privileges and get the flag. More information on the exploit can be found [here](https://dirtycow.ninja/).
