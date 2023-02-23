@@ -8,7 +8,7 @@ The following rooms are available/in progress:
 - [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md) [Answered]
 - [Anonymous](anonymous/anonymous.md) [WiP]
 - [Blaster](blaster/blaster.md) [Comming soon]
-- [Blue](blue/blue.md) [WiP]
+- [Blue](blue/blue.md)
 - [Ice](ice/ice.md) [Comming soon]
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
