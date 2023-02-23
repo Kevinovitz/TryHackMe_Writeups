@@ -16,21 +16,31 @@ This guide contains the answer and steps necessary to get to them for the [Blue]
 
 ### Recon
 
+In this part of the challenge we will find out more information about our target machine and find a way inside.
 
-
-Scan the machine. (If you are unsure how to tackle this, I recommend checking out the Nmap room)
+*Scan the machine.*
 
 2. How many ports are open with a port number under 1000?
 
+   To find the open ports we can use the following command (keep in mind we only need to scan the first 1000 ports):
    
+   ```cmd
+   nmap -sV -p-1000 10.10.91.75
+   ```
+   
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Recon_Nmap_Scan.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>3</details>
 
 3. What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067)
 
+   We need some more information about the running services and `-sV` didn't give us enough. We can use the `-A` argument to run some additional scripts.
    
+   Looking up the OS version for any exploits we can find something we can use.
+   
+   ![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Recon_Vulnerability.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>MS17-010</details>
 
 ### Gain Access
 
