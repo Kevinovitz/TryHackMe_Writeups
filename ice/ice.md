@@ -19,7 +19,7 @@ This guide contains the answer and steps necessary to get to them for the [Ice](
 
 In this part of the challenge we will find out more about the target and the running services.
 
-*Launch a scan against our target machine, I recommend using a SYN scan set to scan all ports on the machine. The scan command will be provided as a hint, however, it's recommended to complete the room 'Nmap' prior to this room. *
+*Launch a scan against our target machine, I recommend using a SYN scan set to scan all ports on the machine. The scan command will be provided as a hint, however, it's recommended to complete the room 'Nmap' prior to this room.*
 
 For the scan we use the following command:
 
@@ -54,7 +54,7 @@ For the scan we use the following command:
    
 ### Gain Access
 
-*Now that we've identified some interesting services running on our target machine, let's do a little bit of research into one of the weirder services identified: Icecast. Icecast, or well at least this version running on our target, is heavily flawed and has a high level vulnerability with a score of 7.5 (7.4 depending on where you view it). *
+*Now that we've identified some interesting services running on our target machine, let's do a little bit of research into one of the weirder services identified: Icecast. Icecast, or well at least this version running on our target, is heavily flawed and has a high level vulnerability with a score of 7.5 (7.4 depending on where you view it).*
  
 1. What type of vulnerability is it? Use https://www.cvedetails.com for this question and the next.
 
@@ -66,7 +66,7 @@ For the scan we use the following command:
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>CVE-2004-1561</details>
 
 *Now that we've found our vulnerability, let's find our exploit. For this section of the room, we'll use the Metasploit module associated with this exploit. Let's go ahead and start Metasploit using the command `msfconsole`*
 
