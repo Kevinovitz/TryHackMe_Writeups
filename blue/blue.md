@@ -4,7 +4,7 @@
 
 # Blue
 
-This guide contains the answer and steps necessary to get to them for the [Blue]([https://tryhackme.com/room/linuxfundamentalspart1](https://tryhackme.com/room/blue)) room.
+This guide contains the answer and steps necessary to get to them for the [Blue]([https://tryhackme.com/room/linuxfundamentalspart1](https://tryhackme.com/room/blue) room.
 
 ## Table of contents
 
