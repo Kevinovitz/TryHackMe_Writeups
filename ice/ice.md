@@ -182,7 +182,7 @@ In our case we type `use exploit/windows/local/bypassuac_eventvwr`.
 
 Using `run` or `exploit` we can now run this module to escalate our priveleges.
 
-![https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Run_Module.png](Run Modul)
+![Run Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Run_Module.png)
 
 *Following completion of the privilege escalation a new session will be opened. Interact with it now using the command `sessions SESSION_NUMBER`*
 
@@ -198,13 +198,98 @@ In our case this wasn't necessary as we already spawned into the correct session
 
 ### Looting
 
+In this task we will gather additional information and credentials from our machine using Mimikatz.
 
+*Prior to further action, we need to move to a process that actually has the permissions that we need to interact with the lsass service, the service responsible for authentication within Windows. First, let's list the processes using the command `ps`. Note, we can see processes being run by NT AUTHORITY\SYSTEM as we have escalated permissions (even though our process doesn't).*
 
+2. In order to interact with lsass we need to be 'living in' a process that is the same architecture as the lsass service (x64 in the case of this machine) and a process that has the same permissions as lsass. The printer spool service happens to meet our needs perfectly for this and it'll restart if we crash it! What's the name of the printer service?
 
+   Using `ps` in our meterpreter session we get a list of all running processes on the machine.
+   
+   ![Running Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Processes.png)
+
+   ><details><summary>Click for answer</summary>spoolsv.exe</details>
+
+*Mentioned within this question is the term 'living in' a process. Often when we take over a running program we ultimately load another shared library into the program (a dll) which includes our malicious code. From this, we can spawn a new thread that hosts our shell.*
+
+*Migrate to this process now with the command `migrate -N PROCESS_NAME`*
+
+To migrate our procces into another process with higher priveleges (spoolsv.exe in this case) we can use the following command within MetaSploit.
+
+```cmd
+migrate -N spoolsv.exe
+```
+
+![Migrate Process](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Migrate.png)
+
+4. Let's check what user we are now with the command `getuid`. What user is listed?
+
+   To check if this worked we use `getuid` again to check which user we are running as now.
+   
+   ![Second Get Uid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Current_User.png)
+
+   ><details><summary>Click for answer</summary>NT AUTHORITY\SYSTEM</details>
+
+*Now that we've made our way to full administrator permissions we'll set our sights on looting. Mimikatz is a rather infamous password dumping tool that is incredibly useful. Load it now using the command `load kiwi` (Kiwi is the updated version of Mimikatz)*
+
+Loading the Mimkatz extension we can use `load kiwi`.
+
+![Load Mimikatz](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Kiwi.png)
+
+*Loading kiwi into our meterpreter session will expand our help menu, take a look at the newly added section of the help menu now via the command `help`.*
+
+7. Which command allows up to retrieve all credentials?
+
+   Scrolling through the help section (especially the last part with the Mimikatz commands) we can find our answer.
+
+   ><details><summary>Click for answer</summary>creds_all</details>
+
+8. Run this command now. What is Dark's password? Mimikatz allows us to steal this password out of memory even without the user 'Dark' logged in as there is a scheduled task that runs the Icecast as the user 'Dark'. It also helps that Windows Defender isn't running on the box ;) (Take a look again at the ps list, this box isn't in the best shape with both the firewall and defender disabled)
+
+   Run the command with `creds_all`.
+   
+   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Passwords.png)
+
+   ><details><summary>Click for answer</summary>Password01</details>
 
 ### Post-Exploitation 
 
+In this task we will look at several other commands we can use to get even more information from the target.
 
+*Before we start our post-exploitation, let's revisit the help menu one last time in the meterpreter shell. We'll answer the following questions using that menu.*
 
+All questions below can be found in the help section for MetaSploit.
+
+2. What command allows us to dump all of the password hashes stored on the system? We won't crack the Administrative password in this case as it's pretty strong (this is intentional to avoid password spraying attempts)
+
+   ><details><summary>Click for answer</summary>hashdump</details>
+
+3. While more useful when interacting with a machine being used, what command allows us to watch the remote user's desktop in real time?
+
+   ><details><summary>Click for answer</summary>screenshare</details>
+
+4. How about if we wanted to record from a microphone attached to the system?
+
+   ><details><summary>Click for answer</summary>record_mic</details>
+
+5. To complicate forensics efforts we can modify timestamps of files on the system. What command allows us to do this? Don't ever do this on a pentest unless you're explicitly allowed to do so! This is not beneficial to the defending team as they try to breakdown the events of the pentest after the fact.
+
+   ><details><summary>Click for answer</summary>timestomp</details>
+
+*Mimikatz allows us to create what's called a `golden ticket`, allowing us to authenticate anywhere with ease. What command allows us to do this?*
+
+6. Golden ticket attacks are a function within Mimikatz which abuses a component to Kerberos (the authentication system in Windows domains), the ticket-granting ticket. In short, golden ticket attacks allow us to maintain persistence and authenticate as any user on the domain.
+
+   ><details><summary>Click for answer</summary>golden_ticket_create</details>
+
+*One last thing to note. As we have the password for the user 'Dark' we can now authenticate to the machine and access it via remote desktop (MSRDP). As this is a workstation, we'd likely kick whatever user is signed onto it off if we connect to it, however, it's always interesting to remote into machines and view them as their users do. If this hasn't already been enabled, we can enable it via the following Metasploit module: `run post/windows/manage/enable_rdp`*
+
+Since we have the credentials we can log into the system. We saw from the `ps` command that the RDP service has already been started. With Reminna we can remote login to the machine.
+
+![RDP Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Post_Exploit_Desktop.png)
 
 ### Extra Credit
+
+In this optional task we can try to exploit the vulnerability manually with the code obtained from [Exploit-db](https://www.exploit-db.com/exploits/568).
+
+1. As you advance in your pentesting skills, you will be faced eventually with exploitation without the usage of Metasploit. Provided above is the link to one of the exploits found on Exploit DB for hijacking Icecast for remote code execution. While not required by the room, it's recommended to attempt exploitation via the provided code or via another similar exploit to further hone your skills.
