@@ -290,7 +290,7 @@ Since we have the credentials we can log into the system. We saw from the `ps` c
 
 ### Extra Credit
 
-In this optional task we can try to exploit the vulnerability manually with the code obtained from [Exploit-db](https://www.exploit-db.com/exploits/568). I never workede with exploits directly from Exploit-DB, so I was unsure how to proceed. [This](https://www.youtube.com/watch?v=eIy69zUfbgI) video provided some much needed insight. Especially, since the given exploit wouldn't work in the first place (read that somehwere else to). The updated version can be found [here](https://www.exploit-db.com/exploits/573).
+In this optional task we can try to exploit the vulnerability manually with the code obtained from [Exploit-db](https://www.exploit-db.com/exploits/568). I never workede with exploits directly from Exploit-DB, so I was unsure how to proceed. [This](https://www.youtube.com/watch?v=eIy69zUfbgI) video provided some much needed insight. Especially, since the given exploit wouldn't work in the first place (read that somehwere else to). The updated version can be found here [https://www.exploit-db.com/exploits/573](https://www.exploit-db.com/exploits/573).
 
 1. As you advance in your pentesting skills, you will be faced eventually with exploitation without the usage of Metasploit. Provided above is the link to one of the exploits found on Exploit DB for hijacking Icecast for remote code execution. While not required by the room, it's recommended to attempt exploitation via the provided code or via another similar exploit to further hone your skills.
 
