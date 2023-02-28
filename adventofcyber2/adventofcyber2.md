@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Advent_of_Cyber_2_2020_Logo.png" alt="Advent of Cyber 2 2020 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Advent_of_Cyber_2_2020_Cover.png" alt="Advent of Cyber 2 2020 Cover">
 </p>
 
 # Advent of Cyber 2 [2020]
