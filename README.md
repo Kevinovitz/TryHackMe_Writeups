@@ -9,7 +9,7 @@ The following rooms are available/in progress:
 - [Anonymous](anonymous/anonymous.md) [WiP]
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
-- [Ice](ice/ice.md) [WiP]
+- [Ice](ice/ice.md)
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
