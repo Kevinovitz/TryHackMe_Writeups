@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Ice_Cover.png" alt="Ice Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Ice_Cover_2.png" alt="Ice Logo">
 </p>
 
 # Ice
