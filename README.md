@@ -10,6 +10,7 @@ The following rooms are available/in progress:
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
 - [Ice](ice/ice.md)
+- [OhSINT](ohsint/ohsint.md)
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
