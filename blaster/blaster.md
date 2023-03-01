@@ -170,12 +170,22 @@ set payload payload/windows/meterpreter/reverse_http
 
 ![Set Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Set_Payload.png)
 
+Now we can run the exploit as a background job with `run -j`.
+
+![Run Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Run_Exploit.png)
+
 *Return to the terminal we spawned with our exploit. In this terminal, paste the command output by Metasploit after the job was launched. In this case, I've found it particularly helpful to host a simple python web server (python3 -m http.server) and host the command in a text file as copy and paste between the machines won't always work. Once you've run this command, return to our attacker machine and note that our reverse shell has spawned.*
+
+Copy the entire command we are presented with and paste it into the terminal we previously spawned on our target machine. Then we should see a reverse shell appear in our meterpreter session.
+
+![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Reverse_Shell.png)
 
 6. Last but certainly not least, let's look at persistence mechanisms via Metasploit. What command can we run in our meterpreter console to setup persistence which automatically starts when the system boots? Don't include anything beyond the base command and the option for boot startup. 
 
+   On this website https://www.offensive-security.com/metasploit-unleashed/meterpreter-service/ we can find more information on persistence in a meterpreter session. Unfortunately, the script was not found on my machine.
    
+   ![Script Not Found](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Script_Not_Found.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>run persistence -X</details>
 
 *Run this command now with options that allow it to connect back to your host machine should the system reboot. Note, you'll need to create a listener via the handler exploit to allow for this remote connection in actual practice. Congrats, you've now gain full control over the remote host and have established persistence for further operations!*
