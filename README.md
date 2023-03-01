@@ -9,6 +9,7 @@ The following rooms are available/in progress:
 - [Anonymous](anonymous/anonymous.md) [WiP]
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
+- [Hydra](hydra/hydra.md)
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
@@ -16,6 +17,7 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [WiP]
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
+- [Shodan.io](shodan/shodan.md) [WiP]
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
 - more to come
