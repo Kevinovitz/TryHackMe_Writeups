@@ -26,6 +26,12 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 - [Token Impersonation - PrintSpoofer](#token-impersonation--printspoofer)
 - [Privilege Escalation Scripts](#privilege-escalation-scripts)
 
+### Deploy a Vulnerable Windows VM
+
+```cmd
+xfreerdp /u:user /p:password321 /cert:ignore /v:10.10.145.241
+```
+
 ### Generate a Reverse Shell Executable
 
 
@@ -41,7 +47,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>C:\Program Files\DACL Service\daclservice.exe</details>
 
 ### Service Exploits - Unquoted Service Path
 
@@ -51,7 +57,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>C:\Program Files\Unquoted Path Service\Common Files\unquotedpathservice.exe</details>
 
 ### Service Exploits - Weak Registry Permissions
 
