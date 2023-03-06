@@ -1,3 +1,5 @@
+![Advent of Cyber 2 Banner](https://assets.tryhackme.com/room-banners/adventofcyber.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Advent_of_Cyber_2_2020_Cover.png" alt="Advent of Cyber 2 2020 Cover">
 </p>
