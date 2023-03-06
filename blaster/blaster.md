@@ -1,3 +1,5 @@
+![Blaster Background](https://i.imgur.com/MbNgkRQ.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Blaster_Cover.png" alt="Blaster Logo">
 </p>
