@@ -1,10 +1,12 @@
+![Anonymous Banner](https://i.imgur.com/KHhJB15.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/anonymous_Cover.png" alt="Anonymous">
 </p>
 
 # [Anonymous](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/anonymous)
 
-In this room we https://tryhackme.com/room/
+In [this](https://tryhackme.com/room/anonymous) room we use our basic Linux and PrivEsc knowledge to gain access to our machine and get root permissions.
 
 More details [here](https://stawm.design.blog/2020/05/21/anonymous-thm-writeup/).
 
