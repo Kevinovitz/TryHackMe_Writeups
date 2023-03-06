@@ -1,3 +1,5 @@
+![Advent of Cyber 1 Banner](https://i.imgur.com/j5i4EVm.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/25daysofchristmas/Advent_of_Cyber_1_2019_Logo.png" alt="Advent of Cyber 1 2019 Logo">
 </p>
