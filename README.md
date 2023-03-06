@@ -6,7 +6,7 @@ The following rooms are available/in progress:
 
 - [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
 - [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
-- [Anonymous](anonymous/anonymous.md) [WiP]
+- [Anonymous](anonymous/anonymous.md)
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
 - [Hydra](hydra/hydra.md)
