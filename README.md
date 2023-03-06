@@ -1,3 +1,8 @@
+
+<p align="center">
+   <img src="https://jarrodrizor.com/wp-content/uploads/2022/03/thm_banner.jpeg" alt="TryHackMe Banner">
+</p>
+
 # TryHackMe Writeups
 
 In this repository you will find various walkthroughs/writeups for various [TryHackMe](https://tryhackme.com/) rooms. This is mostly for my own use as a sort of knowledge base. But anyone is welcome to view it themselves.
