@@ -4,13 +4,13 @@
 
 # [Anonymous](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/anonymous)
 
-
+In this room we https://tryhackme.com/room/
 
 More details [here](https://stawm.design.blog/2020/05/21/anonymous-thm-writeup/).
 
 ## Pwn
 
-
+This guide contains the answer and steps necessary to get to them for the [Anonymous](https://tryhackme.com/room/) room. This room is similar to some other room, but I can't remember the name at the moment.
 
 1. Enumerate the machine.  How many ports are open?
 
