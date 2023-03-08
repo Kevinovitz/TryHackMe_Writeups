@@ -25,7 +25,7 @@ The following rooms are available/in progress:
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
-- [Windows PrivEsc](windows10privesc/windows10privesc.md) [WiP]
+- [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - more to come
 
 
