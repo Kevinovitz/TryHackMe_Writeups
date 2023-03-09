@@ -1,3 +1,5 @@
+![Mal Introductory Banner](https://i.imgur.com/2GCM5pZ.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/malmalintroductory/Malware_Introductory_Cover.png" alt="Malware Introductory Logo">
 </p>
