@@ -1,3 +1,5 @@
+![Printer Hacking 101 Banner](https://assets.tryhackme.com/room-banners/printerhacking101.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/printerhacking101_Cover.png" alt="Printer Hacking 101">
 </p>
