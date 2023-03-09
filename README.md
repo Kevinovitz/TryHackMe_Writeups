@@ -22,7 +22,7 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
-- [Simple CTF](easyctf/easyctf.md) [WiP]
+- [Simple CTF](easyctf/easyctf.md)
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
