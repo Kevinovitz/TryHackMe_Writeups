@@ -20,7 +20,7 @@ The following rooms are available/in progress:
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
-- [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [WiP]
+- [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [SQL Injection](sql_injection/sql_injection.md)
