@@ -1,3 +1,5 @@
+![Ice Banner](https://i.imgur.com/6Ijftag.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Ice_Cover_2.png" alt="Ice Logo">
 </p>
