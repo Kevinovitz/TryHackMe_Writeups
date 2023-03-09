@@ -1,3 +1,5 @@
+![Linux Fundamentals Part 1 Banner](https://assets.tryhackme.com/room-banners/linuxfund.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart2/Linux_Fundamentals_2_Cover.png" alt="Linux Fundamentals Part 2 Logo">
 </p>
