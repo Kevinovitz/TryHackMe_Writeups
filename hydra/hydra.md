@@ -1,3 +1,5 @@
+![Hydra Banner](https://i.imgur.com/kzeMRHz.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/hydra/Hydra_Cover.png" alt="Hydra Logo">
 </p>
