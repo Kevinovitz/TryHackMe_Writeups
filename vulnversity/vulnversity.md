@@ -1,3 +1,5 @@
+![Vulnversity Banner](https://i.imgur.com/JFYfwL8.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/vulnversity/Vulnversity_Cover.png" alt="Vulnversity Logo">
 </p>
