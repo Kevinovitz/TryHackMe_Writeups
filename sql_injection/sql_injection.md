@@ -1,3 +1,5 @@
+![Sql Injection Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/03376575e888fd097280c51469c29fbc.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Cover.png" alt="SQL Injection Cover">
 </p>
