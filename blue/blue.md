@@ -1,3 +1,5 @@
+![Blue Banner](https://i.imgur.com/GosxHyQ.jpg)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Blue_Cover.png" alt="Blue Logo">
 </p>
