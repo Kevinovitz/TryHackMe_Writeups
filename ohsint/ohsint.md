@@ -1,3 +1,5 @@
+![OhSint Banner](https://i.imgur.com/P1nJjnp.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/OhSINT_Cover.png" alt="OhSINT Logo">
 </p>
@@ -5,11 +7,6 @@
 # OhSINT
 
 This guide contains the answer and steps necessary to get to them for the [OhSINT](https://tryhackme.com/room/ohsint) room.
-
-
-
-
-
 
 ### OhSINT
 
