@@ -1,3 +1,5 @@
+![Shodanio Banner](https://i.imgur.com/J1ik7ZU.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Shodan_Cover.png" alt="Shodan Logo">
 </p>
