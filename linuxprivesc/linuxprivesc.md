@@ -10,15 +10,15 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 ## Table of contents
 
-- [Deploy the Vulnerable Debian VM](#deploy-the-vulnerable-debian-vm
-- [Service Exploits](#service-exploits
-- [Weak File Permissions - Readable /etc/shadow](#weak-file-permissions---readable-etcshadow
-- [Weak File Permissions - Writable /etc/passwd](#weak-file-permissions---writable-etcshadow
-- [Sudo - Shell Escape Sequences](#sudo---shell-escape-sequences
-- [Sudo - Environment Variables](#sudo---environment-variables
-- [Cron Jobs - File Permissions](#cron-jobs---file-permissions
-- [Cron Jobs - PATH Environment Variable](#cron-jobs---path-environment-variable
-- [Cron Jobs - Wildcards](#cron-jobs---wildcards
+- [Deploy the Vulnerable Debian VM](#deploy-the-vulnerable-debian-vm)
+- [Service Exploits](#service-exploits)
+- [Weak File Permissions - Readable /etc/shadow](#weak-file-permissions---readable-etcshadow)
+- [Weak File Permissions - Writable /etc/passwd](#weak-file-permissions---writable-etcshadow)
+- [Sudo - Shell Escape Sequences](#sudo---shell-escape-sequences)
+- [Sudo - Environment Variables](#sudo---environment-variables)
+- [Cron Jobs - File Permissions](#cron-jobs---file-permissions)
+- [Cron Jobs - PATH Environment Variable](#cron-jobs---path-environment-variable)
+- [Cron Jobs - Wildcards](#cron-jobs---wildcards)
 - [SUID / SGID Executables - Known Exploits](#suid--sgid-executables---known-exploits)
 - [SUID / SGID Executables - Shared Object Injection](#suid--sgid-executables---shared-object-injection)
 - [SUID / SGID Executables - Environment Variables](#suid--sgid-executables---environment-variables)
