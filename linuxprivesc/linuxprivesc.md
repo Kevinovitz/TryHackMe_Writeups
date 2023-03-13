@@ -39,36 +39,77 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 https://www.exploit-db.com/exploits/1518
 
+```cmd
+ssh user@10.10.42.225
+```
+
+![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Linux_Priv_Esc_Nmap_Scan.png)
+
+
 ### Service Exploits
 
 *Read and follow along with the above.*
 
 ### Weak File Permissions - Readable /etc/shadow
 
-ssh user@10.10.42.225
-ls -lh /etc/shadow
-cat /etc/shadow
-su -u root
-hashcat -m 1800 password.hash /usr/share/wordlists/rockyou.txt
-john --wordlist=/usr/share/wordlists/rockyou.txt password.hash
-
+In this task we utilize insecure read permissions for the /etc/shadow file.
 
 1. What is the root user's password hash?
 
+   We first need to find the permission we have for this file as a normal user.
+
+   ```cmd
+   ls -lh /etc/shadow
+   ```
    
+   ![]()
+   
+   Looks like the file as read and write permissions for all users. We can now view the file.
+   
+   ```cmd
+   cat /etc/shadow
+   ```
+   
+   Here we can find the has for the user `root` between the first two `:`.
+   
+   ![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Readable_Shadow_Contents.png)
 
    ><details><summary>Click for answer</summary>$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0</details>
 
 2. What hashing algorithm was used to produce the root user's password hash?
 
+   THe first thing we can try is `hash-identifier` to find the hashing algorithm.
    
+   ![Hash Identifier](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Readable_Shadow_Hash_Identifier.png)
+   
+   Looks like it is a SHA256 hash. However, using examples from `hashcat` we can find the exact hash by looking at the format.
+   
+   ![Hashcat Examples](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Readable_Shadow_Hashcat_Examples.png)
 
    ><details><summary>Click for answer</summary>sha512crypt</details>
 
 3. What is the root user's password?
 
+   The next step is to crack the password with either `hashcat` or `john`. 
    
-
+   ```cmd
+   hashcat -m 1800 password.hash /usr/share/wordlists/rockyou.txt
+   ```
+   
+   ![Hashcat Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Readable_Shadow_Hashcat_Results.png)
+   
+   ```cmd
+   john --wordlist=/usr/share/wordlists/rockyou.txt password.hash
+   ```
+   
+   ![John Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Readable_Shadow_John_Results.png)
+   
+   Now we can use the found password to switch to the root user.
+   
+   ```cmd
+   su -u root
+   ```
+   
    ><details><summary>Click for answer</summary>password123</details>
 
 ### Weak File Permissions - Writable /etc/shadow
@@ -77,16 +118,45 @@ john --wordlist=/usr/share/wordlists/rockyou.txt password.hash
 
 *Read and follow along with the above.*
 
+Again we can use `ls -lh /etc/shadow` to find out what the permissions for this file are.
+
+![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Shadow_Permissions.png)
+
+Instead of cracking the password, we can simply add our own, since we have write permissions for this file. We can use `mkpasswd` to create the hashed password.
+
+```cmd
+mkpasswd -m sha-512 iamroot
+```
+
+Next we can replace the root users password with our own password.
+
+![Modify](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Shadow_Modify.png)
+
+Now we can switch to the root user with our own password.
+
+![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Shadow_Root.png)
+
 ### Weak File Permissions - Writable /etc/passwd
 
 1. Run the "id" command as the newroot user. What is the result?
 
-   ![]()
+   ![Modification](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Modification.png)
 
    ><details><summary>Click for answer</summary>uid=0(root) gid=0(root) groups=0(root)</details>
 
 ### Sudo - Shell Escape Sequences
 
+![Apache 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Apache2.png)
+![Awk](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Awk.png)
+![Find](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Find.png)
+![Ftp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Ftp.png)
+![Iftop](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Iftop.png)
+![Less](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Less.png)
+![Man](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Man.png)
+![More](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_More.png)
+![Nano](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Nano.png)
+![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Nmap.png)
+![Vim](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Vim.png)
 
 
 1. How many programs is "user" allowed to run via sudo? 
@@ -203,6 +273,11 @@ sudo apache2 -f /etc/shadow
 https://touhidshaikh.com/blog/2018/04/abusing-sudo-linux-privilege-escalation/
 
 ### Sudo - Environment Variables
+
+![Libraries](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Libraries.png)
+![Library](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Library.png)
+![Pre Load](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Preload.png)
+
 
 *Read and follow along with the above.*
 
