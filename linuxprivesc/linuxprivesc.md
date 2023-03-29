@@ -1000,7 +1000,7 @@ perl /home/user/tools/kernel-exploits/linux-exploit-suggester-2/linux-exploit-su
 
 ![Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxprivesc/Kernel_Exploits_Suggester.png)
 
-Looks like we can use the Dirty COQ exploit. Lets compile the code and run it.
+Looks like we can use the Dirty COW exploit. Lets compile the code and run it.
 
 ```cmd
 gcc -pthread /home/user/tools/kernel-exploits/dirtycow/c0w.c -o c0w
