@@ -82,6 +82,8 @@ This guide contains the answer and steps necessary to get to them for the [Crack
    
    used crackstation
    
+   ![5 Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/crackthehash/Level_One_5_Password.png)
+   
    ><details><summary>Click for answer</summary>Eternity22</details>
 
 ### Level 2
