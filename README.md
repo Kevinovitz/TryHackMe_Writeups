@@ -14,7 +14,7 @@ The following rooms are available/in progress:
 - [Anonymous](anonymous/anonymous.md)
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
-- [Crack the Hash](crackthehash/crackthehash.md) [WiP]
+- [Crack the Hash](crackthehash/crackthehash.md)
 - [Hydra](hydra/hydra.md)
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
