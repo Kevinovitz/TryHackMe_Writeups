@@ -1,7 +1,7 @@
 ![Windows Fundamentals 1](https://assets.tryhackme.com/room-banners/windows.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/crackthehash/Windows_Fundamentals_1_Cover.png" alt="Windows Fundamentals 1 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Cover.png" alt="Windows Fundamentals 1 Logo">
 </p>
 
 # Windows Fundamentals 1
