@@ -28,9 +28,9 @@ The following rooms are available/in progress:
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
-- [Windows Fundamentals 1](https://tryhackme.com/room/windowsfundamentals1xbx) [WiP]
-- [Windows Fundamentals 2](https://tryhackme.com/room/windowsfundamentals2x0x) [planned]
-- [Windows Fundamentals 3](https://tryhackme.com/room/windowsfundamentals3xzx) [planned]
+- [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals1.md) [WiP]
+- [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [planned]
+- [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [planned]
 - [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - more to come
 
