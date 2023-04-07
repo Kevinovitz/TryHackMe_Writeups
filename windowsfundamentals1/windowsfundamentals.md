@@ -22,22 +22,77 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 ### Windows Editions
 
 
+
+1. What encryption can you enable on Pro that you can't enable in Home?
+
+   ><details><summary>Click for answer</summary></details>
+
 ### The Desktop (GUI)
+
+
+
+1.  Which selection will hide/disable the Search box?
+
+
+
+
+
+2. Which selection will hide/disable the Task View button?
+
+
+
+
+
+3. Besides Clock and Network, what other icon is visible in the Notification Area?
+
+
+
 
 
 ### The File System
 
 
+
+1.  What is the meaning of NTFS? 
+
+
 ### The Windows\System32 Folders
+
+
+
+1.  What is the system variable for the Windows folder? 
 
 
 ### User Accounts, Profiles, and Permissions
 
 
+
+1. What is the name of the other user account?
+
+2. What groups is this user a member of?
+
+3. What built-in account is for guest access to the computer?
+
+4. What is the account status?
+
+
+
 ### User Account Control
+
+
+
+
 
 
 ### Settings and the Control Panel
 
 
+
+
+
+
 ### Task Manager 
+
+
+
+
