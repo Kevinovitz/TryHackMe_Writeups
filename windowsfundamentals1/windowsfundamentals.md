@@ -23,7 +23,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
 1. What encryption can you enable on Pro that you can't enable in Home?
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>BitLocker</details>
 
 ### The Desktop (GUI)
 
@@ -34,19 +34,19 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 ![Searchbox](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Searchbox.png)
 
 
-
+   ><details><summary>Click for answer</summary>Hidden</details>
 
 2. Which selection will hide/disable the Task View button?
 
 
 
-
+   ><details><summary>Click for answer</summary>Show Task View button</details>
 
 3. Besides Clock and Network, what other icon is visible in the Notification Area?
 
 ![Action Center](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Action_Center.png)
 
-
+   ><details><summary>Click for answer</summary>Action Center</details>
 
 
 ### The File System
@@ -55,6 +55,8 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
 1.  What is the meaning of NTFS? 
 
+   ><details><summary>Click for answer</summary>New Technology File System</details>
+
 
 ### The Windows\System32 Folders
 
@@ -62,6 +64,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
 1.  What is the system variable for the Windows folder? 
 
+   ><details><summary>Click for answer</summary>%windir%</details>
 
 ### User Accounts, Profiles, and Permissions
 
@@ -72,36 +75,46 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 ![Other Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Other_Users.png)
 ![Lusrmgr Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Users.png)
 
+   ><details><summary>Click for answer</summary>tryhackmebilly</details>
+
 2. What groups is this user a member of?
 
 ![Lusrmgr Groups](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Groups.png)
 
+   ><details><summary>Click for answer</summary>Remote Desktop Users,Users</details>
+
 3. What built-in account is for guest access to the computer?
 
+   ><details><summary>Click for answer</summary>Guest</details>
 
 4. What is the account status?
 
 ![Lusrmgr Guest](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Guest.png)
+
+   ><details><summary>Click for answer</summary>Account is disabled</details>
 
 
 
 ### User Account Control
 
 
+1. What does UAC mean? 
 
-
-
+   ><details><summary>Click for answer</summary>User Account Control</details>
 
 ### Settings and the Control Panel
 
 
+1. In the Control Panel, change the view to Small icons. What is the last setting in the Control Panel view? 
 
 ![Control Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Control_Panel.png)
 
-
+   ><details><summary>Click for answer</summary>Windows Defender Firewall</details>
 
 ### Task Manager 
 
+1.  What is the keyboard shortcut to open Task Manager? 
 
 
+   ><details><summary>Click for answer</summary>Ctrl+Shift+Esc</details>
 
