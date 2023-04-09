@@ -52,6 +52,7 @@ In this task we will be looking at the System Configuration utility which is use
 
 1.  What is the command to open User Account Control Settings? (The answer is the name of the .exe file, not the full path)
 
+![User Account Control](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_User_Account_Control.png)
 
    ><details><summary>Click for answer</summary>UserAccountControlSettings.exe</details>
 
@@ -115,6 +116,8 @@ In this task we will be looking at the System Configuration utility which is use
 
 
 1. In System Configuration, what is the full command for Internet Protocol Configuration?
+
+![IP Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_IP_Command.png)
 
    ><details><summary>Click for answer</summary>C:\Windows\System32\cmd.exe /k %windir%\system32\ipconfig.exe</details>
 
