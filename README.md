@@ -30,7 +30,7 @@ The following rooms are available/in progress:
 - [Vulnversity](vulnversity/vulnversity.md)
 - [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md) [WiP]
 - [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [WiP]
-- [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [planned]
+- [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [WiP]
 - [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - more to come
 
