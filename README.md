@@ -15,6 +15,7 @@ The following rooms are available/in progress:
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
 - [Crack the Hash](crackthehash/crackthehash.md)
+- [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [Hydra](hydra/hydra.md)
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
