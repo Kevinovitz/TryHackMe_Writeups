@@ -1,4 +1,4 @@
-![Content Discovery](https://tryhackme-images.s3.amazonaws.com/user-uploads/5efe36fb68daf465530ca761/room-content/03376575e888fd097280c51469c29fbc.png)
+![Content Discovery](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Banner.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Cover.png" alt="Content Discovery Logo">
@@ -120,36 +120,68 @@ In this task we will look at the framework stack of the website.
 
 ### OSINT - Google Hacking / Dorking
 
+This room tels us more about google dorking and how it can be used to get better results.
 
+1. What Google dork operator can be used to only show results from a particular site?
 
-   ><details><summary>Click for answer</summary></details>
+   This answer can be found in the supplied text.
+
+   ><details><summary>Click for answer</summary>site:</details>
 
 ### OSINT - Wappalyzer
 
+This task introduces the Wappalyzer tool.
 
+1. What online tool can be used to identify what technologies a website is running?
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Whappalyzer</details>
 
 ### OSINT - Wayback Machine
 
+This task gives us more info about the Wayback Machine website and its activities.
 
+1. What is the website address for the Wayback Machine?
 
+   The link to the service can be found in the text.
+   
    ><details><summary>Click for answer</summary></details>
 
 ### OSINT - GitHub
 
+This task show us how we can use GitHub to get information about a certain company, website, etc.
 
+1. What is Git? 
 
-   ><details><summary>Click for answer</summary></details>
+   The answer to this question can be found in the text.
+   
+   ><details><summary>Click for answer</summary>Version Control System</details>
 
 ### OSINT - S3 Buckets
 
+This task focusses on Amazon AWS buckets and their use.
 
+1.  What URL format do Amazon S3 buckets end in?
 
-   ><details><summary>Click for answer</summary></details>
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>s3.amazonaws.com</details>
 
 ### Automated Discovery
 
+This task tell us more about the various automated ways we can discovery hidden content.
+ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://10.10.69.221/FUZZ
+dirb http://10.10.69.221 /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+gobuster dir -u http://10.10.69.221/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+1. What is the name of the directory beginning "/mo...." that was discovered?
 
 
-   ><details><summary>Click for answer</summary></details>
+
+   ><details><summary>Click for answer</summary>/development.log</details>
+
+2. What is the name of the log file that was discovered?
+
+
+
+   ><details><summary>Click for answer</summary>/development.log</details>
