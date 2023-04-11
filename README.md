@@ -15,7 +15,7 @@ The following rooms are available/in progress:
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
 - [Crack the Hash](crackthehash/crackthehash.md)
-- [Content Discovery](contentdiscovery/contentdiscovery.md)
+- [Content Discovery](contentdiscovery/contentdiscovery.md) [WiP]
 - [Hydra](hydra/hydra.md)
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
@@ -31,7 +31,7 @@ The following rooms are available/in progress:
 - [Vulnversity](vulnversity/vulnversity.md)
 - [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md)
 - [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md)
-- [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [WiP]
+- [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md)
 - [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - more to come
 
