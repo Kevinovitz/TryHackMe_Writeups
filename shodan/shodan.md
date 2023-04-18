@@ -79,13 +79,15 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
 ### Shodan Monitor
 
-
+In this task we will look at a premium Shodan feature called Shodan Monitor.
 
 1. What URL takes you to Shodan Monitor?
 
+   Unfortunately, this feature is paid, so I am not able to check it out for myself. In addition the images in the room of this feature have been deleted as well.
    
+   The answer can, fortunately, be found in the text itself.
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>https://monitor.shodan.io/dashboard</details>
 
 ### Shodan Dorking
 
@@ -93,6 +95,12 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
 1. What dork lets us find PCs infected by Ransomware? 
 
+   For this we can either look at the text or look at the search examples on Shodan and use the following search query:
    
+   ```cmd
+   has_screenshot:true encrypted attention
+   ```
+   
+   1[]() ADD IMAGE HERE
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>has_screenshot:true encrypted attention </details>
