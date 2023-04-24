@@ -10,32 +10,33 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 
 ## Table of contents
 
-[Enumerate](#enumerate)
-[Hash cracking and brute-force](#hash-cracking-and-brute-force)
-[Capture the user flag](#capture-the-user-flag)
-[Privilege escalation ](#privilege-escalation)
+- [Enumerate](#enumerate)
+- [Hash cracking and brute-force](#hash-cracking-and-brute-force)
+- [Capture the user flag](#capture-the-user-flag)
+- [Privilege escalation ](#privilege-escalation)
 
 ### Enumerate
 
-
+**IP Adress:** 10.10.203.242
 
 1. How many open ports?
 
+   nmap -sV 10.10.203.242
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>3</details>
 
 2. How you redirect yourself to a secret page?
 
+   Another way is to use curl -A "User-agent"
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>user-agent</details>
 
 3. What is the agent name?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>chris</details>
 
 ### Hash cracking and brute-force
 
@@ -43,9 +44,10 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 
 1. FTP password
 
+   hydra -l chris -P /usr/share/wordlists/rockyou.txt ftp://10.10.203.242 -t 4
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>crystal</details>
 
 2. Zip file password
 
