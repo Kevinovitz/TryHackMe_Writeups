@@ -51,6 +51,7 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 
 2. Zip file password
 
+stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt 
 
 
    ><details><summary>Click for answer</summary></details>
@@ -71,7 +72,7 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>hackerrules!</details>
 
 ### Capture the user flag
 
