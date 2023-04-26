@@ -51,22 +51,65 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 
 2. Zip file password
 
-stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt 
+   The two images don't tell us much. The text file, however, gives us some clues as to what we might need to do next.
+   
+   CRACKING TEXT FILE
+   
+   Lets start with the jpg file. Using steghide we stry to find anything hidden, but unfortunately we need a passphrase and the png file doesn't seem to give us contain anything. Using strings does give us some clues that something is hidden inside.
+   
+   ```cmd
+   strings cutie.png
+   ```
+   
+   CRACKING PNG STRINGS
+   
+   We can try using `binwalk` to get anything from it.
+   
+   ```cmd
+   binwalk cutie.png -e
+   ```
+   
+   CRACKING EXTRACT IMAGE
+   
+   Looks like there are some files and a zip archive hidden inside. Looking at the text file and the other two files gives us nothing. Neither when using `file` or `strings`. The zip file on the other hand does seem to contain a note. However, it is password protected. We can use `fcrackzip` to try a crack the password
+   
+   ```cmd
+   fcrackzip -v -u -D -p /usr/share/wordlists/rockyou.txt _cutie.png.extracted/8702.zip
+   ```
+   
+   CRACKING FCRACKZIP
+   
+   Unfortunately, it couldn't find the password. Next thing to try is `john`. But we first need to create a hash from the zipfile using `zip2john`. Then we can use it in John.
+   
+   ```cmd
+   zip2john _cutie.png.extracted/8702.zip > ziphash.txt
+   
+   john ziphash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+   ```
+   
+   CRACKING ZIP JOHN
+   
+   With the password found, we can open the textfile and read its contents.
+   
+   CRACKING ZIP MESSAGE
+   
+   The name seems to be base64 encoded. Using Cyberchef this gives us Area51.
+   
+   CRACKING CYBERCHEF
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>alien</details>
 
 3. steg password
 
+stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt 
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Area51</details>
 
 4. Who is the other agent (in full name)?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>James</details>
 
 5. SSH password
 
@@ -80,15 +123,33 @@ stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt
 
 1. What is the user flag?
 
+   Using username chris doesn't allow us to log in with SSH and the password we found. James, however, does work.
+   
+   ```cmd
+   ssh james@10.10.186.39
+   ```
+   
+   CAPTURE SSH LOGIN
+   
+   Looking through the directory we can see the user flag and read its contents.
+   
+   CAPTURE USER FLAG
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>b03d975e8c92a7c04146cfa7a5a313c7</details>
 
 2. What is the incident of the photo called?
 
+   We can download the image through `scp`.
+   
+   ```cmd
+   scp james@10.10.186.39:/home/james/Alien_autospy.jpg Alien_autospy.jpg 
+   ```
+   
+   CAPTURE DOWNLOAD IMAGE SSH
+   
+   
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Aut</details>
 
 ### Privilege escalation 
 
