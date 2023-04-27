@@ -6,7 +6,7 @@
 
 # Windows Fundamentals 1
 
-This guide contains the answer and steps necessary to get to them for the [Windows Fundamentals 1](https://tryhackme.com/room/windowsfundamentals1) room.
+This guide contains the answer and steps necessary to get to them for the [Windows Fundamentals 1](https://tryhackme.com/room/windowsfundamentals1xbx) room.
 
 ### Table of Contents
 
