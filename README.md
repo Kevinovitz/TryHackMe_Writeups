@@ -11,11 +11,13 @@ The following rooms are available/in progress:
 
 - [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
 - [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
+- [Agent Sudo](agentsudoctf/agentsudoctf.md) [WiP]
 - [Anonymous](anonymous/anonymous.md)
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
-- [Crack the Hash](crackthehash/crackthehash.md)
+- [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
 - [Content Discovery](contentdiscovery/contentdiscovery.md) [WiP]
+- [Crack the Hash](crackthehash/crackthehash.md)
 - [Hydra](hydra/hydra.md)
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
@@ -25,8 +27,8 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
-- [Simple CTF](easyctf/easyctf.md)
 - [Shodan.io](shodan/shodan.md) [WiP]
+- [Simple CTF](easyctf/easyctf.md)
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
 - [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md) [Answered]
