@@ -15,7 +15,23 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 - [Capture the user flag](#capture-the-user-flag)
 - [Privilege escalation ](#privilege-escalation)
 
+![FTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_FTP_Password.png)
+![Foxy Proxy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Foxy_Proxy.png)
+![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Nmap_Scan.png)
+![Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Web_Page.png)
+![Web Page R](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Web_Page_R.png)
+
 ### Enumerate
+
+
+![Burp Suite Agent C](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Agent_C.png)
+![Burp Suite Agent R](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Agent_R.png)
+![Burp Suite Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Config.png)
+![Burp Suite Intruder Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Intruder_Config.png)
+![Burp Suite Intruder Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Intruder_Payload.png)
+![Burp Suite Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Results.png)
+![Burp Suite Intruder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_To_Intruder.png)
+![Burp Suite Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Web_Page_C.png)
 
 **IP Adress:** 10.10.203.242
 
@@ -40,6 +56,17 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 
 ### Hash cracking and brute-force
 
+![Cracking Cyberchef](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_CyberChef.png)
+![Cracking Extract Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Extract_Image.png)
+![Cracking FTP Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_FTP_Download.png)
+![Cracking FTP Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_FTP_Login.png)
+![Cracking Fcracking](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Fcrackzip.png)
+![Cracking PNG Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_PNG_strings.png)
+![Cracking Steg Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Steg_Message.png)
+![Cracking Steg Text](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Steg_Text.png)
+![Cracking Text File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Text_File.png)
+![Cracking Zip John](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_John.png)
+![Cracking Zip Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_Message.png)
 
 
 1. FTP password
@@ -119,6 +146,12 @@ stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt
 
 ### Capture the user flag
 
+![Capture Capture Download Image SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Download_Image_SSH.png)
+![Capture Image Event](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Image_Event.png)
+![Capture Reverse Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Image_Reverse_Search.png)
+![Capture SSH Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_SSH_Image.png)
+![Capture SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_SSH_Login.png)
+![Capture User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_User_Flag.png)
 
 
 1. What is the user flag?
@@ -152,6 +185,13 @@ stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt
    ><details><summary>Click for answer</summary>Roswell alien autopsy</details>
 
 ### Privilege escalation 
+
+![Privesc Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Permissions.png)
+![Privesc Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Root_Flag.png)
+![Privesc Sudo Bash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Bash.png)
+![Privesc Sudo Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Exploit.png)
+![Privesc Sudo Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Root.png)
+![Privesc Sudo Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Version.png)
 
 sudo -l
 sudo -V
