@@ -15,42 +15,77 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 - [Capture the user flag](#capture-the-user-flag)
 - [Privilege escalation ](#privilege-escalation)
 
-![FTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_FTP_Password.png)
-![Foxy Proxy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Foxy_Proxy.png)
-![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Nmap_Scan.png)
-![Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Web_Page.png)
-![Web Page R](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Web_Page_R.png)
-
 ### Enumerate
 
-
-![Burp Suite Agent C](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Agent_C.png)
-![Burp Suite Agent R](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Agent_R.png)
-![Burp Suite Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Config.png)
-![Burp Suite Intruder Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Intruder_Config.png)
-![Burp Suite Intruder Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Intruder_Payload.png)
-![Burp Suite Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Results.png)
-![Burp Suite Intruder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_To_Intruder.png)
-![Burp Suite Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Web_Page_C.png)
+In this task, we will find more information about the machine and see if we can access the hidden page.
 
 **IP Adress:** 10.10.203.242
 
 1. How many open ports?
 
+   To find the open ports on the machine we can use nmap.
+   
+   ```cmd
    nmap -sV 10.10.203.242
-
+   ```
+   
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Nmap_Scan.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
 2. How you redirect yourself to a secret page?
 
-   Another way is to use curl -A "User-agent"
+   When we visit the website on port 80, we see the following page:
+   
+   ![Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Web_Page.png)
+   
+   Apparently we can visit this secret page by using the correct codename as the 'user-agent' value in our browser. Judging from the Agent R codename, this might be single letter from the alphabet. Instead of trying each one by one, we can use Burpsuite. We can use the build-in browser from Burpsuite or we can use the FoxyProxy plugin to use Firefox.
+   
+   ![Foxy Proxy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Foxy_Proxy.png)
+   
+   Then we need to make sure 'intercept' is turned on in the Burpsuite Proxy tool.
+   
+   ![Burp Suite Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Config.png)
+   
+   After refreshing the page in Firefox, it is intercepted in Burpsuite. Now we can substitue `r` as our user-agent to test if this works. The forward the requests untill the page loads.
+   
+   ![Burp Suite Agent R](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Agent_R.png)
+   
+   ![Web Page R](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Web_Page_R.png)
+   
+   Looks like we are indeed looking for a letter from the alphabet as our code name, but R is not one of them. Lets use Burpsuite's Intruder tool.
+   
+   Refresh the page again in Firefox and send the request to Intruder in Burpsuite. 
+   
+   ![Burp Suite Intruder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_To_Intruder.png)
+   
+   Remove the use-agent value and replace it with two payload symbols.
+   
+   ![Burp Suite Intruder Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Intruder_Config.png)
+   
+   In the payloads tab, add all letters one by one or with a file containing them all. Then start the attack.
+   
+   ![Burp Suite Intruder Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Intruder_Payload.png)
+   
+   From the results we can see one name stand out from the rest with a different length.
+   
+   ![Burp Suite Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Results.png)
+   
+   Lets return to the Proxy tool and substitute 'C' for our code name. And forward in to the browser.
+   
+   ![Burp Suite Agent C](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Agent_C.png)
+   
+   ![Burp Suite Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Burp_Suite_Web_Page_C.png)
+
+   Bingo!
+   
+   Another way is to use `curl -A "<User-agent>" <address>`
 
    ><details><summary>Click for answer</summary>user-agent</details>
 
 3. What is the agent name?
 
-
+   From the note on this secret page we can find their full name.
 
    ><details><summary>Click for answer</summary>chris</details>
 
@@ -67,6 +102,7 @@ This guide contains the answer and steps necessary to get to them for the [Agent
 ![Cracking Text File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Text_File.png)
 ![Cracking Zip John](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_John.png)
 ![Cracking Zip Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_Message.png)
+![FTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_FTP_Password.png)
 
 
 1. FTP password
