@@ -91,32 +91,33 @@ In this task, we will find more information about the machine and see if we can 
 
 ### Hash cracking and brute-force
 
-![Cracking Cyberchef](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_CyberChef.png)
-![Cracking Extract Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Extract_Image.png)
-![Cracking FTP Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_FTP_Download.png)
-![Cracking FTP Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_FTP_Login.png)
-![Cracking Fcracking](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Fcrackzip.png)
-![Cracking PNG Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_PNG_strings.png)
-![Cracking Steg Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Steg_Message.png)
-![Cracking Steg Text](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Steg_Text.png)
-![Cracking Text File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Text_File.png)
-![Cracking Zip John](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_John.png)
-![Cracking Zip Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_Message.png)
-![FTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_FTP_Password.png)
-
+Now that we have more information on the system, we will try to force our way into the machine in this task. 
 
 1. FTP password
 
+   To get the ftp password we will need Hydra as anonymous login is not enabled. We know the username we can try, so using the following command we can guess the password:
+   
+   ```cmd
    hydra -l chris -P /usr/share/wordlists/rockyou.txt ftp://10.10.203.242 -t 4
-
+   ```
+   
+   ![FTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_FTP_Password.png)
 
    ><details><summary>Click for answer</summary>crystal</details>
 
 2. Zip file password
 
-   The two images don't tell us much. The text file, however, gives us some clues as to what we might need to do next.
+   Now that we have the ftp password we can login.
    
-   CRACKING TEXT FILE
+   ![Cracking FTP Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_FTP_Login.png)
+   
+   Lets see which files are available and download them to our machine using `mget *.*`.
+   
+   ![Cracking FTP Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_FTP_Download.png)
+   
+   The two images don't tell us much at this point. The text file, however, gives us some clues as to what we might need to do next.
+   
+   ![Cracking Text File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Text_File.png)
    
    Lets start with the jpg file. Using steghide we stry to find anything hidden, but unfortunately we need a passphrase and the png file doesn't seem to give us contain anything. Using strings does give us some clues that something is hidden inside.
    
@@ -124,7 +125,7 @@ In this task, we will find more information about the machine and see if we can 
    strings cutie.png
    ```
    
-   CRACKING PNG STRINGS
+   ![Cracking PNG Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_PNG_strings.png)
    
    We can try using `binwalk` to get anything from it.
    
@@ -132,7 +133,7 @@ In this task, we will find more information about the machine and see if we can 
    binwalk cutie.png -e
    ```
    
-   CRACKING EXTRACT IMAGE
+   ![Cracking Extract Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Extract_Image.png)
    
    Looks like there are some files and a zip archive hidden inside. Looking at the text file and the other two files gives us nothing. Neither when using `file` or `strings`. The zip file on the other hand does seem to contain a note. However, it is password protected. We can use `fcrackzip` to try a crack the password
    
@@ -140,7 +141,7 @@ In this task, we will find more information about the machine and see if we can 
    fcrackzip -v -u -D -p /usr/share/wordlists/rockyou.txt _cutie.png.extracted/8702.zip
    ```
    
-   CRACKING FCRACKZIP
+   ![Cracking Fcracking](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Fcrackzip.png)
    
    Unfortunately, it couldn't find the password. Next thing to try is `john`. But we first need to create a hash from the zipfile using `zip2john`. Then we can use it in John.
    
@@ -150,59 +151,63 @@ In this task, we will find more information about the machine and see if we can 
    john ziphash.txt --wordlist=/usr/share/wordlists/rockyou.txt
    ```
    
-   CRACKING ZIP JOHN
+   ![Cracking Zip John](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_John.png)
    
    With the password found, we can open the textfile and read its contents.
    
-   CRACKING ZIP MESSAGE
+   ![Cracking Zip Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Zip_Message.png)
    
    The name seems to be base64 encoded. Using Cyberchef this gives us Area51.
    
-   CRACKING CYBERCHEF
+   ![Cracking Cyberchef](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_CyberChef.png)
 
    ><details><summary>Click for answer</summary>alien</details>
 
 3. steg password
 
-stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt 
-
+   To get to the hidden information in the png file above, we need the passphrase. Another method we can try is stegseek.
+   
+   ```cmd
+   stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt 
+   ```
+   
+   ![Cracking Steg Text](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Steg_Text.png)
+   
+   Looks like it indeed found the passphrase. We could confirm this with steghide if we wanted.
+   
    ><details><summary>Click for answer</summary>Area51</details>
 
 4. Who is the other agent (in full name)?
 
-
+   The name can be found in hidden text file in the image file.
+   
+   ![Cracking Steg Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Cracking_Steg_Message.png)
 
    ><details><summary>Click for answer</summary>James</details>
 
 5. SSH password
 
-
+   The SSH password can also be found in the hidden note in the jpg image.
 
    ><details><summary>Click for answer</summary>hackerrules!</details>
 
 ### Capture the user flag
 
-![Capture Capture Download Image SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Download_Image_SSH.png)
-![Capture Image Event](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Image_Event.png)
-![Capture Reverse Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Image_Reverse_Search.png)
-![Capture SSH Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_SSH_Image.png)
-![Capture SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_SSH_Login.png)
-![Capture User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_User_Flag.png)
-
+In this task we will found out what we can find by logging in through SSH and find the flag.
 
 1. What is the user flag?
 
-   Using username chris doesn't allow us to log in with SSH and the password we found. James, however, does work.
+   Using username chris and the password we found doesn't allow us to log in with SSH. James, however, does work.
    
    ```cmd
    ssh james@10.10.186.39
    ```
    
-   CAPTURE SSH LOGIN
+   ![Capture SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_SSH_Login.png)
    
    Looking through the directory we can see the user flag and read its contents.
    
-   CAPTURE USER FLAG
+   ![Capture User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_User_Flag.png)
 
    ><details><summary>Click for answer</summary>b03d975e8c92a7c04146cfa7a5a313c7</details>
 
@@ -214,49 +219,74 @@ stegseek --crack -sf cute-alien.jpg -wl /usr/share/wordlists/rockyou.txt
    scp james@10.10.186.39:/home/james/Alien_autospy.jpg Alien_autospy.jpg 
    ```
    
-   CAPTURE DOWNLOAD IMAGE SSH
+   ![Capture  Download Image SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Download_Image_SSH.png)
    
+   ![Capture SSH Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_SSH_Image.png)
    
+   Looks like there is some kind of alien laying on a table. Lets do a reverse image search to find out more about the picture.
 
+   ![Capture Reverse Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Image_Reverse_Search.png)
+   
+   ![Capture Image Event](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Capture_Image_Event.png)
+
+   Looks like we found the event this image is from.
+   
    ><details><summary>Click for answer</summary>Roswell alien autopsy</details>
 
 ### Privilege escalation 
 
-![Privesc Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Permissions.png)
-![Privesc Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Root_Flag.png)
-![Privesc Sudo Bash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Bash.png)
-![Privesc Sudo Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Exploit.png)
-![Privesc Sudo Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Root.png)
-![Privesc Sudo Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Version.png)
-
-sudo -l
-sudo -V
-sudo /bin/bash
-sudo -u#-1 /bin/bash
-
+In this final task we will attempt to gain root access to the machine. 
 
 1. CVE number for the escalation 
 
-   PRIVESC PERMISSIONS
+   First we need to find out what we can abuse. To start we can look at which binaries we are allowed to run with sudo.
    
-   PRIVESC SUDO BASH
+   ```cmd
+   sudo -l
+   ```
+
+   ![Privesc Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Permissions.png)
    
-   PRIVESC SUDO EXPLOIT
+   Unfortunately, it seems we can't run bash as root.
+   
+   ```cmd
+   sudo /bin/bash
+   ```
+   
+   ![Privesc Sudo Bash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Bash.png)
+   
+   Lets check what the version of sudo is before continueing.
+   
+   ```cmd
+   sudo -V
+   ```
+   
+   ![Privesc Sudo Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Version.png)
+   
+   After an online search we come across an exploit we can use.   
+   
+   ![Privesc Sudo Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Exploit.png)
 
    ><details><summary>Click for answer</summary>CVE-2019-14287</details>
 
 2. What is the root flag?
 
-   PRIVESC SUDO VERSION
+   The exploit page from the previous question gives us the command we need to run to get root access.
    
-   PRIVESC SUDO ROOT
+   ```cmd
+   sudo -u#-1 /bin/bash
+   ```
    
-   PRIVESC SUDO FLAG
+   ![Privesc Sudo Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Sudo_Root.png)
+   
+   Once we are in, we can look for and read the root flag.
+   
+   ![Privesc Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/agentsudoctf/Agent_Sudo_Privesc_Root_Flag.png)
 
    ><details><summary>Click for answer</summary>b53a02f55b57d4439e3341834d70c062</details>
 
 3. (Bonus) Who is Agent R?
 
-
+   In the not left by the author we can see who Agent R really is.
 
    ><details><summary>Click for answer</summary>DesKel</details>
