@@ -16,6 +16,7 @@ The following rooms are available/in progress:
 - [Blaster](blaster/blaster.md) [WiP]
 - [Blue](blue/blue.md)
 - [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
+- [Burp Suite: The Basics](burpsuitebasics/burpsuitebasics.md) [WiP]
 - [Content Discovery](contentdiscovery/contentdiscovery.md) [WiP]
 - [Crack the Hash](crackthehash/crackthehash.md)
 - [Hydra](hydra/hydra.md)
