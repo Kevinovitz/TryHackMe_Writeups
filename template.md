@@ -1,3 +1,5 @@
+![Title Banner](https://tryhackme.com/img/banners/default_tryhackme.png)
+
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/NAME/_Cover.png" alt="TITLE Logo">
 </p>
