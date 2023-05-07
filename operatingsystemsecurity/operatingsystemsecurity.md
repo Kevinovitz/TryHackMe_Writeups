@@ -43,34 +43,72 @@ This guide contains the answer and steps necessary to get to them for the [Opera
 
 ### Practical Example of OS Security
 
-NMAP
+In this task we will attempt to get into the system and see if we can find password information for other users. After a quick scan we see that SSH is running on its default port.
 
-SSH SAMMIE LOGIN
+```cmd
+nmap -sV 10.10.55.195
+```
 
-SAMMIE COMMANDS
+![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Nmap.png)
 
-SAMMIE HISTORY
+With the information we found on the notes we can try logging into sammie's account through SSH.
 
-USERS
+```cmd
+ssh sammie@10.10.55.195
+```
+
+![SSH Sammie Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_SSH_Sammie_Login.png)
+
+Next we use the mentioned commands to get some more info on the system
+
+![Sammie Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Sammie_Commands.png)
+
+We also look at the terminal history with `history`.
+
+![Sammie History](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Sammie_History.png)
+
+They mentioned others users. We can check this by looking at the home folder.
+
+```cmd
+ls -lh /home/
+```
+
+![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Users.png)
 
 1. Based on the top 7 passwords, let’s try to find Johnny’s password. What is the password for the user johnny?
 
-   TOP 7 ROCKYOU
+   I looked a different websites and the top 7 of the rockyou.txt file, but couldn't find the correct password.
    
-   HYDRA JOHNNY
+   ```cmd
+   sed -n 1,7p /usr/share/wordlists/rockyou.txt
+   ```
    
-   JOHNNY LOGIN
+   ![Top 7 Rockyou](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Top_7_Rockyou.png)
+   
+   I then decided to cheat a little and use hydra to crack it using the rockyou list.
+   
+   ```cmd
+   hydra -l sammie -P /usr/share/wordlists/rockyou.txt ssh://10.10.55.195 -t 4
+   ```
+   
+   ![Hydra Johnny](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Hydra_Johnny.png)
+   
+   ![Johnny Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Johnny_Login.png)
 
    ><details><summary>Click for answer</summary>abc123</details>
 
 2. Once you are logged in as Johnny, use the command history to check the commands that Johnny has typed. We expect Johnny to have mistakenly typed the root password instead of a command. What is the root password?
 
-   JOHNNY FILES
+   Looking through the `history` file we can see a password.
+   
+   ![Johnny Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Johnny_Files.png)
 
    ><details><summary>Click for answer</summary>happyHack!NG</details>
 
 3. While logged in as Johnny, use the command su - root to switch to the root account. Display the contents of the file flag.txt in the root directory. What is the content of the file?
 
-   ROOT
+   We use `su - root` to switch to the root user with our found password and look for the flag on the system.
+   
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Root.png)
 
    ><details><summary>Click for answer</summary>THM{YouGotRoot}</details>
