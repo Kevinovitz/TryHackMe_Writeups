@@ -27,6 +27,7 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
+- [Operating System Security](operatingsystemsecurity/operatingsystemsecurity.md)
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [Simple CTF](easyctf/easyctf.md)
