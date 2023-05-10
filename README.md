@@ -27,8 +27,8 @@ The following rooms are available/in progress:
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
-- [Network Security](intronetworksecurity/intronetworksecurity.md)
-- [Operating System Security](operatingsystemsecurity/operatingsystemsecurity.md)
+- [Network Security*](intronetworksecurity/intronetworksecurity.md)
+- [Operating System Security*](operatingsystemsecurity/operatingsystemsecurity.md)
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [Simple CTF](easyctf/easyctf.md)
@@ -40,5 +40,6 @@ The following rooms are available/in progress:
 - [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - more to come
 
-
 Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.
+
+*This room is only available with an subscription.
