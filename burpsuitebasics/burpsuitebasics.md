@@ -16,7 +16,6 @@ This guide contains the answer and steps necessary to get to them for the [Burp 
 - [Proxy Introduction to the Burp Proxy](#proxy-introduction-to-the-burp-proxy)
 - [Proxy Connecting through the Proxy (FoxyProxy)](#proxy-connecting-through-the-proxy-(foxyproxy))
 - [Proxy Proxying HTTPS](#proxy-proxying-https)
-- [Proxy The Burp Suite Browser](#proxy-the-burp-suite-browser)
 - [Proxy Scoping and Targeting](#proxy-scoping-and-targeting)
 - [Proxy Site Map and Issue Definitions](#proxy-site-map-and-issue-definitions)
 - [Practical Example Attack ](#practical-example-attack)
@@ -91,15 +90,21 @@ The answers to the following questions can be found by looking through the setti
 
 1. Which button would we choose to send an intercepted request to the target in Burp Proxy?
 
+   On the proxy tab we can enable intercept, open the browser, and navigating to tryhackme.com. 
    
+   INTERCEPTED
+   
+   If we want to send the request to the browser, we must click forward.
+   
+   FORWARDED
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Forward</details>
 
 2. [Research] What is the default keybind for this? **Note**: Assume you are using Windows or Linux (i.e. swap Cmd for Ctrl). 
 
-   
+   With a quick search we can find the required hotkey.
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Ctrl+F</details>
 
 ### Proxy Connecting through the Proxy (FoxyProxy)
 
@@ -107,55 +112,54 @@ The answers to the following questions can be found by looking through the setti
 
 1. 
 
-   
+   OPTION
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Response to this request</details>
 
 ### Proxy Proxying HTTPS
 
+I had already configure Firefox before with the certificate for Burp Suite. However, when trying in this room, it seemed to not work anymore. Even downloading the certificate didn't work.
 
+So I made a backup of the current certificate that was loaded, deleted it, and then I could download the certificate again. 
 
-1. 
-
-   
-
-   ><details><summary>Click for answer</summary></details>
-
-### Proxy The Burp Suite Browser
-
-
-
-1. 
-
-   
-
-   ><details><summary>Click for answer</summary></details>
+After importing it, I could visit TLS enabled websites in Firefox through FoxyProxy.
 
 ### Proxy Scoping and Targeting
 
+No real difference was spotted when targeting the specific URL (http://http://10.10.195.240/). This might be due to the website having no redirects.
 
-
-1. 
-
-   
-
-   ><details><summary>Click for answer</summary></details>
+NOT SCOPED
 
 ### Proxy Site Map and Issue Definitions
 
 
 
-1. 
+1. What is the flag you receive?
 
+   SITEMAP URL
    
+   SITEMAP FLAG
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{NmNlZTliNGE1MWU1ZTQzMzgzNmFiNWVk}</details>
+
+Look through the Issue Definitions list.
+
+2. What is the typical severity of a Vulnerable JavaScript dependency?
+
+   If we navigate to the Issue Definitions list we can find the severity for a Vulnerable JavaScript dependency.
+   
+   SITEMAP VULNERABILITY
+
+   ><details><summary>Click for answer</summary>Low</details>
 
 ### Practical Example Attack 
 
 
-1. 
 
-   
+QUERY
 
-   ><details><summary>Click for answer</summary></details>
+SCRIPT
+
+SCRIPT ENCODED
+
+SUCCESS
