@@ -20,6 +20,23 @@ This guide contains the answer and steps necessary to get to them for the [Burp 
 - [Proxy Site Map and Issue Definitions](#proxy-site-map-and-issue-definitions)
 - [Practical Example Attack ](#practical-example-attack)
 
+![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Intercepted.png)
+![Option](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Option.png)
+![Query](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Query.png)
+![Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Request.png)
+![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script.png)
+![Script Encoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script_Encoded.png)
+![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Success.png)
+![Forwarded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Forwarded.png)
+![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Intercepted.png)
+![Bindings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Bindings.png)
+![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Cookie.png)
+![Update](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Update.png)
+![Not Scoped](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Scoping_Targeting_Not_Scoped.png)
+![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Flag.png)
+![URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_URL.png)
+![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Vulnerability.png)
+
 ### Getting Started What is Burp Suite?
 
 1. Which edition of Burp Suite will we be using in this module?
