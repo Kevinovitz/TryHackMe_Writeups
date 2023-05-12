@@ -30,6 +30,7 @@ The following rooms are available/in progress:
 - [Network Security*](intronetworksecurity/intronetworksecurity.md)
 - [Operating System Security*](operatingsystemsecurity/operatingsystemsecurity.md)
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
+- [Red Team Recon](redteamrecon/redteamrecon.md) [WiP]
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [Simple CTF](easyctf/easyctf.md)
 - [SQL Injection](sql_injection/sql_injection.md)
