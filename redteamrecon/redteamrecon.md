@@ -1,7 +1,7 @@
-![Red Team Recon Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/889794a57c33230c3bec352963d1d7a5.png)
+![Red Team Recon Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red Team Recon_Cover.png" alt="Red Team Recon Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Cover.png" alt="Red Team Recon Logo">
 </p>
 
 # Red Team Recon
