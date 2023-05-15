@@ -1,4 +1,4 @@
-![Weaponization Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/07dbc3d30ed9fe203980fa15046d29eb.png)
+![Weaponization Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Banner_Cover.png")
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Cover.png" alt="Weaponization Logo">
