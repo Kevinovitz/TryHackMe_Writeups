@@ -20,7 +20,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 ### Windows Scripting Host - WSH
 
 
-1. 
+1. Try to replace the calc.exe binary to execute cmd.exe within the Windows machine.
 
    
 
@@ -29,7 +29,8 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 ### An HTML Application - HTA
 
 
-1. 
+1. Now, apply what we discussed to receive a reverse connection using the user simulation machine in the Practice Arena task.
+
 
    
 
@@ -38,7 +39,8 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 ### Visual Basic for Application - VBA
 
 
-1. 
+1. Now replicate and apply what we discussed to get a reverse shell!
+
 
    
 
@@ -47,7 +49,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 ### PowerShell - PSH
 
 
-1. 
+1. Apply what you learned in this task. In the next task, we will discuss Command and Control frameworks! 
 
    
 
@@ -56,7 +58,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 ### Delivery Techniques
 
 
-1. 
+1. Which method is used to distribute payloads to a victim at social events?
 
    
 
@@ -66,11 +68,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 
 
 
-
-
-
-
-1. 
+1. What is the flag? Hint: Check the user desktop folder for the flag! 
 
    
 
