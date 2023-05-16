@@ -20,7 +20,6 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
 ### Password Attacking Techniques
 
-
 1. Which type of password attack is performed locally?
 
    Password cracking is done after the password hash has been extracted to get the password itself. Password guessing is usually done online towards a service.
@@ -34,7 +33,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    For this we can use one of the default passwords website provided. In this case I used `https://default-password.info`.
    
-   PROFILING 1 JUNIPER
+   ![Juniper](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling1_Juniper.png)
 
    ><details><summary>Click for answer</summary>netscreen:netscreen</details>
 
@@ -49,7 +48,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
     crunch 2 2 01234abcd -o crunch.txt
     ```
     
-    PROFILING 2 CRUNCH LINES
+    ![Crunch Lines](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling2_Crunch_Lines.png)
 
    ><details><summary>Click for answer</summary>81</details>
 
@@ -71,7 +70,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    We can use `hash-identifier` to find out what hash type this is.
    
-   OFFLINE HASH
+   ![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash.png)
 
    ><details><summary>Click for answer</summary>SHA-1</details>
 
@@ -79,11 +78,11 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    Lets first find out what the type of this hash is with `hash-identifier`.
    
-   OFFLINE HASH 2
+   ![Hash 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_2.png)
    
    Now we can look at the hashcat examples page what the correct argument for SHA-1 is.
    
-   OFFLINE HASHTYPE
+   ![Hash Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_Type.png)
    
    Putting this together gives us the following command:
    
@@ -91,7 +90,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
    hashcat -a 0 -m 100 8d6e34f987851aa599257d3831a1af040886842f /usr/share/wordlists/rockyou.txt 
    ```
    
-   OFFLINE DICTIONARY ATTACK
+   ![Dictionary Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Dictionary_Attack.png)
 
    ><details><summary>Click for answer</summary>sunshine</details>
 
@@ -103,7 +102,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
    hashcat -a 3 m 0 e48e13207341b6bffb7fb1622282247b ?d?d?d?d
    ```
    
-   OFFLINE BRUTE FORCE
+   ![Brute Force](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Brute_Force.png)
 
    ><details><summary>Click for answer</summary>1337</details>
 
