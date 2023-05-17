@@ -18,6 +18,29 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 - [Online password attacks](#online-password-attacks)
 - [Password spray attack ](#password-spray-attack)
 
+![Brute Force](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Brute_Force.png)
+![Dictionary Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Dictionary_Attack.png)
+![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash.png)
+![Hash 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_2.png)
+![Hash Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_Type.png)
+![FTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_FTP_Flag.png)
+![HTTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Flag.png)
+![HTTP Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Form.png)
+![HTTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Password.png)
+![HTTP Post Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Flag.png)
+![HTTP Post Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Form.png)
+![HTTP Post Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Password.png)
+![John Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_John_Config.png)
+![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap.png)
+![Nmap All](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap_All.png)
+![SMTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_SMTP_Password.png)
+![Spray Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Config.png)
+![Spray Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Flag.png)
+![Spray Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Hydra.png)
+![Spray SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_SSH_Login.png)
+![Juniper](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling1_Juniper.png)
+![Crunch Lines](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling2_Crunch_Lines.png)
+
 ### Password Attacking Techniques
 
 1. Which type of password attack is performed locally?
