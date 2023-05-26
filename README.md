@@ -23,21 +23,21 @@ The following rooms are available/in progress:
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
-- [Metasploit: Exploitation*](metasploitexploitation) [Answered]
+- [**Metasploit: Exploitation***](metasploitexploitation) [Answered]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
-- [Network Security*](intronetworksecurity/intronetworksecurity.md)
-- [Operating System Security*](operatingsystemsecurity/operatingsystemsecurity.md)
-- [Password Attacks*](passwordattacks/passwordattacks.md) [WiP]
+- [**Network Security***](intronetworksecurity/intronetworksecurity.md)
+- [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
+- [**Password Attacks***](passwordattacks/passwordattacks.md) [WiP]
 - [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [Red Team Recon](redteamrecon/redteamrecon.md) [WiP]
 - [Shodan.io](shodan/shodan.md) [WiP]
 - [Simple CTF](easyctf/easyctf.md)
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
-- [Weaponization*](weaponization/weaponization.md) [Answered]
+- [**Weaponization***](weaponization/weaponization.md) [Answered]
 - [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md) [Answered]
 - [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [Answered]
 - [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [Answered]
