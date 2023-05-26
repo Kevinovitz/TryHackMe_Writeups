@@ -23,6 +23,7 @@ The following rooms are available/in progress:
 - [Ice](ice/ice.md)
 - [OhSINT](ohsint/ohsint.md)
 - [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
+- [Metasploit: Exploitation](metasploitexploitation) [WiP]
 - [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
