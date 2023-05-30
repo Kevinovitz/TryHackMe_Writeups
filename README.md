@@ -37,6 +37,7 @@ The following rooms are available/in progress:
 - [Simple CTF](easyctf/easyctf.md)
 - [SQL Injection](sql_injection/sql_injection.md)
 - [Vulnversity](vulnversity/vulnversity.md)
+- [Walking An Application](walkinganapplication/walkinganapplication.md) [Answered]
 - [**Weaponization***](weaponization/weaponization.md) [Answered]
 - [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md) [Answered]
 - [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [Answered]
