@@ -13,7 +13,7 @@ The following rooms are available/in progress:
 - [x] [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
-- [ ] [Authentication Bypass](authenticationbypass/authenticationbypass.md) [WiP]
+- [ ] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md) [WiP]
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
