@@ -20,6 +20,7 @@ The following rooms are available/in progress:
 - [ ] [Burp Suite: The Basics](burpsuitebasics/burpsuitebasics.md) [WiP]
 - [ ] [Content Discovery](contentdiscovery/contentdiscovery.md) [WiP]
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
+- [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
 - [x] [OhSINT](ohsint/ohsint.md)
