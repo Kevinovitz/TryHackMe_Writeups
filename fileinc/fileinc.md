@@ -69,25 +69,25 @@ This guide contains the answer and steps necessary to get to them for the [File 
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>F1x3d-iNpu7-f0rrn</details>
 
 2. Capture Flag2 at /etc/flag2
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>c00k13_i5_yuMmy1</details>
 
 3. Capture Flag3 at /etc/flag3
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>P0st_1s_w0rk1in9</details>
 
 4. Gain RCE in Lab #Playground /playground.php with RFI to execute the hostname command. What is the output?
 
       
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>lfi-vm-thm-f8c5b1a78692</details>
 
 
 
