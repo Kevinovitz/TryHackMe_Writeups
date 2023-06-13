@@ -14,46 +14,29 @@ This guide contains the answer and steps necessary to get to them for the [Burp 
 - [Getting Started Features of Burp Community](#getting-started-features-of-burp-community)
 - [Getting Started Options](#getting-started-options)
 - [Proxy Introduction to the Burp Proxy](#proxy-introduction-to-the-burp-proxy)
-- [Proxy Connecting through the Proxy (FoxyProxy)](#proxy-connecting-through-the-proxy-(foxyproxy))
+- [Proxy Connecting through the Proxy (FoxyProxy)](#proxy-connecting-through-the-proxy-foxyproxy)
 - [Proxy Proxying HTTPS](#proxy-proxying-https)
 - [Proxy Scoping and Targeting](#proxy-scoping-and-targeting)
 - [Proxy Site Map and Issue Definitions](#proxy-site-map-and-issue-definitions)
 - [Practical Example Attack ](#practical-example-attack)
 
-![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Intercepted.png)
-![Option](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Option.png)
-![Query](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Query.png)
-![Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Request.png)
-![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script.png)
-![Script Encoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script_Encoded.png)
-![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Success.png)
-![Forwarded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Forwarded.png)
-![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Intercepted.png)
-![Bindings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Bindings.png)
-![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Cookie.png)
-![Update](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Update.png)
-![Not Scoped](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Scoping_Targeting_Not_Scoped.png)
-![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Flag.png)
-![URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_URL.png)
-![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Vulnerability.png)
-
 ### Getting Started What is Burp Suite?
 
 1. Which edition of Burp Suite will we be using in this module?
 
-The answer can be found in the text provided or through an internet search.   
+   The answer can be found in the text provided or through an internet search.   
 
    ><details><summary>Click for answer</summary>Burp Suite Community</details>
 
 2. Which edition of Burp Suite runs on a server and provides constant scanning for target web apps?
 
-The answer can be found in the text provided or through an internet search.   
+   The answer can be found in the text provided or through an internet search.   
 
    ><details><summary>Click for answer</summary>Burp Suite Enterprise</details>
 
 3. Burp Suite is frequently used when attacking web applications and ______ applications.
 
-The answer can be found in the text provided or through an internet search.   
+   The answer can be found in the text provided or through an internet search.   
 
    ><details><summary>Click for answer</summary>mobile</details>
 
@@ -61,9 +44,9 @@ The answer can be found in the text provided or through an internet search.
 
 Some of the functionalities of Burp Suite Community edition.
 
-1.  Which Burp Suite feature allows us to intercept requests between ourselves and the target?
+1. Which Burp Suite feature allows us to intercept requests between ourselves and the target?
 
-The answer can be found in the text provided or through an internet search.   
+   The answer can be found in the text provided or through an internet search.   
 
    ><details><summary>Click for answer</summary>Proxy</details>
 
@@ -79,19 +62,19 @@ The answers to the following questions can be found by looking through the setti
 
 2. In which Project options sub-tab can you find reference to a "Cookie jar"?
 
-   OPTIONS COOKIE
+   ![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Cookie.png)
 
    ><details><summary>Click for answer</summary>Sessions</details>
 
 3. In which User options sub-tab can you change the Burp Suite update behaviour?
 
-   OPTIONS UPDATE
+   ![Update](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Update.png)
 
    ><details><summary>Click for answer</summary>Misc</details>
 
 4. What is the name of the section within the User options "Misc" sub-tab which allows you to change the Burp Suite keybindings?
 
-   OPTIONS BINDINGS
+   ![Bindings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Bindings.png)
 
    ><details><summary>Click for answer</summary>Hotkeys</details>
 
@@ -103,17 +86,15 @@ The answers to the following questions can be found by looking through the setti
 
 ### Proxy Introduction to the Burp Proxy
 
-
-
 1. Which button would we choose to send an intercepted request to the target in Burp Proxy?
 
    On the proxy tab we can enable intercept, open the browser, and navigating to tryhackme.com. 
    
-   INTERCEPTED
+   ![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Intercepted.png)
    
    If we want to send the request to the browser, we must click forward.
    
-   FORWARDED
+   ![Forwarded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Forwarded.png)
 
    ><details><summary>Click for answer</summary>Forward</details>
 
@@ -125,11 +106,19 @@ The answers to the following questions can be found by looking through the setti
 
 ### Proxy Connecting through the Proxy (FoxyProxy)
 
+Read through the options in the right-click menu.
 
+1. There is one particularly useful option that allows you to intercept and modify the response to your request.
 
-1. 
+   What is this option? 
 
-   OPTION
+   First we make sure to enable the intercept in BurpSuite and FoxyProxy in Firefox.
+   
+   ![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Intercepted.png)
+   
+   After intercepting the request we can inspect the menu options.
+   
+   ![Option](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Option.png)
 
    ><details><summary>Click for answer</summary>Response to this request</details>
 
@@ -145,17 +134,23 @@ After importing it, I could visit TLS enabled websites in Firefox through FoxyPr
 
 No real difference was spotted when targeting the specific URL (http://http://10.10.195.240/). This might be due to the website having no redirects.
 
-NOT SCOPED
+![Not Scoped](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Scoping_Targeting_Not_Scoped.png)
 
 ### Proxy Site Map and Issue Definitions
 
+Take a look around the site. Visit every page linked to from the homepage, then check your sitemap -- one endpoint should stand out as being very unusual!
 
+Visit this in your browser (or use the "Response" section of the site map entry for that endpoint)
 
 1. What is the flag you receive?
 
-   SITEMAP URL
+   After visting all sites, we can see our sitemap in BurpSuite
    
-   SITEMAP FLAG
+   ![URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_URL.png)
+   
+   One of these entries does indeed stand out. Lets visit it to see if we get our flag.
+   
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{NmNlZTliNGE1MWU1ZTQzMzgzNmFiNWVk}</details>
 
@@ -163,20 +158,37 @@ Look through the Issue Definitions list.
 
 2. What is the typical severity of a Vulnerable JavaScript dependency?
 
-   If we navigate to the Issue Definitions list we can find the severity for a Vulnerable JavaScript dependency.
+   If we navigate to the Issue Definitions list related to our sitemap, we can find the severity for a Vulnerable JavaScript dependency.
    
-   SITEMAP VULNERABILITY
-
+   ![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Vulnerability.png)
    ><details><summary>Click for answer</summary>Low</details>
 
 ### Practical Example Attack 
 
+Try to bypass the filter to achieve Cross Site Scripting.
 
+First thing to try obviously, is our payload, to see if it is indeed filtered. This does seem to be the case unfortunately.
 
-QUERY
+After making sure FoxyProxy in Firefox and Intercept in BurpSuite are both turned on, we can enter some fake but allowed data.
 
-SCRIPT
+![Query](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Query.png)
 
-SCRIPT ENCODED
+After submitting, we should have intercepted the request in BurpSuite.
 
-SUCCESS
+![Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Request.png)
+
+Now we can change the email part of the request with our own payload:
+
+```cmd
+<script>alert("Succ3ssful XSS")</script>
+```
+
+![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script.png)
+
+Now select the payload and use the `Ctrl + u` shortcut to encode the string.
+
+![Script Encoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script_Encoded.png)
+
+Now we forward the modified request with BurpSuite and we should receieve a pop-up message.
+
+![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Success.png)
