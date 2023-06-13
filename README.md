@@ -34,7 +34,7 @@ The following rooms are available/in progress:
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
-- [ ] [Red Team Recon](redteamrecon/redteamrecon.md) [WiP]
+- [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
