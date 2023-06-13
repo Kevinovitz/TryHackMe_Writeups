@@ -32,7 +32,7 @@ The following rooms are available/in progress:
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
-- [ ] [**Password Attacks***](passwordattacks/passwordattacks.md) [WiP]
+- [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [ ] [Red Team Recon](redteamrecon/redteamrecon.md) [WiP]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
