@@ -44,7 +44,6 @@ BASIC REPEAT
    
    ><details><summary>Click for answer</summary>Render</details>
    
-### Repeater Inspector
 ### Practical Example
 
 1. Send the request. What is the flag you receive?
@@ -68,14 +67,35 @@ BASIC REPEAT
    ><details><summary>Click for answer</summary>THM{Yzg2MWI2ZDhlYzdlNGFiZTUzZTIzMzVi}</details>
    
 ### Practical Challenge
+
+See if you can get the server to error out with a "500 Internal Server Error" code by changing the number at the end of the request to extreme inputs.
+
+1. What is the flag you receive when you cause a 500 error in the endpoint?
+
+   CHALLENGE PRODUCT PAGE
+
+   CHALLENGE REPEAT
+
+   CHALLENGE FLAG
+
+   ><details><summary>Click for answer</summary>THM{N2MzMzFhMTA1MmZiYjA2YWQ4M2ZmMzhl}</details>
+
 ### Extra Mile SQLi with Repeater
-### Conclusion Room Conclusion
 
+Exploit the union SQL injection vulnerability in the site.
 
+1. What is the flag?
 
-1. 
+   SQLI REQUEST
 
-   
+   SQLI RESPONSE
 
-   ><details><summary>Click for answer</summary></details>
+   SQLI ENUMERATION
 
+   SQLI TABLE
+
+   SQLI CEO
+
+   SQLI FLAG
+
+   ><details><summary>Click for answer</summary>THM{ZGE3OTUyZGMyMzkwNjJmZjg3Mzk1NjJh}</details>
