@@ -18,7 +18,7 @@ The following rooms are available/in progress:
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
 - [x] [Burp Suite: The Basics](burpsuitebasics/burpsuitebasics.md) [Answered]
-- [ ] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md) [WiP]
+- [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md) [Answered]
 - [ ] [Content Discovery](contentdiscovery/contentdiscovery.md) [WiP]
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
