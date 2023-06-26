@@ -1,7 +1,7 @@
-![Burp Suite: Intruder Banner]()
+![Burp Suite: Intruder Banner](https://assets.tryhackme.com/room-banners/burpsuite.svg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burp_Suite_Intruder_Cover.png" alt="Burp Suite: Intruder Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Cover.png" alt="Burp Suite: Intruder Logo">
 </p>
 
 # Burp Suite: Intruder
@@ -103,8 +103,27 @@ We have three payload sets. The first set contains 100 lines; the second contain
 
 ### Practical Example
 
+First we head over to the web page, setup Firefox and Burpsuite to intercept the request, and send the request to Intruder.
 
+```cmd
+http://10.10.53.19/support/login
+```
 
+In the positions tab we select the pitchfork method and make sure to select the correct parameters.
+
+![Positions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Example_Positions.png)
+
+In the payloads tab we set the first set as a simple list and load the usernames list we downloaded. We then set the second set as a simple list and load the passwords list we downloaded.
+
+![Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Example_Payloads.png)
+
+Now we can start the attack and let it run for a while. After it is done we must sort the results. In this case on length as the status is the same for successfull and invalid attempts.
+
+![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Example_Credentials.png)
+
+We can try these credentials on the login page to see if we can log in.
+
+![Log In](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Example_Log_in.png)
 
 ### Practical Challenge
 
@@ -122,14 +141,54 @@ Either using the Response tab in the Attack Results window or by looking at each
 
 2. What is the flag?
 
+   After logging in we can click on one of the tickets. Then we can capture its request.
    
+   ![Ticket](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Challenge_Ticketpng.png)
+   
+   After capturing the request and sending it to Intruder, we must select the correct positions. In this case the ID after the URL. Also make sure to change the attack method to sniper.
+   
+   ![Position](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Challenge_Position.png)
+   
+   In the payloads tab we set the payload to a numbers set. And we set the options to a list from 1-100 in steps of 1.
+   
+   ![Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Challenge_Payloads.png)
+   
+   After the attack has completed we must sort the results. This time we can sort on the status code (which should be 200). We see several entries. Clicking on each one enables us to view the rendere response.
+   
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Challenge_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{MTMxNTg5NTUzMWM0OWRlYzUzMDVjMzJl}</details>
 
 ### Extra Mile CSRF Token Bypass
 
+To bruteforce the admin panel, we need to use a macro.
 
+First, we navigate to the correct webpage `http://10.10.53.19/admin/login` and the capture the request and send it to Intruder.
 
-1. 
+We then only select 'username' and 'password' as our positions. Deselect the session and login token if selected.
 
-   
+![Positions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Extra_Positions.png)
 
-   ><details><summary>Click for answer</summary></details>
+Next we navigate to Project options -> Sessions -> Macros -> Add. 
+
+In the list that pops up, we should be able to select the request for the admin/login page. Otherwise we need to visit it manually.
+
+![Macro](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Extra_Macro.png)
+
+Then we navigate to Project options -> Sessions -> Session Handling Rules -> Add. 
+
+In the scope tab we only select Intruder as the tool scope and add our URL `http://10.10.53.19/` to the URL scope (suite scope didn't work, probably because it wasn't set).
+
+![Rules](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Extra_Rules.png)
+
+In the details tab we must add a new action. Select run a macro. In this window select the macros we created and use update only the following parameters and cookies.
+
+![Action](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Extra_Action.png)
+
+Now we start the attack and we should see responses with a 302 status code. This time we sort on the length again and find out candidate.
+
+![Hit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Extra_Hit.png)
+
+Trying the credentials gives us access to the admin panel.
+
+![Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteintruder/Burpsuite_Intruder_Extra_Admin.png)
