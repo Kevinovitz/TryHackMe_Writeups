@@ -22,7 +22,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
 
    ><details><summary>Click for answer</summary>8080</details>
 
-3. There is an open port outside the common 1000 ports; it is above 10,000. What is it?
+2. There is an open port outside the common 1000 ports; it is above 10,000. What is it?
 
    For this we can use a similar command, but this time we use the remaining ports as our range.
 
@@ -34,13 +34,13 @@ This guide contains the answer and steps necessary to get to them for the [Net S
 
    ><details><summary>Click for answer</summary>10021</details>
 
-5. How many TCP ports are open?
+3. How many TCP ports are open?
 
    Adding both answers together we get our total number of open TCP ports.
 
    ><details><summary>Click for answer</summary>6</details>
 
-6. What is the flag hidden in the HTTP server header?
+4. What is the flag hidden in the HTTP server header?
 
    To look at the server header information we can use telnet. We should also specify the required port.
 
@@ -52,15 +52,19 @@ This guide contains the answer and steps necessary to get to them for the [Net S
 
    ><details><summary>Click for answer</summary>THM{web_server_25352}</details>
 
-8. What is the flag hidden in the SSH server header?
+5. What is the flag hidden in the SSH server header?
 
+   To find this information we can again use telnet.
+
+   ```cmd
    telnet 10.10.223.240 22
+   ```
 
    ![Ssh Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_ssh_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{946219583339}</details>
 
-9. We have an FTP server listening on a nonstandard port. What is the version of the FTP server?
+7. We have an FTP server listening on a nonstandard port. What is the version of the FTP server?
 
    The ftp service isn't listed on the first nmap scan, so we should perform the second one with version info enabled (this was disabled in our scan in question 3).
 
@@ -72,7 +76,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
 
    ><details><summary>Click for answer</summary>vsftpd 3.0.3</details>
 
-11. We learned two usernames using social engineering: eddie and quinn. What is the flag hidden in one of these two account files and accessible via FTP?
+8. We learned two usernames using social engineering: eddie and quinn. What is the flag hidden in one of these two account files and accessible via FTP?
 
    We first create a file `touch usernames.txt` and add both usernames to it. Then we can craft our Hydra command:
    
@@ -92,7 +96,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
 
    ><details><summary>Click for answer</summary>THM{321452667098}</details>
 
-11. Browsing to http://MACHINE_IP:8080 displays a small challenge that will give you a flag once you solve it. What is the flag?
+9. Browsing to http://MACHINE_IP:8080 displays a small challenge that will give you a flag once you solve it. What is the flag?
 
    Visiting the weppage, we see we need to scan the machine with as little activity as possible.
    
