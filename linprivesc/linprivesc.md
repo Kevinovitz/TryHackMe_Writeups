@@ -1,4 +1,4 @@
-![Linux Privilege Escalation Banner](https://tryhackme.com/img/banners/default_tryhackme.png)
+![Linux Privilege Escalation Banner](https://assets.tryhackme.com/room-banners/privesc.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cover.png" alt="Linux Privilege Escalation Logo">
