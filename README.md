@@ -25,6 +25,7 @@ The following rooms are available/in progress:
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
+- [x] [**John The Ripper***](johntheripper0/johntheripper0.md) [Answered]
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [x] [**Metasploit: Exploitation***](metasploitexploitation) [Answered]
