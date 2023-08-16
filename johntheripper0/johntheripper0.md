@@ -14,7 +14,7 @@ This guide contains the answer and steps necessary to get to them for the [John 
 - [Wordlists](#wordlists)
 - [Cracking Basic Hashes](#cracking-basic-hashes)
 - [Cracking Windows Authentication Hashes](#cracking-windows-authentication-hashes)
-- [Cracking /etc/shadow Hashes](#cracking-/etc/shadow-hashes)
+- [Cracking /etc/shadow Hashes](#cracking-etcshadow-hashes)
 - [Single Crack Mode](#single-crack-mode)
 - [Custom Rules](#custom-rules)
 - [Cracking Password Protected Zip Files](#cracking-password-protected-zip-files)
@@ -161,30 +161,96 @@ This guide contains the answer and steps necessary to get to them for the [John 
 
 ### Single Crack Mode
 
+1. What is Joker's password?
 
+   First we need to add the username in front of the hash, then we can use Johns single mode cracking.
 
+   ```cmd
+   joker:<hash>
+   
+   john --single --format=raw-md5 hash7.txt
+   ```
+
+   SINGLE VALUE
+
+   ><details><summary>Click for answer</summary>Jok3r</details>
 
 ### Custom Rules
 
+1.  What do custom rules allow us to exploit?
 
+   This answer can be found in the text.
 
+   ><details><summary>Click for answer</summary>password complexity predictability</details>
 
+2. What rule would we use to add all capital letters to the end of the word?
+
+   Using the information from the text we can get the answer.
+
+   ><details><summary>Click for answer</summary>Az"[A-Z]"</details>
+
+3. What flag would we use to call a custom rule called "THMRules"
+
+    This can be found in the text.
+
+   ><details><summary>Click for answer</summary>--rule=THMRules</details>
+   
 ### Cracking Password Protected Zip Files
 
+1.  What is the password for the secure.zip file?
 
+   We first use `zip2john` to get a hash and then pass that through to john.
 
+   ```cmd
+   zip2john secure.zip > ziphash.txt
 
+   john --wordlist=/usr/share/wordlists/rockyou.txt ziphash.txt
+   ```
+
+   ZIP PASSWORD
+
+   ><details><summary>Click for answer</summary>pass123</details>
+
+2. What is the contents of the flag inside the zip file?
+
+   ZIP FLAG
+
+   ><details><summary>Click for answer</summary>THM{w3ll_d0n3_h4sh_r0y4l}</details>
+  
 ### Cracking Password Protected RAR Archives
 
+1. What is the password for the secure.rar file?
 
+   We first use `rar2john` to get a hash and then pass that through to john.
 
+   ```cmd
+   rar2john secure.rar > rarhash.txt
+
+   john --wordlist=/usr/share/wordlists/rockyou.txt rarhash.txt
+   ```
+
+   RAR PASSWORD
+
+   ><details><summary>Click for answer</summary>password</details>
+
+1. What is the contents of the flag inside the zip file?
+
+   RAR FLAG
+
+   ><details><summary>Click for answer</summary>THM{r4r_4rch1ve5_th15_t1m3}</details>
 
 ### Cracking SSH Keys with John 
 
+1. What is the SSH private key password?
 
+   We first use `ssh2john` to get a hash and then pass that through to john.
 
-1. 
-
+   ```cmd
+   ssh2john idrsa.id_rsa > sshhash.txt
    
+   john --wordlist=/usr/share/wordlists/rockyou.txt sshhash.txt
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   SSH PASSWORD
+
+   ><details><summary>Click for answer</summary>mango</details>
