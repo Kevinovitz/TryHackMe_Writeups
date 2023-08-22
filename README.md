@@ -50,6 +50,7 @@ The following rooms are available/in progress:
 - [x] [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md) [Answered]
 - [x] [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [Answered]
 - [x] [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [Answered]
+- [ ] [**Windows Privilege Escalation***](windowsprivesc20/windowsprivesc20.md) [WiP]
 - [x] [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - more to come
 
