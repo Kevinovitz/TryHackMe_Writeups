@@ -198,8 +198,8 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls C:\MyPrograms
    ```
 
-   SERVICES QUOTES SERVICE
-   
+   ![Services Quotes Service](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Service.png)
+
    Now we can create another reverse shell to use. Then we transfer it over to the target system and move in to the correct folder. Lastly, we must give everyone permission to use the file.
 
    ```cmd
@@ -224,15 +224,15 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    sc start "disk sorter enterprise"
    ```
    
-   SERVICES QUOTES CONNECTION
+   ![Services Quotes Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Connection.png)
 
    Now, we only have to look for and read the flag.
 
-   SERVICES QUOTES FLAG
-   
+   ![Services Quotes Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Flag.png)
+
    ><details><summary>Click for answer</summary>THM{QUOTES_EVERYWHERE}</details>
 
-4. Get the flag on the Administrator's desktop.
+3. Get the flag on the Administrator's desktop.
 
    First we check the permission for the service DACL configuration using Sysinternals suite.
 
@@ -240,7 +240,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    C:\tools\AccessChk>accesschk64.exe -qlc thmservice
    ```
 
-   SERVICES CONFIG PERMISSIONS
+   ![Services Config Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Permissions.png)
    
    Looks like we (BUILTIN\Users) have permission (SERVICE_ALL_ACCESS) to change the configuration.
    
@@ -270,11 +270,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    sc start "thmservice"
    ```
    
-   SERVICES CONFIG CONNECTION
+   ![Services Config Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Connection.png)
    
    Now, we only have to look for and read the flag.
    
-   SERVICES CONFIG FLAG
+   ![Services Config Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{INSECURE_SVC_CONFIG}</details>
 
@@ -290,13 +290,13 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
 1. Get the flag on the Administrator's desktop.
 
-   We first use wmic to see which programs are installed. Then we can investigate which one we can abuse.
+We first use wmic to see which programs are installed. Then we can investigate which one we can abuse.
 
    ```cmd
    wmic product get name,version,vendor
    ```
 
-   SOFTWARE PROGRAMS
+   ![Software Programs](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Software_Programs.png)
 
    In this exercise we use the vulnerable Druva InSync. We will modify the provided exploit to add the `pwnd` user to the administrators group.
 
@@ -335,10 +335,10 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    net user pwnd
    ```
    
-   SOFTWARE USER
+   ![Software User](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Software_User.png)
    
    To get to the flag, we should open a command prompt as adminstrator. When asked for credentials, we choose pwnd and can leave the password blank (as we didn't specify any).
 
-   SOFTWARE FLAG
+   ![Software Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Software_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{EZ_DLL_PROXY_4ME}</details>
