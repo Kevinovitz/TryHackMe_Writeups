@@ -1,4 +1,4 @@
-![Windows Privilege Escalation Banner](windowsprivesc20/Windows_Privilege_Escalation_Banner.png)
+![Windows Privilege Escalation Banner](Windows_Privilege_Escalation_Banner.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Cover.png" alt="Windows Privilege Escalation Logo">
