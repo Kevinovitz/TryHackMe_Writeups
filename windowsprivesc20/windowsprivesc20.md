@@ -42,7 +42,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
    ```
 
-   HARVESTING POWERHSELL
+   ![Harvesting Powershell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Powershell.png)
 
    ><details><summary>Click for answer</summary>ZuperCkretPa5z</details>
 
@@ -50,7 +50,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    First we open the config file located at: `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config`. We then look for any mentions of the account `db_admin`.
 
-   HARVESTING IIS
+   ![Harvesting IIS](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_IIS.png)
 
    ><details><summary>Click for answer</summary>098n0x35skjD3</details>
 
@@ -62,7 +62,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    cmdkey /list
    ```
 
-   HARVESTING CREDS
+   ![Harvesting Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Creds.png)
 
    Now we can spawn a shell under this user and view the flag.
 
@@ -70,7 +70,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    runas /savecred /user:admin cmd.exe
    ```
 
-   HARVESTING FLAG
+   ![Harvesting Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{WHAT_IS_MY_PASSWORD}/details>
 
@@ -82,7 +82,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
    ```
 
-   HARVESTING PUTTY
+   ![Harvesting Putty](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Putty.png)
 
    ><details><summary>Click for answer</summary>CoolPass2021</details>
 
@@ -143,7 +143,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls C:\PROGRA~2\SYSTEM~1\WService.exe
    ```
 
-   SERVICES PERMISSIONS
+   ![Services Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Permissions.png)
 
    Looks like we can. Now we can make our reverse payload with msfvenom.
 
@@ -171,7 +171,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls WService.exe /grant Everyone:F
    ```
 
-   SERVICES MOVE FILE
+   ![Services Move File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Move_File.png)
    
    The last thing to do, is stopping the service and then restarting it.
 
@@ -181,11 +181,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    sc start windowsscheduler
    ```
 
-   SERVICES CONNECTION
+   ![Services Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Connection.png)
    
    Now we can look for the flag on the users desktop.
 
-   SERVICES FLAG1
+   ![Services Flag1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Flag1.png)
 
    ><details><summary>Click for answer</summary>THM{AT_YOUR_SERVICE}</details>
 
