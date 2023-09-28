@@ -103,18 +103,113 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 ### Bypassing Client-Side Filtering
 
 
+1. What is the flag in /var/www/?
 
+   First we edit our reverse shell. We can indeed see that we cannot upload this script.
+
+   Client Filtering Script
+
+   Client Filtering Failed
+
+   Lets use Gobuster to find the upload directory of the file.
+
+   ```cmd
+   gobuster dir -u http://java.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+   ```
+
+   Client Filtering Directory
+
+   In Burpsuite we capture the page request and make sure to capture the response as well.
+
+   Client Filtering Capture
+
+   Now we can simply remove the script from the response.
+
+   Client Filtering Remove
+
+   We then setup a listener with `nc -nlvp 1337`. Navigate to URL/images and execute the script.
+
+   Client Filtering Connection
+
+   Now we can look for the flag on the machine.
+
+   Client Filtering Flag
+
+   The second method also works. We rename the file and upload in through the un-modified page. We then capture the upload request and modify the filetype and name.
+
+   Client Filtering Change
+
+   We should then receive another connection.
+
+   Client Filtering Connection2
+
+   ><details><summary>Click for answer</summary>THM{NDllZDQxNjJjOTE0YWNhZGY3YjljNmE2}</details>
 
 ### Bypassing Server-Side Filtering: File Extensions
 
+1. What is the flag in /var/www/?
 
+   First, we look for the upload directory using Gobuster.
 
+   ```cmd
+   gobuster dir -u http://annex.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+   ```
+   
+   Server Filtering Extension Directory
+
+   I tried several extensions which can be used for a `php` file. It appears `php5` isn't blocked.
+
+   Server Filtering Extension Correct
+
+   Now that we know this, we can upload our shell to the server with `.php5` extension. And it should work when executed.
+
+   Server Filtering Extension Connection
+
+   Looking through the directory gives us the flag.
+
+   Server Filtering Extension Flag
+
+   ><details><summary>Click for answer</summary>THM{MGEyYzJiYmI3ODIyM2FlNTNkNjZjYjFl}</details>
 
 ### Bypassing Server-Side Filtering: Magic Numbers
 
 
+1. Grab the flag from /var/www/
 
+   First, we look for the upload directory using Gobuster.
 
+   ```cmd
+   gobuster dir -u http://magic.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+   ```
+
+   Server Filtering Magic Directory
+
+   After uploading a `jpg` file, we can an error. It appears it will only accept `gif` files.
+
+   Server Filtering Magic Error
+
+   Using the provided link, we can look for the magic number related to gifs. We must then prepend the same number of characters to the script.
+
+   Server Filtering Magic Script
+
+   Now we can open the file with `hexeditor` and change the characters to the corrects ones.
+
+   Server Filtering Magic Hex
+
+   Checking the file type of the file, indeed gives us `gif`.
+
+   Server Filtering Magic Type
+
+   Since we cannot access the upload page (graphics), we can simply call the url of the file firectly (i.e., http://magic.uploadvulns.thm/graphics/shell.php).
+
+   Server Filtering Magic Connection
+
+   Now we can locate and read the flag.
+
+   Server Filtering Magic Flag
+
+   ><details><summary>Click for answer</summary>THM{MWY5ZGU4NzE0ZDlhNjE1NGM4ZThjZDJh}</details>
+   
 ### Example Methodology
 
 
