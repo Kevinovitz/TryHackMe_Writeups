@@ -16,7 +16,6 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 - [Bypassing Client-Side Filtering](#bypassing-client-side-filtering)
 - [Bypassing Server-Side Filtering: File Extensions](#bypassing-server-side-filtering-file-extensions)
 - [Bypassing Server-Side Filtering: Magic Numbers](#bypassing-server-side-filtering-magic-numbers)
-- [Example Methodology](#example-methodology)
 - [Challenge ](#challenge)
 
 ### Overwriting Existing Files
@@ -102,6 +101,15 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 
 ### Bypassing Client-Side Filtering
 
+![Client Filtering Capture](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Capture.png)
+![Client Filtering Change](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Change.png)
+![Client Filtering Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Connection.png)
+![Client Filtering Connection2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Connection2.png)
+![Client Filtering Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Directory.png)
+![Client Filtering Failed](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Failed.png)
+![Client Filtering Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Flag.png)
+![Client Filtering Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Remove.png)
+![Client Filtering Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Client_Filtering_Script.png)
 
 1. What is the flag in /var/www/?
 
@@ -146,6 +154,10 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
    ><details><summary>Click for answer</summary>THM{NDllZDQxNjJjOTE0YWNhZGY3YjljNmE2}</details>
 
 ### Bypassing Server-Side Filtering: File Extensions
+![Server Filtering Extension Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Extension_Connection.png)
+![Server Filtering Extension Correct](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Extension_Correct.png)
+![Server Filtering Extension Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Extension_Directory.png)
+![Server Filtering Extension Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Extension_Flag.png)
 
 1. What is the flag in /var/www/?
 
@@ -172,6 +184,14 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
    ><details><summary>Click for answer</summary>THM{MGEyYzJiYmI3ODIyM2FlNTNkNjZjYjFl}</details>
 
 ### Bypassing Server-Side Filtering: Magic Numbers
+
+![Server Filtering Magic Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Connection.png)
+![Server Filtering Magic Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Directory.png)
+![Server Filtering Magic Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Error.png)
+![Server Filtering Magic Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Flag.png)
+![Server Filtering Magic Hex](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Hex.png)
+![Server Filtering Magic Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Script.png)
+![Server Filtering Magic Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Server_Filtering_Magic_Type.png)
 
 
 1. Grab the flag from /var/www/
@@ -210,17 +230,21 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 
    ><details><summary>Click for answer</summary>THM{MWY5ZGU4NzE0ZDlhNjE1NGM4ZThjZDJh}</details>
    
-### Example Methodology
-
-
-
-
 ### Challenge
 
+![Challenge Backgrounds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Backgrounds.png)
+![Challenge Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Connection.png)
+![Challenge Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Directory.png)
+![Challenge Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Flag.png)
+![Challenge Images](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Images.png)
+![Challenge Java](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Java.png)
+![Challenge MIME](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_MIME.png)
+![Challenge Response](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Response.png)
+![Challenge Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Challenge_Shell.png)
 
 
-1. 
+1. Hack the machine and grab the flag from /var/www/
 
    
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{NzRlYTUwNTIzODMwMWZhMzBiY2JlZWU2}</details>
