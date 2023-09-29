@@ -24,7 +24,7 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 
    When looking at the source code of the website, we can see which file is used as background.
 
-   OVERWRITE BACKGROUND
+   ![Overwriting Background](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Overwriting_Background.png)
 
    ><details><summary>Click for answer</summary>mountains.jpg</details>
 
@@ -32,11 +32,11 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 
    I first rename a image I have on my PC to `mountains.jpg`. I then upload it through the form on the webpage.
 
-   OVERWRITE NEW
+   ![Overwriting New](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Overwriting_New.png)
 
    After refreshing, we see that the background has changed and we get our flag.
 
-   OVERWRITE FLAG
+   ![Overwriting Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_Overwriting_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{OTBiODQ3YmNjYWZhM2UyMmYzZDNiZjI5}</details>
 
@@ -50,7 +50,7 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 
    After running Gobuster, we see two directories. One of which is probably used for file upload.
 
-   RCE DIRECTORIES
+   ![RCE Directories](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_RCE_Directories.png)
 
    ><details><summary>Click for answer</summary>/resources</details>
 
@@ -59,7 +59,7 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
 
    First thing I did, was edit the reverse php shell script to include my IP and port. I then upload it through the webpage.
 
-   RCE UPLOAD
+   ![RCE Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_RCE_Upload.png)
 
    Now I must set up a listener with netcat, navigate to the file upload directory and execute the script.
 
@@ -67,19 +67,17 @@ This guide contains the answer and steps necessary to get to them for the [Uploa
    nc -nlvp 1337
    ```
 
-   RCE EXECUTE
+   ![RCE Execute](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_RCE_Execute.png)
 
-   RCE CONNECTION
+   ![RCE Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_RCE_Connection.png)
 
    We managed to get a connection. All we need to do now is look for the flag.
 
-   RCE FLAG
+   ![RCE Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/uploadvulns/Upload_Vulnerabilities_RCE_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{YWFhY2U3ZGI4N2QxNmQzZjk0YjgzZDZk}</details>
 
 ### Filtering
-
-
 
 1. What is the traditionally predominant server-side scripting language?
 
