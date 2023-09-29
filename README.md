@@ -43,7 +43,7 @@ The following rooms are available/in progress:
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
-- [ ] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [WiP]
+- [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
 - [x] [**Vulnerability Capstone***](vulnerabilitycapstone/vulnerabilitycapstone.md) [Answered]
 - [x] [Vulnversity](vulnversity/vulnversity.md)
 - [x] [Walking An Application](walkinganapplication/walkinganapplication.md) [Answered]
