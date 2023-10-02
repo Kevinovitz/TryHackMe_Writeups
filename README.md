@@ -37,6 +37,7 @@ The following rooms are available/in progress:
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
+- [ ] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [WiP]
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
