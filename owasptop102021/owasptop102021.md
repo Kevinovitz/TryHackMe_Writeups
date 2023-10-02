@@ -184,23 +184,85 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    ><details><summary>Click for answer</summary>THM{But_1ts_n0t_my_f4ult!}</details>
 
 ### Identification and Authentication Failures Practical
-### Software Integrity Failures
-### Data Integrity Failures
-### Security Logging and Monitoring Failures
-### Server-Side Request Forgery (SSRF) 
+
+1. What is the flag that you found in darren's account?
 
 
-
-
-
-
-
-
-
-
-
-1. 
-
-   
 
    ><details><summary>Click for answer</summary></details>
+
+   Now try to do the same trick and see if you can log in as arthur.
+
+2. What is the flag that you found in arthur's account?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Software Integrity Failures
+
+1. What is the SHA-256 hash of https://code.jquery.com/jquery-1.12.4.min.js?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Data Integrity Failures
+
+1. Try logging into the application as guest. What is guest's account password?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the name of the website's cookie containing a JWT token?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+   Use the knowledge gained in this task to modify the JWT token so that the application thinks you are the user "admin".
+
+3. What is the flag presented to the admin user?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Security Logging and Monitoring Failures
+
+1. What IP address is the attacker using?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What kind of attack is being carried out?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+   
+### Server-Side Request Forgery (SSRF) 
+
+1. Explore the website. What is the only host allowed to access the admin area?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. Check the "Download Resume" button. Where does the server parameter point to?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Using SSRF, make the application send the request to your AttackBox instead of the secure file storage. Are there any API keys in the intercepted request?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+   Going the Extra Mile: There's a way to use SSRF to gain access to the site's admin area. Can you find it? 
+
+   Note: You won't need this flag to progress in the room. You are expected to do some research in order to achieve your goal.
