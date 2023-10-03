@@ -24,19 +24,19 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Clicking one of the products gives us the admin's email address in the review.
 
-   ADVENTURE EMAIL
+   ![Adventure Email](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Adventure_Email.png)
 
    ><details><summary>Click for answer</summary>admin@juice-sh.op</details>
 
-3. Question #2: What parameter is used for searching?
+2. Question #2: What parameter is used for searching?
 
    After searching, we can see the parameter in the address bar.
 
-   ADVENTURE SEARCH
+   ![Adventure Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Adventure_Search.png)
 
    ><details><summary>Click for answer</summary>q</details>
 
-5. Question #3: What show does Jim reference in his review? 
+3. Question #3: What show does Jim reference in his review? 
 
    This answer can even be found in the text.
 
@@ -48,9 +48,9 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    We can use Burpsuite to intercept and modify the request or we can input in directly into the username field.
 
-   INJECTION LOGIN
+   ![Injection Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Injection_Login.png)
 
-   INJECTION ADMIN
+   ![Injection Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Injection_Admin.png)
 
    ><details><summary>Click for answer</summary>32a5e0f21372bcc1000a6088b93b458e41f0e02a</details>
 
@@ -58,9 +58,9 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Now we do the same, but we add the user's email and add `'--` to the end.
 
-   INJECTION LOGIN BENDER
+   ![Injection Login Bender](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Injection_Login_Bender.png)
 
-   INJECTION BENDER
+   ![Injection Bender](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Injection_Bender.png)
 
    ><details><summary>Click for answer</summary>fb364762a3c102b2db932069c0e6b78e738d4066</details>
 
@@ -70,23 +70,23 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    First lets intercept a login request using the admin's password. And send it to Intruder in Burpsuite.
 
-   LOCK REQUEST
+   ![Lock Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Request.png)
 
    Now we add a position for the password field. We don't have to do this for the username as we will be using the same for each try.
 
-   LOCK POSITIONS
+   ![Lock Positions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Positions.png)
 
    Next we add items to try from a wordlist from Seclists (best1050).
 
-   LOCK PAYLOADS
+   ![Lock Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Payloads.png)
 
    Now we start the attack and wait for a response status of 200, this should be our password.
 
-   LOCK PASSWORD
+   ![Lock Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Password.png)
 
    Finally, we can log in with the password we found.
 
-   LOCK ADMIN   
+   ![Lock Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Admin.png)   
 
    ><details><summary>Click for answer</summary>c2110d06dc6f81c67cd8099ff0ba601241f1ac0e</details>
 
@@ -94,9 +94,9 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    For this we can simply answer the security question with the answer from the text.
 
-   LOCK RESET
+   ![Lock Reset](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Reset.png)
 
-   LOCK FLAG
+   ![Lock Jim](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Lock_Jim.png)
 
    ><details><summary>Click for answer</summary>094fbc9b48e525150ba97d05b942bbf114987257</details>
 
@@ -106,11 +106,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Looking at the url for the legal document, we can access the ftp server directly.
 
-   LOOK FTP
+   ![Look Ftp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Look_Ftp.png)
    
    From here we get a flag for accessing secret documents.
 
-   LOOK FLAG
+   ![Look Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Look_Flag.png)
    
    ><details><summary>Click for answer</summary>edf9281222395a1c5fee9b89e32175f1ccf50c5b</details>
 
@@ -118,7 +118,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    After watching the clip (or using the text) we can log into Mc Safe Search's account.
 
-   LOOK MCSAFE LOGIN
+   ![Look Mcsafe Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Look_Mcsafe_Login.png)
 
    ><details><summary>Click for answer</summary>66bdcffad9e698fd534003fbb3cc7e2b7b55d7f0</details>
 
@@ -130,7 +130,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    10.10.204.165/ftp/package.json.bak%2500.md
    ```
 
-   LOOK BACKUP
+   ![Look Backup](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Look_Backup.png)
 
    ><details><summary>Click for answer</summary>bfc1e6b4a16579e85e06fee4c36ff8c02fb13795</details>
 
@@ -140,11 +140,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Looking at the javascript in the debugger we see this mention of an administration panel.
    
-   FLYING ADMIN
+   ![Flying Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Flying_Admin.png)
 
    Logging into the admin account with our previously found credentials and navigating to `#/administration` gives us access to the admin panel.
    
-   FLYING ADMIN PANEL
+   ![Flying Admin Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Flying_Admin_Panel.png)
    
    ><details><summary>Click for answer</summary>946a799363226a24822008503f5d1324536629a0</details>
 
@@ -152,11 +152,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    First we capture the request and change the basket number to something else.
 
-   FLYING REQUEST
+   ![Flying Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Flying_Request.png)
 
    This lets us view another user's basket.
    
-   FLYING BASKET
+   ![Flying Basket](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Flying_Basket.png)
 
    ><details><summary>Click for answer</summary>41b997a36cc33fbe4f0ba018474e19ae5ce52121</details>
 
@@ -164,9 +164,9 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Under the feedback column, we can delete a five-start review.
 
-   FLYING REMOVE
+   ![Flying Remove](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Flying_Remove.png)
 
-   FLYING FLAG
+   ![Flying Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Flying_Flag.png)
    
    ><details><summary>Click for answer</summary>50c97bcce0b895e446d61c83a21df371ac2266ef</details>
 
@@ -180,7 +180,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    <iframe src="javascript:alert(`xss`)"> 
    ```
 
-   WHERE DOM
+   ![Where DOM](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Where_DOM.png)
 
    ><details><summary>Click for answer</summary>9aaf4bbea5c30d00a1f5bbcfce4db6d4b0efe0bf</details>
 
@@ -192,11 +192,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    True-Client-IP: <iframe src="javascript:alert(`xss`)">
    ```
 
-   WHERE HEADER
+   ![Where Header](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Where_Header.png)
 
    Now we can log back in again and go to the last login ip page.
 
-   WHERE IP
+   ![Where IP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Where_IP.png)
 
    ><details><summary>Click for answer</summary>149aa8ce13d7a4a8a931472308e269c94dc5f156</details>
 
@@ -204,7 +204,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    For this final XSS attack we navigate to the order history page and click on the track button.
 
-   WHERE ORDER
+   ![Where Order](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Where_Order.png)
 
    Now we can cange the `id` parameter in the URL with:
 
@@ -213,7 +213,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    <iframe src="javascript:alert(`xss`)"> 
    ```
 
-   WHERE FLAG
+   ![Where Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owaspjuiceshop/OWASP_Juice_Shop_Where_Flag.png)
 
    ><details><summary>Click for answer</summary>23cefee1527bde039295b2616eeb29e1edc660a0</details>
 
