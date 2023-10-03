@@ -10,11 +10,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
 ## Table of contents
 
-- [Let's go on an adventure!](#let's-go-on-an-adventure)
+- [Let's go on an adventure!](#lets-go-on-an-adventure)
 - [Inject the juice](#inject-the-juice)
 - [Who broke my lock?!](#who-broke-my-lock)
-- [AH! Don't look!](#ah-don't-look)
-- [Who's flying this thing?](#who's-flying-this-thing)
+- [AH! Don't look!](#ah-dont-look)
+- [Who's flying this thing?](#whos-flying-this-thing)
 - [Where did that come from?](#where-did-that-come-from)
 - [Exploration! ](#exploration)
 
@@ -104,61 +104,118 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
 1. Question #1: Access the Confidential Document!
 
+   Looking at the url for the legal document, we can access the ftp server directly.
 
+   LOOK FTP
+   
+   From here we get a flag for accessing secret documents.
 
-   ><details><summary>Click for answer</summary></details>
+   LOOK FLAG
+   
+   ><details><summary>Click for answer</summary>edf9281222395a1c5fee9b89e32175f1ccf50c5b</details>
 
-2. Question #2: Log into MC SafeSearch's account!
+3. Question #2: Log into MC SafeSearch's account!
 
+   After watching the clip (or using the text) we can log into Mc Safe Search's account.
 
+   LOOK MCSAFE LOGIN
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>66bdcffad9e698fd534003fbb3cc7e2b7b55d7f0</details>
 
-3. Question #3: Download the Backup file!
+5. Question #3: Download the Backup file!
 
+   Using the Poison Null Byte as suggested, we can bypass the file extension restriction and download the backup file.
 
+   ```cmd
+   10.10.204.165/ftp/package.json.bak%2500.md
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   LOOK BACKUP
+
+   ><details><summary>Click for answer</summary>bfc1e6b4a16579e85e06fee4c36ff8c02fb13795</details>
 
 ### Who's flying this thing?
 
 1. Question #1: Access the administration page!
 
+   Looking at the javascript in the debugger we see this mention of an administration panel.
+   
+   FLYING ADMIN
 
+   Logging into the admin account with our previously found credentials and navigating to `#/administration` gives us access to the admin panel.
+   
+   FLYING ADMIN PANEL
+   
+   ><details><summary>Click for answer</summary>946a799363226a24822008503f5d1324536629a0</details>
 
-   ><details><summary>Click for answer</summary></details>
+3. Question #2: View another user's shopping basket!
 
-2. Question #2: View another user's shopping basket!
+   First we capture the request and change the basket number to something else.
 
+   FLYING REQUEST
 
+   This lets us view another user's basket.
+   
+   FLYING BASKET
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>41b997a36cc33fbe4f0ba018474e19ae5ce52121</details>
 
-3. Question #3: Remove all 5-star reviews!
+5. Question #3: Remove all 5-star reviews!
 
+   Under the feedback column, we can delete a five-start review.
 
+   FLYING REMOVE
 
-   ><details><summary>Click for answer</summary></details>
+   FLYING FLAG
+   
+   ><details><summary>Click for answer</summary>50c97bcce0b895e446d61c83a21df371ac2266ef</details>
 
 ### Where did that come from?
 
 1. Question #1: Perform a DOM XSS!
 
+   For our first XSS attack we use the following code in the search bar.
 
+   ```cmd
+   <iframe src="javascript:alert(`xss`)"> 
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   WHERE DOM
 
-2. Question #2: Perform a persistent XSS!
+   ><details><summary>Click for answer</summary>9aaf4bbea5c30d00a1f5bbcfce4db6d4b0efe0bf</details>
 
+3. Question #2: Perform a persistent XSS!
 
+   For this XSS attack we enable intercept in Burpsuite and log out of our account. In this request we head the following header.
 
-   ><details><summary>Click for answer</summary></details>
+   ```cmd
+   True-Client-IP: <iframe src="javascript:alert(`xss`)">
+   ```
 
-4. Question #3: Perform a reflected XSS!
+   WHERE HEADER
 
+   Now we can log back in again and go to the last login ip page.
 
+   WHERE IP
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>149aa8ce13d7a4a8a931472308e269c94dc5f156</details>
+
+5. Question #3: Perform a reflected XSS!
+
+   For this final XSS attack we navigate to the order history page and click on the track button.
+
+   WHERE ORDER
+
+   Now we can cange the `id` parameter in the URL with:
+
+   ```cmd
+    ```cmd
+   <iframe src="javascript:alert(`xss`)"> 
+   ```
+
+   WHERE FLAG
+
+   ><details><summary>Click for answer</summary>23cefee1527bde039295b2616eeb29e1edc660a0</details>
 
 ### Exploration! 
 
