@@ -40,6 +40,7 @@ The following rooms are available/in progress:
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
+- [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
