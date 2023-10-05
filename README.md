@@ -23,6 +23,7 @@ The following rooms are available/in progress:
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
+- [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md) [Answered]
