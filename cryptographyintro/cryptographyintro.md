@@ -1,12 +1,12 @@
-![Title Banner](https://tryhackme.com/img/banners/default_tryhackme.png)
+![Introduction to Cryptography Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/NAME/_Cover.png" alt="TITLE Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Cover.png" alt="Introduction to Cryptography Logo">
 </p>
 
-# TITLE
+# Introduction to Cryptography
 
-This guide contains the answer and steps necessary to get to them for the [TITLE](https://tryhackme.com/room/NAME) room.
+This guide contains the answer and steps necessary to get to them for the [Introduction to Cryptography](https://tryhackme.com/room/cryptographyintro) room.
 
 ## Table of contents
 
