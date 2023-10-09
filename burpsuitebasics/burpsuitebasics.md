@@ -4,9 +4,11 @@
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Cover.png" alt="Burp Suite: The Basics Logo">
 </p>
 
-# Burp Suite: The Basics
+# Burp Suite: The Basics (Old)
 
 This guide contains the answer and steps necessary to get to them for the [Burp Suite: The Basics](https://tryhackme.com/room/burpsuitebasics) room.
+
+[!NOTE] Please note the BurpSuite rooms have been updated to reflect a newer version. As such some of these answers might not be correct anymore. Most of them still are but can be out of order of the new room.
 
 ## Table of contents
 
