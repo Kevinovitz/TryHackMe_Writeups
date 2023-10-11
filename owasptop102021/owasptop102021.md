@@ -1,4 +1,4 @@
-![OWASP Top 10 - 2021 Banner](https://tryhackme.com/img/banners/default_tryhackme.png)
+![OWASP Top 10 - 2021 Banner](https://i.imgur.com/sP6d0iZ.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Cover.png" alt="OWASP Top 10 - 2021 Logo">
@@ -21,70 +21,132 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 - [Security Logging and Monitoring Failures](#security-logging-and-monitoring-failures)
 - [Server-Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
 
+###  Broken Access Control (IDOR Challenge) 
+
+Read and understand how IDOR works.
+
+Deploy the machine and go to http://MACHINE_IP - Login with the username noot and the password test1234.
+
+1. Look at other users' notes. What is the flag?
+
+   First we login into the page with the provided credentials
+
+   ![Idor Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Idor_Login.png)
+
+   On this page we can view our notes. Notice the id parameter visible in the addressbar.
+
+   ![Idor Parameter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Idor_Parameter.png)
+
+   We can try different numbers to get to another users notes.
+
+   ![Idor Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Idor_Flag.png)
+   
+   ><details><summary>Click for answer</summary>flag{fivefourthree}</details>
+
 ### Cryptographic Failures (Challenge)
 
    Have a look around the web app. The developer has left themselves a note indicating that there is sensitive data in a specific directory. 
 
 1. What is the name of the mentioned directory?
 
+   Looking at the source page of the website, we are given an interesting directory to look into.
 
+   ![Crypto Source](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Source.png)
 
    ><details><summary>Click for answer</summary>/assets</details>
 
-2. Navigate to the directory you found in question one. What file stands out as being likely to contain sensitive data?
+3. Navigate to the directory you found in question one. What file stands out as being likely to contain sensitive data?
 
+   Looking through the assets folder we see a database that might be of interest to us.
 
+   ![Crypto Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Download.png)
 
    ><details><summary>Click for answer</summary>webapp.db</details>
 
-3. Use the supporting material to access the sensitive data. What is the password hash of the admin user?
+5. Use the supporting material to access the sensitive data. What is the password hash of the admin user?
+   
+   We can use both methods to obtain the admin hash.
 
+   The first is to use `sqlite3` to access the database and query to hashes.
 
+   ```cmd
+   sqlite3 webapp.db
+   .tables
+   PRAGMA table_info(users);
+   SELECT * FROM users;
+   ```
+
+   ![Crypto Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Hashes.png)
+
+   Another method is to use a viewer such as [DB Browser for SQLite](https://sqlitebrowser.org/dl/) and view the database.
+
+   ![Crypto Hashes2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Hashes2.png)
 
    ><details><summary>Click for answer</summary>6eea9b7ef19179a06954edd0f6c05ceb</details>
 
    Crack the hash.
-4. What is the admin's plaintext password?
+   
+7. What is the admin's plaintext password?
 
+   If you can't tell from the hash itself we can use `hash-identifier` to get the hashtype.
+
+   ![Crypto Hashtype](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Hashtype.png)
+
+   This seems to be a MD5 hash. We can crack this using hashcat.
+   
    ```cmd
    hashcat -m 0 6eea9b7ef19179a06954edd0f6c05ceb /usr/share/wordlists/rockyou.txt
    ```
 
-
+   ![Crypto Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Password.png)
 
    ><details><summary>Click for answer</summary>qwertyuiop</details>
    
-5. Log in as the admin. What is the flag?
+9. Log in as the admin. What is the flag?
 
+   With our newly found credentials, we can log in as an admin and get our flag.
 
+   ![Crypto Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Yzc2YjdkMjE5N2VjMzNhOTE3NjdiMjdl}</details>
 
-### Command Injection
-
-
+### Command Injection (need explanation)
 
 1. What strange text file is in the website's root directory?
 
+   On the page we see an input box that is vulnerable to SQL injection.
 
+   ![Injection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection.png)
+
+   An easy way yo test this is by writing `; ls'. If it is vulnerable, it should return a listing of the files in the current folder.
+
+   ![Injection Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Files.png)
 
    ><details><summary>Click for answer</summary>drpepper.txt</details>
 
-2. How many non-root/non-service/non-daemon users are there?
+3. How many non-root/non-service/non-daemon users are there?
+
+   We can look at all existing account by looking at the passwd file.
 
    ```cmd
    ; cat /etc/passwd
    ```
 
+   Although unsure, what classifies as the mentioned account, we can see the amount in this list.
+   
+   ![Injection Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Users.png)
+   
    ><details><summary>Click for answer</summary>0</details>
 
-3. What user is this app running as?
+5. What user is this app running as?
 
+   For this we can use the `whoami` command to find the current user.
 
+   ![Injection Whoami](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Whoami.png)
 
    ><details><summary>Click for answer</summary>apache</details>
 
-4. What is the user's shell set as?
+7. What is the user's shell set as?
 
    For this we can again look at the passwd file and look for usr entries.
 
@@ -92,13 +154,20 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    ; cat /etc/passwd | grep 'usr'
    ```
 
-   COMMAND INJECTION SHELL
+   ![Command Injection Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Command_Injection_Shell.png)
 
    ><details><summary>Click for answer</summary>sbin/nologin</details>
 
-6. What version of Alpine Linux is running?
+8. What version of Alpine Linux is running?
 
+   For this we need to look at the `alpine-release` file.
 
+   ```cmd
+   ; cat /etc/alpine-release
+   ```
+
+   ![Injection Alpine](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Alpine.png)
+   
    ><details><summary>Click for answer</summary>3.16.0</details>
 
 ### Insecure Design
@@ -107,19 +176,19 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Looking at the password reset form, we see there are several security questions. The color question seems to be easily guesable, as there are 11 basic colors.
 
-   INSECURE DESIGN COLORS
+   ![Insecure Design Colors](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Colors.png)
 
    After guessing the correct color, we get a new password for the account.
 
-   INSECURE DESIGN PASSWORD
+   ![Insecure Design Password Reset](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Password_Reset.png)
 
    Now we can log in with these credentials and see Joseph's files.
 
-   INSECURE DESIGN FILES
+   ![Insecure Design Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Files.png)
 
    Here we will also find our flag.
 
-   INSECURE DESIGN FLAG
+   ![Insecure Design Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Not_3ven_c4tz_c0uld_sav3_U!}</details>
    
@@ -137,7 +206,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    After inputting the command in the console, we get the following list of files. One of which is our database.
 
-   MISCONFIGURATION FILES
+   ![Misconfiguration Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Misconfiguration_Files.png)
 
    ><details><summary>Click for answer</summary>todo.db</details>
 
@@ -149,7 +218,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    import os; print(os.popen("cat app.py").read())
    ```
 
-   MISCONFIGURATION FLAG
+   ![Misconfiguration Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Misconfiguration_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Just_a_tiny_misconfiguration}</details>
 
@@ -159,7 +228,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Looking at the site, we can see it is some sort of bookstore (CSE bookstore). 
 
-   VULNERABLE OUTDATED PAGE
+   ![Vulnerable Outdated Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Page.png)
 
    Searching exploit-db for any exploit gives us several results, but not the one we are looking for. We need to use the correct search terms. In this case:
 
@@ -169,7 +238,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    This gives us the RCE exploit we are looking for.
 
-   VULNERABLE OUTDATED EXPLOIT
+   ![Vulnerable Outdated Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Exploit.png)
 
    After downloading it, we can run it using pythin whilst adding the url of the site as an argument.
 
@@ -179,7 +248,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    
    This gives us remote access to the database and enables us to find the flag.
 
-   VULNERABLE OUTDATED FLAG
+   ![Vulnerable Outdated Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{But_1ts_n0t_my_f4ult!}</details>
 
@@ -189,13 +258,13 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    We first register an account with the same name and an added whitespace in front.
 
-   INDENTIFICATION REGISTER
+   ![Identification Register](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Register.png)
 
-   INDENTIFICATION SUCCESS
+   ![Identification Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Success.png)
 
    Now we can log in with this account (remember to use the extra space) and find the flag.
 
-   INDENTIFICATION LOGIN
+   ![Identification Login Darren](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Login_Darren.png)
    
    ><details><summary>Click for answer</summary>fe86079416a21a3c99937fea8874b667</details>
 
@@ -205,11 +274,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Again, we first register an account with the same name and an added whitespace in front.
 
-   INDENTIFICATION REGISTER ARTHUR
+   ![Identification Register Arthur](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Register_Arthur.png)
 
    Now we can log in with this account (remember to use the extra space) and find the flag.
 
-   INDENTIFICATION LOGIN ARTHUR
+   ![Identification Login Arthur](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Login_Arthur.png)
 
    ><details><summary>Click for answer</summary>d9ac0f7db4fda460ac3edeb75d75e16e</details>
 
@@ -219,7 +288,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Navigating to the supplied website and inputting the source's URL gives us the hash.
 
-   SOFTWARE INTEGRITY HASH
+   ![Software Integrity Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Software_Integrity_Hash.png)
 
    ><details><summary>Click for answer</summary>sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=</details>
 
@@ -229,7 +298,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Trying to log in to the site, we get a notification with default credentials we can use.
 
-   DATA INTEGRITY LOGIN
+   ![Data Integrity Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_Login.png)
 
    ><details><summary>Click for answer</summary>guest</details>
 
@@ -237,7 +306,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    Looking at the cookies within the developer tools (F-12), we can see our JWT cookie.
 
-   DATA INTEGRITY JWT
+   ![Data Integrity JWT](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_JWT.png)
 
    ><details><summary>Click for answer</summary>jwt-session</details>
 
@@ -253,11 +322,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjk2MjUxMjU0fQ.
    ```
 
-   DATA INTEGRITY COOKIE
+   ![Data Integrity Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_Cookie.png)
 
    After refreshing the page, we can see our flag.
 
-   DATA INTEGRITY FLAG
+   ![Data Integrity Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Dont_take_cookies_from_strangers}</details>
 
@@ -267,7 +336,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    After opening and analyzing the file, we can see the attackers IP address.
 
-   LOGGING IP
+   ![Logging IP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Logging_IP.png)
 
    ><details><summary>Click for answer</summary>49.99.13.16</details>
 
@@ -283,11 +352,11 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    On the website, we can find the admin panel through the hamburger menu.
 
-   SSRF SITE
+   ![SSRF Site](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Site.png)
 
    Here we can see that we are not allowed to access it.
 
-   SSRF PANEL
+   ![SSRF Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Panel.png)
 
    ><details><summary>Click for answer</summary>localhost</details>
 
@@ -295,7 +364,7 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
 
    If we look at the download link, it points to an external server to get the resume.
 
-   SSRF DOWNLOAD
+   ![SSRF Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Download.png)
 
    ><details><summary>Click for answer</summary>secure-file-storage.com</details>
 
@@ -313,9 +382,9 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    nc -nlvp 1337
    ```
 
-   SSRF REQUEST
+   ![SSRF Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Request.png)
 
-   SSRF FLAG
+   ![SSRF Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Hello_Im_just_an_API_key}</details>
 
@@ -343,4 +412,4 @@ This guide contains the answer and steps necessary to get to them for the [OWASP
    http://10.10.42.94:8087/download?server=127.0.0.1:8087/admin%23&id=75482342
    ```
 
-   SSRF ADMIN FLAG
+   ![SSRF Admin Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Admin_Flag.png)
