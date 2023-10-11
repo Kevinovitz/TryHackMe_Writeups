@@ -20,13 +20,9 @@ This guide contains the answer and steps necessary to get to them for the [Wires
 
 1. Which file is used to simulate the screenshots?
 
-
-
    ><details><summary>Click for answer</summary>http1.pcapng</details>
 
 2. Which file is used to answer the questions?
-
-
 
    ><details><summary>Click for answer</summary>Exercise.pcapng</details>
 
@@ -36,7 +32,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
 For these questions we must look at the Capture File Properties.
 
-OVERVIEW ANSWERS
+![Overview Answers](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Overview_Answers.png)
 
 1. Read the "capture file comments". What is the flag?
 
@@ -58,7 +54,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    After selecting the corresponding packet, the used markup language is displayed at the bottom of the details pane.
 
-   DISSECTION MARKUP
+   ![Dissection Markup](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Markup.png)
 
    ><details><summary>Click for answer</summary>eXtensible Markup Language</details>
 
@@ -66,7 +62,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the Frame layer.
 
-   DISSECTION TIME
+   ![Dissection Time](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Time.png)
 
    ><details><summary>Click for answer</summary>05/13/2004</details>
 
@@ -74,7 +70,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the IP Source layer.
 
-   DISSECTION TTL
+   ![Dissection TTL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_DissectionTTL.png)
 
    ><details><summary>Click for answer</summary>47</details>
 
@@ -82,7 +78,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the TCP layer.
 
-   DISSECTION PAYLOAD
+   ![Dissection Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Payload.png)
 
    ><details><summary>Click for answer</summary>424</details>
 
@@ -90,7 +86,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the HTTP layer.
 
-   DISSECTION ETAG
+   ![Dissection Etag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Etag.png)
 
    ><details><summary>Click for answer</summary>9a01a-4696-7e354b00</details>
 
@@ -102,8 +98,8 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    Searching for "r4w" in the packets details pane, we get a hit for packet 43362.
 
-   NAVIGATION ARTIST
-
+   ![Navigation Artist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Artist.png)
+   
    ><details><summary>Click for answer</summary>r4w8173</details>
 
 3. Go to packet 12 and read the comments. What is the answer?
@@ -115,13 +111,13 @@ Use the "Exercise.pcapng" file to answer the questions.
    Look at the "packet details pane". Right-click on the JPEG section and "Export packet bytes". This is an alternative way of extracting data from a capture file. What is the MD5 hash value of extracted image?
    ```
 
-   NAVIGATION ANSWER 1
+   ![Navigation Answer 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Answer_1.png)
 
    After navigating to packet 39765 and exporting the object, we can extract its hash using `md5sum`.
 
-   NAVIGATION DOWNLOAD
+   ![Navigation Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Download.png)
 
-   NAVIGATION HASH
+   ![Navigation Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Hash.png)
 
    ><details><summary>Click for answer</summary>911cd574a42865a956ccde2d04495ebf</details>
 
@@ -129,13 +125,15 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    To get this file, we navigate to the 'export http objects' menu. Here we filter on text/plain files. This gives us one hit. From here we can preview it to find the name.
 
-   NAVIGATION ALIEN
+   ![Navigation Alien](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Alien.png)
 
    ><details><summary>Click for answer</summary>Packetmaster</details>
 
 5. Look at the expert info section. What is the number of warnings?
 
    The warning row has a column with the number of errors.
+
+   ![Navigation Warnings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Warnings.png)
 
    ><details><summary>Click for answer</summary>1636</details>
 
@@ -147,7 +145,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    After applying the filter, we see the query in the display filter box.
 
-   FILTERING HTTP
+   ![Filtering Http](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Filtering_Http.png)
 
    ><details><summary>Click for answer</summary>http</details>
 
@@ -159,14 +157,14 @@ Use the "Exercise.pcapng" file to answer the questions.
 
 4. Go to packet number 33790 and follow the stream. What is the total number of artists?
 
-   After navigating
+   After navigating to packet 33790 and following the http stream, we can see the entire communication stream. We can get the number of artist by looking at the stream or by exporting the relevant html file.
 
-   FILTERING ARTISTS
+   ![Filtering Follow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Filtering_Follow.png)
+
+   ![Filtering Artists](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Filtering_Artists.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
 6. What is the name of the second artist?
-
-
 
    ><details><summary>Click for answer</summary>Blad3</details>
