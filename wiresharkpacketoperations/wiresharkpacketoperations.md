@@ -19,33 +19,47 @@ This guide contains the answer and steps necessary to get to them for the [TITLE
 
 1. Investigate the resolved addresses. What is the IP address of the hostname starts with "bbc"?
 
+   
+   
+   
+   
+   SUMMARIES IP
 
+   ><details><summary>Click for answer</summary>199.232.24.81</details>
 
-   ><details><summary>Click for answer</summary></details>
+3. What is the number of IPv4 conversations?
 
-2. What is the number of IPv4 conversations?
+   SUMMARIES IPV4
 
+   ><details><summary>Click for answer</summary>a435</details>
 
+4. How many bytes (k) were transferred from the "Micro-St" MAC address?
 
-   ><details><summary>Click for answer</summary></details>
+   SUMMARIES MICRO 1
 
-3. How many bytes (k) were transferred from the "Micro-St" MAC address?
+   SUMMARIES MICRO 2
 
+   ><details><summary>Click for answer</summary>7474</details>
 
+6. What is the number of IP addresses linked with "Kansas City"?
 
-   ><details><summary>Click for answer</summary></details>
+   ```cmd
+   ip.geoip.city == "Kansas CIty"
+   ```
 
-4. What is the number of IP addresses linked with "Kansas City"?
+   SUMMARIES KANSAS
 
+   ><details><summary>Click for answer</summary>4</details>
 
+8. Which IP address is linked with "Blicnet" AS Organisation?
 
-   ><details><summary>Click for answer</summary></details>
+   ```cmd
+   ip.geoip.org matches "Blicnet.*"
+   ```
 
-5. Which IP address is linked with "Blicnet" AS Organisation?
+   SUMMARIES BLICNET
 
-
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>188.246.82.7</details>
 
 ### Statistics | Protocol Details
 
