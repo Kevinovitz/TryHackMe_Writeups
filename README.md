@@ -58,6 +58,7 @@ The following rooms are available/in progress:
 - [x] [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [Answered]
 - [x] [**Windows Privilege Escalation***](windowsprivesc20/windowsprivesc20.md) [Answered]
 - [x] [Windows PrivEsc](windows10privesc/windows10privesc.md)
+- [x] [Wireshark: The Basics](wiresharkthebasics/wiresharkthebasics.md)
 - more to come
 
 Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.
