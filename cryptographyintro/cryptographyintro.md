@@ -21,11 +21,6 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
 ### Introduction
 
-1. 
-
-
-### Symmetric Encryption
-
 1. You have received the following encrypted message:
 
    “Xjnvw lc sluxjmw jsqm wjpmcqbg jg wqcxqmnvw; xjzjmmjd lc wjpm sluxjmw jsqm bqccqm zqy.” Zlwvzjxj Zpcvcol
@@ -37,8 +32,8 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    INTRODCUTION NAME
 
    ><details><summary>Click for answer</summary>Miyamoto Musashi</details>
-
-### Asymmetric Encryption
+   
+### Symmetric Encryption
 
 1. Decrypt the file quote01 encrypted (using AES256) with the key s!kR3T55 using gpg. What is the third word in the file?
 
@@ -69,6 +64,42 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    SYMMETRIC QUOTE 3
 
    ><details><summary>Click for answer</summary>understand</details>
+
+### Asymmetric Encryption
+
+1. Bob has received the file ciphertext_message sent to him from Alice. You can find the key you need in the same folder. What is the first word of the original plaintext?
+
+   For this, we need the cipher text and Bob's private key.
+
+   ```cmd
+   openssl pkeyutl -decrypt -in ciphertext_message -inkey private-key-bob.pem -out plaintext.txt
+   ```
+
+   This will put the plaintext into a file for us to read.
+
+   ASSYMETRIC PLAINTEXT
+
+   ><details><summary>Click for answer</summary>Perception</details>
+
+2. Take a look at Bob’s private RSA key. What is the last byte of p?
+
+   To view the real RSA variable we can use the following command:
+
+   ```cmd
+   openssl rsa -in private-key-bob.pem -text -noout
+   ```
+
+   The `p` variable will be prime1.
+
+   ASSYMETRIC BYTES
+
+   ><details><summary>Click for answer</summary>e7</details>
+
+3. Take a look at Bob’s private RSA key. What is the last byte of q?
+
+   This can be found with the same command. `q` will be prime2.
+
+   ><details><summary>Click for answer</summary>27</details>
 
 ### Diffie-Hellman Key Exchange
 
