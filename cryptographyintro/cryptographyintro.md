@@ -103,30 +103,95 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
 ### Diffie-Hellman Key Exchange
 
+1. A set of Diffie-Hellman parameters can be found in the file dhparam.pem. What is the size of the prime number in bits?
 
+   To view the real varibales of the Diffie-Hellman key, we can use the same command as in the previous task.
 
+   ```cmd
+   openssl dhparam -in dhparams.pem -text -noout
+   ```
+
+   HELLMAN SIZE
+
+   ><details><summary>Click for answer</summary>4096</details>
+
+3. What is the prime number’s last byte (least significant byte)?
+
+   This can be found together with the previous question.
+
+   ><details><summary>Click for answer</summary>4f</details>
 
 ### Hashing
 
+1. What is the SHA256 checksum of the file order.json?
 
 
+   Using `sha256sum` we can calculate the SHA-256 hash of the file.
+
+   ```cmd
+   sha256sum order.json
+   ```
+
+   HASHING SHA
+
+   ><details><summary>Click for answer</summary>2c34b68669427d15f76a1c06ab941e3e6038dacdfb9209455c87519a3ef2c660</details>
+
+1. Open the file order.json and change the amount from 1000 to 9000. What is the new SHA256 checksum?
+
+   After changing the content of the file, we can use the same command to re-calculate the hash.
+
+   HASHING CHANGE
+   
+   ```cmd
+   sha256sum order.json
+   ```
+
+   HASHING SHA NEW
+   
+   ><details><summary>Click for answer</summary>11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466</details>
+
+3. Using SHA256 and the key 3RfDFz82, what is the HMAC of order.txt?
+
+   Using the following command will give us the hash we are looking for.
+
+   ```cmd
+   hmac256 3RfDFz82 order.txt
+   ```
+
+   HASHING HMAC
+
+   ><details><summary>Click for answer</summary>c7e4de386a09ef970300243a70a444ee2a4ca62413aeaeb7097d43d2c5fac89f</details>
 
 ### PKI and SSL/TLS
 
+1. What is the size of the public key in bits?
 
+   Using the following command we can view the contents of the certificate.
 
+   ```cmd
+   openssl x509 -in cert.pem -text -noout
+   ```
+
+   PKI CERT
+
+   ><details><summary>Click for answer</summary>4096</details>
+
+1. Till which year is this certificate valid?
+
+   This can be found in the same image as the previous question.
+
+   ><details><summary>Click for answer</summary>2039</details>
 
 ### Authenticating with Passwords
 
+1. You were auditing a system when you discovered that the MD5 hash of the admin password is 3fc0a7acf087f549ac2b266baf94b8b1. What is the original password?
 
+   We can use `hashcat` to crack the hash. Knowing it is an MD5 hash we use the following command:
 
+   ```cmd
+   hashcat -m 0 3fc0a7acf087f549ac2b266baf94b8b1 /usr/share/wordlists/rockyou.txt
+   ```
 
-### Cryptography and Data - Example 
+   AUTHENTICATING PASSWORD
 
-
-
-1. 
-
-   
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>qwerty123</details>
