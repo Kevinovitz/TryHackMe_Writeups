@@ -36,7 +36,7 @@ The following rooms are available/in progress:
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
-- [ ] [Nessus](rpnessusredux/rpnessusredux.md) [WiP]
+- [x] [Nessus](rpnessusredux/rpnessusredux.md) [Answered]
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
