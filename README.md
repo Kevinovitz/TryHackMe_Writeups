@@ -61,6 +61,7 @@ The following rooms are available/in progress:
 - [x] [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - [x] [Wireshark: The Basics](wiresharkthebasics/wiresharkthebasics.md)
 - [ ] [**Wireshark: Packet Operations***](wiresharkpacketoperations/wiresharkpacketoperations.md) [WiP]
+- [x] [Wonderland](wonderland/wonderland.md) [WiP]
 - more to come
 
 Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.
