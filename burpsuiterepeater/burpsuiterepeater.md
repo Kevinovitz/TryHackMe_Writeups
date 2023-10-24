@@ -4,9 +4,12 @@
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiterepeater/Burp_Suite_Repeater_Cover.png" alt="Burp Suite: Repeater Logo">
 </p>
 
-# Burp Suite: Repeater
+# Burp Suite: Repeater (Old)
 
 This guide contains the answer and steps necessary to get to them for the [Burp Suite: Repeater](https://tryhackme.com/room/burpsuiterepeater) room.
+
+> [!Note]
+> Please note the BurpSuite rooms have been updated to reflect a newer version. As such some of these answers might not be correct anymore. Most of them still are but can be out of order of the new room.
 
 ## Table of contents
 
