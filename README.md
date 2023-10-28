@@ -1,6 +1,6 @@
 
 <p align="center">
-   <img src="https://jarrodrizor.com/wp-content/uploads/2022/03/thm_banner.jpeg" alt="TryHackMe Banner">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/Tryhackme%20Banner.JPG" alt="TryHackMe Banner">
 </p>
 
 # TryHackMe Writeups
@@ -71,3 +71,7 @@ Rooms with the [Answered] annotation only have some questions remaining which do
 ### External Knowledge Bases
 
 [<img src="https://about.gitlab.com/images/press/press-kit-icon.svg" width="20" height="20"/> https://gitlab.com/dhiksec/tryhackme](https://gitlab.com/dhiksec/tryhackme)
+
+<!--
+https://jarrodrizor.com/wp-content/uploads/2022/03/thm_banner.jpeg
+-->
