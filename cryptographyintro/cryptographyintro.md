@@ -29,7 +29,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
    We can use the Quipquip site to try and decode the message.
 
-   INTRODCUTION NAME
+   ![Introduction Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Introduction_Name.png)
 
    ><details><summary>Click for answer</summary>Miyamoto Musashi</details>
    
@@ -41,7 +41,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    gpg --output task02/quote01.txt --decrypt task02/quote01.txt.gpg
    ```
 
-   SYMMETRIC QUOTE 1
+   ![Symmetric Quote 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Symmetric_Quote_1.png)
 
    ><details><summary>Click for answer</summary>waste</details>
 
@@ -51,7 +51,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    openssl enc -aes-256-cbc -d -in task02/quote02 -out task02/quote02.txt
    ```
 
-   SYMMETRIC QUOTE 2
+   ![Symmetric Quote 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Symmetric_Quote_2.png)
 
    ><details><summary>Click for answer</summary>science</details>
 
@@ -61,7 +61,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    gpg --output task02/quote03.txt --decrypt task02/quote03.txt.gpg
    ```
 
-   SYMMETRIC QUOTE 3
+   ![Symmetric Quote 3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Symmetric_Quote_3.png)
 
    ><details><summary>Click for answer</summary>understand</details>
 
@@ -77,7 +77,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
    This will put the plaintext into a file for us to read.
 
-   ASSYMETRIC PLAINTEXT
+   ![Assymetric Plaintext](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Assymetric_Plaintext.png)
 
    ><details><summary>Click for answer</summary>Perception</details>
 
@@ -91,7 +91,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
    The `p` variable will be prime1.
 
-   ASSYMETRIC BYTES
+   ![Assymetric Bytes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Assymetric_Bytes.png)
 
    ><details><summary>Click for answer</summary>e7</details>
 
@@ -111,7 +111,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    openssl dhparam -in dhparams.pem -text -noout
    ```
 
-   HELLMAN SIZE
+   ![Hellman Size](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Hellman_Size.png)
 
    ><details><summary>Click for answer</summary>4096</details>
 
@@ -125,14 +125,13 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
 1. What is the SHA256 checksum of the file order.json?
 
-
    Using `sha256sum` we can calculate the SHA-256 hash of the file.
 
    ```cmd
    sha256sum order.json
    ```
 
-   HASHING SHA
+   ![Hashing Sha](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Hashing_Sha.png)
 
    ><details><summary>Click for answer</summary>2c34b68669427d15f76a1c06ab941e3e6038dacdfb9209455c87519a3ef2c660</details>
 
@@ -140,13 +139,13 @@ This guide contains the answer and steps necessary to get to them for the [Intro
 
    After changing the content of the file, we can use the same command to re-calculate the hash.
 
-   HASHING CHANGE
+   ![Hashing Change](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Hashing_Change.png)
    
    ```cmd
    sha256sum order.json
    ```
 
-   HASHING SHA NEW
+   ![Hashing Sha New](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Hashing_Sha_New.png)
    
    ><details><summary>Click for answer</summary>11faeec5edc2a2bad82ab116bbe4df0f4bc6edd96adac7150bb4e6364a238466</details>
 
@@ -158,7 +157,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    hmac256 3RfDFz82 order.txt
    ```
 
-   HASHING HMAC
+   ![Hashing Hmac](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Hashing_Hmac.png)
 
    ><details><summary>Click for answer</summary>c7e4de386a09ef970300243a70a444ee2a4ca62413aeaeb7097d43d2c5fac89f</details>
 
@@ -172,7 +171,7 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    openssl x509 -in cert.pem -text -noout
    ```
 
-   PKI CERT
+   ![PKI Cert](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_PKI_Cert.png)
 
    ><details><summary>Click for answer</summary>4096</details>
 
@@ -192,6 +191,6 @@ This guide contains the answer and steps necessary to get to them for the [Intro
    hashcat -m 0 3fc0a7acf087f549ac2b266baf94b8b1 /usr/share/wordlists/rockyou.txt
    ```
 
-   AUTHENTICATING PASSWORD
+   ![Authenticating Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cryptographyintro/Introduction_Cryptography_Authenticating_Password.png)
 
    ><details><summary>Click for answer</summary>qwerty123</details>
