@@ -20,7 +20,7 @@ The following rooms are available/in progress:
 - [x] [Burp Suite: The Basics](burpsuitebasics/burpsuitebasics.md)
 - [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [**Burp Suite: Intruder***](burpsuiteintruder/burpsuiteintruder.md) [Answered]
-- [ ] [**Burp Suite: Other Modules***](burpsuiteom/burpsuiteom.md) [WiP]
+- [x] [**Burp Suite: Other Modules***](burpsuiteom/burpsuiteom.md) [Answered]
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
