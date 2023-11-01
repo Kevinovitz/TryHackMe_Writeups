@@ -1,7 +1,7 @@
 ![Burp Suite: Other Modules Banner](https://assets.tryhackme.com/room-banners/burpsuite.svg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteom/Burp_Suite_Modules_Cover.png" alt="Burp Suite: Other Modules Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuiteom/Burp_Suite_Other_Modules_Cover.png" alt="Burp Suite: Other Modules Logo">
 </p>
 
 # Burp Suite: Other Modules
