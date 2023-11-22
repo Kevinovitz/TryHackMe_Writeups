@@ -1,7 +1,7 @@
 ![Hacking with PowerShell Banner](https://assets.tryhackme.com/additional/banners/powershell.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/powershell/Hacking_PowerShell_Cover.png" alt="Hacking with PowerShell Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/powershell/Hacking_Powershell_Cover.png" alt="Hacking with PowerShell Logo">
 </p>
 
 # Hacking with PowerShell
@@ -20,9 +20,9 @@ This guide contains the answer and steps necessary to get to them for the [Hacki
 
 1. What is the command to get a new object?
 
+   We will use a verb to describe what we want to do and then a noun describing what we want to do it to.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>get-new</details>
 
 ### Basic Powershell Commands
 
