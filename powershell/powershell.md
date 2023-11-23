@@ -28,51 +28,92 @@ This guide contains the answer and steps necessary to get to them for the [Hacki
 
 1. What is the location of the file "interesting-file.txt"
 
+   For this we can use 'Get-ChildItem' and specify the path and filename we want to look for.
+   
+   ```cmd
+   Get-ChildItem -Path C:\ -Recurse -File -Include *interesting-file* -ErrorAction SilentlyContinue
+   ```
+   
+   BASIC COMMANDS LOCATION
 
+   ><details><summary>Click for answer</summary>C:\Program FIles</details>
 
-   ><details><summary>Click for answer</summary></details>
+3. Specify the contents of this file
 
-2. Specify the contents of this file
+   Viewing the contents can be done with the 'Get-Content' command.
+   
+   ```cmd
+   Get-Content -Path "C:\Program Files\interesting-file.txt.txt"
+   ```
+   
+   BASIC COMMANDS CONTENT
 
+   ><details><summary>Click for answer</summary>notsointerestingcontent</details>
 
+5. How many cmdlets are installed on the system(only cmdlets, not functions and aliases)?
 
-   ><details><summary>Click for answer</summary></details>
+   'Get-Command' can be used to view the installed cmdlets. However, we must also filter to only show cmdlets. This can be done by piping the output to 'Where-Object'.
+   
+   ```cmd
+   Get-Command | Where-Object -Property CommandType -eq Cmdlet | Measure
+   ```
+   
+   BASIC COMMANDS CMDLETS
 
-3. How many cmdlets are installed on the system(only cmdlets, not functions and aliases)?
+   ><details><summary>Click for answer</summary>6638</details>
 
+7. Get the MD5 hash of interesting-file.txt
 
+   The file hash can be obtained using 'Get-FileHash'.
+   
+   ```cmd
+   Get-FileHash -Algorithm MD5 -Path "C:\Program Files\interesting-file.txt.txt"
+   ```
+   
+   BASIC COMMANDS HASH
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>49A586A2A9456226F8A1B4CEC6FAB329</details>
 
-4. Get the MD5 hash of interesting-file.txt
+9. What is the command to get the current working directory?
+   
+   BASIC COMMANDS DIRECTORY
 
+   ><details><summary>Click for answer</summary>Get-Location</details>
 
+11. Does the path "C:\Users\Administrator\Documents\Passwords" Exist (Y/N)?
 
-   ><details><summary>Click for answer</summary></details>
+   We can simply try to view the contents of this directory to see if it exists.
+   
+   ```cmd
+   Get-ChildItem -Path "C:\Users\Administrator\Documents\Passwords"
+   ```
+   
+   BASIC COMMANDS EXIST
 
-5. What is the command to get the current working directory?
+   ><details><summary>Click for answer</summary>N</details>
 
+11. What command would you use to make a request to a web server?
 
+   Using 'Get-Command' we can look for the correct command.
+   
+   BASIC COMMANDS REQUEST
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Invoke-WebRequest</details>
 
-6. Does the path "C:\Users\Administrator\Documents\Passwords" Exist (Y/N)?
+11. Base64 decode the file b64.txt on Windows. 
 
+   After getting the contents of the file, we can decode the base64 encoded string using CyberChef.
+   
+   ```cmd
+   Get-ChildItem -Path C:\ -File -Recurse -Include *b64.txt -ErrorAction SilentlyContinue
+    Get-Content C:\Users\Administrator\Desktop\b64.txt
+   ```
+   
+   BASIC COMMANDS B64
 
+   BASIC COMMANDS FLAG
 
-   ><details><summary>Click for answer</summary></details>
-
-7. What command would you use to make a request to a web server?
-
-
-
-   ><details><summary>Click for answer</summary></details>
-
-8. Base64 decode the file b64.txt on Windows. 
-
-
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>ihopeyoudidthisonwindows</details>
 
 ### Enumeration
 
