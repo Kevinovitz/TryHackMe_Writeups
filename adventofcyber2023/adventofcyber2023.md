@@ -1,7 +1,7 @@
 ![Advent of Cyber 2023 Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/1eb7b51908dee3e6a463ed1b4158f55d.svg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Logo.png" alt="Advent of Cyber 2023 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Cover.png" alt="Advent of Cyber 2023 Cover">
 </p>
 
 # Advent of Cyber 2023
