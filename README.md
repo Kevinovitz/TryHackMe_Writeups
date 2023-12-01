@@ -11,6 +11,7 @@ The following rooms are available/in progress:
 
 - [x] [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
 - [x] [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
+- [ ] [Advent of Cyber 2023](adventofcyber2023/adventofcyber2023.md)
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md) [Answered]
