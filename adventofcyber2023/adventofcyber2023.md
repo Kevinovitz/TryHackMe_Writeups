@@ -13,9 +13,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 ## Table of contents
 
-- [Day 1 Chatbot, tell me, if you're really safe? ](#day-1--chatbot,-tell-me,-if-you're-really-safe)
-<!--- [Day 2 ](#day-2-)
-- [Day 3 ](#day-3-)
+- [Day 1 Chatbot, tell me, if you're really safe?](#day-1--chatbot,-tell-me,-if-you're-really-safe)
+- [Day 2 Day 2 O Data, All Ye Faithful](#day-2-day-2-o-data,-all-ye-faithful)
+<!--- [Day 3 ](#day-3-)
 - [Day 4 ](#day-4-)
 - [Day 5 ](#day-5-)
 - [Day 6 ](#day-6-)
@@ -42,21 +42,59 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 In this task we will look at how we can use prompt injection to bypass security measures put in place to prevent an AI chatbot from leaking sensitive information.
 
-1. 
+1. What is McGreedy's personal email address?
+
+
 
    ><details><summary>Click for answer</summary>Walkthrough: https://www.youtube.com/watch?v=dQw4w9WgXcQ</details>
+
+2. What is the password for the IT server room door?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the name of McGreedy's secret project?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+If you enjoyed this room, we invite you to join our Discord server for ongoing support, exclusive tips, and a community of peers to enhance your Advent of Cyber experience!
+
+### Day 2 O Data, All Ye Faithful
+
+In this task we will be looking at a captured network traffic packet and analyse its contents using Jupyter Notebooks.
+
+1. Open the notebook "Workbook" located in the directory "4_Capstone" on the VM. Use what you have learned today to analyse the packet capture.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. How many packets were captured (looking at the PacketNumber)?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What IP address sent the most amount of traffic during the packet capture?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What was the most frequent protocol?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+If you enjoyed today's task, check out the Intro to Log Analysis room.
 
 More days are yet to come!
 
 <!---
-
-### Day 2 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 3 
 
