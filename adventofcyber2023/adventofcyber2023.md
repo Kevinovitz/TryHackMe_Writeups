@@ -13,8 +13,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 ## Table of contents
 
-- [Day 1 Chatbot, tell me, if you're really safe?](#day-1-chatbot-tell-me-if-you're-really-safe)
-- [Day 2 Day 2 O Data, All Ye Faithful](#day-2-day-2-o-data-all-ye-faithful)
+- [Day 1 Chatbot, tell me, if you're really safe?](#day-1-chatbot,-tell-me,-if-you're-really-safe)
+- [Day 2 Day 2 O Data, All Ye Faithful](#day-2-o-data,-all-ye-faithful)
 <!--- [Day 3 ](#day-3-)
 - [Day 4 ](#day-4-)
 - [Day 5 ](#day-5-)
