@@ -15,8 +15,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 - [Day 1 Chatbot, tell me, if you're really safe?](#day-1-chatbot-tell-me-if-youre-really-safe)
 - [Day 2 Day 2 O Data, All Ye Faithful](#day-2-o-data-all-ye-faithful)
-<!--- [Day 3 ](#day-3-)
-- [Day 4 ](#day-4-)
+- [Day 3 Hydra is Coming to Town](#day-3-hydra-is-coming-to-town)
+<!--- [Day 4 ](#day-4-)
 - [Day 5 ](#day-5-)
 - [Day 6 ](#day-6-)
 - [Day 7 ](#day-7-)
@@ -92,17 +92,21 @@ In this task we will be looking at a captured network traffic packet and analyse
 
 If you enjoyed today's task, check out the Intro to Log Analysis room.
 
+### Day 3 Hydra is Coming to Town
+
+In this task we will be using Hydra to bruteforce our way into the security system for the IT server room.
+
+1. Using crunch and hydra, find the PIN code to access the control system and unlock the door. What is the flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+If you have enjoyed this room please check out the Password Attacks room.
+
 More days are yet to come!
 
 <!---
-
-### Day 3 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 4 
 
