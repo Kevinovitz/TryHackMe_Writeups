@@ -96,6 +96,10 @@ If you enjoyed today's task, check out the Intro to Log Analysis room.
 
 In this task we will be using Hydra to bruteforce our way into the security system for the IT server room.
 
+When trying the access the login page, make sure to use `http` (not https) and append the port number to the ip address.
+
+So if your ip is `10.10.10.10` and your provided port number is `8000`, you need to visit `http://10.10.10.10:8000`.
+
 1. Using crunch and hydra, find the PIN code to access the control system and unlock the door. What is the flag?
 
 
