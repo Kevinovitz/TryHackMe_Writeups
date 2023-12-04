@@ -16,8 +16,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 1 Chatbot, tell me, if you're really safe?](#day-1-chatbot-tell-me-if-youre-really-safe)
 - [Day 2 Day 2 O Data, All Ye Faithful](#day-2-o-data-all-ye-faithful)
 - [Day 3 Hydra is Coming to Town](#day-3-hydra-is-coming-to-town)
-<!--- [Day 4 ](#day-4-)
-- [Day 5 ](#day-5-)
+- [Day 4 Baby, it's CeWLd outside](#day-4-baby-its-cewld-outside)
+<!--- [Day 5 ](#day-5-)
 - [Day 6 ](#day-6-)
 - [Day 7 ](#day-7-)
 - [Day 8 ](#day-8-)
@@ -108,17 +108,27 @@ So if your ip is `10.10.10.10` and your provided port number is `8000`, you need
 
 If you have enjoyed this room please check out the Password Attacks room.
 
+### Day 4 Baby, it's CeWLd outside
+
+In this task we will be using cewl to generate wordlists and wfuzz to brute-force our way into a web application.
+
+1. What is the correct username and password combination? Format username:password
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+If you enjoyed this task, feel free to check out the Web Enumeration room.
+
 More days are yet to come!
 
 <!---
-
-### Day 4 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 5 
 
