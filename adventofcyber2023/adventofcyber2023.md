@@ -17,8 +17,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 2 Day 2 O Data, All Ye Faithful](#day-2-o-data-all-ye-faithful)
 - [Day 3 Hydra is Coming to Town](#day-3-hydra-is-coming-to-town)
 - [Day 4 Baby, it's CeWLd outside](#day-4-baby-its-cewld-outside)
-<!--- [Day 5 ](#day-5-)
-- [Day 6 ](#day-6-)
+- [Day 5 Memories of Christmas Past](#day-5-memories-of-christmas-past)
+<!--- [Day 6 ](#day-6-)
 - [Day 7 ](#day-7-)
 - [Day 8 ](#day-8-)
 - [Day 9 ](#day-9-)
@@ -126,17 +126,29 @@ In this task we will be using cewl to generate wordlists and wfuzz to brute-forc
 
 If you enjoyed this task, feel free to check out the Web Enumeration room.
 
+### Day 5 Memories of Christmas Past
+
+In this task we will be looking at how memory corruption through a buffer overflow vulnerability can be exploited in a web game.
+
+1. If the coins variable had the in-memory value in the image below, how many coins would you have in the game?
+
+   ![Money]()
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the value of the final flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+We have only explored the surface of buffer overflows in this task. Buffer overflows are the basis of many public exploits and can even be used to gain complete control of a machine. If you want to explore this subject more in-depth, feel free to check the Buffer Overflows room.
+
+Van Jolly still thinks the Ghost of Christmas Past is in the game. She says she has seen it with her own eyes! She thinks the Ghost is hiding in a glitch, whatever that means. What could she have seen?
+
 More days are yet to come!
 
 <!---
-
-### Day 5 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 6 
 
