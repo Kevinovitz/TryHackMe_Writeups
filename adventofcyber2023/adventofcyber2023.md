@@ -17,11 +17,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 2 Day 2 O Data, All Ye Faithful](#day-2-o-data-all-ye-faithful)
 - [Day 3 Hydra is Coming to Town](#day-3-hydra-is-coming-to-town)
 - [Day 4 Baby, it's CeWLd outside](#day-4-baby-its-cewld-outside)
-- [Day 5 Memories of Christmas Past](#day-5-memories-of-christmas-past)
-- [Day 6 ](#day-6-)
-<!--- [Day 7 ](#day-7-)
-- [Day 8 ](#day-8-)
-- [Day 9 ](#day-9-)
+- [Day 5 A Christmas DOScovery: Tapes of Yule-tide Past](#day-5-christmas-doscovery-tapes-of-yule-tide-past)
+- [Day 6 Memories of Christmas Past](#day-6-memories-of-christmas-past)
+- [Day 7 ‘Tis the season for log chopping!](#day-7-tis-the-season-for-log-chopping)
+- [Day 8 Have a Holly, Jolly Byte!](#day-8-have-a-holly-jolly-byte)
+<!--- [Day 9 ](#day-9-)
 - [Day 10 ](#day-10-)
 - [Day 11 ](#day-11-)
 - [Day 12 ](#day-12-)
@@ -126,7 +126,37 @@ In this task we will be using cewl to generate wordlists and wfuzz to brute-forc
 
 If you enjoyed this task, feel free to check out the Web Enumeration room.
 
-### Day 5 Memories of Christmas Past
+### Day 5 A Christmas DOScovery: Tapes of Yule-tide Past
+
+
+
+1. How large (in bytes) is the AC2023.BAK file?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the name of the backup program?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What should the correct bytes be in the backup's file signature to restore the backup properly?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What is the flag after restoring the backup successfully?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+What you've done is a simple form of reverse engineering, but the topic has more than just this. If you are interested in learning more, we recommend checking out our x64 Assembly Crash Course room, which offers a comprehensive guide to reverse engineering at the lowest level.
+
+### Day 6 Memories of Christmas Past
 
 In this task we will be looking at how memory corruption through a buffer overflow vulnerability can be exploited in a web game.
 
@@ -146,7 +176,7 @@ We have only explored the surface of buffer overflows in this task. Buffer overf
 
 Van Jolly still thinks the Ghost of Christmas Past is in the game. She says she has seen it with her own eyes! She thinks the Ghost is hiding in a glitch, whatever that means. What could she have seen?
 
-### Day 6 
+### Day 7 ‘Tis the season for log chopping!
 
 In this task we will be looking at how to parse log files to find information using basic linux commands.
 
@@ -258,25 +288,55 @@ In this task we will be looking at how to parse log files to find information us
 
 If you enjoyed doing log analysis, check out the Log Analysis module in the SOC Level 2 Path.
 
+### Day 8 Have a Holly, Jolly Byte!
+
+In this task we will be using FTK Imager to examine a malicious USB drive and recover any deleted items.
+
+1.  What is the malware C2 server?
+
+   Lets examine some of the files on the disk. The deleted 'DO NOT READ` folder seems promising. Here we have a secret text file that might be of interest.
+
+   Opening it, we can see it is some sort of chat log containing information about the C2 server.
+   
+   C2 SERVER
+
+   ><details><summary>Click for answer</summary>mcgreedysecretc2.thm</details>
+
+2. What is the file inside the deleted zip archive?
+
+   We can see the deleted zip file. We can click on it to reveal its contents. Looks like there is a malicious executable within.
+   
+   FILE
+
+   ><details><summary>Click for answer</summary>JuicytomaTOY.exe</details>
+
+3. What flag is hidden in one of the deleted PNG files?
+
+   Looking at both images in the root folder, there is nothing in the image that resemles a flag.
+
+   However, one of the images seems to be somewhat corrupted. Perhaps someone messed with the bytes of the file. 
+
+   IMAGE
+
+   We can switch to using the hex-view mode to look at the bytes inside the image file. Using the search function we can look for `THM{`.
+
+   FLAG
+
+   ><details><summary>Click for answer</summary>THM{byt3-L3vel_@n4Lys15}</details>
+
+4. What is the SHA1 hash of the physical drive and forensic image?
+
+   The has can be found by selecting the image in the file tree window and verifying the disk. This gives us another windows with various hashes.
+   
+   HASH
+
+   ><details><summary>Click for answer</summary>39f2dea6ffb43bf80d80f19d122076b3682773c2</details>
+
+If you liked today's challenge, the [Digital Forensics Case B4DM755](https://tryhackme.com/room/caseb4dm755) room is an excellent overview of the entire digital forensics and incident response (DFIR) process!
+
 More days are yet to come!
 
 <!---
-
-### Day 7 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
-
-### Day 8 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 9 
 
