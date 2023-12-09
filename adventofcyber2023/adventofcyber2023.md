@@ -21,8 +21,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 6 Memories of Christmas Past](#day-6-memories-of-christmas-past)
 - [Day 7 ‘Tis the season for log chopping!](#day-7-tis-the-season-for-log-chopping)
 - [Day 8 Have a Holly, Jolly Byte!](#day-8-have-a-holly-jolly-byte)
-<!--- [Day 9 ](#day-9-)
-- [Day 10 ](#day-10-)
+- [Day 9 She sells C# shells by the C2shore](#day-9-she-sells-c-shells-by-the-c2shore)
+<!--- [Day 10 ](#day-10-)
 - [Day 11 ](#day-11-)
 - [Day 12 ](#day-12-)
 - [Day 13 ](#day-13-)
@@ -416,17 +416,91 @@ In this task we will be using FTK Imager to examine a malicious USB drive and re
 
 If you liked today's challenge, the [Digital Forensics Case B4DM755](https://tryhackme.com/room/caseb4dm755) room is an excellent overview of the entire digital forensics and incident response (DFIR) process!
 
+### Day 9 She sells C# shells by the C2shore
+
+In this task we will be be investigating the malware sample we found in the previous challenge using dnsSpy.
+
+1. What HTTP User-Agent was used by the malware for its connection requests to the C2 server?
+
+   It seems all function we can find can be found in the main program section. Selecting this file, we can search it for any strings containing `agent`. This might give us the value of the useragent variable.
+
+   USER AGENT
+
+   ><details><summary>Click for answer</summary>Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15</details>
+
+2. What is the HTTP method used to submit the command execution output?
+
+   Looking at the main program, we can see which function is called to submit the results from executed commands (shell and implant).
+
+   SUBMIT FUNCTIONS
+
+   Looks like it is using `PostIt` to submit the data. We can look at this function to find the HTTP request method used.
+
+   SUBMIT METHOD
+
+   ><details><summary>Click for answer</summary>POST</details>
+
+3. What key is used by the malware to encrypt or decrypt the C2 data?
+
+   We can find the this key by looking at the `decryptor` and `encryptor` function.
+
+   KEY
+
+   ><details><summary>Click for answer</summary>youcanthackthissupersecurec2keys</details>
+
+4. What is the first HTTP URL used by the malware?
+
+   Firs this we should look at the main program file. Searching for `http` we can see where it is used first.
+
+   URL
+
+   Rember this is just the string containing part of the URL. The actual request (in GetIt) is don't with and additional argument.
+
+   ><details><summary>Click for answer</summary>http://mcgreedysecretc2.thm/reg</details>
+
+5. How many seconds is the hardcoded value used by the sleep function?
+
+   The Sleeper function itself doesn't contain any hardcoded value, so we must look through the main program. By searching for usage of the `sleeper` function, we can see it uses the variable count.
+
+   Searching for this variable gives us the harcoded value.
+
+   SLEEPER TIME
+
+   ><details><summary>Click for answer</summary>15</details>
+
+6. What is the C2 command the attacker uses to execute commands via cmd.exe?
+
+   Lets find out which function executes the `cmd` command on the machine. Looks like it is `ExecuteCommand`.
+
+   CMD FUNCTION
+
+   We can now search for where this function is called in the main program.
+
+   CMD COMMAND
+
+   Looks like it is called in the IF statement which looks for a particular string.
+
+   ><details><summary>Click for answer</summary>shell</details>
+
+7. What is the domain used by the malware to download another binary?
+
+   Lets look in the `implant` function to see what is happening there.
+
+   EXECUTABLE
+
+   Looks like a spyware program is downloaded to a particular folder. It doesn't show us the download domain though. Lets search for where this function is called in the main program.
+
+   DROPPER URL
+
+   Here we can see a URL being passed to the function containing the same spykit executable.
+
+   ><details><summary>Click for answer</summary>stash.mcgreedy.thm</details>
+
+Check out the [Malware Analysis](https://tryhackme.com/module/malware-analysis) module in the [SOC Level 2 Path](https://tryhackme.com/path-action/soclevel2/join) if you enjoyed analysing malware.
+
 More days are yet to come!
 
 <!---
-
-### Day 9 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 10 
 
