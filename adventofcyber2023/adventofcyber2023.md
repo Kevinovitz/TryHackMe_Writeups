@@ -22,7 +22,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 7 ‘Tis the season for log chopping!](#day-7-tis-the-season-for-log-chopping)
 - [Day 8 Have a Holly, Jolly Byte!](#day-8-have-a-holly-jolly-byte)
 - [Day 9 She sells C# shells by the C2shore](#day-9-she-sells-c-shells-by-the-c2shore)
-<!--- [Day 10 ](#day-10-)
+<!--- [Day 10 Inject the Halls with EXEC Queries](#day-10-inject-the-halls-with-exec-queries)
 - [Day 11 ](#day-11-)
 - [Day 12 ](#day-12-)
 - [Day 13 ](#day-13-)
@@ -498,17 +498,59 @@ In this task we will be be investigating the malware sample we found in the prev
 
 Check out the [Malware Analysis](https://tryhackme.com/module/malware-analysis) module in the [SOC Level 2 Path](https://tryhackme.com/path-action/soclevel2/join) if you enjoyed analysing malware.
 
+### Day 10 Inject the Halls with EXEC Queries
+
+
+
+1. Manually navigate the defaced website to find the vulnerable search form. What is the first webpage you come across that contains the gift-finding feature?
+
+   When looking through the website, we can see there is a gift search page. Clicking the link, we can see the url for this form.
+
+   GIFT SEARCH
+
+   ><details><summary>Click for answer</summary>/giftsearch.php</details>
+
+2. Analyze the SQL error message that is returned. What ODBC Driver is being used in the back end of the website?
+
+   After submitting a search query, we can see what paramters is used in the url. To check for any vulnerablities we can simply enter `'` for the first parameter.
+
+   ERROR
+
+   This does indeed gives us an error. It also gives us some sensitive information.
+
+   ><details><summary>Click for answer</summary>ODBC Driver 17 for SQL Server</details>
+
+3. Inject the 1=1 condition into the Gift Search form. What is the last result returned in the database?
+
+   Lets append the `1=1` condition to our injection. Dont' forget to use `--` at the end. This makes sure the rest of the query is ignored.
+
+   ```cmd
+   ' OR 1=1 --
+   ```
+
+   FLAG
+
+   Scrolling all the way to the bottom gives us the answer we are looking for.
+
+   ><details><summary>Click for answer</summary>THM{a4ffc901c27fb89efe3c31642ece4447}</details>
+
+5. What flag is in the note file Gr33dstr left behind on the system?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. What is the flag you receive on the homepage after restoring the website?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+If you enjoyed this task, feel free to check out the [Software Security](https://tryhackme.com/module/software-security) module.
+
 More days are yet to come!
 
 <!---
-
-### Day 10 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 11 
 
