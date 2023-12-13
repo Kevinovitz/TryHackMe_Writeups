@@ -25,8 +25,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 10 Inject the Halls with EXEC Queries](#day-10-inject-the-halls-with-exec-queries)
 - [Day 11 Jingle Bells, Shadow Spells](#day-11-jingle-bells-shadow-spells)
 - [Day 12 Sleighing Threats, One Layer at a Time](#day-12-sleighing-threats-one-layer-at-a-time)
-<!--- [Day 13 ](#day-13-)
-- [Day 14 ](#day-14-)
+- [Day 13 To the Pots, Through the Walls](#day-13-to-the-pots-through-the-walls)
+<!--- [Day 14 ](#day-14-)
 - [Day 15 ](#day-15-)
 - [Day 16 ](#day-16-)
 - [Day 17 ](#day-17-)
@@ -918,17 +918,71 @@ Looking at the chatlogs in our browser, we can see some interesting information.
 
 If you enjoyed this room, please check out our SOC Level 1 learning path.
 
+### Day 13 To the Pots, Through the Walls
+
+In this task we will be looking at the Diamond Model and how to use firewalls and honeypots to harden our security posture.
+
+1.  Which security model is being used to analyse the breach and defence strategies?
+
+   This model is repeatetly mentioned in the text.
+
+   ><details><summary>Click for answer</summary>Diamond Model</details>
+
+2. Which defence capability is used to actively search for signs of malicious activity?
+
+   The answer is given in the text.
+
+   ><details><summary>Click for answer</summary>Threat Hunting</details>
+
+3. What are our main two infrastructure focuses? (Answer format: answer1 and answer2)
+
+   This answer to, can be found in the text. These are tools we will be using.
+
+   ><details><summary>Click for answer</summary>Firewall and Honeypot</details>
+
+4. Which firewall command is used to block traffic?
+
+   While editing the policies for the firewall we come accross two terms that determine what happens to a connection.
+
+   FIREWALL RULES
+
+   ><details><summary>Click for answer</summary>Deny</details>
+
+5. There is a flag in one of the stories. Can you find it?
+
+   In our home folder we have a firewall rule script. Lets run it to properly setup the firewall.
+
+   ```cmd
+   sudo bash Van_Twinkle_rules.sh
+   ```
+
+   FIREWALL ACTIVE
+
+   Lets check the script and see what rules have been added.
+
+   FIREWALL SERVER
+
+   Two rules seem to be of interest to us. Running a quick nmap we can confirm we indeed are looking for the webserver on port 8090.
+
+   NMAP
+
+   Lets allow connections to this port in our firewall.
+
+   FIREWALL ALLOW
+
+   Now we should be able to access the website.
+
+   WEBSITE
+
+   Now we must investigate the website and look for our flag.
+
+   ><details><summary>Click for answer</summary>THM{P0T$_W@11S_4_S@N7@}</details>
+
+If you enjoyed this task, feel free to check out the [Network Device Hardening](https://tryhackme.com/room/networkdevicehardening) room.
+
 More days are yet to come!
 
 <!---
-
-### Day 13 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 14 
 
