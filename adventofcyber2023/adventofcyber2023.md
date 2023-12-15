@@ -26,8 +26,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 11 Jingle Bells, Shadow Spells](#day-11-jingle-bells-shadow-spells)
 - [Day 12 Sleighing Threats, One Layer at a Time](#day-12-sleighing-threats-one-layer-at-a-time)
 - [Day 13 To the Pots, Through the Walls](#day-13-to-the-pots-through-the-walls)
-<!--- [Day 14 ](#day-14-)
-- [Day 15 ](#day-15-)
+- [Day 14 The Little Machine That Wanted to Learn](#day-14-the-little-machine-that-wanted-to-learn)
+<!--- [Day 15 ](#day-15-)
 - [Day 16 ](#day-16-)
 - [Day 17 ](#day-17-)
 - [Day 18 ](#day-18-)
@@ -922,7 +922,7 @@ If you enjoyed this room, please check out our SOC Level 1 learning path.
 
 In this task we will be looking at the Diamond Model and how to use firewalls and honeypots to harden our security posture.
 
-1.  Which security model is being used to analyse the breach and defence strategies?
+1. Which security model is being used to analyse the breach and defence strategies?
 
    This model is repeatetly mentioned in the text.
 
@@ -980,17 +980,105 @@ In this task we will be looking at the Diamond Model and how to use firewalls an
 
 If you enjoyed this task, feel free to check out the [Network Device Hardening](https://tryhackme.com/room/networkdevicehardening) room.
 
+### Day 14 The Little Machine That Wanted to Learn
+
+In this task we will be looking at how we can train a simply neural network to make predictions of faulty toys.
+
+1.  What is the other term given for Artificial Intelligence or the subset of AI meant to teach computers how humans think or nature works?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Machine Learning</details>
+
+2. What ML structure aims to mimic the process of natural selection and evolution?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Genetic Algorithm</details>
+
+3. What is the name of the learning style that makes use of labelled data to train an ML structure?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Supervised Learning</details>
+
+4. What is the name of the layer between the Input and Output layers of a Neural Network?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Hidden Layer</details>
+
+5. What is the name of the process used to provide feedback to the Neural Network on how close its prediction was?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Back-Propagation</details>
+
+6. What is the value of the flag you received after achieving more than 90% accuracy on your submitted predictions?
+
+   Lets edit the script on the machine using what we just learned. First we add the code to split the data.
+
+   ```cmd
+   train_X, validate_x, train_y, validate_y = train_test_split(X, y, test_size=0.2)
+   ```
+
+   SPLIT CODE
+
+   Then we add the code to normalize our data.
+
+   ```cmd
+   scaler = StandardScaler()
+   scaler.fit(train_X)
+   
+   train_X = scaler.transform(Train_X)
+   validate_x = scaler.transform(validate_x)
+   test_X = scaler.transform(test_X)
+   ```
+   
+   NORMALIZE CODE
+
+   Then we add the validation code:
+
+   ```cmd
+   clf = MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(15,2), max_iter=10000)
+   clf.fit(train_X, train_y)
+   
+   y_predicted = clf.predict(validate_X)
+   ```
+
+   VALIDATE CODE
+
+   And the prediction code:
+
+   ```cmd
+   y_test_predictions = clf.predict(test_X)
+   ```
+   
+   PREDICTION CODE
+
+   We can now run this script to train our model and predict the results of our test data using:
+
+   ```cmd
+   python3 detector.py
+   ```
+
+   OUTPUT
+
+   It looks like our validation came back with an accuracy of 91.42%. This should be enough for the task. Lets upload the output to http://websiteforpredictions.thm:8000/.
+   
+   UPLOAD
+
+   Looks like we trained our model successfully and received our flag!
+   
+   FLAG
+   
+   ><details><summary>Click for answer</summary>THM{Neural.Networks.are.Neat!}</details>
+
+If you enjoyed this room, we invite you to join our [Discord server](https://discord.gg/QgC6Tdk) for ongoing support, exclusive tips, and a community of peers to enhance your Advent of Cyber experience!
+
 More days are yet to come!
 
 <!---
-
-### Day 14 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 15 
 
