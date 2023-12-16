@@ -27,9 +27,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 12 Sleighing Threats, One Layer at a Time](#day-12-sleighing-threats-one-layer-at-a-time)
 - [Day 13 To the Pots, Through the Walls](#day-13-to-the-pots-through-the-walls)
 - [Day 14 The Little Machine That Wanted to Learn](#day-14-the-little-machine-that-wanted-to-learn)
-- [Day 15 Jingle Bell SPAM: Machine Learning Saves the Day!](#day-15-jingle-bell-spam:-machine-learning-saves-the-day!)
-<!--- [Day 16 ](#day-16-)
-- [Day 17 ](#day-17-)
+- [Day 15 Jingle Bell SPAM: Machine Learning Saves the Day!](#day-15-jingle-bell-spam-machine-learning-saves-the-day!)
+- [Day 16 Can't CAPTCHA this Machine! ](#day-16-cant-captcha-this-machine)
+<!--- [Day 17 ](#day-17-)
 - [Day 18 ](#day-18-)
 - [Day 19 ](#day-19-)
 - [Day 20 ](#day-20-)
@@ -1133,17 +1133,121 @@ If you enjoyed this room, we invite you to join our [Discord server](https://dis
 
 If you enjoyed this room, please check out the [Phishing](https://tryhackme.com/module/phishing) module.
 
+### Day 16 Can't CAPTCHA this Machine! 
+
+In this task we are using Machine Learning to create a model that can successfully solve CAPTCHAs for us to bruteforce a login portal.
+
+1.  What key process of training a neural network is taken care of by using a CNN?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Feature Extraction</details>
+
+2. What is the name of the process used in the CNN to extract the features?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Convolution</details>
+
+3. What is the name of the process used to reduce the features down?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Pooling</details>
+
+4. What off-the-shelf CNN did we use to train a CAPTCHA-cracking OCR model?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Attention OCR</details>
+
+5. What is the password that McGreedy set on the HQ Admin portal?
+
+   On the webpage provided, we can find the portal we need to hack into.
+
+   PORTAL
+
+   We can do the steps needed to extract our data and train the model, but since that has already been done for us, we can simply export our trained model.
+
+   But first, we can test it to see what its performance is.
+
+   Lets run the container:
+
+   ```cmd
+   docker run -d -v /tmp/data:/tempdit/ aocr/full
+   docker ps
+   docker exec -it 3030ebad1623
+   ```
+
+   DOCKER CONNECT
+
+   This should now have given us a shell into our container.
+
+   Here we can perform the testing of the model on our test data.
+
+   ```cmd
+   cd /ocr/labels/
+   aocr test testing.tfrecords
+   ```
+
+   TESTING
+
+   It looks like our model is doing well. Only a few incorrect answers are given.
+
+   We can export the model to the tmp folder.
+
+   ```cmd
+   cd /ocr/model
+   cp -r model /tempdir/
+   ```
+
+   Now we can exit the container and close it.
+
+   ```cmd
+   exit
+   docker kill <Container ID>
+   ```
+
+   Next we must run the tensorflow docker container.
+
+   ```cmd
+   docker run -t --rm -p 8501:8501 -v /tmp/data/model/exported-model:/models/ -e MODEL_NAME=ocr tensorflow/serving
+   ```
+
+   This will run with our model mounted to the models folder.
+
+   Finally we can run our script using:
+
+   ```cmd
+   cd ~/Desktop/bruteforcer/
+   python3 bruteforce.py 
+   ```
+
+   BRUTEFORCE
+
+   The model only had two incorrect CAPTCHA guesses and we found the password in the end.
+   
+   ><details><summary>Click for answer</summary>ReallyNotGonnaGuessThis</details>
+
+7. What is the value of the flag that you receive when you successfully authenticate to the HQ Admin portal?
+
+   With the password found, we can log in into the portal.
+
+   SIGN IN
+
+   Success, we are in!
+
+   We are now given our flag.
+
+   FLAG
+
+   ><details><summary>Click for answer</summary>THM{Captcha.Can't.Hold.Me.Back}</details>
+
+If you enjoyed this room, check out our Red Teaming learning path!
+
 More days are yet to come!
 
 <!---
-
-### Day 16 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 17 
 
