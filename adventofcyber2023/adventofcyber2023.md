@@ -29,8 +29,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 14 The Little Machine That Wanted to Learn](#day-14-the-little-machine-that-wanted-to-learn)
 - [Day 15 Jingle Bell SPAM: Machine Learning Saves the Day!](#day-15-jingle-bell-spam-machine-learning-saves-the-day!)
 - [Day 16 Can't CAPTCHA this Machine! ](#day-16-cant-captcha-this-machine)
-<!--- [Day 17 ](#day-17-)
-- [Day 18 ](#day-18-)
+- [Day 17 I Tawt I Taw A C2 Tat!](#day-17-i-tawt-i-taw-a-c2-tat)
+<!--- [Day 18 ](#day-18-)
 - [Day 19 ](#day-19-)
 - [Day 20 ](#day-20-)
 - [Day 21 ](#day-21-)
@@ -802,7 +802,7 @@ Looking at the chatlogs in our browser, we can see some interesting information.
 
 ### Day 12 Sleighing Threats, One Layer at a Time
 
-
+In this task we will be looking at how various layers can be combined to create a secure environment.
 
 1. What is the default port for Jenkins?
 
@@ -816,7 +816,7 @@ Looking at the chatlogs in our browser, we can see some interesting information.
 
    Now we copy the script snippet from the text and paste it into jenkins. Don't forget to add you IP and port.
 
-   JENKINS SCRIPT
+   ![Jenkins Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Jenkins_Script.png)
 
    Now we can simply click run and we should get a web shell.
 
@@ -827,7 +827,7 @@ Looking at the chatlogs in our browser, we can see some interesting information.
    cat /opt/scripts/backup.sh
    ```
 
-   BACKUP SCRIPT
+   ![Backup Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Backup_Script.png)
 
    ><details><summary>Click for answer</summary>13_1n_33</details>
 
@@ -837,17 +837,19 @@ Looking at the chatlogs in our browser, we can see some interesting information.
 
    After login in, we can run `sudo -l` to find out which commands the user is allowed to run.
 
-   TRACY SUDO
+   ![Tracy Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Tracy_Sudo.png)
 
    Looks like tract is allowed to effectively run all commands with sudo. So we can simply switch to the root user with `sudo -i` or `sudo su`.
 
-   ROOT
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Root.png)
 
    Now that we are root, we can search for our root flag.
 
+   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Root_Flag.png)
+
    ><details><summary>Click for answer</summary>ezRo0tW1thoutDiD</details>
 
-4. What is the error message when you login as tracy again and try sudo -l after its removal from the sudoers group?
+5. What is the error message when you login as tracy again and try sudo -l after its removal from the sudoers group?
 
    Lets hop into our admin terminal to remove the user tracy from the sudoers file.
 
@@ -857,15 +859,15 @@ Looking at the chatlogs in our browser, we can see some interesting information.
    sudo -l -U tracy
    ```
 
-   REMOVE SUDO
+   ![Remove Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Remove_Sudo.png)
 
    We see tracy has now been removed. Running `sudo -l` on tracys ssh terminal should give us an error message.
 
-   TRACY ERROR
+   ![Tracy Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Tracy_Error.png)
 
    ><details><summary>Click for answer</summary>Sorry, user tracy may not run sudo on jenkins.</details>
 
-5. What's the SSH flag?
+6. What's the SSH flag?
 
    Our next step is to disable the user of ssh passwords by modifying the ssh config file.
 
@@ -877,21 +879,21 @@ Looking at the chatlogs in our browser, we can see some interesting information.
 
    And remove the include line.
 
-   SSH 1
+   ![Ssh 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Ssh_1.png)
 
    And add the password allowed line.
 
-   SSH 2
+   ![Ssh 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Ssh_2.png)
 
    Trying to log back into tracys account via ssh shouldn't work anymore.
 
-   SSH ERROR
+   ![Ssh Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Ssh_Error.png)
 
    The flag can be found in the ssh config file.
 
    ><details><summary>Click for answer</summary>Ne3d2SecureTh1sSecureSh31l</details>
 
-6. What's the Jenkins flag?
+7. What's the Jenkins flag?
 
    For our last flag, we must enable the Jenkins log in screen. To do so we open (with sudo) the jenkins config file from our admin terminal.
 
@@ -901,7 +903,11 @@ Looking at the chatlogs in our browser, we can see some interesting information.
    sudo nano config.xml.bak
    ```
 
-   JENKINS FLAG
+   ![Jenkins Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Jenkins_Files.png)
+
+   We must now remove the "!--" and "--" for both authorizationStrategy and securityRealm (The flag can be found in this document).
+   
+   ![Jenkins Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Jenkins_Flag.png)
 
    Now we must replace `config.xml` with `config.xml.bak`.
 
@@ -912,7 +918,11 @@ Looking at the chatlogs in our browser, we can see some interesting information.
 
    Lastly, we must restart the Jenkins instance using: `sudo systemctl restart jenkins`.
 
-   JENKINS LOGIN.
+   ![Jenkins Restart](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Jenkins_Restart.png)
+
+   Now we are greeted with a login screen.
+
+   ![Jenkins Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D12_Jenkins_Login.png)
 
    ><details><summary>Click for answer</summary>FullTrust_has_n0Place1nS3cur1ty</details>
 
@@ -944,7 +954,7 @@ In this task we will be looking at the Diamond Model and how to use firewalls an
 
    While editing the policies for the firewall we come accross two terms that determine what happens to a connection.
 
-   FIREWALL RULES
+   ![Firewall Rules](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D13_Firewall_Rules.png)
 
    ><details><summary>Click for answer</summary>Deny</details>
 
@@ -956,23 +966,23 @@ In this task we will be looking at the Diamond Model and how to use firewalls an
    sudo bash Van_Twinkle_rules.sh
    ```
 
-   FIREWALL ACTIVE
+   ![Firewall Active](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D13_Firewall_Active.png)
 
    Lets check the script and see what rules have been added.
 
-   FIREWALL SERVER
+   ![Http Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D13_Http_Server.png)
 
    Two rules seem to be of interest to us. Running a quick nmap we can confirm we indeed are looking for the webserver on port 8090.
 
-   NMAP
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D13_Nmap.png)
 
    Lets allow connections to this port in our firewall.
 
-   FIREWALL ALLOW
+   ![Http Allow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D13_Http_Allow.png)
 
    Now we should be able to access the website.
 
-   WEBSITE
+   ![Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D13_Website.png)
 
    Now we must investigate the website and look for our flag.
 
@@ -1022,7 +1032,7 @@ In this task we will be looking at how we can train a simply neural network to m
    train_X, validate_x, train_y, validate_y = train_test_split(X, y, test_size=0.2)
    ```
 
-   SPLIT CODE
+   ![Split Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Split_Code.png)
 
    Then we add the code to normalize our data.
 
@@ -1035,7 +1045,7 @@ In this task we will be looking at how we can train a simply neural network to m
    test_X = scaler.transform(test_X)
    ```
    
-   NORMALIZE CODE
+   ![Normalize Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Normalize_Code.png)
 
    Then we add the validation code:
 
@@ -1046,7 +1056,7 @@ In this task we will be looking at how we can train a simply neural network to m
    y_predicted = clf.predict(validate_X)
    ```
 
-   VALIDATE CODE
+   ![Validate Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Validate_Code.png)
 
    And the prediction code:
 
@@ -1054,7 +1064,7 @@ In this task we will be looking at how we can train a simply neural network to m
    y_test_predictions = clf.predict(test_X)
    ```
    
-   PREDICTION CODE
+   ![Prediction Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Prediction_Code.png)
 
    We can now run this script to train our model and predict the results of our test data using:
 
@@ -1062,15 +1072,15 @@ In this task we will be looking at how we can train a simply neural network to m
    python3 detector.py
    ```
 
-   OUTPUT
+   ![Output](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Output.png)
 
    It looks like our validation came back with an accuracy of 91.42%. This should be enough for the task. Lets upload the output to http://websiteforpredictions.thm:8000/.
    
-   UPLOAD
+   ![Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Upload.png)
 
    Looks like we trained our model successfully and received our flag!
    
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D14_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{Neural.Networks.are.Neat!}</details>
 
@@ -1078,7 +1088,7 @@ If you enjoyed this room, we invite you to join our [Discord server](https://dis
 
 ### Day 15 Jingle Bell SPAM: Machine Learning Saves the Day!
 
-
+In this task we will look at a Machine Learning model that we can train as an email spam filter.
 
 1. What is the key first step in the Machine Learning pipeline?
 
@@ -1096,11 +1106,11 @@ If you enjoyed this room, we invite you to join our [Discord server](https://dis
 
    After training our data, we must evaluate its performance. We do this by running the code below step 5 in Jupyter.
 
-   PRECISSION
+   ![Precision](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D15_Precision.png)
 
    Unfortunately, the value we get from this is not the answer they are looking for. This is probably due to the fact that each model can be different in ML. So instead will can use the validation data provided to us in the text.
 
-   PRECISSION CORRECT
+   ![Precision Correct](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D15_Precision_Correct.png)
 
    ><details><summary>Click for answer</summary>0.98</details>
 
@@ -1108,7 +1118,7 @@ If you enjoyed this room, we invite you to join our [Discord server](https://dis
 
    Now we can use this model to find spam in our test data set by running the corresponding code in Jupyter.
 
-   TEST RESULT
+   ![Test Result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D15_Test_Result.png)
 
    We can see that three of the emails have been marked as spam.
 
@@ -1127,7 +1137,7 @@ If you enjoyed this room, we invite you to join our [Discord server](https://dis
         print('-----------------------')
    ```
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D15_Flag.png)
 
    ><details><summary>Click for answer</summary>I_HaTe_BesT_FestiVal</details>
 
@@ -1137,7 +1147,7 @@ If you enjoyed this room, please check out the [Phishing](https://tryhackme.com/
 
 In this task we are using Machine Learning to create a model that can successfully solve CAPTCHAs for us to bruteforce a login portal.
 
-1.  What key process of training a neural network is taken care of by using a CNN?
+1. What key process of training a neural network is taken care of by using a CNN?
 
    The answer to this question can be found in the text.
 
@@ -1165,7 +1175,7 @@ In this task we are using Machine Learning to create a model that can successful
 
    On the webpage provided, we can find the portal we need to hack into.
 
-   PORTAL
+   ![Portal](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D16_Portal.png)
 
    We can do the steps needed to extract our data and train the model, but since that has already been done for us, we can simply export our trained model.
 
@@ -1179,7 +1189,7 @@ In this task we are using Machine Learning to create a model that can successful
    docker exec -it 3030ebad1623
    ```
 
-   DOCKER CONNECT
+   ![Connect Docker](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D16_Connect_Docker.png)
 
    This should now have given us a shell into our container.
 
@@ -1190,7 +1200,7 @@ In this task we are using Machine Learning to create a model that can successful
    aocr test testing.tfrecords
    ```
 
-   TESTING
+   ![Testing](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D16_Testing.png)
 
    It looks like our model is doing well. Only a few incorrect answers are given.
 
@@ -1223,7 +1233,7 @@ In this task we are using Machine Learning to create a model that can successful
    python3 bruteforce.py 
    ```
 
-   BRUTEFORCE
+   ![Bruteforce](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D16_Bruteforce.png)
 
    The model only had two incorrect CAPTCHA guesses and we found the password in the end.
    
@@ -1233,29 +1243,87 @@ In this task we are using Machine Learning to create a model that can successful
 
    With the password found, we can log in into the portal.
 
-   SIGN IN
+   ![Sing In](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D16_Sing_In.png)
 
    Success, we are in!
 
    We are now given our flag.
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D16_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Captcha.Can't.Hold.Me.Back}</details>
 
 If you enjoyed this room, check out our Red Teaming learning path!
 
+### Day 17 I Tawt I Taw A C2 Tat!
+
+
+
+1. Which version of SiLK is installed on the VM?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the size of the flows in the count records?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the start time (sTime) of the sixth record in the file?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What is the destination port of the sixth UDP record?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What is the record value (%) of the dport 53?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. What is the number of bytes transmitted by the top talker on the network?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+7. What is the sTime value of the first DNS record going to port 53?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+8. What is the IP address of the host that the C2 potentially controls? (In defanged format: 123[.]456[.]789[.]0 )
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+9. Which IP address is suspected to be the flood attacker? (In defanged format: 123[.]456[.]789[.]0 )
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+10. What is the sent SYN packet's number of records?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+We've successfully analysed network flows to gain quick statistics. If you want to delve deeper into network packets and network data, you can look at the [Network Security and Traffic Analysis](https://tryhackme.com/module/network-security-and-traffic-analysis) module.
+
 More days are yet to come!
 
 <!---
-
-### Day 17 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 18 
 
