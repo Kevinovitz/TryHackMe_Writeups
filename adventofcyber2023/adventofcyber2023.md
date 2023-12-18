@@ -30,8 +30,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 15 Jingle Bell SPAM: Machine Learning Saves the Day!](#day-15-jingle-bell-spam-machine-learning-saves-the-day!)
 - [Day 16 Can't CAPTCHA this Machine! ](#day-16-cant-captcha-this-machine)
 - [Day 17 I Tawt I Taw A C2 Tat!](#day-17-i-tawt-i-taw-a-c2-tat)
-<!--- [Day 18 ](#day-18-)
-- [Day 19 ](#day-19-)
+- [Day 18 A Gift That Keeps on Giving](#day-18-a-gift-that-keeps-on-giving)
+<!--- [Day 19 ](#day-19-)
 - [Day 20 ](#day-20-)
 - [Day 21 ](#day-21-)
 - [Day 22 ](#day-22-)
@@ -1411,17 +1411,73 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
 
 We've successfully analysed network flows to gain quick statistics. If you want to delve deeper into network packets and network data, you can look at the [Network Security and Traffic Analysis](https://tryhackme.com/module/network-security-and-traffic-analysis) module.
 
+### Day 18 A Gift That Keeps on Giving
+
+In this task we will be looking at rogue services and how they can prevent you from stopping a malicious process.
+
+1. What is the name of the service that respawns the process after killing it?
+
+   Checking the system resources with `top` we can see a process that is using up 100% of the CPU.
+
+   TOP
+
+   We can try killing it using `sudo kill 651`, but it simply respawn again.
+
+   KILL
+
+   We checked the crontabs for our user and root, but got no results...
+
+   ```cmd
+   crontabs -l
+   sudo -i
+   crontabs -l
+   ```
+
+   Next thing to do is check the processes that er running with `systemctl list-unit-files`.
+
+   PROCESSES
+
+   Looks like there is a process that might be malicious. Lets look closer to see if it really is malicious.
+
+   ```cmd
+   systemctl status a-unkillable.service
+   ```
+
+   PROCESS
+
+   ><details><summary>Click for answer</summary>a-unkillable.service</details>
+
+2. What is the path from where the process and service were running?
+
+   In the image above we can see from where the service is loaded and where the files are stored on the machine.
+
+   ><details><summary>Click for answer</summary></details>
+
+3. The malware prints a taunting message. When is the message shown? Choose from the options below.
+
+   1. Randomly
+   
+   2. After a set interval
+   
+   3. On process termination
+   
+   4. None of the above
+
+   We can see from the process information below when the message is displayed.
+
+   TAUNT
+
+   After the exe has been (re)started the message is displayed. So we can rule out options 1 and 2.
+
+   Everytime the process is killed, the service restarts it and the message is displayed again. However, it is not displayed on termination of the process but when it is first started.
+
+   ><details><summary>Click for answer</summary>4</details>
+   
+If you enjoyed this task, feel free to check out the [Linux Forensics](https://tryhackme.com/room/linuxforensics) room.
+
 More days are yet to come!
 
 <!---
-
-### Day 18 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 19 
 
