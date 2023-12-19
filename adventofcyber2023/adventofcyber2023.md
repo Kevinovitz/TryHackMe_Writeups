@@ -31,8 +31,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 16 Can't CAPTCHA this Machine! ](#day-16-cant-captcha-this-machine)
 - [Day 17 I Tawt I Taw A C2 Tat!](#day-17-i-tawt-i-taw-a-c2-tat)
 - [Day 18 A Gift That Keeps on Giving](#day-18-a-gift-that-keeps-on-giving)
-<!--- [Day 19 ](#day-19-)
-- [Day 20 ](#day-20-)
+- [Day 19 CrypTOYminers Sing Volala-lala-latility](#day-19-cryptoyminers-sing-volala-lala-latility)
+<!--- [Day 20 ](#day-20-)
 - [Day 21 ](#day-21-)
 - [Day 22 ](#day-22-)
 - [Day 23 ](#day-23-)
@@ -1475,17 +1475,120 @@ In this task we will be looking at rogue services and how they can prevent you f
    
 If you enjoyed this task, feel free to check out the [Linux Forensics](https://tryhackme.com/room/linuxforensics) room.
 
+### Day 19 CrypTOYminers Sing Volala-lala-latility
+
+In this task we will be looking at Volatility and how it can be used to read a memory dump file of a machine.
+
+1. What is the exposed password that we find from the bash history output?
+
+   First we must configure Volatility to be able to read the memory file. We can copy the pre-made Linux profile.
+
+   ```cmd
+   cp Desktop/Evidence/Ubuntu_5.4.0-163-generic_profile.zip ~/.local/lib/python2.7/site-packages/volatility/plugins/overlays/linux/
+   vol.py --info | grep ubuntu
+   ```
+
+   PROFILE
+
+   Now using the following command, we can see which plugins we can use. We will be using the bash plugin for this question.
+
+   ```cmd
+   vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_bash
+   ```
+
+   BASH HISTORY
+   
+   ><details><summary>Click for answer</summary>NEhX4VSrN7sV</details>
+
+2. What is the PID of the miner process that we find?
+
+   For this we must use `linux_pslist` to view the processes running on the machine.
+
+   ```cmd
+   vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_pslist
+   ```
+
+   PROCESSES
+
+   ><details><summary>Click for answer</summary>10280</details>
+
+3. What is the MD5 hash of the miner process?
+
+   To extract both binaries, we first create a new folder called `extracted`. Then we run the `linux_procdump` plugin for both processes:
+
+   ```cmd
+   mkdir extracted
+   vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_procdump -D extracted -p 10280
+   vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_procdump -D extracted -p 10291
+   ```
+
+   EXTRACTED BINARIES
+
+   Now we can get the md5 hash of the miner binary using `md5sum`.
+
+   ```cmd
+   md5sum extracted/miner.10280.0x400000
+   ```
+
+   HASHES
+
+   ><details><summary>Click for answer</summary>153a5c8efe4aa3be240e5dc645480dee</details>
+
+4. What is the MD5 hash of the mysqlserver process?
+
+   We can use the same command with the other binary.
+
+   ```cmd
+   md5sum extracted/mysqlserver.10291.0x400000
+   ```
+
+   ><details><summary>Click for answer</summary>c586e774bb2aa17819d7faae18dad7d1</details>
+
+5. Use the command `strings extracted/miner.<PID from question 2>.0x400000 | grep http://`. What is the suspicious URL? (Fully defang the URL using CyberChef)
+
+   Using the command with our miners PID gives us a suspicious url.
+
+   ```cmd
+   strings extracted/miner.10280.0x400000 | grep http://
+   ```
+
+   URL
+
+   Using Cyberchef we can defang this URL.
+
+   URL DEFANGED
+
+   ><details><summary>Click for answer</summary>hxxp[://]mcgreedysecretc2[.]thm</details>
+
+6. After reading the elfie file, what location is the mysqlserver process dropped in on the file system?
+
+   For this question we must look for any files related to cron jobs. This can be done with the `linux_enumerate_files` plugin.
+
+   ```cmd
+   vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_enumerate_files | grep cron
+   ```
+
+   CRON FILES
+
+   Looks like the file of interest is located at `/var/spool/cron/crontabs/elfie`. Lets extract it.
+
+   ```cmd
+   vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_find_file -i 0xffff9ce9b78280e8 -O elfie
+   ```
+
+   EXTRACT FILE
+
+   Now we can read the file and see where the process is dropped.
+
+   LOCATION
+
+   ><details><summary>Click for answer</summary>/var/tmp/.system-python3.8-Updates/mysqlserver</details>
+
+If you enjoyed this task, feel free to check out the [Volatility](https://tryhackme.com/room/volatility) room.
+
 More days are yet to come!
 
 <!---
-
-### Day 19 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 20 
 
