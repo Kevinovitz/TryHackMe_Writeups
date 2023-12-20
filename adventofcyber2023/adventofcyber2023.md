@@ -32,8 +32,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 17 I Tawt I Taw A C2 Tat!](#day-17-i-tawt-i-taw-a-c2-tat)
 - [Day 18 A Gift That Keeps on Giving](#day-18-a-gift-that-keeps-on-giving)
 - [Day 19 CrypTOYminers Sing Volala-lala-latility](#day-19-cryptoyminers-sing-volala-lala-latility)
-<!--- [Day 20 ](#day-20-)
-- [Day 21 ](#day-21-)
+- [Day 20 Advent of Frostlings](#day-20-advent-of-frostlings)
+<!--- [Day 21 ](#day-21-)
 - [Day 22 ](#day-22-)
 - [Day 23 ](#day-23-)
 - [Day 24 ](#day-24-)-->
@@ -1586,17 +1586,65 @@ In this task we will be looking at Volatility and how it can be used to read a m
 
 If you enjoyed this task, feel free to check out the [Volatility](https://tryhackme.com/room/volatility) room.
 
+### Day 20 Advent of Frostlings
+
+
+
+1. What is the handle of the developer responsible for the merge changes?
+
+   To view the merges, we navigate to the 'Merge Requests' tab and select the merged request.
+
+   MERGES
+
+   Looking at the commits, we can see that Frostlino authored both changes as well as the merge itself.
+
+   MERGE YML
+
+   However, we need his handle, not just his username.
+
+   MERGE HANDLE
+
+   ><details><summary>Click for answer</summary>BadSecOps</details>
+
+3. What port is the defaced calendar site server running on?
+
+   Going back to the repository files, we can open the `.gitlab-ci.yml` file to see to port of the docker container used.
+
+   PORT
+
+   ><details><summary>Click for answer</summary>9081</details>
+
+5. What server is the malicious server running on?
+
+   In the same file, we can see the name of the container image (and consequently the server software) used for the website.
+
+   ><details><summary>Click for answer</summary>apache</details>
+
+6. What message did the Frostlings leave on the defaced site?
+
+   Going to the webpage with the port we just found reveals the defaced website and what is writen on it.
+
+   ```html
+   http://10.10.174.50:9081/
+   ```
+
+   DEFACED CALENDAR
+
+   ><details><summary>Click for answer</summary>Frostlings rule</details>
+
+7. What is the commit ID of the original code for the Advent Calendar site?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+If you enjoyed today's challenge, please check out the [Source Code Security](https://tryhackme.com/room/sourcecodesecurity) room.
+
+Detective Frosteau believes it was an account takeover based on the activity. However, Tracy might have left some crumbs.
+
 More days are yet to come!
 
 <!---
-
-### Day 20 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 21 
 
