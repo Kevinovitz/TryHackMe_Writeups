@@ -1419,11 +1419,11 @@ In this task we will be looking at rogue services and how they can prevent you f
 
    Checking the system resources with `top` we can see a process that is using up 100% of the CPU.
 
-   TOP
+   ![Top](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D18_Top.png)
 
    We can try killing it using `sudo kill 651`, but it simply respawn again.
 
-   KILL
+   ![Kill](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D18_Kill.png)
 
    We checked the crontabs for our user and root, but got no results...
 
@@ -1435,7 +1435,7 @@ In this task we will be looking at rogue services and how they can prevent you f
 
    Next thing to do is check the processes that er running with `systemctl list-unit-files`.
 
-   PROCESSES
+   ![Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D18_Processes.png)
 
    Looks like there is a process that might be malicious. Lets look closer to see if it really is malicious.
 
@@ -1443,7 +1443,7 @@ In this task we will be looking at rogue services and how they can prevent you f
    systemctl status a-unkillable.service
    ```
 
-   PROCESS
+   ![Process](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D18_Process.png)
 
    ><details><summary>Click for answer</summary>a-unkillable.service</details>
 
@@ -1465,7 +1465,7 @@ In this task we will be looking at rogue services and how they can prevent you f
 
    We can see from the process information below when the message is displayed.
 
-   TAUNT
+   ![Taunt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D18_Taunt.png)
 
    After the exe has been (re)started the message is displayed. So we can rule out options 1 and 2.
 
@@ -1488,7 +1488,7 @@ In this task we will be looking at Volatility and how it can be used to read a m
    vol.py --info | grep ubuntu
    ```
 
-   PROFILE
+   ![Profile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Profile.png)
 
    Now using the following command, we can see which plugins we can use. We will be using the bash plugin for this question.
 
@@ -1496,7 +1496,7 @@ In this task we will be looking at Volatility and how it can be used to read a m
    vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_bash
    ```
 
-   BASH HISTORY
+   ![Bash History](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Bash_History.png)
    
    ><details><summary>Click for answer</summary>NEhX4VSrN7sV</details>
 
@@ -1508,7 +1508,7 @@ In this task we will be looking at Volatility and how it can be used to read a m
    vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_pslist
    ```
 
-   PROCESSES
+   ![Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Processes.png)
 
    ><details><summary>Click for answer</summary>10280</details>
 
@@ -1522,7 +1522,7 @@ In this task we will be looking at Volatility and how it can be used to read a m
    vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_procdump -D extracted -p 10291
    ```
 
-   EXTRACTED BINARIES
+   ![Extract Binaries](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Extract_Binaries.png)
 
    Now we can get the md5 hash of the miner binary using `md5sum`.
 
@@ -1530,7 +1530,7 @@ In this task we will be looking at Volatility and how it can be used to read a m
    md5sum extracted/miner.10280.0x400000
    ```
 
-   HASHES
+   ![Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Hashes.png)
 
    ><details><summary>Click for answer</summary>153a5c8efe4aa3be240e5dc645480dee</details>
 
@@ -1552,11 +1552,11 @@ In this task we will be looking at Volatility and how it can be used to read a m
    strings extracted/miner.10280.0x400000 | grep http://
    ```
 
-   URL
+   ![Url](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Url.png)
 
    Using Cyberchef we can defang this URL.
 
-   URL DEFANGED
+   ![Url Defanged](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Url_Defanged.png)
 
    ><details><summary>Click for answer</summary>hxxp[://]mcgreedysecretc2[.]thm</details>
 
@@ -1568,7 +1568,7 @@ In this task we will be looking at Volatility and how it can be used to read a m
    vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_enumerate_files | grep cron
    ```
 
-   CRON FILES
+   ![Cron Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Cron_Files.png)
 
    Looks like the file of interest is located at `/var/spool/cron/crontabs/elfie`. Lets extract it.
 
@@ -1576,11 +1576,11 @@ In this task we will be looking at Volatility and how it can be used to read a m
    vol.py -f linux.mem --profile="LinuxUbuntu_5_4_0-163-generic_profilex64" linux_find_file -i 0xffff9ce9b78280e8 -O elfie
    ```
 
-   EXTRACT FILE
+   ![Extract File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Extract_File.png)
 
    Now we can read the file and see where the process is dropped.
 
-   LOCATION
+   ![Location](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D19_Location.png)
 
    ><details><summary>Click for answer</summary>/var/tmp/.system-python3.8-Updates/mysqlserver</details>
 
@@ -1594,15 +1594,15 @@ In this task we will be looking at how automated pipelines in for example GitLab
 
    To view the merges, we navigate to the 'Merge Requests' tab and select the merged request.
 
-   MERGES
+   ![Merges](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Merges.png)
 
    Looking at the commits, we can see that Frostlino authored both changes as well as the merge itself.
 
-   MERGE YML
+   ![Merge Yml](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Merge_Yml.png)
 
    However, we need his handle, not just his username.
 
-   MERGE HANDLE
+   ![Merge Handle](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Merge_Handle.png)
 
    ><details><summary>Click for answer</summary>BadSecOps</details>
 
@@ -1610,7 +1610,7 @@ In this task we will be looking at how automated pipelines in for example GitLab
 
    Going back to the repository files, we can open the `.gitlab-ci.yml` file to see to port of the docker container used.
 
-   PORT
+   ![Port](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Port.png)
 
    ><details><summary>Click for answer</summary>9081</details>
 
@@ -1628,7 +1628,7 @@ In this task we will be looking at how automated pipelines in for example GitLab
    http://10.10.174.50:9081/
    ```
 
-   DEFACED CALENDAR
+   ![Defaced Calendar](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Defaced_Calendar.png)
 
    ><details><summary>Click for answer</summary>Frostlings rule</details>
 
@@ -1642,11 +1642,11 @@ In this task we will be looking at how automated pipelines in for example GitLab
 
    ##
 
-   COMMITS
+   ![Commits](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Commits.png)
 
    The first couple commits are from Delf Lead who added the website and some other files. The last commit on december 6th is the one we could be looking for. It contains the deployment pipeline. Hopefully the original.
 
-   ORIGINAL COMMIT
+   ![Original Commit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D20_Original_Commit.png)
 
    Here we can indeed see it contains the original pipeline code without the compromised webpage.
 
