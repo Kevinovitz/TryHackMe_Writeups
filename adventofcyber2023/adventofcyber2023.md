@@ -1588,7 +1588,7 @@ If you enjoyed this task, feel free to check out the [Volatility](https://tryhac
 
 ### Day 20 Advent of Frostlings
 
-
+In this task we will be looking at how automated pipelines in for example GitLab can be abused to compromise software development and deployment.
 
 1. What is the handle of the developer responsible for the merge changes?
 
@@ -1606,7 +1606,7 @@ If you enjoyed this task, feel free to check out the [Volatility](https://tryhac
 
    ><details><summary>Click for answer</summary>BadSecOps</details>
 
-3. What port is the defaced calendar site server running on?
+2. What port is the defaced calendar site server running on?
 
    Going back to the repository files, we can open the `.gitlab-ci.yml` file to see to port of the docker container used.
 
@@ -1614,13 +1614,13 @@ If you enjoyed this task, feel free to check out the [Volatility](https://tryhac
 
    ><details><summary>Click for answer</summary>9081</details>
 
-5. What server is the malicious server running on?
+3. What server is the malicious server running on?
 
    In the same file, we can see the name of the container image (and consequently the server software) used for the website.
 
    ><details><summary>Click for answer</summary>apache</details>
 
-6. What message did the Frostlings leave on the defaced site?
+4. What message did the Frostlings leave on the defaced site?
 
    Going to the webpage with the port we just found reveals the defaced website and what is writen on it.
 
@@ -1632,11 +1632,27 @@ If you enjoyed this task, feel free to check out the [Volatility](https://tryhac
 
    ><details><summary>Click for answer</summary>Frostlings rule</details>
 
-7. What is the commit ID of the original code for the Advent Calendar site?
+5. What is the commit ID of the original code for the Advent Calendar site?
 
+   Lets take a look at the commit section.
 
+   ##
+   
+   **Note: We are looking for the code for the deployment pipeline. Not the code for the website itself.**
 
-   ><details><summary>Click for answer</summary></details>
+   ##
+
+   COMMITS
+
+   The first couple commits are from Delf Lead who added the website and some other files. The last commit on december 6th is the one we could be looking for. It contains the deployment pipeline. Hopefully the original.
+
+   ORIGINAL COMMIT
+
+   Here we can indeed see it contains the original pipeline code without the compromised webpage.
+
+   In the top of the screen we can see what its commit ID is.
+
+   ><details><summary>Click for answer</summary>986b7407</details>
 
 If you enjoyed today's challenge, please check out the [Source Code Security](https://tryhackme.com/room/sourcecodesecurity) room.
 
