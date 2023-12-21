@@ -11,7 +11,8 @@ The following rooms are available/in progress:
 
 - [x] [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
 - [x] [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
-- [ ] [Advent of Cyber 2023](adventofcyber2023/adventofcyber2023.md)
+- [ ] [Advent of Cyber 2023](adventofcyber2023/adventofcyber2023.md) [WiP]
+- [ ] [Advent of Cyber '23 Side Quest](adventofcyber23sidequest/adventofcyber23sidequest.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md) [Answered]
@@ -19,28 +20,30 @@ The following rooms are available/in progress:
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
 - [x] [Burp Suite: The Basics](burpsuitebasics/burpsuitebasics.md)
-- [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [**Burp Suite: Intruder***](burpsuiteintruder/burpsuiteintruder.md)
 - [x] [**Burp Suite: Other Modules***](burpsuiteom/burpsuiteom.md) [Answered]
+- [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
+- [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md) [Answered]
-- [x] [OhSINT](ohsint/ohsint.md)
-- [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
-- [x] [**Metasploit: Exploitation***](metasploitexploitation/metasploitexploitation.md) [Answered]
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
+- [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
+- [x] [**Metasploit: Exploitation***](metasploitexploitation/metasploitexploitation.md) [Answered]
+- [ ] [Metasploit: Meterpreter](meterpreter/meterpreter.md) [WiP]
 - [x] [Nessus](rpnessusredux/rpnessusredux.md) [Answered]
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
+- [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
