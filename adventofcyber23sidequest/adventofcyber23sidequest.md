@@ -1,7 +1,7 @@
 ![Advent of Cyber '23 Side Quest Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/8d1eef4732f7fc206539fb68abdabc5d.svg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber23sidequest/Advent_of_Cyber_23_Side_Quest_Cover.png" alt="Advent of Cyber '23 Side Quest Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber23sidequest/Advent_Of_Cyber_23_Side_Quest_Cover.png" alt="Advent of Cyber '23 Side Quest Logo">
 </p>
 
 # Advent of Cyber '23 Side Quest
