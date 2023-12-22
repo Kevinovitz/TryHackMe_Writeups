@@ -34,8 +34,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 19 CrypTOYminers Sing Volala-lala-latility](#day-19-cryptoyminers-sing-volala-lala-latility)
 - [Day 20 Advent of Frostlings](#day-20-advent-of-frostlings)
 - [Day 21 Yule be Poisoned: A Pipeline of Insecure Code!](#day-21-yule-be-poisoned-a-pipeline-of-insecure-code)
-<!--- [Day 22 ](#day-22-)
-- [Day 23 ](#day-23-)
+- [Day 22  Jingle Your SSRF Bells: A Merry Command & Control Hackventure](#day-22-jingle-your-ssrf-bells-a-merry-command-&-control-hackventure)
+<!--- [Day 23 ](#day-23-)
 - [Day 24 ](#day-24-)-->
 
 ### Day 1 Chatbot, tell me, if you're really safe? 
@@ -1726,17 +1726,81 @@ In this task we will be looking at how we can posion a CI/CD pipeline using the 
 
 Visit our [Discord](https://discord.gg/tryhackme)!
 
+### Day 22 Jingle Your SSRF Bells: A Merry Command & Control Hackventure
+
+In this task we will exploit a SSRF vulnerability in the C2 server of McGreedy to gain access to the server and remove the compromised machines.
+
+1. Is SSRF the process in which the attacker tricks the server into loading only external resources (yea/nay)?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Nay</details>
+
+2. What is the C2 version?
+
+   On the homepage we are greeted with a login portal. At the bottom is a link to the API documention which could be usefull.
+
+   C2 LOGIN SCREEN
+
+   On th page we can see which URL to use to access the resources. We can replace the external url with `file:////`. Which should let us access system files.
+
+   SSRF EXPLOIT
+
+   We can check to see if it works by looking for the index.php page. 
+
+   Normally this would be in the root folder of the webserver. On linux systems this is usually `/var/www/html`.
+
+   ```http
+   http://10.10.150.36/getClientData.php?url=file:////var/www/html/index.php
+   ```
+
+   INDEX
+
+   Looks like we indeed get back the contents of the file. Lets try and see if the config.php file is in the same folder.
+
+   ```http
+   http://10.10.150.36/getClientData.php?url=file:////var/www/html/config.php
+   ```
+
+   CONFIG
+
+   Success! Now we have the credentials to login to the server. 
+
+   In the bottom right corner of the C2 dashboard we can see the version of the server.
+
+   ><details><summary>Click for answer</summary>1.1</details>
+
+3. What is the username for accessing the C2 panel?
+
+   This was found in the previous question in the config.php file.
+
+   ><details><summary>Click for answer</summary>mcgreedy</details>
+
+4. What is the flag value after accessing the C2 panel?
+
+   After logging into the server, we can see the flag at the top of the screen.
+
+   FLAG
+
+   ><details><summary>Click for answer</summary>THM{EXPLOITED_31001}</details>
+
+5. What is the flag value after stopping the data exfiltration from the McSkidy computer?
+
+   Under the "Hackes Users Information" tab on the dashboard we can see are the compromised machines.
+
+   ASSETS
+
+   To get our flag we must remove the machine of McSkidy.
+
+   REMOVED
+
+   ><details><summary>Click for answer</summary>THM{AGENT_REMOVED_1001}</details>
+
+If you enjoyed this task, feel free to check out the [SSRF](https://tryhackme.com/room/ssrfqi) room.
+
 More days are yet to come!
 
 <!---
-
-### Day 22 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 23 
 
