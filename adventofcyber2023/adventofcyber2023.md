@@ -37,6 +37,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 22  Jingle Your SSRF Bells: A Merry Command & Control Hackventure](#day-22-jingle-your-ssrf-bells-a-merry-command--control-hackventure)
 - [Day 23 Relay All the Way](#day-23-relay-all-the-way)
 - [Day 24 You Are on the Naughty List, McGreedy](#day-24-you-are-on-the-naughty-list-mcgreedy)
+- [Day 24 Jolly Judgement Day](#day-24-jolly-judgement-day)
 
 ### Day 1 Chatbot, tell me, if you're really safe? 
 
@@ -1918,5 +1919,56 @@ In this task we will take a look at how we can analyse an Android image using Au
 
 If you have enjoyed this room please check out the [Autopsy](https://tryhackme.com/room/btautopsye0) room.
 
+### Day 24 Jolly Judgement Day
+
+The final step is to get a conviction in court. To do so we must provide the correct evidence and answer some question related to them.
+
+1.  What is the final flag? 
+
+   To get the flag, we must provide the correct evidence and answer the correct question in each step of the trail.
+
+   **Question 1**
+
+   JUDGEMENT 1
+
+   JUDGEMENT 1 QUESTION 1
+
+   **Question 2**
+
+   JUDGEMENT 2
+
+   JUDGEMENT 2 QUESTION 1
+
+   JUDGEMENT 2 QUESTION 2
+
+   **Question 3**
+
+   JUDGEMENT 3
+
+   JUDGEMENT 3 QUESTION 1
+
+   **Question 4**
+
+   JUDGEMENT 4
+
+   JUDGEMENT 4 QUESTION 1
+
+   JUDGEMENT 4 QUESTION 2
+
+   **Question 5**
+
+   JUDGEMENT 5
+
+   JUDGEMENT 5 QUESTION 1
+
+   **Question 6**
+
+   JUDGEMENT 6
+
+   JUDGEMENT 6 QUESTION 1
+
+   ><details><summary>Click for answer</summary>THM{YouMeddlingKids}</details>
+
 ##
 
+ Congratulations on finishing Advent of Cyber 2023!
