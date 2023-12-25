@@ -36,7 +36,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 21 Yule be Poisoned: A Pipeline of Insecure Code!](#day-21-yule-be-poisoned-a-pipeline-of-insecure-code)
 - [Day 22  Jingle Your SSRF Bells: A Merry Command & Control Hackventure](#day-22-jingle-your-ssrf-bells-a-merry-command--control-hackventure)
 - [Day 23 Relay All the Way](#day-23-relay-all-the-way)
-<!--- [Day 24 ](#day-24-)-->
+- [Day 24 You Are on the Naughty List, McGreedy](#day-24-you-are-on-the-naughty-list-mcgreedy)
 
 ### Day 1 Chatbot, tell me, if you're really safe? 
 
@@ -1884,16 +1884,39 @@ In this task we will be looking at coercing authentication techniques using Resp
 
 If you enjoyed this task, feel free to check out the [Compromising Active Directory](https://tryhackme.com/module/hacking-active-directory) module!
 
-More days are yet to come!
+### Day 24 You Are on the Naughty List, McGreedy
 
-<!---
+In this task we will take a look at how we can analyse an Android image using Autopsy.
 
-### Day 24 
+1. One of the photos contains a flag. What is it?
 
+   To start, we need to create a new case in Autopsy and import the image. Fortunately, this has already been done for us. So we can open the case  "Tracy McGreedy".
 
+   OPEN CASE
 
-1. 
+   We can look through the photos on the phone in the file tree we can filter on the photos. One of these photos contains a flag.
 
-   ><details><summary>Click for answer</summary></details>
+   FLAG
 
--->
+   ><details><summary>Click for answer</summary>THM{DIGITAL_FORENSICS}</details>
+
+2. What name does Tracy use to save Detective Frost-eau’s phone number?
+
+   Under contacts we can look for any saved contacts. 
+
+   CONTACT NAME
+
+   ><details><summary>Click for answer</summary>Detective Carrot-Nose</details>
+
+3. One SMS exchanged with Van Sprinkles contains a password. What is it?
+
+   Under messages there are various messages sent and received. One of these is a message sent by Tracy to Van Sprinkles.
+
+   PASSWORD
+
+   ><details><summary>Click for answer</summary>chee7AQu</details>
+
+If you have enjoyed this room please check out the [Autopsy](https://tryhackme.com/room/btautopsye0) room.
+
+##
+
