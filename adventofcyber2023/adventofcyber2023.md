@@ -995,7 +995,7 @@ If you enjoyed this task, feel free to check out the [Network Device Hardening](
 
 In this task we will be looking at how we can train a simply neural network to make predictions of faulty toys.
 
-1.  What is the other term given for Artificial Intelligence or the subset of AI meant to teach computers how humans think or nature works?
+1. What is the other term given for Artificial Intelligence or the subset of AI meant to teach computers how humans think or nature works?
 
    The answer to this question can be found in the text.
 
@@ -1805,7 +1805,7 @@ If you enjoyed this task, feel free to check out the [SSRF](https://tryhackme.co
 
 In this task we will be looking at coercing authentication techniques using Responder to get NTLM hashes from users we can crack to gain access to the server.
 
-1.  What is the name of the AD authentication protocol that makes use of tickets?
+1. What is the name of the AD authentication protocol that makes use of tickets?
 
    The answer to this question can be found in the text.
 
@@ -1925,17 +1925,27 @@ If you have enjoyed this room please check out the [Autopsy](https://tryhackme.c
 
 The final step is to get a conviction in court. To do so we must provide the correct evidence and answer some question related to them.
 
-1.  What is the final flag? 
+1. What is the final flag? 
 
    To get the flag, we must provide the correct evidence and answer the correct question in each step of the trail.
 
    **Question 1**
 
+   _Judge: Mr. McGreedy, the opposition claims you masterminded a revenge plot against the company. What do you say to that?_
+
+   The information we got from the chatbox indicates he is working on some secret plan.
+
    ![Judgement 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_1.png)
+
+   It is called 
 
    ![Judgement 1 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_1_Question_1.png)
 
    **Question 2**
+
+   _Judge: Mr. McGreedy, the opposition claims you have been using your old hacker handle in your activities, which is how they were able to identify your accounts. Is this correct?_
+
+   We could see evidence of this handle on the start screen on the MS-DOS box as well as the forum post about exploits.
 
    ![Judgement 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_2.png)
 
@@ -1945,11 +1955,21 @@ The final step is to get a conviction in court. To do so we must provide the cor
 
    **Question 3**
 
+   _Judge: The court is informed of an extensive investigation that started after the USB incident, and has uncovered a trail leading to a command-and-control server central to this cyber activity. Mr. McGreedy, are you aware of or connected to this server? Your input could be vital in clarifying this case._
+
+   The information we found off of the usb stick can confirm this.
+
    ![Judgement 3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_3.png)
+
+   It also led us to a C2 server.
    
    ![Judgement 3 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_3_Question_1.png)
 
    **Question 4**
+
+   _Judge: Mr. McGreedy, you're claiming you're being framed, but the opposition emphasizes your technical skills and describes you as being capable of leading such a cyber operation. They claim to have proof for you orchestrating attacks on AntarctiCrafts and Best Festival Company._
+
+   The malware sample was downloaded from a domain with a familiar name. From the server password takeover we could see the connection came from his machine.
 
    ![Judgement 4](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_4.png)
    
@@ -1959,15 +1979,25 @@ The final step is to get a conviction in court. To do so we must provide the cor
 
    **Question 5**
 
+   _Judge: The court is informed of an extensive investigation that started after the USB incident and has uncovered a trail leading to a command-and-control server central to this cyber activity. Mr. McGreedy, are you aware of or connected to this server? Your input could be vital in clarifying this case._
+
+   The credentials used for the C2 server are connected to his name.
+
    ![Judgement 5](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_5.png)
    
    ![Judgement 5 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_5_Question_1.png)
 
    **Question 6**
 
+   _Judge: The evidence so far, though compelling, is circumstantial. It suggests but doesn't conclusively link Mr. McGreedy to the allegations. Does the opposition have more solid evidence that directly ties Mr. McGreedy to these crimes?_
+
+   We have text messages which link him to the crimes.
+
    ![Judgement 6](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_6.png)
    
    ![Judgement 6 Question 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_6_Question_1.png)
+
+   We did it! We successfully presented our evidence and answered the question in order to get a verdict.
    
    ![Judgement Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2023/Advent_Of_Cyber_2023_Judgement_Flag.png)
 
