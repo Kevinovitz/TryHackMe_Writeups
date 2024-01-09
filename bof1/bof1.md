@@ -256,3 +256,12 @@ The answer can be found in the text.
    ![Overflows2 Text](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/bof1/Buffer_Overflow_Overflows2_%20Text.png)
 
    ><details><summary>Click for answer</summary>wowanothertime!!</details>
+
+## Usefull Links
+
+- 🔗 https://l1ge.github.io/tryhackme_bof1/
+- 🔗 https://rderik.com/blog/understanding-buffer-overflows-using-radare2/
+- 🔗 https://bobloblaw321.wixsite.com/website/post/tryhackme-buffer-overflows
+- 🔗 https://shamsher-khan-404.medium.com/buffer-overflows-tryhackme-writeup-348aec9c1dfe
+- 🔗 https://github.com/amirr0r/thm/tree/master/bof1
+- 🔗 https://www.aldeid.com/wiki/TryHackMe-Buffer-Overflows#Buffer_Overflows
