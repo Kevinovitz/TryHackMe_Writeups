@@ -1,7 +1,7 @@
 ![The Return of the Yeti Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/8d1eef4732f7fc206539fb68abdabc5d.svg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/The_Return_Of_The_Yeti_Cover.png" alt="The Return of the Yeti Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Cover.png" alt="The Return of the Yeti Logo">
 </p>
 
 # The Return of the Yeti
@@ -10,13 +10,11 @@ This guide contains the answer and steps necessary to get to them for the [The R
 
 ### New Year, New Opportunities 
 
-
-
 1. What's the name of the WiFi network in the PCAP?
 
    Opening the capture file in Wireshark may give us an insight into the networks captured. (Another way is using `aircrack-ng` as in question 2)
    
-   SSID
+   !(Ssid)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Ssid.png]
    
    A usefull addition to Wireshark would be to add a column that would display the SSID of the network.
    
@@ -24,7 +22,7 @@ This guide contains the answer and steps necessary to get to them for the [The R
    
    Add a new value with the values listed below.
    
-   WIRESHARK COLUMNS
+   !(Wireshark Columns)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Wireshark_Columns.png]
    
    Another method is to look at the build in function to list WLAN addresses. Under "Wireless -> WLAN Traffic".
    
@@ -38,7 +36,7 @@ This guide contains the answer and steps necessary to get to them for the [The R
 
    If we filter our pcap file in Wireshark by the `eapol` protocol we can see if any WPA related packets are captured.
    
-   EAPOL PACKETS
+   !(Eapol Packets)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Eapol_Packets.png]
    
    This indeed gives us two pair of hashes consisting of four keys. This also mean we can possible decrypt the packets to view the previously encrypted data.
    
@@ -50,7 +48,7 @@ This guide contains the answer and steps necessary to get to them for the [The R
    
    Running `hashcat -h | grep WPA` we can see that hashcat is able to crack WPA hashes. 
    
-   HASHCAT WPA 
+   !(Hashcat Wpa)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Hashcat_Wpa.png]
    
    The first thing we need to do is extract the wpa hashes from the capture file and put it in a format that hashcat understands.
    
@@ -60,11 +58,11 @@ This guide contains the answer and steps necessary to get to them for the [The R
    hcxpcapngtool VanSpy.pcapng -o wifihashes.txt
    ```
    
-   EXTRACT HASHES
+   !(Extract Hashes)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Extract_Hashes.png]
    
    Checking the file, we can see it extracted two hashes. One for each of the EAPOL handshakes in our file.
 
-   WPA KEYS
+   !(Wpa Keys)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Wpa_Keys.png]
 
    Now that we have our hashes in a readable format, we can use Hashcat to crack it. **Note, this does require the used password to be in our wordlist.**
    
@@ -72,13 +70,13 @@ This guide contains the answer and steps necessary to get to them for the [The R
    hashcat -m 22000 -w 3 wifihashes.txt /usr/share/wordlists/rockyou.txt
    ```
    
-   HASHCAT PASSWORD
+   !(Hashcat Password)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Hashcat_Password.png]
 
    ** Mehtode 2 Aircrack-ng**
    
    `aircrack-ng` is able to crack the WPA keys directly from the capture file. However, using the file provided gives us an error as the utility can't parse `.pcapng` files.
    
-   AIRCRACK FAILED
+   !(Aircrack Failed)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Aircrack_Failed.png]
    
    So we must convert it to a `.cap` files using `tshark`.
    
@@ -86,7 +84,7 @@ This guide contains the answer and steps necessary to get to them for the [The R
    tshark -r VanSpy.pcapng -w VanSpy.pcap -F libpcap
    ```
    
-   CONVERT
+   !(Convert)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Convert.png]
    
    Now we can try it again to get the wifi password.
    
@@ -94,7 +92,7 @@ This guide contains the answer and steps necessary to get to them for the [The R
    aircrack-ng -w /usr/share/wordlists/rockyou.txt VanSpy.pcap  
    ```
    
-   AIRCRACK PASSWORD
+   !(Aircrack Password)[https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adv3nt0fdbopsjcap/Return_Of_The_Yeti_Aircrack_Password.png]   
    
    ><details><summary>Click for answer</summary>Christmas</details>
 
