@@ -1,4 +1,4 @@
-![Enumeration Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/ace5bb9cb9c1120a09d88620adb2976b.png)
+![Enumeration Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Banner.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Cover.png" alt="Enumeration Logo">
@@ -45,7 +45,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
    cat /etc/os-release
    ```
 
-   LINUX RELEASE
+   ![Linux Release](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Linux_Release.png)
 
    ><details><summary>Click for answer</summary>Ubuntu</details>
 
@@ -59,7 +59,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
 
    To get the last user logged into the system we run `last`.
 
-   LINUX LAST
+   ![Linux Last](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Linux_Last.png)
 
    ><details><summary>Click for answer</summary>randa</details>
 
@@ -71,7 +71,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
    netstat -lnt
    ```
 
-   LINUX PORT
+   ![Linux Port](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Linux_Port.png)
 
    ><details><summary>Click for answer</summary>6667</details>
 
@@ -83,7 +83,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
    sudo netstat -lntp
    ```
 
-   LINUX PROGRAM
+   ![Linux Program](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Linux_Program.png)
 
    ><details><summary>Click for answer</summary>inspircd</details>
 
@@ -95,7 +95,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
    ps -aux | grep THM
    ```
 
-   LINUX SCRIPT
+   ![Linux Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Linux_Script.png)
 
    ><details><summary>Click for answer</summary>THM-24765.sh</details>
 
@@ -105,7 +105,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
 
    Use `systeminfo` to find this information.
 
-   WINDOWS INFO
+   ![Windows Info](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Windows_Info.png)
 
    ><details><summary>Click for answer</summary>Microsoft Windows Server 2019 Datacenter</details>
 
@@ -127,7 +127,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
 
    The second command should give us the amount of updates applied. We must however subtract one from this number as it will include the column header.
 
-   WINDOWS UPDATES
+   ![Windows Updates](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Windows_Updates.png)
 
    ><details><summary>Click for answer</summary></details>
 
@@ -135,7 +135,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
 
    For this we should use `netstat`. Use -n to list the numerical values.
 
-   WINDOWS PORTS
+   ![Windows Ports](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Windows_Ports.png)
 
    ><details><summary>Click for answer</summary>22</details>
 
@@ -155,7 +155,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
    dig -t AXFR redteam.thm @10.10.223.16
    ```
 
-   DNS FLAG
+   ![DNS Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_DNS_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{DNS_ZONE}</details>
 
@@ -163,7 +163,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
 
    To see the available shares, we can use `net share`.
 
-   SMB SHARES
+   ![Smb Share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Smb_Share.png)
 
    ><details><summary>Click for answer</summary>THM{829738}</details>
 
@@ -175,7 +175,7 @@ This guide contains the answer and steps necessary to get to them for the [Enume
    snmpcheck 10.10.223.16 -c public
    ```
 
-   SNMP CHECK
+   ![Snmp Check](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/enumerationpe/Enumeration_Snmp_Check.png)
 
    ><details><summary>Click for answer</summary>THM{SNMP_SERVICE}</details>
    
