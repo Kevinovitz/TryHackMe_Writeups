@@ -26,7 +26,7 @@ The following rooms are available/in progress:
 - [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
-- [x] [**Enumeration***](enumerationpe/enumerationpe.md)
+- [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
 - [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
@@ -57,7 +57,7 @@ The following rooms are available/in progress:
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
-- [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md)
+- [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
 - [x] [**Vulnerability Capstone***](vulnerabilitycapstone/vulnerabilitycapstone.md) [Answered]
