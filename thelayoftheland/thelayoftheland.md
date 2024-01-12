@@ -1,4 +1,4 @@
-![The Lay of the Land Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/bf86c057f58b26f95802c5499c18ae2a.png)
+![The Lay of the Land Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Banner.png)
 
 <p align="center">
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Cover.png" alt="The Lay of the Land Logo">
