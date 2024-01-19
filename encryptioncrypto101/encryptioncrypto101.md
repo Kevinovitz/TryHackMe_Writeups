@@ -105,7 +105,7 @@ This guide contains the answer and steps necessary to get to them for the [Encry
 
    We can find the website's certificate by clicking on the padlock icon in the address bar. This already shows us who verified the website. CLicking on more information should give us the name we are after.
 
-   CERTIFICATES ISSUER
+   ![Certificates Issuer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/encryptioncrypto101/Encryption_Crypto_101_Certificates_Issuer.png)
 
    ><details><summary>Click for answer</summary>E1</details>
 
@@ -139,7 +139,7 @@ This guide contains the answer and steps necessary to get to them for the [Encry
 
    After downloading the file, we can make a guess of the used algorithm by looking at its file name. This can be checked by opening the file.
 
-   SSH KEY
+   ![Ssh Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/encryptioncrypto101/Encryption_Crypto_101_Ssh_Key.png)
 
    ><details><summary>Click for answer</summary>RSA</details>
 
@@ -173,6 +173,6 @@ This guide contains the answer and steps necessary to get to them for the [Encry
    gpg --decrypt message.gpg
    ```
 
-   GPG SECRET MESSAGE
+   ![Gpg Secret Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/encryptioncrypto101/Encryption_Crypto_101_Gpg_Secret_Message.png)
 
    ><details><summary>Click for answer</summary>Pineapple</details>
