@@ -25,6 +25,7 @@ The following rooms are available/in progress:
 - [x] [**Burp Suite: Intruder***](burpsuiteintruder/burpsuiteintruder.md)
 - [x] [**Burp Suite: Other Modules***](burpsuiteom/burpsuiteom.md) [Answered]
 - [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
+- [x] [**Common Linux Privesc***](commonlinuxprivesc/commonlinuxprivesc.md) [Answered]
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
