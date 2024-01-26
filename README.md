@@ -37,7 +37,7 @@ The following rooms are available/in progress:
 - [x] [Ice](ice/ice.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md) [Answered]
-- [ ] [Kenobi](kenobi/kenobi.md)
+- [x] [Kenobi](kenobi/kenobi.md) [Answered]
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
