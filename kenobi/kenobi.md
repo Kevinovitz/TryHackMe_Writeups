@@ -1,7 +1,7 @@
 ![Kenobi Banner](https://i.imgur.com/zWNY3JF.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/kenobi/ROOM_TITLE_Cover.png" alt="Kenobi Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/kenobi/Kenobi_Cover.png" alt="Kenobi Logo">
 </p>
 
 # Kenobi
@@ -27,7 +27,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    sudo nmap -sS 10.10.208.77
    ```
 
-   DEPLOY NMAP
+   ![Deploy Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Deploy_Nmap.png)
 
    ><details><summary>Click for answer</summary>7</details>
 
@@ -41,7 +41,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.208.77
    ```
 
-   ENUMERATE SHARES
+   ![Enumerate Shares](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Enumerate_Shares.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -51,7 +51,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
 
    Then we list the files using `dir`.
 
-   ENUMERATE FILES
+   ![Enumerate Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Enumerate_Files.png)
 
    We can download this file using `smbget`.
 
@@ -59,7 +59,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    smbget -R smb://10.10.208.77/anonymous
    ```
 
-   ENUMERATE SMBGET
+   ![Enumerate Smbget](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Enumerate_Smbget.png)
 
    ><details><summary>Click for answer</summary>log.txt</details>
 
@@ -77,7 +77,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.208.77
    ```
 
-   ENUMERATE MOUNT
+   ![Enumerate Mount](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Enumerate_Mount.png)
 
    ><details><summary>Click for answer</summary>/var</details>
 
@@ -95,7 +95,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    nc 10.10.208.77 21
    ```
 
-   PROFTP VERSION
+   ![Proftp Version](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Proftp_Version.png)
 
    ><details><summary>Click for answer</summary>1.3.5</details>
 
@@ -107,7 +107,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    searchsploit proftp 1.3.5
    ```
 
-   PROFTP EXPLOITS
+   ![Proftp Exploits](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Proftp_Exploits.png)
 
    ><details><summary>Click for answer</summary>4</details>
 
@@ -122,7 +122,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
    site cpto /var/tmp/id_rsa
    ```
 
-   PROFTP TRANSFER
+   ![Proftp Transfer](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Proftp_Transfer.png)
 
 5. Lets mount the /var/tmp directory to our machine `mkdir /mnt/kenobiNFS`. `mount MACHINE_IP:/var /mnt/kenobiNFS` `ls -la /mnt/kenobiNFS` We now have a network mount on our deployed machine! We can go to /var/tmp and get the private key then login to Kenobi's account.What is Kenobi's user flag (/home/kenobi/user.txt)?
 
@@ -134,7 +134,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
 
    we now have access to it from our machine. And we can cleary see the moved ssh key inside.
 
-   PROFTP MOUNTED
+   ![Proftp Mounted](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Proftp_Mounted.png)
 
    Now lets move the file to our main folder and change the permissions to strict (otherwise ssh won't allow us to use it).
 
@@ -143,7 +143,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
     chmod 600 id_rsa
     ```
 
-    PROFTP COPY
+    ![Proftp Copy](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Proftp_Copy.png)
 
     Now we can use the key to ssh into the machine using:
 
@@ -151,7 +151,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
     ssh -i id_rsa kenobi@10.10.208.77
     ```
 
-    PROFTP FLAG
+    ![Proftp Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Proftp_Flag.png)
 
    ><details><summary>Click for answer</summary>d0b0f3f53b6caa532a83915e19224899</details>
 
@@ -161,7 +161,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
 
    After running `find / -perm -u=s -type f 2>/dev/null` we can look through the returned files for any that may stand out.
 
-   ESCALATION SUID
+   ![Escalation Suid](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Escalation_Suid.png)
 
    ><details><summary>Click for answer</summary>/usr/bin/menu</details>
 
@@ -169,7 +169,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
 
    Run the binary with `menu`.
 
-   ESCALATION MENU
+   ![Escalation Menu](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Escalation_Menu.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -195,7 +195,7 @@ This guide contains the answer and steps necessary to get to them for the [Kenob
 
    Select option 1 to get a shell. Now we can get our flag.
 
-   ESCALATION SHELL
+   ![Escalation Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Escalation_Shell.png)
 
    ><details><summary>Click for answer</summary>177b3cd8562289f37382721c28381f02</details>
 
