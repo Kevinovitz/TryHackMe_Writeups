@@ -61,6 +61,7 @@ The following rooms are available/in progress:
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
+- [ ] [**Steel Mountain***](steelmountain/steelmountain.md) [WiP]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
