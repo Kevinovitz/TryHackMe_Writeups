@@ -202,13 +202,8 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 2. Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c. Once we run winPeas, we see that it points us towards unquoted paths. We can
  see that it provides us with the name of the service it is also running. What powershell -c command could we run to manually find out the service name? *Format is "powershell -c "command here"*
 
-
+   Looking up which command to use in Powershell to view all active services on Windows, gives us the answer we are after.
 
    ><details><summary>Click for answer</summary>powershell -c "Get-Service"</details>
 
 3. Now let's escalate to Administrator with our new found knowledge.Generate your payload using msfvenom and pull it to the system using powershell.Now we can move our payload to the unquoted directory winPEAS alerted us to and restart the service with two commands.First we need to stop the service which we can do like so;sc stop AdvancedSystemCareService9Shortly followed by;sc start AdvancedSystemCareService9Once this command runs, you will see you gain a shell as Administrator on our listener!
-
-
-
-   ><details><summary>Click for answer</summary></details>
-
