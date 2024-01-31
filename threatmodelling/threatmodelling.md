@@ -1,7 +1,7 @@
-![Threat Modelling Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/407f155692f2e16814c8ae2e2151b143.png)
+![Threat Modelling Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/threatmodelling/Threat_Modelling_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/threatmodelling/ROOM_TITLE_Cover.png" alt="Threat Modelling Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/threatmodelling/Threat_Modelling_Cover.png" alt="Threat Modelling Logo">
 </p>
 
 # Threat Modelling
