@@ -63,6 +63,7 @@ The following rooms are available/in progress:
 - [x] [SQL Injection](sql_injection/sql_injection.md)
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
+- [x] [Threat Modelling](threatmodelling/threatmodelling.md) [Answered]
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
 - [x] [**Vulnerability Capstone***](vulnerabilitycapstone/vulnerabilitycapstone.md) [Answered]
