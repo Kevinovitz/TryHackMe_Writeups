@@ -1,7 +1,7 @@
 ![Risk Management Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/seriskmanagement/Risk_Management_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/seriskmanagement/risk_Management_Cover.png" alt="Risk Management Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/seriskmanagement/Risk_Management_Cover.png" alt="Risk Management Logo">
 </p>
 
 # Risk Management
@@ -77,7 +77,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    $SafeguardValue = ALE1 - ALE2 - SafeguardCost$
 
-   RESPOND 1
+   ![Respond 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Respond_1.png)
 
    $ALE1 = (2000 * 0,5) * 2$
 
@@ -87,7 +87,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   RESPOND 2
+   ![Respond 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Respond_2.png)
 
    $ALE1 = (10000 * 0,25) * 0,35$
 
@@ -97,7 +97,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   RESPOND 3
+   ![Respond 3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Respond_3.png)
 
    $ALE1 = (2000 * 0,5) * 0,25$
 
@@ -127,9 +127,9 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
 1. Click on View Site and follow the instructions to retrieve the flag. Remember that your decision should be based on the value of the safeguard to the organisation, which is calculated as follows: ValueofSafeguard = ALEbeforeSafeguard − ALEafterSafeguard − AnnualCostSafeguard
 
-   TOGETHER SCREEN 1
+   ![Together Screen 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Screen_1.png)
    
-   TOGETHER CONTROL 1 LAPTOP
+   ![Together Control 1 Laptop](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_1_Laptop.png)
    
    (2500 * 1) * 0,05
 
@@ -139,9 +139,9 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   TOGETHER SCREEN 2
+   ![Together Screen 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Screen_2.png)
 
-   TOGETHER CONTROL 2 WORKSTATION
+   ![Together Control 2 Workstation](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_2_Workstation.png)
 
    (3000 * 0,7) * 0,2
 
@@ -151,7 +151,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   TOGETHER CONTROL 2 PHONE
+   ![Together Control 2 Phone](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_2_Phone.png)
    
    (1250 * 1) * 0,35
 
@@ -161,9 +161,9 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   TOGETHER SCREEN 3
+   ![Together Screen 3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Screen_3.png)
 
-   TOGETHER CONTROL 3 OFFICE
+   ![Together Control 3 Office](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_3_Office.png)
 
    (20000 * 1) * 0,1
 
@@ -173,7 +173,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   TOGETHER CONTROL 3 WORKSTATION
+   ![Together Control 3 Workstation](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_3_Workstation.png)
 
    (3000 * 0,1) * 0,05
 
@@ -183,7 +183,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is negative, so it is not justified to implement.
 
-   TOGETHER CONTROL 3 LAPTOP
+   ![Together Control 3 Laptop](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_3_Laptop.png)
 
    (2500 * 1) * 0,2
 
@@ -193,7 +193,7 @@ This guide contains the answer and steps necessary to get to them for the [Risk 
 
    The value is positive, so it is justified to implement.
 
-   TOGETHER CONTROL 3 
+   ![Together Control 3 Workstation 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Together_Control_3_Workstation_2.png)
 
    (3000 * 0,85) * 0,35
 
