@@ -58,6 +58,7 @@ The following rooms are available/in progress:
 - [ ] [Post-Exploitation Basics](postexploit/postexploit.md) [WiP]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
+- [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
