@@ -16,6 +16,7 @@ The following rooms are available/in progress:
 - [ ] [Advent of Cyber '23 Side Quest](adventofcyber23sidequest/adventofcyber23sidequest.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
+- [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md) [Answered]
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md) [Answered]
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
