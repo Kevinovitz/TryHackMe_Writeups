@@ -95,7 +95,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
    aureport --summary
    ```
 
-   LINUX SUMMARY
+   ![Linux Summary](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Summary.png)
 
    ><details><summary>Click for answer</summary>263</details>
 
@@ -109,7 +109,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
    ausearch -m USER_LOGIN -sv no -i | grep ct=mike | wc -l
    ```
 
-   LINUX MIKE
+   ![Linux Mike](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Mike.png)
 
    ><details><summary>Click for answer</summary>4</details>
 
@@ -123,7 +123,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
    ausearch -m USER_LOGIN -sv no -i | grep ct=root | wc -l
    ```
 
-   LINUX ROOT
+   ![Linux Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Root.png)
 
    ><details><summary>Click for answer</summary>227</details>
 
@@ -141,7 +141,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
 
    Go to the SECURITY log and `filter log` based on EVENT ID 4625.
 
-   WINDOWS LOGS
+   ![Windows Logs](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Windows_Logs.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
