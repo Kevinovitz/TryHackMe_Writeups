@@ -1,0 +1,157 @@
+![Linux System Hardening Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/937369ff3aaee1d1e101fd67e00f7066.png)
+
+<p align="center">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxsystemhardening/ROOM_TITLE_Cover.png" alt="Linux System Hardening Logo">
+</p>
+
+# Linux System Hardening
+
+This guide contains the answer and steps necessary to get to them for the [Linux System Hardening](https://tryhackme.com/room/linuxsystemhardening) room.
+
+## Table of contents
+
+- [Physical Security](#physical-security)
+- [Filesystem Partitioning and Encryption](#filesystem-partitioning-and-encryption)
+- [Firewall](#firewall)
+- [Remote Access](#remote-access)
+- [Securing User Accounts](#securing-user-accounts)
+- [Software and Services](#software-and-services)
+- [Update and Upgrade Policies](#update-and-upgrade-policies)
+- [Audit and Log Configuration](#audit-and-log-configuration)
+
+### Physical Security
+
+1. What command can you use to create a password for the GRUB bootloader?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What does PBKDF2 stand for?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Filesystem Partitioning and Encryption
+
+1. What does LUKS stand for?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. We cannot attach external storage to theVM, so we have created a/home/tryhackme/secretvault.imgfile instead. It is encrypted with the password2N9EdZYNkszEE3Ad. To access it, you need to open it usingcryptsetupand then mount it to an empty directory, such asmyvault. What is the flag in the secret vault?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Firewall
+
+1. There is a firewall running on the Linux VM. It is allowing port 22 TCP as we can ssh into the machine. It is allowing another TCP port; what is it?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the allowedUDPport?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Remote Access
+
+1. What flag is hidden in thesshd_configfile?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Securing User Accounts
+
+1. One way to disable an account is to edit thepasswdfile and change the account’s shell. What is the suggested value to use for the shell?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the name of the RedHat and Fedora systems sudoers group?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the name of the sudoers group on Debian and Ubuntu systems?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. Other thantryhackmeandubuntu, what is the username that belongs to the sudoers group?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Software and Services
+
+1. Besides FTPS, what is another secure replacement for TFTP and FTP?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Update and Upgrade Policies
+
+1. What command would you use to update an older Red Hat system?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What command would you use to update a modern Fedora system?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What two commands are required to update a Debian system? (Connect the two commands with&&.)
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What doesyumstand for?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What doesdnfstand for?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. What flag is hidden in thesources.listfile?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Audit and Log Configuration
+
+1. What command can you use to display the last 15 lines ofkern.log?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What command can you use to display the lines containing the worddeniedin the filesecure?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+

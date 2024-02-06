@@ -42,6 +42,7 @@ The following rooms are available/in progress:
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
+- [ ] [Linux System Hardening](linuxsystemhardening/linuxsystemhardening.md) [WiP]
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
