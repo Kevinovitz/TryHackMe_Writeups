@@ -70,6 +70,7 @@ The following rooms are available/in progress:
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
 - [x] [**Vulnerability Capstone***](vulnerabilitycapstone/vulnerabilitycapstone.md) [Answered]
+- [x] [**Vulnerability Management***](vulnerabilitymanagementkj/vulnerabilitymanagementkj.md) [Answered]
 - [x] [Vulnversity](vulnversity/vulnversity.md)
 - [x] [Walking An Application](walkinganapplication/walkinganapplication.md) [Answered]
 - [x] [**Weaponization***](weaponization/weaponization.md) [Answered]
