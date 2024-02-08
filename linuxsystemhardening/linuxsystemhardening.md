@@ -1,7 +1,7 @@
-![Linux System Hardening Banner](https://tryhackme-images.s3.amazonaws.com/user-uploads/5f04259cf9bf5b57aed2c476/room-content/937369ff3aaee1d1e101fd67e00f7066.png)
+![Linux System Hardening Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxsystemhardening/Linux_System_Hardening_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxsystemhardening/ROOM_TITLE_Cover.png" alt="Linux System Hardening Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxsystemhardening/Linux_System_Hardening_Cover.png" alt="Linux System Hardening Logo">
 </p>
 
 # Linux System Hardening
