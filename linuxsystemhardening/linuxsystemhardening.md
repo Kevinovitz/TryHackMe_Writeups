@@ -23,43 +23,67 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 1. What command can you use to create a password for the GRUB bootloader?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>grub2-mkpasswd-pbkdf2</details>
 
 2. What does PBKDF2 stand for?
 
+   A quick search can give us the answer.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Password-based Key Derivation Function 2</details>
 
 ### Filesystem Partitioning and Encryption
 
 1. What does LUKS stand for?
 
+   The answer can be found in the text.
 
+   ><details><summary>Click for answer</summary>Linux Unified Key Set</details>
 
-   ><details><summary>Click for answer</summary></details>
+2. We cannot attach external storage to theVM, so we have created a `/home/tryhackme/secretvault.img` file instead. It is encrypted with the password `2N9EdZYNkszEE3Ad`. To access it, you need to open it using `cryptsetup` and then mount it to an empty directory, such as `myvault`. What is the flag in the secret vault?
 
-2. We cannot attach external storage to theVM, so we have created a/home/tryhackme/secretvault.imgfile instead. It is encrypted with the password2N9EdZYNkszEE3Ad. To access it, you need to open it usingcryptsetupand then mount it to an empty directory, such asmyvault. What is the flag in the secret vault?
+   First we must open the encrypted image using `cryptsetup`.
 
+   ```console
+   sudo cryptsetup luksOpen secretvault.img secretvault
+   or
+   sudo cryptsetup open --type luks /path/to/dump desired-name
+   ```
 
+   Now we can mount this device to the `myvault` folder and look inside.
 
-   ><details><summary>Click for answer</summary></details>
+   ```console
+   sudo umount /dev/mapper/secretvault
+   ```
+
+   FILESYSTEM OPEN
+
+   Now we can check to see if the device is mounted and look for our flag.
+
+   SILESYSTEMN FLAG
+
+   ><details><summary>Click for answer</summary>THM{LUKS_not_LUX}</details>
 
 ### Firewall
 
 1. There is a firewall running on the Linux VM. It is allowing port 22 TCP as we can ssh into the machine. It is allowing another TCP port; what is it?
 
+   For this we can use the handy `ufw` command.
 
+   ```console
+   ufw status
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   FIREWALL
 
-2. What is the allowedUDPport?
+   ><details><summary>Click for answer</summary>12526</details>
 
+2. What is the allowed UDP port?
 
+   The can be found with the previous command.
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>14298</details>
 
 ### Remote Access
 
