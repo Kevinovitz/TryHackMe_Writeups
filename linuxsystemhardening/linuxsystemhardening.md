@@ -87,11 +87,17 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 ### Remote Access
 
-1. What flag is hidden in thesshd_configfile?
+1. What flag is hidden in the sshd_configfile?
 
+   To find the flag, we must open the files located at:
 
+   ```console
+   /etc/ssh/sshd_config
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   REMOTE SSHD
+
+   ><details><summary>Click for answer</summary>THM{secure_SEA_shell}</details>
 
 ### Securing User Accounts
 
@@ -99,25 +105,25 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>/sbin/nologin</details>
 
 2. What is the name of the RedHat and Fedora systems sudoers group?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>wheel</details>
 
 3. What is the name of the sudoers group on Debian and Ubuntu systems?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>sudo</details>
 
 4. Other thantryhackmeandubuntu, what is the username that belongs to the sudoers group?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>blacksmith</details>
 
 ### Software and Services
 
