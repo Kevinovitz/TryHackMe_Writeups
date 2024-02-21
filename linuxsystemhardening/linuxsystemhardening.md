@@ -101,27 +101,27 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 ### Securing User Accounts
 
-1. One way to disable an account is to edit thepasswdfile and change the account’s shell. What is the suggested value to use for the shell?
+1. One way to disable an account is to edit the passwd file and change the account’s shell. What is the suggested value to use for the shell?
 
-
+   The answer to this question can be found in the text.
 
    ><details><summary>Click for answer</summary>/sbin/nologin</details>
 
 2. What is the name of the RedHat and Fedora systems sudoers group?
 
-
+   The answer to this question can be found in the text.
 
    ><details><summary>Click for answer</summary>wheel</details>
 
 3. What is the name of the sudoers group on Debian and Ubuntu systems?
 
-
+   The answer to this question can be found in the text.
 
    ><details><summary>Click for answer</summary>sudo</details>
 
-4. Other thantryhackmeandubuntu, what is the username that belongs to the sudoers group?
+4. Other than tryhackme and ubuntu, what is the username that belongs to the sudoers group?
 
-
+   This can be found by looking through the /etc/passwd file and filtering on 'root'.
 
    ><details><summary>Click for answer</summary>blacksmith</details>
 
@@ -129,59 +129,64 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
 1. Besides FTPS, what is another secure replacement for TFTP and FTP?
 
+   The answer to this question can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>SFTP</details>
 
 ### Update and Upgrade Policies
 
 1. What command would you use to update an older Red Hat system?
 
+   The answer to this question can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>yum update</details>
 
 2. What command would you use to update a modern Fedora system?
 
+   The answer to this question can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>dnf update</details>
 
 3. What two commands are required to update a Debian system? (Connect the two commands with&&.)
 
+   The answer to this question can be found in the text.
 
+   ><details><summary>Click for answer</summary>apt update && apt upgrade</details>
 
-   ><details><summary>Click for answer</summary></details>
+4. What does yum stand for?
 
-4. What doesyumstand for?
+   A quick search should give us the answer.
 
+   ><details><summary>Click for answer</summary>Yellowdog Updater Modified</details>
 
+5. What does dnf stand for?
 
-   ><details><summary>Click for answer</summary></details>
+   A quick search should give us the answer.
 
-5. What doesdnfstand for?
+   ><details><summary>Click for answer</summary>Dandified YUM</details>
 
+6. What flag is hidden in the sources.list file?
 
+   We can find the file by using:
 
-   ><details><summary>Click for answer</summary></details>
+   ```console
+   find / -name sources.list 2>/dev/null
+   ```
 
-6. What flag is hidden in thesources.listfile?
+   UPDATE FILE
 
-
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{not_Advanced_Persistent_Threat}</details>
 
 ### Audit and Log Configuration
 
-1. What command can you use to display the last 15 lines ofkern.log?
+1. What command can you use to display the last 15 lines of kern.log?
 
+   The answer to this question can be found in the text.
 
+   ><details><summary>Click for answer</summary>tail -n 15 kern.log</details>
 
-   ><details><summary>Click for answer</summary></details>
+2. What command can you use to display the lines containing the word denied in the filesecure?
 
-2. What command can you use to display the lines containing the worddeniedin the filesecure?
+   The answer to this question can be found in the text.
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
+   ><details><summary>Click for answer</summary>grep denied secure</details>
