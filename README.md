@@ -21,6 +21,7 @@ The following rooms are available/in progress:
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
+- [ ] [Breaking RSA](breakrsa/breakrsa.md) [WiP]
 - [x] [**Buffer Overflows***](bof1/bof1.md)
 - [x] [Burp Suite: The Basics](burpsuitebasics/burpsuitebasics.md)
 - [x] [**Burp Suite: Intruder***](burpsuiteintruder/burpsuiteintruder.md)
@@ -42,7 +43,7 @@ The following rooms are available/in progress:
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
-- [ ] [Linux System Hardening](linuxsystemhardening/linuxsystemhardening.md) [WiP]
+- [x] [Linux System Hardening](linuxsystemhardening/linuxsystemhardening.md)
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
