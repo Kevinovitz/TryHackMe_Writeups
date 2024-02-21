@@ -1,7 +1,7 @@
 ![Breaking RSA Banner](https://assets.tryhackme.com/img/banners/default_tryhackme.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/ROOM_TITLE_Cover.png" alt="Breaking RSA Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Cover.png" alt="Breaking RSA Logo">
 </p>
 
 # Breaking RSA
