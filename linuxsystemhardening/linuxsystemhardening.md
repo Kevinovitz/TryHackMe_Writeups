@@ -1,7 +1,7 @@
-![Linux System Hardening Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxsystemhardening/Linux_System_Hardening_Banner.png)
+![Linux System Hardening Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxsystemhardening/Linux_System_Hardening_Cover.png" alt="Linux System Hardening Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_Cover.png" alt="Linux System Hardening Logo">
 </p>
 
 # Linux System Hardening
@@ -57,11 +57,11 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    sudo umount /dev/mapper/secretvault
    ```
 
-   FILESYSTEM OPEN
+   ![FileSystem Open](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_FileSystem_Open.png)
 
    Now we can check to see if the device is mounted and look for our flag.
 
-   SILESYSTEMN FLAG
+   ![Filesystem Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_Filesystem_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{LUKS_not_LUX}</details>
 
@@ -75,7 +75,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    ufw status
    ```
 
-   FIREWALL
+   ![Firewall](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_Firewall.png)
 
    ><details><summary>Click for answer</summary>12526</details>
 
@@ -95,7 +95,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    /etc/ssh/sshd_config
    ```
 
-   REMOTE SSHD
+   ![Remote Sshd](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_Remote_Sshd.png)
 
    ><details><summary>Click for answer</summary>THM{secure_SEA_shell}</details>
 
@@ -173,7 +173,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
    find / -name sources.list 2>/dev/null
    ```
 
-   UPDATE FILE
+   ![Update File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxsystemhardening/Linux_System_Hardening_Update_File.png)
 
    ><details><summary>Click for answer</summary>THM{not_Advanced_Persistent_Threat}</details>
 
