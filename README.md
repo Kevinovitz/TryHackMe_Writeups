@@ -16,8 +16,8 @@ The following rooms are available/in progress:
 - [ ] [Advent of Cyber '23 Side Quest](adventofcyber23sidequest/adventofcyber23sidequest.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
-- [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md) [Answered]
-- [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md) [Answered]
+- [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
+- [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md)
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
@@ -38,11 +38,11 @@ The following rooms are available/in progress:
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
-- [x] [**John The Ripper***](johntheripper0/johntheripper0.md) [Answered]
+- [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
 - [x] [Kenobi](kenobi/kenobi.md) [Answered]
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
-- [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md) [Answered]
-- [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md) [Answered]
+- [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md)
+- [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md)
 - [x] [Linux System Hardening](linuxsystemhardening/linuxsystemhardening.md)
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
