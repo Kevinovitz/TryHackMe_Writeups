@@ -1,7 +1,7 @@
-![Walking An Application Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Banner.png)
+![Walking An Application Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Cover.png" alt="Walking An Application Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Cover.png" alt="Walking An Application Logo">
 </p>
 
 # Walking An Application
@@ -21,11 +21,11 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    If we access the page at: https://10.10.196.128.p.thmlabs.com we can view the page source. Here we find a comment that brings us to an unfinished page.
    
-   ![Comment](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Comment.png)
+   ![Comment](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Comment.png)
    
    On this page we can find our flag.
    
-   ![Comment Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Comment_Flag.png)
+   ![Comment Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Comment_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{HTML_COMMENTS_ARE_DANGEROUS}</details>
 
@@ -33,7 +33,7 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    On the same page source we can see there is a mention of a secret page. If we navigate to it we can find out flag.
    
-   ![Secret Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Secret_Page.png)
+   ![Secret Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Secret_Page.png)
    
    ><details><summary>Click for answer</summary>THM{NOT_A_SECRET_ANYMORE}</details>
    
@@ -41,7 +41,7 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    After opening one of the external files of the website, we can try traversing to the parent folder to see if we can access any files.
    
-   ![Directory Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Directory_Flag.png)
+   ![Directory Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Directory_Flag.png)
    
    Looks like we can!
 
@@ -51,19 +51,19 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    Again on the page source, we see a comment about a framework used on the website.
    
-   ![Page Source](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Page_Source.png)
+   ![Page Source](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Page_Source.png)
    
    Navigating to this page we can get more info about this framework. We find an admin panel which we can login to with the default credentials. However, this was not the correct flag. 
    
-   ![Framework Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Framework_Login.png)
+   ![Framework Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Framework_Login.png)
    
    After looking further, we see there is a file available to download from the changelog.
    
-   ![Changelog File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Changelog_File.png)
+   ![Changelog File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Changelog_File.png)
    
    In this zip file, we can find our flag.
    
-   ![Zip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Page_Source_Zip.png)
+   ![Zip](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Page_Source_Zip.png)
 
    ><details><summary>Click for answer</summary>THM{KEEP_YOUR_SOFTWARE_UPDATED}</details>
 
@@ -73,11 +73,11 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    When looking at the source of the page in Inspector, we can search for the element that is blocking the text.
    
-   ![Div](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Inspector_Div.png)
+   ![Div](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Inspector_Div.png)
    
    We could change the value of this element to not block the text. However, in this case, it also works by simply removing the element from the page.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Inspector_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Inspector_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{NOT_SO_HIDDEN}</details>
 
@@ -87,15 +87,15 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    Looking at the debugger tab, we can see the related javascript file.
    
-   ![Java File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Debugger_Java_File.png)
+   ![Java File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Debugger_Java_File.png)
    
    Upon further inspection we see which part removes the message.
    
-   ![File End](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Debugger_File_End.png)
+   ![File End](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Debugger_File_End.png)
    
    Adding a breakpoint here, allows us to see the message before it is removed.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Debugger_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Debugger_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{CATCH_ME_IF_YOU_CAN}</details>
 
@@ -105,10 +105,10 @@ This guide contains the answer and steps necessary to get to them for the [Walki
 
    On the contact page, we can submit some data this see what is retrieved.
    
-   ![Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Network_Form.png)
+   ![Form](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Network_Form.png)
 
    Looks like we can find our flag in the response of the request.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/walkinganapplication/Walking_Application_Network_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/walkinganapplication/Walking_Application_Network_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{GOT_AJAX_FLAG}</details>
