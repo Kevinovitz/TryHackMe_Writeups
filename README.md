@@ -1,11 +1,13 @@
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/Tryhackme%20Banner.JPG" alt="TryHackMe Banner">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/Tryhackme%20Banner.JPG" alt="TryHackMe Banner">
 </p>
 
 # TryHackMe Writeups
 
 In this repository you will find various walkthroughs/writeups for various [TryHackMe](https://tryhackme.com/) rooms. This is mostly for my own use as a sort of knowledge base. But anyone is welcome to view it themselves.
+
+An alternative version can be found here: https://kevinovitz.github.io/TryHackMe_Writeups/.
 
 The following rooms are available/in progress:
 
