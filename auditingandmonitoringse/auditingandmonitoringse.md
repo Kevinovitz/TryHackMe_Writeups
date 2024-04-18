@@ -1,7 +1,7 @@
-![Auditing and Monitoring Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Banner.png)
+![Auditing and Monitoring Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/auditingandmonitoringse/Auditing_Monitoring_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Cover.png" alt="Auditing and Monitoring Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/auditingandmonitoringse/Auditing_Monitoring_Cover.png" alt="Auditing and Monitoring Logo">
 </p>
 
 # Auditing and Monitoring
@@ -95,7 +95,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
    aureport --summary
    ```
 
-   ![Linux Summary](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Summary.png)
+   ![Linux Summary](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Summary.png)
 
    ><details><summary>Click for answer</summary>263</details>
 
@@ -109,7 +109,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
    ausearch -m USER_LOGIN -sv no -i | grep ct=mike | wc -l
    ```
 
-   ![Linux Mike](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Mike.png)
+   ![Linux Mike](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Mike.png)
 
    ><details><summary>Click for answer</summary>4</details>
 
@@ -123,7 +123,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
    ausearch -m USER_LOGIN -sv no -i | grep ct=root | wc -l
    ```
 
-   ![Linux Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Root.png)
+   ![Linux Root](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/auditingandmonitoringse/Auditing_Monitoring_Linux_Root.png)
 
    ><details><summary>Click for answer</summary>227</details>
 
@@ -141,7 +141,7 @@ This guide contains the answer and steps necessary to get to them for the [Audit
 
    Go to the SECURITY log and `filter log` based on EVENT ID 4625.
 
-   ![Windows Logs](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/auditingandmonitoringse/Auditing_Monitoring_Windows_Logs.png)
+   ![Windows Logs](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/auditingandmonitoringse/Auditing_Monitoring_Windows_Logs.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
