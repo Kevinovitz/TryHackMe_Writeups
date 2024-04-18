@@ -1,7 +1,7 @@
 ![Metasploit: Meterpreter Banner](https://assets.tryhackme.com/room-banners/metasploit.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/meterpreter/Metasploit_Meterpreter_Cover.png" alt="Metasploit: Meterpreter Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/meterpreter/Metasploit_Meterpreter_Cover.png" alt="Metasploit: Meterpreter Logo">
 </p>
 
 # Metasploit: Meterpreter
