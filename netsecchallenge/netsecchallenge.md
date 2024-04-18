@@ -1,7 +1,7 @@
 ![Net Sec Challenge Banner](https://assets.tryhackme.com/room-banners/netsecmodule.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Cover.png" alt="Net Sec Challenge Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Cover.png" alt="Net Sec Challenge Logo">
 </p>
 
 # Net Sec Challenge
@@ -18,7 +18,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    sudo nmap -sS 10.10.223.240 -p1-10000 -sV
    ```
 
-   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Nmap.png)
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Nmap.png)
 
    ><details><summary>Click for answer</summary>8080</details>
 
@@ -30,7 +30,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    sudo nmap -sS 10.10.223.240 -p10000-65535
    ```
    
-   ![Nmap 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Nmap_2.png)
+   ![Nmap 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Nmap_2.png)
 
    ><details><summary>Click for answer</summary>10021</details>
 
@@ -48,7 +48,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    telnet 10.10.223.240 80
    ```
 
-   ![Http Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_HTTP_Flag.png)
+   ![Http Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_HTTP_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{web_server_25352}</details>
 
@@ -60,7 +60,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    telnet 10.10.223.240 22
    ```
 
-   ![Ssh Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_ssh_Flag.png)
+   ![Ssh Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_ssh_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{946219583339}</details>
 
@@ -72,7 +72,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    sudo nmap -sS 10.10.223.240 -p10021 -sV
    ```
 
-   ![Nmap Ftp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Nmap_FTP.png)
+   ![Nmap Ftp](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Nmap_FTP.png)
 
    ><details><summary>Click for answer</summary>vsftpd 3.0.3</details>
 
@@ -84,7 +84,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    hydra -L usernames.txt -P /usr/share/wordlists/rockyou.txt ftp://10.10.223.240:10021 -t 4
    ```
 
-   ![Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Hydra.png)
+   ![Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Hydra.png)
 
    This gives us passwords for both accounts. Looking through the files on the FTP server, we find the flag on the account for `quinn`.
    
@@ -92,7 +92,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    ftp quinn@10.10.223.240 -p 10021
    ```
 
-   ![Ftp Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_FTP_Flag.png)
+   ![Ftp Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_FTP_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{321452667098}</details>
 
@@ -100,7 +100,7 @@ This guide contains the answer and steps necessary to get to them for the [Net S
 
    Visiting the weppage, we see we need to scan the machine with as little activity as possible.
    
-   ![Nmap Challenge Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Nmap_Challenge_Page.png)
+   ![Nmap Challenge Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Nmap_Challenge_Page.png)
    
    After several tries (also using the Attackbox) the most effective scan type was the NULL scann `-sN`.
    
@@ -108,8 +108,8 @@ This guide contains the answer and steps necessary to get to them for the [Net S
    sudo nmap -sN 10.10.223.240
    ```
    
-   ![Nmap Challenge](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Nmap_Challenge.png)
+   ![Nmap Challenge](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Nmap_Challenge.png)
 
-   ![Nmap Challenge Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/netsecchallenge/Net_Sec_Challenge_Nmap_Challenge_Flag.png)
+   ![Nmap Challenge Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/netsecchallenge/Net_Sec_Challenge_Nmap_Challenge_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{f7443f99}</details>
