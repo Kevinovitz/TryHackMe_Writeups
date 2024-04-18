@@ -1,7 +1,7 @@
 ![Burp Suite: The Basics Banner](https://assets.tryhackme.com/room-banners/burpsuite.svg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Cover.png" alt="Burp Suite: The Basics Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Cover.png" alt="Burp Suite: The Basics Logo">
 </p>
 
 # Burp Suite: The Basics (Old)
@@ -65,19 +65,19 @@ The answers to the following questions can be found by looking through the setti
 
 2. In which Project options sub-tab can you find reference to a "Cookie jar"?
 
-   ![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Cookie.png)
+   ![Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Cookie.png)
 
    ><details><summary>Click for answer</summary>Sessions</details>
 
 3. In which User options sub-tab can you change the Burp Suite update behaviour?
 
-   ![Update](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Update.png)
+   ![Update](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Update.png)
 
    ><details><summary>Click for answer</summary>Misc</details>
 
 4. What is the name of the section within the User options "Misc" sub-tab which allows you to change the Burp Suite keybindings?
 
-   ![Bindings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Bindings.png)
+   ![Bindings](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Options_Bindings.png)
 
    ><details><summary>Click for answer</summary>Hotkeys</details>
 
@@ -93,11 +93,11 @@ The answers to the following questions can be found by looking through the setti
 
    On the proxy tab we can enable intercept, open the browser, and navigating to tryhackme.com. 
    
-   ![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Intercepted.png)
+   ![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Intercepted.png)
    
    If we want to send the request to the browser, we must click forward.
    
-   ![Forwarded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Forwarded.png)
+   ![Forwarded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Intro_To_Proxy_Forwarded.png)
 
    ><details><summary>Click for answer</summary>Forward</details>
 
@@ -117,11 +117,11 @@ Read through the options in the right-click menu.
 
    First we make sure to enable the intercept in BurpSuite and FoxyProxy in Firefox.
    
-   ![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Intercepted.png)
+   ![Intercepted](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Intercepted.png)
    
    After intercepting the request we can inspect the menu options.
    
-   ![Option](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Option.png)
+   ![Option](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Connecting_Through_Proxy_Option.png)
 
    ><details><summary>Click for answer</summary>Response to this request</details>
 
@@ -137,7 +137,7 @@ After importing it, I could visit TLS enabled websites in Firefox through FoxyPr
 
 No real difference was spotted when targeting the specific URL (http://http://10.10.195.240/). This might be due to the website having no redirects.
 
-![Not Scoped](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Scoping_Targeting_Not_Scoped.png)
+![Not Scoped](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Scoping_Targeting_Not_Scoped.png)
 
 ### Proxy Site Map and Issue Definitions
 
@@ -149,11 +149,11 @@ Visit this in your browser (or use the "Response" section of the site map entry 
 
    After visting all sites, we can see our sitemap in BurpSuite
    
-   ![URL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_URL.png)
+   ![URL](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_URL.png)
    
    One of these entries does indeed stand out. Lets visit it to see if we get our flag.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{NmNlZTliNGE1MWU1ZTQzMzgzNmFiNWVk}</details>
 
@@ -163,7 +163,7 @@ Look through the Issue Definitions list.
 
    If we navigate to the Issue Definitions list related to our sitemap, we can find the severity for a Vulnerable JavaScript dependency.
    
-   ![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Vulnerability.png)
+   ![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Sitemap_Vulnerability.png)
    ><details><summary>Click for answer</summary>Low</details>
 
 ### Practical Example Attack 
@@ -174,11 +174,11 @@ First thing to try obviously, is our payload, to see if it is indeed filtered. T
 
 After making sure FoxyProxy in Firefox and Intercept in BurpSuite are both turned on, we can enter some fake but allowed data.
 
-![Query](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Query.png)
+![Query](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Query.png)
 
 After submitting, we should have intercepted the request in BurpSuite.
 
-![Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Request.png)
+![Request](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Request.png)
 
 Now we can change the email part of the request with our own payload:
 
@@ -186,12 +186,12 @@ Now we can change the email part of the request with our own payload:
 <script>alert("Succ3ssful XSS")</script>
 ```
 
-![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script.png)
+![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script.png)
 
 Now select the payload and use the `Ctrl + u` shortcut to encode the string.
 
-![Script Encoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script_Encoded.png)
+![Script Encoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Script_Encoded.png)
 
 Now we forward the modified request with BurpSuite and we should receieve a pop-up message.
 
-![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Success.png)
+![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/burpsuitebasics/Burp_Suite_The_Basics_Example_Success.png)
