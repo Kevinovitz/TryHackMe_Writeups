@@ -1,7 +1,7 @@
-![The Lay of the Land Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Banner.png)
+![The Lay of the Land Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Cover.png" alt="The Lay of the Land Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Cover.png" alt="The Lay of the Land Logo">
 </p>
 
 # The Lay of the Land
@@ -28,7 +28,7 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
 
    To get this info, we run `systeminfo` on the machine.
 
-   ![AD Info](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_AD_Info.png)
+   ![AD Info](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_AD_Info.png)
 
    Here we can cleary see it is part of an AD. It is even the Domain Controller.
 
@@ -50,7 +50,7 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
    Get-ADUser -Filter * -SearchBase "OU=THM,DC=THMREDTEAM,DC=COM"
    ```
 
-   ![Users Thm](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Users_Thm.png)
+   ![Users Thm](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Users_Thm.png)
 
    ><details><summary>Click for answer</summary>6</details>
 
@@ -58,7 +58,7 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
 
    From the previous command we can get the email for the admin.
 
-   ![Users Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Users_Admin.png)
+   ![Users Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Users_Admin.png)
 
    ><details><summary>Click for answer</summary>thmadmin@thmredteam.com</details>
 
@@ -72,7 +72,7 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
    Get-NetFirewallProfile | Format-Table Name, Enabled
    ```
 
-   ![Host Firewall](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Host_Firewall.png)
+   ![Host Firewall](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Host_Firewall.png)
 
    ><details><summary>Click for answer</summary>N</details>
 
@@ -80,7 +80,7 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
 
    Using `Get-MpThreat` we can see a list of alerts. Some of them are related to the same file.
 
-   ![Host Threat](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Host_Threat.png)
+   ![Host Threat](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Host_Threat.png)
 
    ><details><summary>Click for answer</summary>PowerView.ps1</details>
 
@@ -92,7 +92,7 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
    Get-NetFirewallRule | Where-Object -Property DisplayName -eq THM-Connection
    ```
 
-   ![Host Port](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Host_Port.png)
+   ![Host Port](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Host_Port.png)
 
    ><details><summary>Click for answer</summary>17337</details>
 
@@ -108,7 +108,7 @@ In the next task, we will keep discussing the host security solution. I'm ready!
    wmic service where "name like 'THM Service' "get Name,PathName
    ```
 
-   ![Applications Service Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Applications_Service_Name.png)
+   ![Applications Service Name](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Applications_Service_Name.png)
 
    Now we can check if it is running and if so, what its id is.
 
@@ -116,7 +116,7 @@ In the next task, we will keep discussing the host security solution. I'm ready!
    Get-Process -Name thm-service
    ```
 
-   ![Applications Service Id](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Applications_Service_Id.png)
+   ![Applications Service Id](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Applications_Service_Id.png)
 
    Finally we can check if it is listening on any ports.
 
@@ -124,7 +124,7 @@ In the next task, we will keep discussing the host security solution. I'm ready!
    netstat -noa | findstr "LISTENING" | findstr "2848"
    ```
 
-   ![Applications Service Port](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Applications_Service_Port.png)
+   ![Applications Service Port](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Applications_Service_Port.png)
 
    ><details><summary>Click for answer</summary>13337</details>
 
@@ -132,7 +132,7 @@ In the next task, we will keep discussing the host security solution. I'm ready!
 
    We can visit this port in a browser at `localhost:13337`.
 
-   ![Applications Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Applications_Flag.png)
+   ![Applications Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Applications_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{S3rv1cs_1s_3numerat37ed</details>
 
@@ -146,6 +146,6 @@ In the next task, we will keep discussing the host security solution. I'm ready!
    ls -d thmredteam.com
    ```
 
-   ![Applications Dns](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/thelayoftheland/Lay_Of_The_Land_Applications_Dns.png)
+   ![Applications Dns](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/thelayoftheland/Lay_Of_The_Land_Applications_Dns.png)
 
    ><details><summary>Click for answer</summary>THM{DNS-15-Enumerated!}</details>
