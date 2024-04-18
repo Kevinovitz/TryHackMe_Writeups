@@ -1,7 +1,7 @@
-![Wireshark: Packet Operations Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Banner.png)
+![Wireshark: Packet Operations Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Cover.png" alt="Wireshark: Packet Operations Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Cover.png" alt="Wireshark: Packet Operations Logo">
 </p>
 
 # Wireshark: Packet Operations
@@ -67,7 +67,7 @@ This guide contains the answer and steps necessary to get to them for the [TITLE
 
    Navigating to: "Statistics -> IPv4 Statistics -> Source and Destination Addresses" we can see the number of destination addresses.
 
-   ![Details IPv4](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Details_IPv4.png)
+   ![Details IPv4](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Details_IPv4.png)
 
    ><details><summary>Click for answer</summary>10.100.1.33</details>
 
@@ -75,7 +75,7 @@ This guide contains the answer and steps necessary to get to them for the [TITLE
 
    This we can find under: "Statistics -> DNS -> Service Stats". Make sure that you use the same unit as the question (i.e., seconds vs miliseconds).
 
-   ![Details Response](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Details_Response.png)
+   ![Details Response](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Details_Response.png)
 
    ><details><summary>Click for answer</summary>0.467897</details>
 
@@ -86,7 +86,7 @@ This guide contains the answer and steps necessary to get to them for the [TITLE
    ```cmd
    http.host matches ".*rad.msn.com.*"
 
-   ![Details Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Details_Requests.png)
+   ![Details Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Details_Requests.png)
 
    ><details><summary>Click for answer</summary>39</details>
 
@@ -132,7 +132,7 @@ This guide contains the answer and steps necessary to get to them for the [TITLE
 
    For some strange reason the amount I found here wasn't correct. Luckily, it was just 1 shy of the correct answer.
 
-   ![Filters HTTP Get](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Filters_HTTP_Get.png)
+   ![Filters HTTP Get](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Filters_HTTP_Get.png)
 
    ><details><summary>Click for answer</summary>527</details>
 
@@ -210,6 +210,6 @@ This guide contains the answer and steps necessary to get to them for the [TITLE
    (http.response.code == 200 ) && (http.content_type matches "image(gif||jpeg)")
    ```
 
-   ![Advanced Button](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Advanced_Button.png)
+   ![Advanced Button](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkpacketoperations/Wireshark_Packet_Operations_Advanced_Button.png)
 
    ><details><summary>Click for answer</summary>261</details>
