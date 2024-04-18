@@ -1,7 +1,7 @@
 ![Bounty Hacker](https://i.imgur.com/rCDF5u6.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cowboyhacker/Bounty_Hacker_Cover.png" alt="Bounty Hacker Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/cowboyhacker/Bounty_Hacker_Cover.png" alt="Bounty Hacker Logo">
 </p>
 
 # Bounty Hacker
