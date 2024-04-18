@@ -1,7 +1,7 @@
-![Red Team Recon Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Banner.png)
+![Red Team Recon Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Cover.png" alt="Red Team Recon Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Cover.png" alt="Red Team Recon Logo">
 </p>
 
 # Red Team Recon
@@ -27,7 +27,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
    whois thmredteam.com
    ```
    
-   ![Creation Date](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Built_In_Creation_Date.png)
+   ![Creation Date](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Built_In_Creation_Date.png)
 
    ><details><summary>Click for answer</summary>2021-09-24</details>
 
@@ -39,7 +39,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
    host clinic.thmredteam.com
    ```
    
-   ![IP Addresses](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Built_In_IP_Addresses.png)
+   ![IP Addresses](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Built_In_IP_Addresses.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -69,7 +69,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
 
    For this answer, we need to head over to the shodan website. Searching for the shodan cli gives us the correct page with many commands.
    
-   ![Shodan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Specialized_Search_Engines_Shodan.png)
+   ![Shodan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Specialized_Search_Engines_Shodan.png)
 
    ><details><summary>Click for answer</summary>shodan myip</details>
 
@@ -89,7 +89,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
    marketplace search virustotal
    ```
    
-   ![Virustotal](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Recon_NG_Virustotal.png)
+   ![Virustotal](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Recon_NG_Virustotal.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -101,7 +101,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
    marketplace search host-domains
    ```
    
-   ![Domain](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Recon_NG_Domain.png)
+   ![Domain](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Recon_NG_Domain.png)
 
    ><details><summary>Click for answer</summary>migrate_hosts</details>
 
@@ -113,7 +113,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
    marketplace info censys_email_address
    ```
    
-   ![Censys](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Recon_NG_Censys.png)
+   ![Censys](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Recon_NG_Censys.png)
 
    ><details><summary>Click for answer</summary>Censys Team</details>
 
@@ -123,7 +123,7 @@ This guide contains the answer and steps necessary to get to them for the [Red T
 
    When visiting the webpage (https://www.maltego.com/transform-hub/) and searching for 'NIST' we find the entry we are looking for.
    
-   ![NIST](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Maltego_NIST.png)
+   ![NIST](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Maltego_NIST.png)
 
    ><details><summary>Click for answer</summary>NIST NVD</details>
 
@@ -131,6 +131,6 @@ This guide contains the answer and steps necessary to get to them for the [Red T
 
    When visiting the webpage (https://www.maltego.com/transform-hub/) and searching for 'ATT' we find the entry we are looking for.
    
-   ![ATTACK](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/redteamrecon/Red_Team_Recon_Maltego_ATTACK.png)
+   ![ATTACK](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/redteamrecon/Red_Team_Recon_Maltego_ATTACK.png)
 
    ><details><summary>Click for answer</summary>MISP Project</details>
