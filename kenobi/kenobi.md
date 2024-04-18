@@ -1,7 +1,7 @@
 ![Kenobi Banner](https://i.imgur.com/zWNY3JF.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/kenobi/Kenobi_Cover.png" alt="Kenobi Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/kenobi/Kenobi_Cover.png" alt="Kenobi Logo">
 </p>
 
 # Kenobi
