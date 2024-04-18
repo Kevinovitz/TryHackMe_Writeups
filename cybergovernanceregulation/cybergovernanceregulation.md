@@ -1,7 +1,7 @@
-![Governance & Regulation Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cybergovernanceregulation/Governance_Regulation_Banner.png)
+![Governance & Regulation Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/cybergovernanceregulation/Governance_Regulation_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/cybergovernanceregulation/Governance_Regulation_Cover.png" alt="Governance & Regulation Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/cybergovernanceregulation/Governance_Regulation_Cover.png" alt="Governance & Regulation Logo">
 </p>
 
 # Governance & Regulation
