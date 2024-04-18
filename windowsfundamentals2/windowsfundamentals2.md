@@ -1,7 +1,7 @@
 ![Windows Fundamentals 2](https://assets.tryhackme.com/room-banners/windows.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Cover.png" alt="Windows Fundamentals 2 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Cover.png" alt="Windows Fundamentals 2 Logo">
 </p>
 
 # Windows Fundamentals 2
@@ -26,7 +26,7 @@ In this task we will be looking at the System Configuration utility which is use
 
    Opening the System Configuration utility we can get the answer in the Services tab.
    
-   ![SysInternal Service](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_SysInternal_Service.png)
+   ![SysInternal Service](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_SysInternal_Service.png)
 
    ><details><summary>Click for answer</summary>PsShutdown</details>
 
@@ -34,7 +34,7 @@ In this task we will be looking at the System Configuration utility which is use
 
    For this answer we can open the about windows utility from the tools tab.
    
-   ![License](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_License.png)
+   ![License](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_License.png)
 
    ><details><summary>Click for answer</summary>Windows User</details>
 
@@ -42,7 +42,7 @@ In this task we will be looking at the System Configuration utility which is use
 
    The answer can be found on the tools tab under windows troubleshooting.
    
-   ![Troubleshotting](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Troubleshooting.png)
+   ![Troubleshotting](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Troubleshooting.png)
 
    ><details><summary>Click for answer</summary>C:\Windows\System32\control.exe /name Microsoft.Troubleshooting</details>
 
@@ -50,7 +50,7 @@ In this task we will be looking at the System Configuration utility which is use
 
    The answer can be found on the tools tab under system properties.
    
-   ![Control Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Control_Panel.png)
+   ![Control Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Control_Panel.png)
 
    ><details><summary>Click for answer</summary>control.exe</details>
 
@@ -62,7 +62,7 @@ In this task we will look more at the user account control settings.
 
    This answer can be found on the tools tab of the system configuration utility under change uac settings.
    
-   ![User Account Control](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_User_Account_Control.png)
+   ![User Account Control](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_User_Account_Control.png)
 
    ><details><summary>Click for answer</summary>UserAccountControlSettings.exe</details>
 
@@ -74,7 +74,7 @@ In this task we will learn more information about the computer management utilit
 
    This answer can again be found on the tools tab of the system configuration utility under computer management.
    
-   ![Computer Management](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Computer_Management.png)
+   ![Computer Management](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Computer_Management.png)
 
    ><details><summary>Click for answer</summary>compmgmt.msc</details>
 
@@ -82,7 +82,7 @@ In this task we will learn more information about the computer management utilit
 
    In the Computer Management utility we can open the Task Scheduler and look for the Google Update task.
    
-   ![Task Schedule](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Task_Schedule.png)
+   ![Task Schedule](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Task_Schedule.png)
 
    ><details><summary>Click for answer</summary>6:15 AM</details>
 
@@ -90,7 +90,7 @@ In this task we will learn more information about the computer management utilit
  
    This folder can be found under the Shared Folders tab.
    
-   ![Shared Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Shared_Folder.png)
+   ![Shared Folder](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Shared_Folder.png)
 
    ><details><summary>Click for answer</summary>sh4r3dF0Ld3r</details>
 
@@ -102,7 +102,7 @@ In this task we will look into the System Information utility.
 
    This answer can be found on the tools tab of the system configuration utility under System Information.
    
-   ![System Information](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_System_Information.png)
+   ![System Information](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_System_Information.png)
 
    ><details><summary>Click for answer</summary>msinfo32.exe</details>
 
@@ -110,7 +110,7 @@ In this task we will look into the System Information utility.
 
    This we can find on the first tab.
    
-   ![System Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_System_Name.png)
+   ![System Name](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_System_Name.png)
 
    ><details><summary>Click for answer</summary>THM-WINFUN2</details>
 
@@ -118,7 +118,7 @@ In this task we will look into the System Information utility.
 
    This answer can be found under Software Environment and Environment Variables.
    
-   ![Environment Variable](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Environment_Variable.png)
+   ![Environment Variable](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Environment_Variable.png)
 
    ><details><summary>Click for answer</summary>%SystemRoot%\system32\cmd.exe</details>
 
@@ -130,7 +130,7 @@ This task we focus on the Resource Monitor utility.
 
    This answer can be found on the tools tab on the System Configuration utility under Resource Monitor.
    
-   ![Resource Monitor](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Resource_Monitor.png)
+   ![Resource Monitor](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Resource_Monitor.png)
 
    ><details><summary>Click for answer</summary>resmon.exe</details>
 
@@ -142,7 +142,7 @@ In this task we get more info about the command prompt utility.
 
    This answer can be found on the tools tab on the System Configuration utility under Internet Protocol Configuration.
    
-   ![IP Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_IP_Command.png)
+   ![IP Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_IP_Command.png)
 
    ><details><summary>Click for answer</summary>C:\Windows\System32\cmd.exe /k %windir%\system32\ipconfig.exe</details>
 
@@ -150,7 +150,7 @@ In this task we get more info about the command prompt utility.
 
    Looking at the help manual for this command we can see how to get all information.
    
-   ![IP Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Ip_Config.png)
+   ![IP Config](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Ip_Config.png)
 
    ><details><summary>Click for answer</summary>ipconfig /all</details>
 
@@ -162,6 +162,6 @@ In this last task we look at the registry editor utility.
 
    This answer can be found on the tools tab on the System Configuration utility under Registry Editor.
    
-   ![Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals2/Windows_Fundamentals_2_Registry.png)
+   ![Registry](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals2/Windows_Fundamentals_2_Registry.png)
 
    ><details><summary>Click for answer</summary>regedt32.exe</details>
