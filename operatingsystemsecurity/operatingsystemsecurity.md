@@ -1,7 +1,7 @@
 ![Operating System Security Banner](https://assets.tryhackme.com/room-banners/intro-to-offensive-security.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Cover.png" alt="Operating System Security Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Cover.png" alt="Operating System Security Logo">
 </p>
 
 # Operating System Security
@@ -49,7 +49,7 @@ In this task we will attempt to get into the system and see if we can find passw
 nmap -sV 10.10.55.195
 ```
 
-![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Nmap.png)
+![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Nmap.png)
 
 With the information we found on the notes we can try logging into sammie's account through SSH.
 
@@ -57,15 +57,15 @@ With the information we found on the notes we can try logging into sammie's acco
 ssh sammie@10.10.55.195
 ```
 
-![SSH Sammie Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_SSH_Sammie_Login.png)
+![SSH Sammie Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_SSH_Sammie_Login.png)
 
 Next we use the mentioned commands to get some more info on the system
 
-![Sammie Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Sammie_Commands.png)
+![Sammie Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Sammie_Commands.png)
 
 We also look at the terminal history with `history`.
 
-![Sammie History](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Sammie_History.png)
+![Sammie History](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Sammie_History.png)
 
 They mentioned others users. We can check this by looking at the home folder.
 
@@ -73,7 +73,7 @@ They mentioned others users. We can check this by looking at the home folder.
 ls -lh /home/
 ```
 
-![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Users.png)
+![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Users.png)
 
 1. Based on the top 7 passwords, let’s try to find Johnny’s password. What is the password for the user johnny?
 
@@ -83,7 +83,7 @@ ls -lh /home/
    sed -n 1,7p /usr/share/wordlists/rockyou.txt
    ```
    
-   ![Top 7 Rockyou](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Top_7_Rockyou.png)
+   ![Top 7 Rockyou](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Top_7_Rockyou.png)
    
    I then decided to cheat a little and use hydra to crack it using the rockyou list.
    
@@ -91,9 +91,9 @@ ls -lh /home/
    hydra -l sammie -P /usr/share/wordlists/rockyou.txt ssh://10.10.55.195 -t 4
    ```
    
-   ![Hydra Johnny](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Hydra_Johnny.png)
+   ![Hydra Johnny](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Hydra_Johnny.png)
    
-   ![Johnny Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Johnny_Login.png)
+   ![Johnny Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Johnny_Login.png)
 
    ><details><summary>Click for answer</summary>abc123</details>
 
@@ -101,7 +101,7 @@ ls -lh /home/
 
    Looking through the `history` file we can see a password.
    
-   ![Johnny Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Johnny_Files.png)
+   ![Johnny Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Johnny_Files.png)
 
    ><details><summary>Click for answer</summary>happyHack!NG</details>
 
@@ -109,6 +109,6 @@ ls -lh /home/
 
    We use `su - root` to switch to the root user with our found password and look for the flag on the system.
    
-   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/operatingsystemsecurity/Operating_System_Security_Root.png)
+   ![Root](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/operatingsystemsecurity/Operating_System_Security_Root.png)
 
    ><details><summary>Click for answer</summary>THM{YouGotRoot}</details>
