@@ -1,7 +1,7 @@
 ![Breaking RSA Banner](https://assets.tryhackme.com/img/banners/default_tryhackme.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Cover.png" alt="Breaking RSA Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Cover.png" alt="Breaking RSA Logo">
 </p>
 
 # Breaking RSA
@@ -18,7 +18,7 @@ This guide contains the answer and steps necessary to get to them for the [Break
    nmap -sS -sV 10.10.97.159 -Pn -p-
    ```
 
-   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Nmap.png)
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Nmap.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -30,7 +30,7 @@ This guide contains the answer and steps necessary to get to them for the [Break
    dirsearch -u 10.10.97.159:80 -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -r
    ```
 
-   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Directory.png)
+   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Directory.png)
 
    This gives us a hidden directory which happens to contain an id_rsa key.
 
@@ -44,7 +44,7 @@ This guide contains the answer and steps necessary to get to them for the [Break
    ssh-keygen -l -f Downloads/id_rsa.pub 
    ```
 
-   ![Length](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Length.png)
+   ![Length](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Length.png)
 
    ><details><summary>Click for answer</summary>1096</details>
 
@@ -70,7 +70,7 @@ This guide contains the answer and steps necessary to get to them for the [Break
    print(f"Constant e is: {pubkey.e}")
    ```
 
-   ![Modulus](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Modulus.png)
+   ![Modulus](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Modulus.png)
 
    ><details><summary>Click for answer</summary>1225222383</details>
 
@@ -109,7 +109,7 @@ This guide contains the answer and steps necessary to get to them for the [Break
 
    Now we can enter the modulus we acquired and we are given 'p' and 'q'.
 
-   ![Factorized](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Factorized.png)
+   ![Factorized](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Factorized.png)
 
    ><details><summary>Click for answer</summary></details>
 
@@ -150,7 +150,7 @@ This guide contains the answer and steps necessary to get to them for the [Break
    python genpkey.py
    ```
 
-   ![Private Key](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Private_Key.png)
+   ![Private Key](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Private_Key.png)
 
 8. What is the flag?
 
@@ -168,8 +168,8 @@ This guide contains the answer and steps necessary to get to them for the [Break
    ssh root@10.10.97.159 -i private_key.pem
    ```
 
-   ![Ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Ssh.png)
+   ![Ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Ssh.png)
 
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breakrsa/Breaking_Rsa_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/breakrsa/Breaking_Rsa_Flag.png)
 
    ><details><summary>Click for answer</summary>breakingRSAissuperfun20220809134031</details>
