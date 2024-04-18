@@ -1,7 +1,7 @@
 ![Blue Banner](https://i.imgur.com/GosxHyQ.jpg)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Blue_Cover.png" alt="Blue Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Blue_Cover.png" alt="Blue Logo">
 </p>
 
 # Blue
@@ -30,7 +30,7 @@ In this part of the challenge we will find out more information about our target
    nmap -sV -p-1000 10.10.91.75
    ```
    
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Recon_Nmap_Scan.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Recon_Nmap_Scan.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
@@ -40,7 +40,7 @@ In this part of the challenge we will find out more information about our target
    
    Looking up the OS version for any exploits we can find something we can use.
    
-   ![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Recon_Vulnerability.png)
+   ![Vulnerability](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Recon_Vulnerability.png)
 
    ><details><summary>Click for answer</summary>MS17-010</details>
 
@@ -58,7 +58,7 @@ In this part of the challenge we will use Metaspoit to exploit the vulnerability
    search ms17-010
    ```
    
-   ![MSF Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Module.png)
+   ![MSF Module](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Access_MSF_Module.png)
 
    ><details><summary>Click for answer</summary>exploit/windows/smb/ms17_010_eternalblue</details>
 
@@ -74,7 +74,7 @@ In this part of the challenge we will use Metaspoit to exploit the vulnerability
    set rhosts 10.10.91.75
    ```
    
-   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Options.png)
+   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Access_MSF_Options.png)
 
    ><details><summary>Click for answer</summary>rhosts</details>
 
@@ -88,13 +88,13 @@ set payload windows/x64/shell/reverse_tcp
 
 We can do that by using `run` or `exploit`.
 
-![MSF Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Exploit.png)
+![MSF Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Access_MSF_Exploit.png)
 
 *Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z). If this failed, you may have to reboot the target VM. Try running it again before a reboot of the target.*
 
 I had to restart the machine, as it didn't work the first time. In the end, though, I got a shell. And unlike the next few steps, the shell already appears to run as `NT ATUHORITY` using `whoami`.
 
-![MSF Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Access_MSF_Shell.png)
+![MSF Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Access_MSF_Shell.png)
 
 ### Escalate
 
@@ -120,7 +120,7 @@ In this part of the challenge we will strengthen our position in the machine by 
    
    Finding the necessary session can be done with `sessions`. Now we can use `set session 1` to specifiy the correct session.
    
-   ![Convert Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Escalate_Convert_Shell.png)
+   ![Convert Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Escalate_Convert_Shell.png)
 
    ><details><summary>Click for answer</summary>session</details>
 
@@ -132,7 +132,7 @@ In this part of the challenge we will strengthen our position in the machine by 
 
 We can view our sessions again to see if we succeeded.
 
-![MSF Sessions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Escalate_Meterpreter.png)
+![MSF Sessions](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Escalate_Meterpreter.png)
 
 6. Verify that we have escalated to NT AUTHORITY\SYSTEM. Run getsystem to confirm this. Feel free to open a dos shell via the command 'shell' and run 'whoami'. This should return that we are indeed system. Background this shell afterwards and select our meterpreter session for usage again. 
 
@@ -142,13 +142,13 @@ We can view our sessions again to see if we succeeded.
 
    Listing the processes on a Windows machine can be done with 'ps'.
    
-   ![Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Escalate_Processes.png)
+   ![Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Escalate_Processes.png)
 
 8. Migrate to this process using the 'migrate PROCESS_ID' command where the process id is the one you just wrote down in the previous step. This may take several attempts, migrating processes is not very stable. If this fails, you may need to re-run the conversion process or reboot the machine and start once again. If this happens, try a different process next time. 
 
    I was unable to migrate our process for some strange reason. However, looking at the PID we are currently running, it is listed as `NT AUTHORITY`.
    
-   ![Migration](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Escalate_Migrate.png)
+   ![Migration](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Escalate_Migrate.png)
 
 ### Cracking
 
@@ -158,7 +158,7 @@ In this part of the challenge we will find any passwords on the system and crack
 
    Running the `hashdump` command in our Meterpreter session we get a list of the Windows passwords.
    
-   ![Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Escalate_Passwords.png)
+   ![Passwords](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Escalate_Passwords.png)
 
    ><details><summary>Click for answer</summary>jon</details>
 
@@ -166,13 +166,13 @@ In this part of the challenge we will find any passwords on the system and crack
 
    We can use Hash-Identifier to look for the specific hash.
    
-   ![Hash Identifier](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Cracking_Hash_Identifier.png)
+   ![Hash Identifier](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Cracking_Hash_Identifier.png)
    
    Looks like it is an MD5 hash. However, Hashcat coulnd't find anything. I tried multiple methods including a pass,salt combination (methods, 0, 10, and 20 in Hashcat). After some more research it looks like it is an NLTM hash and Hashcat has a specific code for that `1000`.
    
-   ![Hashdump Method](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Cracking_Hashdump_Method.png)
+   ![Hashdump Method](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Cracking_Hashdump_Method.png)
    
-   ![Hashcat Method](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Cracking_Hashcat_Method.png)
+   ![Hashcat Method](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Cracking_Hashcat_Method.png)
    
    Now we can run Hashcat with the following command (don't forget to add the hash to a file):
    
@@ -180,11 +180,11 @@ In this part of the challenge we will find any passwords on the system and crack
    hashcat -m 1000 jon-password.hash /usr/share/wordlists/rockyou.txt
    ```
    
-   ![Hashcat Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Cracking_Hashcat.png)
+   ![Hashcat Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Cracking_Hashcat.png)
    
    Here we finally get a result.
    
-   ![Hashcat Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Cracking_Hashcat_Password.png)
+   ![Hashcat Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Cracking_Hashcat_Password.png)
 
    ><details><summary>Click for answer</summary>alqfna22</details>
 
@@ -202,7 +202,7 @@ In this last part of the challenge we will look for various flag around the syst
    
    Using `type flag1.txt` we can get the contents of the file.
    
-   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Flags_Flag_1.png)
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Flags_Flag_1.png)
 
    ><details><summary>Click for answer</summary>flag{access_the_machine}</details>
 
@@ -214,7 +214,7 @@ In this last part of the challenge we will look for various flag around the syst
    C:\Windows\System32\config
    ```
    
-   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Flags_Flag_2.png)
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Flags_Flag_2.png)
 
    ><details><summary>Click for answer</summary>flag{sam_database_elevated_access}</details>
 
@@ -222,7 +222,7 @@ In this last part of the challenge we will look for various flag around the syst
 
    For this I started looking in through the user folders to find anything. Looks like there was something in the Documents folder.
    
-   ![Flag 3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Flags_Flag_3.png)
+   ![Flag 3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Flags_Flag_3.png)
 
    ><details><summary>Click for answer</summary>flag{admin_documents_can_be_valuable}</details>
 
@@ -232,4 +232,4 @@ Another method to find the flags (provided you know what to look for) is:
 dir "flag*" /s
 ```
 
-![Flag Discovery](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blue/Flags_Discovery.png)
+![Flag Discovery](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blue/Flags_Discovery.png)
