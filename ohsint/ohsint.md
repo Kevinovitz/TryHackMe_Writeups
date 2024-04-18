@@ -1,7 +1,7 @@
 ![OhSint Banner](https://i.imgur.com/P1nJjnp.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/OhSINT_Cover.png" alt="OhSINT Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/OhSINT_Cover.png" alt="OhSINT Logo">
 </p>
 
 # OhSINT
@@ -16,7 +16,7 @@ Lets examine the image we downloaded with Exiftools to see if there is anything 
 exiftool WindowsXP.jpg
 ```
 
-![Exiftool](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Exiftool_Results.png)
+![Exiftool](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Exiftool_Results.png)
 
 We find a name here, which we can lookup on Google. Here we find a hit for someones Twitter, Blog site, and Github page.
 
@@ -26,7 +26,7 @@ There are also other tools we can use. Such as reverse image search. But since t
 
    Looking at his Twitter page, we can find his avatar.
    
-   ![Twitter Picture](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Twitter_Page.png)
+   ![Twitter Picture](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Twitter_Page.png)
 
    ><details><summary>Click for answer</summary>cat</details>
 
@@ -34,7 +34,7 @@ There are also other tools we can use. Such as reverse image search. But since t
 
    This can be found on his Github page or trough Wigle by finding the 'free' network at his house.
    
-   ![Github](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Github_Rep.png)
+   ![Github](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Github_Rep.png)
 
    ><details><summary>Click for answer</summary>London</details>
 
@@ -42,7 +42,7 @@ There are also other tools we can use. Such as reverse image search. But since t
 
    To find out his SSID, we can use the BSSID we found on his Twitter page. Using https://wigle.net we can lookup where this network is located and get an SSID from there.
    
-   ![Wigle Search](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Wiggle_Search_BSSID.png)
+   ![Wigle Search](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Wiggle_Search_BSSID.png)
    
    This also confirms that he lives in London.
 
@@ -64,7 +64,7 @@ There are also other tools we can use. Such as reverse image search. But since t
 
    Looking at his blog page, it looks like he was indeed on a trip.
    
-   ![Blog Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Blog_Web_Page.png)
+   ![Blog Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Blog_Web_Page.png)
 
    ><details><summary>Click for answer</summary>New York</details>
 
@@ -74,8 +74,8 @@ There are also other tools we can use. Such as reverse image search. But since t
    
    Then I also looked at the source code of the web page and found something that looked like a password. Seems like it was hidden in plain site. As mentioned before, the `atom` folder found by Dirbuster contained a file which also had the password in it.
    
-   ![Blog Source](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Blog_Source.png)
+   ![Blog Source](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Blog_Source.png)
    
-   ![Blog Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ohsint/Blog_Password.png)
+   ![Blog Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ohsint/Blog_Password.png)
 
    ><details><summary>Click for answer</summary>pennYDr0pper.!</details>
