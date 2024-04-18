@@ -1,7 +1,7 @@
 ![Active Directory Basics Banner](https://i.imgur.com/bEG08k9.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/winadbasics/Active_Directory_Basics_Cover.png" alt="Active Directory Basics Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/winadbasics/Active_Directory_Basics_Cover.png" alt="Active Directory Basics Logo">
 </p>
 
 # Active Directory Basics
@@ -58,7 +58,7 @@ This guide contains the answer and steps necessary to get to them for the [Activ
 
    To change Sophies password, we must first delegate control to phillip to reset passwords for the people in sales.
 
-   ![Managing Delegate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/winadbasics/Active_Directory_Basics_Managing_Delegate.png)
+   ![Managing Delegate](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/winadbasics/Active_Directory_Basics_Managing_Delegate.png)
 
    After adding phillip we must select his permissions. In this case we only want him to be able to reset passwords.
 
@@ -72,11 +72,11 @@ This guide contains the answer and steps necessary to get to them for the [Activ
    Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
    ```
 
-   ![Managing Password Change](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/winadbasics/Active_Directory_Basics_Managing_Password_Change.png)
+   ![Managing Password Change](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/winadbasics/Active_Directory_Basics_Managing_Password_Change.png)
 
    We add our own password (note that a password policy is in place that prevents users from using insecure passwords) and can now log into Sophies account.
 
-   ![Managing Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/winadbasics/Active_Directory_Basics_Managing_Flag.png)
+   ![Managing Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/winadbasics/Active_Directory_Basics_Managing_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{thanks_for_contacting_support}</details>
 
@@ -94,7 +94,7 @@ This guide contains the answer and steps necessary to get to them for the [Activ
 
    Now we can move the servers to the Servers OU and the laptops and pc's to the workstation OU.
 
-   ![Managing Computers](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/winadbasics/Active_Directory_Basics_Managing_Computers.png)
+   ![Managing Computers](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/winadbasics/Active_Directory_Basics_Managing_Computers.png)
 
    ><details><summary>Click for answer</summary>7</details>
 
