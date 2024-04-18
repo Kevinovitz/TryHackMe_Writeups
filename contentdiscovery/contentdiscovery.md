@@ -1,7 +1,7 @@
-![Content Discovery](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Banner.png)
+![Content Discovery](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Cover.png" alt="Content Discovery Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Cover.png" alt="Content Discovery Logo">
 </p>
 
 # Content Discovery
@@ -51,7 +51,7 @@ This task gives more information about the robots text file.
 
    Open the browser and navigate to the webpage's robots file. http://10.10.43.213/robots.txt
 
-   ![Robots](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Robots.png)
+   ![Robots](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Robots.png)
 
    ><details><summary>Click for answer</summary>/staff-portal</details>
 
@@ -65,13 +65,13 @@ https://static-labs.tryhackme.cloud/
 
 We look at the source of the page and note the link to the favicon. Then we can use curl to download the image and get its hash.
 
-![Source](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Favicon_Source.png)
+![Source](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Favicon_Source.png)
 
 ```cmd
 curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum
 ```
 
-![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Favicon_Hash.png)
+![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Favicon_Hash.png)
 
 ><details><summary>Click for answer</summary>f276b19aabcb4ae8cda4d22625c6735f</details>
 
@@ -79,7 +79,7 @@ Now we can navigate to the following website to compare the hash and find the fr
 
 https://wiki.owasp.org/index.php/OWASP_favicon_database
 
-![Compare](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Favicon_Compare.png)
+![Compare](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Favicon_Compare.png)
 
    ><details><summary>Click for answer</summary>cgiirc</details>
 
@@ -91,7 +91,7 @@ In this task we will look at the sitemap of the demo website.
 
    Looking at the sitemap, we can see a secret page.
 
-   ![Sitemap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Sitemap.png)
+   ![Sitemap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Sitemap.png)
 
    ><details><summary>Click for answer</summary>/s3cr3t-area</details>
 
@@ -107,7 +107,7 @@ In this task we will look into more detail to HTTP headers.
    curl http://10.10.43.213/ -v
    ```
 
-   ![Headers](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_HTTP_Headers.png)
+   ![Headers](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_HTTP_Headers.png)
    
    ><details><summary>Click for answer</summary>THM{HEADER_FLAG}</details>
 
@@ -119,17 +119,17 @@ In this task we will look at the framework stack of the website.
 
    On the page source of the website we find a link to the framework used. 
    
-   ![Link](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Framework_Link.png)
+   ![Link](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Framework_Link.png)
    
    Here we find a link to the framework documentation which reveals a hidden admin panel.
    
-   ![Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Framework_Page.png)
+   ![Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Framework_Page.png)
    
    We can login to this panel with the default credentials if they haven't been changed.
 
-   ![Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Admin_Panel.png)
+   ![Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Admin_Panel.png)
 
-   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Admin_Password.png)
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Admin_Password.png)
 
    ><details><summary>Click for answer</summary>THM{CHANGE_DEFAULT_CREDENTIALS}</details>
 
@@ -195,7 +195,7 @@ dirb http://10.10.69.221 /usr/share/wordlists/SecLists/Discovery/Web-Content/com
 gobuster dir -u http://10.10.69.221/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
 ```
 
-![Automated](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/contentdiscovery/Content_Discovery_Automated.png)
+![Automated](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/contentdiscovery/Content_Discovery_Automated.png)
 
 1. What is the name of the directory beginning "/mo...." that was discovered?
 
