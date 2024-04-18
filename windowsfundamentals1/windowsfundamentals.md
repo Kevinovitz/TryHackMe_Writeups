@@ -1,7 +1,7 @@
 ![Windows Fundamentals 1](https://assets.tryhackme.com/room-banners/windows.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Cover.png" alt="Windows Fundamentals 1 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Cover.png" alt="Windows Fundamentals 1 Logo">
 </p>
 
 # Windows Fundamentals 1
@@ -37,7 +37,7 @@ In this task we will look more into the GUI of Windows.
 
    To answer this question, we can right-click the taskbar and navigate to 'Search'.
    
-   ![Searchbox](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Searchbox.png)
+   ![Searchbox](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Searchbox.png)
 
    ><details><summary>Click for answer</summary>Hidden</details>
 
@@ -51,7 +51,7 @@ In this task we will look more into the GUI of Windows.
 
    If we right-click this icon, we can see its name.
    
-   ![Action Center](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Action_Center.png)
+   ![Action Center](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Action_Center.png)
 
    ><details><summary>Click for answer</summary>Action Center</details>
 
@@ -83,11 +83,11 @@ In this task we will look into Windows user accounts and permissions.
 
    We can find the other usename in two ways. Firstly, we can go to the users folder in C:\Users.
 
-   ![Other Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Other_Users.png)
+   ![Other Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Other_Users.png)
    
    Or in the Local Users and Groups utility.
    
-   ![Lusrmgr Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Users.png)
+   ![Lusrmgr Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Users.png)
 
    ><details><summary>Click for answer</summary>tryhackmebilly</details>
 
@@ -95,7 +95,7 @@ In this task we will look into Windows user accounts and permissions.
 
    In the Local Users and Groups utility we can right-click the user name and view its properties. 
    
-   ![Lusrmgr Groups](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Groups.png)
+   ![Lusrmgr Groups](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Groups.png)
 
    ><details><summary>Click for answer</summary>Remote Desktop Users,Users</details>
 
@@ -109,7 +109,7 @@ In this task we will look into Windows user accounts and permissions.
 
    Viewing the properties of the guest accounts gives us the status.
    
-   ![Lusrmgr Guest](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Guest.png)
+   ![Lusrmgr Guest](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Lusrmgr_Guest.png)
 
    ><details><summary>Click for answer</summary>Account is disabled</details>
 
@@ -131,7 +131,7 @@ In this task we get more information about the Windows settings and control pane
 
    Using the 'view by' buttons in the top right, we can get the answer.
    
-   ![Control Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals1/Windows_Fundamentals_1_Control_Panel.png)
+   ![Control Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals1/Windows_Fundamentals_1_Control_Panel.png)
 
    ><details><summary>Click for answer</summary>Windows Defender Firewall</details>
 
