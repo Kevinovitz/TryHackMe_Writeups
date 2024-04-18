@@ -1,7 +1,7 @@
 ![Linux Fundamentals Part 3 Banner](https://assets.tryhackme.com/room-banners/linuxfund.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Cover.png" alt="Linux Fundamentals Part 3 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Cover.png" alt="Linux Fundamentals Part 3 Logo">
 </p>
 
 # Linux Fundamentals Part 3
@@ -26,7 +26,7 @@ To create a file with `nano` we use the following command:
 nano textfile.txt
 ```
 
-![Create Nano File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Create_File.png)
+![Create Nano File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Create_File.png)
 
 Another method of creating and editing files is `vim`. More info can be found [here](https://vim.rtorr.com/).
 
@@ -44,7 +44,7 @@ Another method of creating and editing files is `vim`. More info can be found [h
    nano task3
    ```
    
-   ![Edit File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Edit_File.png)
+   ![Edit File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Edit_File.png)
    
    Here we find our flag.
 
@@ -73,7 +73,7 @@ python3 -m http.server
    cat .flag.txt
    ```
    
-   ![Transfer File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Transfer_File.png)
+   ![Transfer File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Transfer_File.png)
 
    ><details><summary>Click for answer</summary>THM{WGET_WEBSERVER}</details>
 
@@ -99,7 +99,7 @@ python3 -m http.server
 
    To locate this process we use the `ps aux` command to list all running processes.
    
-   ![Flag Process](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Flag_Proccess.png)
+   ![Flag Process](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Flag_Proccess.png)
 
    ><details><summary>Click for answer</summary>THM{PROCESSES}</details>
 
@@ -133,7 +133,7 @@ python3 -m http.server
    crontab -e
    ```
    
-   ![Crontabs](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Crontabs.png)
+   ![Crontabs](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Crontabs.png)
 
    ><details><summary>Click for answer</summary>@reboot</details>
 
@@ -147,7 +147,7 @@ python3 -m http.server
    
    Looks like we don't have access to the log file. However, it looks like there is a backup of this file present in the same folder which we can view.
    
-   ![Logs](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart3/Linux_Fundamentals_3_Logs.png)
+   ![Logs](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart3/Linux_Fundamentals_3_Logs.png)
 
    ><details><summary>Click for answer</summary>10.9.232.111</details>
 

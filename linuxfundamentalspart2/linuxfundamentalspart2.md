@@ -1,7 +1,7 @@
 ![Linux Fundamentals Part 1 Banner](https://assets.tryhackme.com/room-banners/linuxfund.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart2/Linux_Fundamentals_2_Cover.png" alt="Linux Fundamentals Part 2 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart2/Linux_Fundamentals_2_Cover.png" alt="Linux Fundamentals Part 2 Logo">
 </p>
 
 # Linux Fundamentals Part 2
@@ -45,7 +45,7 @@ For this we can use the `touch` command.
 
 For this we can use the `file` command.
 
-![File Type(https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart2/Linux_Fundamentals_2_File_Type.png)
+![File Type(https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart2/Linux_Fundamentals_2_File_Type.png)
 
    ><details><summary>Click for answer</summary>ASCII text</details>
 
@@ -53,7 +53,7 @@ For this we can use the `file` command.
 
 We can use `mv --help` to find the correct command.
 
-![Move File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart2/Linux_Fundamentals_2_Move_File.png)
+![Move File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart2/Linux_Fundamentals_2_Move_File.png)
 
    ><details><summary>Click for answer</summary>mv myfile myfolder</details>
 
@@ -61,7 +61,7 @@ We can use `mv --help` to find the correct command.
 
 Use `cat` to read the contents of a file.
 
-![Myfile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart2/Linux_Fundamentals_2_Myfile.png)
+![Myfile](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart2/Linux_Fundamentals_2_Myfile.png)
 
    ><details><summary>Click for answer</summary>THM{FILESYSTEM}</details>
 
@@ -71,7 +71,7 @@ Use `cat` to read the contents of a file.
 
 To find the owner of a file, we can use the command `ls -la` or `ls -lh` for less noise.
 
-![Owner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/linuxfundamentalspart2/Linux_Fundamentals_2_Owner.png)
+![Owner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxfundamentalspart2/Linux_Fundamentals_2_Owner.png)
 
    ><details><summary>Click for answer</summary>user2</details>
 
