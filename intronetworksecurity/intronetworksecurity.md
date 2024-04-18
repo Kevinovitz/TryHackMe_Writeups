@@ -1,7 +1,7 @@
 ![Network Security Banner](https://assets.tryhackme.com/room-banners/intro-to-offensive-security.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_Cover.png" alt="Network Security Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_Cover.png" alt="Network Security Logo">
 </p>
 
 # Network Security
@@ -38,7 +38,7 @@ In this task, we will look at a practical example of the Cyber Kill Chain.
 
    After an nmap scan with `nmap -sV 10.10.39.25`, we find various services that are open.
    
-   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_Nmap.png)
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_Nmap.png)
    
    One of them is FTP. We can try to log in with anonymous credentials.
    
@@ -46,7 +46,7 @@ In this task, we will look at a practical example of the Cyber Kill Chain.
    ftp anonymous@10.10.39.25
    ```
    
-   ![FTP Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_FTP_Login.png)
+   ![FTP Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_FTP_Login.png)
    
    Looks like anonymous login was indeed enabled. We can now download the file we find using `get`. However, downloading multiple files can be down easier.
    
@@ -54,11 +54,11 @@ In this task, we will look at a practical example of the Cyber Kill Chain.
    wget *.*
    ```
    
-   ![FTP Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_FTP_Download.png)
+   ![FTP Download](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_FTP_Download.png)
    
    The txt and epub files didn't contain anything interesting for us. The secret.txt file, however, seems to have a passwordt.
    
-   ![Secret Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_Secret_Files.png)
+   ![Secret Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_Secret_Files.png)
 
    ><details><summary>Click for answer</summary>ABC789xyz123</details>
 
@@ -70,11 +70,11 @@ In this task, we will look at a practical example of the Cyber Kill Chain.
    ssh root@10.10.39.25
    ```
    
-   ![SSH Root](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_SSH_Root.png)
+   ![SSH Root](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_SSH_Root.png)
    
    Success! Now lets find the flag in the root folder.
    
-   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_Root_Flag.png)
+   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_Root_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{FTP_SERVER_OWNED}</details>
 
@@ -82,6 +82,6 @@ In this task, we will look at a practical example of the Cyber Kill Chain.
 
    Eventhough we known the username, we can look up the available accounts using `ls -lh /home`. Then we can navigate to that account and find the flag.
    
-   ![User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/intronetworksecurity/Network_Security_User_Flag.png)
+   ![User Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/intronetworksecurity/Network_Security_User_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{LIBRARIAN_ACCOUNT_COMPROMISED}</details>
