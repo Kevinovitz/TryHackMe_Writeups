@@ -1,7 +1,7 @@
 ![OWASP Top 10 - 2021 Banner](https://i.imgur.com/sP6d0iZ.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Cover.png" alt="OWASP Top 10 - 2021 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Cover.png" alt="OWASP Top 10 - 2021 Logo">
 </p>
 
 # OWASP Top 10 - 2021
@@ -31,15 +31,15 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    First we login into the page with the provided credentials
 
-   ![Idor Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Idor_Login.png)
+   ![Idor Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Idor_Login.png)
 
    On this page we can view our notes. Notice the id parameter visible in the addressbar.
 
-   ![Idor Parameter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Idor_Parameter.png)
+   ![Idor Parameter](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Idor_Parameter.png)
 
    We can try different numbers to get to another users notes.
 
-   ![Idor Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Idor_Flag.png)
+   ![Idor Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Idor_Flag.png)
    
    ><details><summary>Click for answer</summary>flag{fivefourthree}</details>
 
@@ -51,7 +51,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Looking at the source page of the website, we are given an interesting directory to look into.
 
-   ![Crypto Source](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Source.png)
+   ![Crypto Source](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Source.png)
 
    ><details><summary>Click for answer</summary>/assets</details>
 
@@ -59,7 +59,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Looking through the assets folder we see a database that might be of interest to us.
 
-   ![Crypto Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Download.png)
+   ![Crypto Download](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Download.png)
 
    ><details><summary>Click for answer</summary>webapp.db</details>
 
@@ -76,11 +76,11 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    SELECT * FROM users;
    ```
 
-   ![Crypto Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Hashes.png)
+   ![Crypto Hashes](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Hashes.png)
 
    Another method is to use a viewer such as [DB Browser for SQLite](https://sqlitebrowser.org/dl/) and view the database.
 
-   ![Crypto Hashes2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Hashes2.png)
+   ![Crypto Hashes2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Hashes2.png)
 
    ><details><summary>Click for answer</summary>6eea9b7ef19179a06954edd0f6c05ceb</details>
 
@@ -90,7 +90,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    If you can't tell from the hash itself we can use `hash-identifier` to get the hashtype.
 
-   ![Crypto Hashtype](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Hashtype.png)
+   ![Crypto Hashtype](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Hashtype.png)
 
    This seems to be a MD5 hash. We can crack this using hashcat.
    
@@ -98,7 +98,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    hashcat -m 0 6eea9b7ef19179a06954edd0f6c05ceb /usr/share/wordlists/rockyou.txt
    ```
 
-   ![Crypto Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Password.png)
+   ![Crypto Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Password.png)
 
    ><details><summary>Click for answer</summary>qwertyuiop</details>
    
@@ -106,7 +106,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    With our newly found credentials, we can log in as an admin and get our flag.
 
-   ![Crypto Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Crypto_Flag.png)
+   ![Crypto Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Crypto_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Yzc2YjdkMjE5N2VjMzNhOTE3NjdiMjdl}</details>
 
@@ -116,11 +116,11 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    On the page we see an input box that is vulnerable to SQL injection.
 
-   ![Injection](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection.png)
+   ![Injection](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Injection.png)
 
    An easy way yo test this is by writing `; ls'. If it is vulnerable, it should return a listing of the files in the current folder.
 
-   ![Injection Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Files.png)
+   ![Injection Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Injection_Files.png)
 
    ><details><summary>Click for answer</summary>drpepper.txt</details>
 
@@ -134,7 +134,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Although unsure, what classifies as the mentioned account, we can see the amount in this list.
    
-   ![Injection Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Users.png)
+   ![Injection Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Injection_Users.png)
    
    ><details><summary>Click for answer</summary>0</details>
 
@@ -142,7 +142,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    For this we can use the `whoami` command to find the current user.
 
-   ![Injection Whoami](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Whoami.png)
+   ![Injection Whoami](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Injection_Whoami.png)
 
    ><details><summary>Click for answer</summary>apache</details>
 
@@ -154,7 +154,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    ; cat /etc/passwd | grep 'usr'
    ```
 
-   ![Command Injection Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Command_Injection_Shell.png)
+   ![Command Injection Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Command_Injection_Shell.png)
 
    ><details><summary>Click for answer</summary>sbin/nologin</details>
 
@@ -166,7 +166,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    ; cat /etc/alpine-release
    ```
 
-   ![Injection Alpine](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Injection_Alpine.png)
+   ![Injection Alpine](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Injection_Alpine.png)
    
    ><details><summary>Click for answer</summary>3.16.0</details>
 
@@ -176,19 +176,19 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Looking at the password reset form, we see there are several security questions. The color question seems to be easily guesable, as there are 11 basic colors.
 
-   ![Insecure Design Colors](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Colors.png)
+   ![Insecure Design Colors](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Insecure_Design_Colors.png)
 
    After guessing the correct color, we get a new password for the account.
 
-   ![Insecure Design Password Reset](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Password_Reset.png)
+   ![Insecure Design Password Reset](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Insecure_Design_Password_Reset.png)
 
    Now we can log in with these credentials and see Joseph's files.
 
-   ![Insecure Design Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Files.png)
+   ![Insecure Design Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Insecure_Design_Files.png)
 
    Here we will also find our flag.
 
-   ![Insecure Design Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Insecure_Design_Flag.png)
+   ![Insecure Design Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Insecure_Design_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Not_3ven_c4tz_c0uld_sav3_U!}</details>
    
@@ -206,7 +206,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    After inputting the command in the console, we get the following list of files. One of which is our database.
 
-   ![Misconfiguration Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Misconfiguration_Files.png)
+   ![Misconfiguration Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Misconfiguration_Files.png)
 
    ><details><summary>Click for answer</summary>todo.db</details>
 
@@ -218,7 +218,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    import os; print(os.popen("cat app.py").read())
    ```
 
-   ![Misconfiguration Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Misconfiguration_Flag.png)
+   ![Misconfiguration Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Misconfiguration_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Just_a_tiny_misconfiguration}</details>
 
@@ -228,7 +228,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Looking at the site, we can see it is some sort of bookstore (CSE bookstore). 
 
-   ![Vulnerable Outdated Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Page.png)
+   ![Vulnerable Outdated Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Page.png)
 
    Searching exploit-db for any exploit gives us several results, but not the one we are looking for. We need to use the correct search terms. In this case:
 
@@ -238,7 +238,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    This gives us the RCE exploit we are looking for.
 
-   ![Vulnerable Outdated Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Exploit.png)
+   ![Vulnerable Outdated Exploit](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Exploit.png)
 
    After downloading it, we can run it using pythin whilst adding the url of the site as an argument.
 
@@ -248,7 +248,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    
    This gives us remote access to the database and enables us to find the flag.
 
-   ![Vulnerable Outdated Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Flag.png)
+   ![Vulnerable Outdated Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Vulnerable_Outdated_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{But_1ts_n0t_my_f4ult!}</details>
 
@@ -258,13 +258,13 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    We first register an account with the same name and an added whitespace in front.
 
-   ![Identification Register](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Register.png)
+   ![Identification Register](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Identification_Register.png)
 
-   ![Identification Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Success.png)
+   ![Identification Success](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Identification_Success.png)
 
    Now we can log in with this account (remember to use the extra space) and find the flag.
 
-   ![Identification Login Darren](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Login_Darren.png)
+   ![Identification Login Darren](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Identification_Login_Darren.png)
    
    ><details><summary>Click for answer</summary>fe86079416a21a3c99937fea8874b667</details>
 
@@ -274,11 +274,11 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Again, we first register an account with the same name and an added whitespace in front.
 
-   ![Identification Register Arthur](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Register_Arthur.png)
+   ![Identification Register Arthur](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Identification_Register_Arthur.png)
 
    Now we can log in with this account (remember to use the extra space) and find the flag.
 
-   ![Identification Login Arthur](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Identification_Login_Arthur.png)
+   ![Identification Login Arthur](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Identification_Login_Arthur.png)
 
    ><details><summary>Click for answer</summary>d9ac0f7db4fda460ac3edeb75d75e16e</details>
 
@@ -288,7 +288,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Navigating to the supplied website and inputting the source's URL gives us the hash.
 
-   ![Software Integrity Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Software_Integrity_Hash.png)
+   ![Software Integrity Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Software_Integrity_Hash.png)
 
    ><details><summary>Click for answer</summary>sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=</details>
 
@@ -298,7 +298,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Trying to log in to the site, we get a notification with default credentials we can use.
 
-   ![Data Integrity Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_Login.png)
+   ![Data Integrity Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Data_Integrity_Login.png)
 
    ><details><summary>Click for answer</summary>guest</details>
 
@@ -306,7 +306,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    Looking at the cookies within the developer tools (F-12), we can see our JWT cookie.
 
-   ![Data Integrity JWT](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_JWT.png)
+   ![Data Integrity JWT](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Data_Integrity_JWT.png)
 
    ><details><summary>Click for answer</summary>jwt-session</details>
 
@@ -322,11 +322,11 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjk2MjUxMjU0fQ.
    ```
 
-   ![Data Integrity Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_Cookie.png)
+   ![Data Integrity Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Data_Integrity_Cookie.png)
 
    After refreshing the page, we can see our flag.
 
-   ![Data Integrity Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Data_Integrity_Flag.png)
+   ![Data Integrity Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Data_Integrity_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Dont_take_cookies_from_strangers}</details>
 
@@ -336,7 +336,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    After opening and analyzing the file, we can see the attackers IP address.
 
-   ![Logging IP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_Logging_IP.png)
+   ![Logging IP](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_Logging_IP.png)
 
    ><details><summary>Click for answer</summary>49.99.13.16</details>
 
@@ -352,11 +352,11 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    On the website, we can find the admin panel through the hamburger menu.
 
-   ![SSRF Site](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Site.png)
+   ![SSRF Site](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_SSRF_Site.png)
 
    Here we can see that we are not allowed to access it.
 
-   ![SSRF Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Panel.png)
+   ![SSRF Panel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_SSRF_Panel.png)
 
    ><details><summary>Click for answer</summary>localhost</details>
 
@@ -364,7 +364,7 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
 
    If we look at the download link, it points to an external server to get the resume.
 
-   ![SSRF Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Download.png)
+   ![SSRF Download](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_SSRF_Download.png)
 
    ><details><summary>Click for answer</summary>secure-file-storage.com</details>
 
@@ -382,9 +382,9 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    nc -nlvp 1337
    ```
 
-   ![SSRF Request](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Request.png)
+   ![SSRF Request](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_SSRF_Request.png)
 
-   ![SSRF Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Flag.png)
+   ![SSRF Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_SSRF_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Hello_Im_just_an_API_key}</details>
 
@@ -412,4 +412,4 @@ Deploy the machine and go to http://MACHINE_IP - Login with the username noot an
    http://10.10.42.94:8087/download?server=127.0.0.1:8087/admin%23&id=75482342
    ```
 
-   ![SSRF Admin Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/owasptop102021/OWASP_10_2021_SSRF_Admin_Flag.png)
+   ![SSRF Admin Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/owasptop102021/OWASP_10_2021_SSRF_Admin_Flag.png)

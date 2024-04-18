@@ -1,7 +1,7 @@
-![Password Attacks Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Banner.png)
+![Password Attacks Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Cover.png" alt="Password Attacks Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Cover.png" alt="Password Attacks Logo">
 </p>
 
 # Password Attacks
@@ -32,7 +32,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    For this we can use one of the default passwords website provided. In this case I used `https://default-password.info`.
    
-   ![Juniper](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling1_Juniper.png)
+   ![Juniper](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Profiling1_Juniper.png)
 
    ><details><summary>Click for answer</summary>netscreen:netscreen</details>
 
@@ -46,7 +46,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
     crunch 2 2 01234abcd -o crunch.txt
     ```
     
-    ![Crunch Lines](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Profiling2_Crunch_Lines.png)
+    ![Crunch Lines](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Profiling2_Crunch_Lines.png)
 
    ><details><summary>Click for answer</summary>81</details>
 
@@ -68,7 +68,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    We can use `hash-identifier` to find out what hash type this is.
    
-   ![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash.png)
+   ![Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Offline_Hash.png)
 
    ><details><summary>Click for answer</summary>SHA-1</details>
 
@@ -76,11 +76,11 @@ This guide contains the answer and steps necessary to get to them for the [Passw
 
    Lets first find out what the type of this hash is with `hash-identifier`.
    
-   ![Hash 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_2.png)
+   ![Hash 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Offline_Hash_2.png)
    
    Now we can look at the hashcat examples page what the correct argument for SHA-1 is.
    
-   ![Hash Type](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Hash_Type.png)
+   ![Hash Type](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Offline_Hash_Type.png)
    
    Putting this together gives us the following command:
    
@@ -88,7 +88,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
    hashcat -a 0 -m 100 8d6e34f987851aa599257d3831a1af040886842f /usr/share/wordlists/rockyou.txt 
    ```
    
-   ![Dictionary Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Dictionary_Attack.png)
+   ![Dictionary Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Offline_Dictionary_Attack.png)
 
    ><details><summary>Click for answer</summary>sunshine</details>
 
@@ -100,7 +100,7 @@ This guide contains the answer and steps necessary to get to them for the [Passw
    hashcat -a 3 m 0 e48e13207341b6bffb7fb1622282247b ?d?d?d?d
    ```
    
-   ![Brute Force](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Offline_Brute_Force.png)
+   ![Brute Force](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Offline_Brute_Force.png)
 
    ><details><summary>Click for answer</summary>1337</details>
 
@@ -133,15 +133,15 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    nmap -A 10.10.207.111
    ```
    
-   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap.png)
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_Nmap.png)
    
-   ![Nmap All](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Nmap_All.png)
+   ![Nmap All](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_Nmap_All.png)
    
    Looks like anonymous login is allowed.
    
    We can now look for the flag.
    
-   ![FTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_FTP_Flag.png)
+   ![FTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_FTP_Flag.png)
    
    ><details><summary>Click for answer</summary>THM{d0abe799f25738ad739c20301aed357b}</details>
 
@@ -158,7 +158,7 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    Az"[0-9][0-9]" ^[!@]
    ```
    
-   ![John Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_John_Config.png)
+   ![John Config](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_John_Config.png)
    
    ```cmd
    john --wordlist=clinic.lst --rules=THM-Password-Attacks --stdout > wordlist.txt
@@ -170,7 +170,7 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    hydra -l pittman@clinic.thmredteam.com -P wordlist2.txt smtps://10.10.155.132 -Vv
    ```
 
-   ![SMTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_SMTP_Password.png)
+   ![SMTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_SMTP_Password.png)
 
    ><details><summary>Click for answer</summary>!multidisciplinary00</details>
 
@@ -178,7 +178,7 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
 
    For this we will use the same word list, but a different username and attack method. We first need to find out what the format of the request is.
    
-   ![HTTP Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Form.png)
+   ![HTTP Form](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_HTTP_Form.png)
    
    Here we see the format and the error message we get when attempting to login using wrong credentials.
    
@@ -194,11 +194,11 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    S=logout.php
    ```
    
-   ![HTTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Password.png)
+   ![HTTP Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_HTTP_Password.png)
    
    Now we can login with these credentials and find the flag.
    
-   ![HTTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Flag.png)
+   ![HTTP Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_HTTP_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{33c5d4954da881814420f3ba39772644}</details>
 
@@ -214,7 +214,7 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    
    We should also check the form page and get the failed login attempt message.
    
-   ![HTTP Post Form](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Form.png)
+   ![HTTP Post Form](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Form.png)
    
    Note: Unfortunately, this again wouldn't work with the F argument. So I opted to use the S argument instead.
       
@@ -224,11 +224,11 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    hydra -l burgess -P wordlist-http.txt 10.10.155.132 http-post-form "/login-post/index.php:username=^USER^&password=^PASS^:S=logout.php"
    ```
    
-   ![HTTP Post Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Password.png)
+   ![HTTP Post Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Password.png)
    
    Now we only have to log into the page and get the flag.
    
-   ![HTTP Post Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Flag.png)
+   ![HTTP Post Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_HTTP_Post_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{f8e3750cc0ccbb863f2706a3b2933227}</details>
 
@@ -264,7 +264,7 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    Az"[0-1][!@]"
    ```
    
-   ![Spray Config](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Config.png)
+   ![Spray Config](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_Spray_Config.png)
    
    Now we can use these 2 lists in hydra to crack the SSH password.
    
@@ -272,11 +272,11 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    hydra -L usernames-list.txt -P wordlist-spray.txt ssh://10.10.155.132 -T 4     
    ```
    
-   ![Spray Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Hydra.png)
+   ![Spray Hydra](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_Spray_Hydra.png)
    
    Use these to login to SSH.
    
-   ![Spray SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_SSH_Login.png)
+   ![Spray SSH Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_Spray_SSH_Login.png)
    
    Nothing was found in the user folder, so I looked at the history which might give us a hint to the flags location. Lo and behold it did! Otherwise, I would have made a search query for the file using:
    
@@ -284,6 +284,6 @@ cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/
    find / -name flag 2>/dev/null
    ```
    
-   ![Spray Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/passwordattacks/Password_Attacks_Online_Spray_Flag.png)
+   ![Spray Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/passwordattacks/Password_Attacks_Online_Spray_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{a97a26e86d09388bbea148f4b870277d}</details>
