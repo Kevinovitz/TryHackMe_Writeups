@@ -1,7 +1,7 @@
 ![Shodanio Banner](https://i.imgur.com/J1ik7ZU.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Shodan_Cover.png" alt="Shodan Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Shodan_Cover.png" alt="Shodan Logo">
 </p>
 
 # Shodan.io
@@ -27,21 +27,21 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
 ### Google & Filtering
 
-![IP](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_IP.png)
+![IP](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_IP.png)
 
-![ASN](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_ASN.png)
+![ASN](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_ASN.png)
 
 1. What is the top operating system for MYSQL servers in Google's ASN?    
 
    asn:AS15169 product:MYSQL
    
-   ![OS](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_OS.png)
+   ![OS](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_OS.png)
 
    ><details><summary>Click for answer</summary>5.6.40-84.0-log</details>
 
 2. What is the 2nd most popular country for MYSQL servers in Google's ASN?
 
-   ![Country](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_Country.png)
+   ![Country](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_Country.png)
 
    ><details><summary>Click for answer</summary>Netherlands</details>
 
@@ -49,7 +49,7 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
    asn:AS15169 product:nginx
    
-   ![Nginx](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_Nginx.png)
+   ![Nginx](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_Nginx.png)
 
    ><details><summary>Click for answer</summary>Hypertext Transfer Protocol </details>
 
@@ -57,7 +57,7 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
    asn:AS15169 country:"US"
    
-   ![City](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_City.png)
+   ![City](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_City.png)
 
    ><details><summary>Click for answer</summary>Mountain View</details>
 
@@ -65,7 +65,7 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
    asn:AS15169 city:"Los Angeles"
    
-   ![LA OS](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_LA_OS.png)
+   ![LA OS](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_LA_OS.png)
 
    ><details><summary>Click for answer</summary>PAN-OS</details>
 
@@ -73,7 +73,7 @@ This guide contains the answer and steps necessary to get to them for the [Shoda
 
    webcam asn:AS15169
    
-   ![Webcam](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/shodan/Google_Filtering_Webcam.png)
+   ![Webcam](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/shodan/Google_Filtering_Webcam.png)
 
    ><details><summary>Click for answer</summary>Nay</details>
 
