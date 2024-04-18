@@ -1,7 +1,7 @@
-![Title Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Banner.png)
+![Title Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Cover.png" alt="Wireshark: The Basics Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Cover.png" alt="Wireshark: The Basics Logo">
 </p>
 
 # Wireshark: The Basics
@@ -32,7 +32,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
 For these questions we must look at the Capture File Properties.
 
-![Overview Answers](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Overview_Answers.png)
+![Overview Answers](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Overview_Answers.png)
 
 1. Read the "capture file comments". What is the flag?
 
@@ -54,7 +54,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    After selecting the corresponding packet, the used markup language is displayed at the bottom of the details pane.
 
-   ![Dissection Markup](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Markup.png)
+   ![Dissection Markup](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Dissection_Markup.png)
 
    ><details><summary>Click for answer</summary>eXtensible Markup Language</details>
 
@@ -62,7 +62,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the Frame layer.
 
-   ![Dissection Time](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Time.png)
+   ![Dissection Time](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Dissection_Time.png)
 
    ><details><summary>Click for answer</summary>05/13/2004</details>
 
@@ -70,7 +70,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the IP Source layer.
 
-   ![Dissection TTL](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_DissectionTTL.png)
+   ![Dissection TTL](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_DissectionTTL.png)
 
    ><details><summary>Click for answer</summary>47</details>
 
@@ -78,7 +78,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the TCP layer.
 
-   ![Dissection Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Payload.png)
+   ![Dissection Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Dissection_Payload.png)
 
    ><details><summary>Click for answer</summary>424</details>
 
@@ -86,7 +86,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    This can be found under the HTTP layer.
 
-   ![Dissection Etag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Dissection_Etag.png)
+   ![Dissection Etag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Dissection_Etag.png)
 
    ><details><summary>Click for answer</summary>9a01a-4696-7e354b00</details>
 
@@ -98,7 +98,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    Searching for "r4w" in the packets details pane, we get a hit for packet 43362.
 
-   ![Navigation Artist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Artist.png)
+   ![Navigation Artist](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Navigation_Artist.png)
    
    ><details><summary>Click for answer</summary>r4w8173</details>
 
@@ -111,13 +111,13 @@ Use the "Exercise.pcapng" file to answer the questions.
    Look at the "packet details pane". Right-click on the JPEG section and "Export packet bytes". This is an alternative way of extracting data from a capture file. What is the MD5 hash value of extracted image?
    ```
 
-   ![Navigation Answer 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Answer_1.png)
+   ![Navigation Answer 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Navigation_Answer_1.png)
 
    After navigating to packet 39765 and exporting the object, we can extract its hash using `md5sum`.
 
-   ![Navigation Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Download.png)
+   ![Navigation Download](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Navigation_Download.png)
 
-   ![Navigation Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Hash.png)
+   ![Navigation Hash](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Navigation_Hash.png)
 
    ><details><summary>Click for answer</summary>911cd574a42865a956ccde2d04495ebf</details>
 
@@ -125,7 +125,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    To get this file, we navigate to the 'export http objects' menu. Here we filter on text/plain files. This gives us one hit. From here we can preview it to find the name.
 
-   ![Navigation Alien](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Alien.png)
+   ![Navigation Alien](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Navigation_Alien.png)
 
    ><details><summary>Click for answer</summary>Packetmaster</details>
 
@@ -133,7 +133,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    The warning row has a column with the number of errors.
 
-   ![Navigation Warnings](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Navigation_Warnings.png)
+   ![Navigation Warnings](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Navigation_Warnings.png)
 
    ><details><summary>Click for answer</summary>1636</details>
 
@@ -145,7 +145,7 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    After applying the filter, we see the query in the display filter box.
 
-   ![Filtering Http](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Filtering_Http.png)
+   ![Filtering Http](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Filtering_Http.png)
 
    ><details><summary>Click for answer</summary>http</details>
 
@@ -159,9 +159,9 @@ Use the "Exercise.pcapng" file to answer the questions.
 
    After navigating to packet 33790 and following the http stream, we can see the entire communication stream. We can get the number of artist by looking at the stream or by exporting the relevant html file.
 
-   ![Filtering Follow](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Filtering_Follow.png)
+   ![Filtering Follow](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Filtering_Follow.png)
 
-   ![Filtering Artists](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wiresharkthebasics/Wireshark_Basics_Filtering_Artists.png)
+   ![Filtering Artists](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wiresharkthebasics/Wireshark_Basics_Filtering_Artists.png)
 
    ><details><summary>Click for answer</summary>3</details>
 
