@@ -1,7 +1,7 @@
 ![Windows Fundamentals 3](https://assets.tryhackme.com/room-banners/windows.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_Cover.png" alt="Windows Fundamentals 3 Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_Cover.png" alt="Windows Fundamentals 3 Logo">
 </p>
 
 # Windows Fundamentals 3
@@ -26,7 +26,7 @@ This task focusses on the Windows update mechanism.
    
    To find this answer, we go to the Update section of the settings window and click the 'view update history'.
    
-   ![Updates](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_Updates.png)
+   ![Updates](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_Updates.png)
 
    ><details><summary>Click for answer</summary>5/3/2021</details>
 
@@ -38,7 +38,7 @@ This task focusses on the Windows Security utility.
 
    When opening the Windows Security utility from the settings window, we can see which action requires our attention.
    
-   ![Security](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_Security.png)
+   ![Security](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_Security.png)
 
    ><details><summary>Click for answer</summary>Virus & Threat Protection</details>
 
@@ -50,7 +50,7 @@ This task goes more into the virus and threat protection in the Windows Security
 
    In the same window as the previous question, we can see what we need to do specifically.
 
-   ![Security Action](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_Security_Action.png)
+   ![Security Action](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_Security_Action.png)
 
    ><details><summary>Click for answer</summary>Real-time protection</details>
 
@@ -62,7 +62,7 @@ This task gives more information about the Windows firewall and network protecti
 
    Although net immediatly visible from the network and protection window, we can take an educated guess as to what the answer might be. Considering airport Wi-Fi networks are available to anyone and may not always be secure.
 
-   ![Firewall Profile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_Firewal_Profile.png)
+   ![Firewall Profile](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_Firewal_Profile.png)
 
    ><details><summary>Click for answer</summary>Public network</details>
 
@@ -74,7 +74,7 @@ This task focusses on how Windows attempts to secure the device.
 
    The answer to this file can be found in the provided image as this information is not available for our virtual machine.
    
-   ![TPM](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_TPM.png)
+   ![TPM](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_TPM.png)
 
    ><details><summary>Click for answer</summary>Trusted Platform Module</details>
 
@@ -86,7 +86,7 @@ This task gives more info about the BitLocker encryption.
 
    For this answer we must visit the BitLocker [documentation](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview) which was provided to us.
    
-   ![Bitlocker](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/windowsfundamentals3/Windows_Fundamentals_3_Bitlocker.png)
+   ![Bitlocker](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/windowsfundamentals3/Windows_Fundamentals_3_Bitlocker.png)
 
    ><details><summary>Click for answer</summary>USB startup key</details>
 
