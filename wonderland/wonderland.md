@@ -1,7 +1,7 @@
 ![Wonderland Banner](https://i.imgur.com/q9N2UUs.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/wonderland/Wonderland_Cover.png" alt="Wonderland Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/wonderland/Wonderland_Cover.png" alt="Wonderland Logo">
 </p>
 
 # Wonderland
