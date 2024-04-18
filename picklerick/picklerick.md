@@ -1,6 +1,6 @@
 ![Pickle Rick Banner](https://i.imgur.com/BkKtAkO.png)
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Cover.png" alt="Pickle Rick Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Cover.png" alt="Pickle Rick Logo">
 </p>
 
 # Pickle Rick
@@ -21,7 +21,7 @@ In this room we are tasked with finding the three ingredients necessary to turn 
    sudo nmap -sS -sV 10.10.3.164
    ```
 
-   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Nmap.png)
+   ![Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Nmap.png)
 
    Unfortunately, the ssh service require an authentication key and won't work with just a password.
 
@@ -31,13 +31,13 @@ In this room we are tasked with finding the three ingredients necessary to turn 
    gobuster dir -u http://10.10.3.164/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,txt
    ```
 
-   ![Directories](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Directories.png)
+   ![Directories](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Directories.png)
 
    As we can see we have a login page, assets directory with access, server-status page (no access, 403), and robots.txt.
 
    On the webpage itself, when looking at the source code, we can find Rick's username.
 
-   ![Homepage Username](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Homepage_Username.png)
+   ![Homepage Username](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Homepage_Username.png)
 
    On the log in page, we try some basic SQL injection, but that doesn't work.
 
@@ -45,33 +45,33 @@ In this room we are tasked with finding the three ingredients necessary to turn 
 
    Looking at the robots.txt file, we do come accross something interesting.
 
-   ![Robots](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Robots.png)
+   ![Robots](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Robots.png)
 
    Could this be our password? Login in with these credentials actually works and brings us to the portal screen.
 
-   ![Portal Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Portal_Login.png)
+   ![Portal Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Portal_Login.png)
 
    Here we see a command page with which we can execute commands. On the system itself?
 
    Unfortunately, all the other pages lead to a denied page.
 
-   ![Denied](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Denied.png)
+   ![Denied](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Denied.png)
 
    Lets try some commands. Using `whoami` we can indeed see, we can execute commands on the system.
 
-   ![Commands Whoami](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Commands_Whoami.png)
+   ![Commands Whoami](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Commands_Whoami.png)
 
    Lets try finding any interesting files with `ls`.
 
-   ![Commands Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Commands_Files.png)
+   ![Commands Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Commands_Files.png)
 
    Reading the first file gives us an error telling that the command `cat` has been disabled.. 
 
-   ![Commands Cat](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Commands_Cat.png)
+   ![Commands Cat](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Commands_Cat.png)
 
    Luckily for us, there are more ways to read a file. `nl` for example. Looks like we just found our first ingredient!
 
-   ![First Ingredient](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_First_Ingredient.png)
+   ![First Ingredient](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_First_Ingredient.png)
 
    ><details><summary>Click for answer</summary>mr. meeseek hair</details>
 
@@ -79,15 +79,15 @@ In this room we are tasked with finding the three ingredients necessary to turn 
 
    The clue.txt file tells us to look at other system files for the ingredients.
 
-   ![Commands Clue](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Commands_Clue.png)
+   ![Commands Clue](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Commands_Clue.png)
 
    Lets look at the `home` folder for any other users. Looks like there is a rick folder.
 
-   ![Commands Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Commands_Users.png)
+   ![Commands Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Commands_Users.png)
 
    Going through these folders we eventually come across a file with the second ingredient.
 
-   ![Second Ingredient](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Second_Ingredient.png)
+   ![Second Ingredient](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Second_Ingredient.png)
 
    ><details><summary>Click for answer</summary>1 jerry tear</details>
 
@@ -97,12 +97,12 @@ In this room we are tasked with finding the three ingredients necessary to turn 
 
    Using `sudo -l` we can check what commands we are allowed to execute with sudo privileges.
 
-   ![Commands Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Commands_Sudo.png)
+   ![Commands Sudo](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Commands_Sudo.png)
 
    Looks like we can execute everything with sudo. So lets look in the root folder using: `sudo ls /root`.
 
    This works! And we can find a `3rd ingredient` file in this folder.
 
-   ![Third Ingredient](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/picklerick/Pickle_Rick_Third_Ingredient.png)
+   ![Third Ingredient](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/picklerick/Pickle_Rick_Third_Ingredient.png)
 
    ><details><summary>Click for answer</summary>fleeb juice</details>
