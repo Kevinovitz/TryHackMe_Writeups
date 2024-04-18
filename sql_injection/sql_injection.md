@@ -1,7 +1,7 @@
-![Sql Injection Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/Sql_Injection_Banner.png)
+![Sql Injection Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/sql_injection/Sql_Injection_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Cover.png" alt="SQL Injection Cover">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/sql_injection/SQLI_Cover.png" alt="SQL Injection Cover">
 </p>
 
 # [SQL Injection](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/sql_injection)
@@ -48,7 +48,7 @@
    ```cmd
    0' UNION SELECT 1,2,group_concat(username, ':', password SEPARATOR '<br>') FROM staff_users;--
    
-   ![SQLi In Band](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Inband_Found.png)
+   ![SQLi In Band](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/sql_injection/SQLI_Inband_Found.png)
 
    ><details><summary>Click for answer</summary>THM{SQL_INJECTION_3840}</details>
 
@@ -62,7 +62,7 @@
    ' OR 1=1;--
    ```
    
-   ![SQLi Authentication Bypass](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Authentication_Bypass_Found.png)
+   ![SQLi Authentication Bypass](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/sql_injection/SQLI_Authentication_Bypass_Found.png)
 
    ><details><summary>Click for answer</summary>THM{SQL_INJECTION_9581}</details>
 
@@ -130,7 +130,7 @@
    
    Going through all characters we find `3845`.
 
-   ![SQLi Boolean](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Boolean_Based_Found.png)
+   ![SQLi Boolean](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/sql_injection/SQLI_Boolean_Based_Found.png)
 
    ><details><summary>Click for answer</summary>THM{SQL_INJECTION_1093}</details>
 
@@ -146,6 +146,6 @@
    admin123' UNION SELECT sleep(2),2 FROM users WHERE username='admin' AND password='4961';--
    ```
    
-   ![SQLi Time Based](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/sql_injection/SQLI_Time_Based_Found.png)
+   ![SQLi Time Based](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/sql_injection/SQLI_Time_Based_Found.png)
 
    ><details><summary>Click for answer</summary>THM{SQL_INJECTION_MASTER}</details>
