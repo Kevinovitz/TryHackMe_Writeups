@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Cover.png" alt="Nessus Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Cover.png" alt="Nessus Logo">
 </p>
 
 # Nessus
@@ -20,7 +20,7 @@ This guide contains the answer and steps necessary to get to them for the [Nessu
 
 The next 3 questions can be answered from the home screen (depicted in the image below).
 
-![Navigation Home](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Navigation_Home.png)
+![Navigation Home](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Navigation_Home.png)
 
 1. What is the name of the button which is used to launch a scan?
 
@@ -36,7 +36,7 @@ The next 3 questions can be answered from the home screen (depicted in the image
 
 The next 4 questions can be answered from the scan templates screen (depicted in the image below).
 
-![Navigation Templates](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Navigation_Templates.png)
+![Navigation Templates](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Navigation_Templates.png)
 
 4. In the 'Scan Templates' section after clicking on 'New Scan', what scan allows us to see simply what hosts are alive?
 
@@ -58,19 +58,19 @@ The next 4 questions can be answered from the scan templates screen (depicted in
 
 1. Create a new 'Basic Network Scan' targeting the deployed VM. What option can we set under 'BASIC' (on the left) to set a time for this scan to run? This can be very useful when network congestion is an issue.
 
-   ![Scanning Schedule](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Scanning_Schedule.png)
+   ![Scanning Schedule](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Scanning_Schedule.png)
 
    ><details><summary>Click for answer</summary>Schedule</details>
    
 2. Under 'DISCOVERY' (on the left) set the 'Scan Type' to cover ports 1-65535. What is this type called?
 
-   ![Scanning Ports](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Scanning_Ports.png)
+   ![Scanning Ports](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Scanning_Ports.png)
 
    ><details><summary>Click for answer</summaryPort scan (all ports)details>
 
 3. What 'Scan Type' can we change to under 'ADVANCED' for lower bandwidth connection?
 
-   ![Scanning Bandwidth](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Scanning_Bandwidth.png)
+   ![Scanning Bandwidth](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Scanning_Bandwidth.png)
 
    ><details><summary>Click for answer</summary>Scan low bandwidth links</details>
 
@@ -78,13 +78,13 @@ With these options set,  launch the scan.
 
 4. After the scan completes, which 'Vulnerability' in the 'Port scanners' family can we view the details of to see the open ports on this host?
 
-   ![Scanning Portscanner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Scanning_Portscanner.png)
+   ![Scanning Portscanner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Scanning_Portscanner.png)
 
    ><details><summary>Click for answer</summary>Nessus SYN Scanner</details>
 
 5. What Apache HTTP Server Version is reported by Nessus?
 
-   ![Scanning Apache](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Scanning_Apache.png)
+   ![Scanning Apache](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Scanning_Apache.png)
 
    ><details><summary>Click for answer</summary>2.4.99</details>
 
@@ -94,7 +94,7 @@ With these options set,  launch the scan.
 
    This plugin can be found under Vulnerabilities in: HTTP (Web Servers) -> HTTP Server Type and Version.
 
-   ![Application HTTP Plugin](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Application_HTTP_Plugin.png)
+   ![Application HTTP Plugin](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Application_HTTP_Plugin.png)
 
    ><details><summary>Click for answer</summary>10107</details>
 
@@ -102,7 +102,7 @@ With these options set,  launch the scan.
 
    This vulnerability can be found under Vulnerabilities: Web Server -> Web Server Transmits Cleartext Credentials.
 
-   ![Application Authentication](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Application_Authentication.png)
+   ![Application Authentication](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Application_Authentication.png)
 
    ><details><summary>Click for answer</summary></details>
 
@@ -110,7 +110,7 @@ With these options set,  launch the scan.
 
    In the vulnerabilities list in: Backup Files Disclosures, we can find the backup file extension.
 
-   ![Application Backup](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Application_Backup.png)
+   ![Application Backup](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Application_Backup.png)
 
    ><details><summary>Click for answer</summary>.bak</details>
 
@@ -118,7 +118,7 @@ With these options set,  launch the scan.
 
    Under Browsable Web Directories we can see a directory containing example documents.
 
-   ![Application Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Application_Directory.png)
+   ![Application Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Application_Directory.png)
 
    ><details><summary>Click for answer</summary/external/phpids/0.6/docs/examples/details>
 
@@ -126,6 +126,6 @@ With these options set,  launch the scan.
 
    Looking through the vulnerabilties, we see one that is related to X-frame options under Web Application Potentially Vulnerable to Clickjacking.
 
-   ![Application Xframe](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/rpnessusredux/Nessus_Application_Xframe.png)
+   ![Application Xframe](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/rpnessusredux/Nessus_Application_Xframe.png)
 
    ><details><summary>Click for answer</summary>Clickjacking</details>
