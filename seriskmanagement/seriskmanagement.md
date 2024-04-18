@@ -1,7 +1,7 @@
-![Risk Management Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/seriskmanagement/Risk_Management_Banner.png)
+![Risk Management Banner](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Banner.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/seriskmanagement/Risk_Management_Cover.png" alt="Risk Management Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/seriskmanagement/Risk_Management_Cover.png" alt="Risk Management Logo">
 </p>
 
 # Risk Management
