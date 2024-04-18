@@ -15,7 +15,7 @@ This guide contains the answer and steps necessary to get to them for the [Windo
 - [Abusing Services](#abusing-services)
 - [Abusing Scheduled Tasks](#abusing-scheduled-tasks)
 - [Logon Triggered Persistence](#logon-triggered-persistence)
-- [Backdooring the Login Screen / RDP](#backdooring-the-login-screen-/-rdp)
+- [Backdooring the Login Screen / RDP](#backdooring-the-login-screen--rdp)
 - [Persisting Through Existing Services](#persisting-through-existing-services)
 
 ### Tampering With Unprivileged Accounts
@@ -149,7 +149,9 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    
    After trying again, it still won't work...
    
-   #
+   ==================================================================
+   The following steps did not work...
+   
    Now we can log into the machine with RDP and the `thmuser3` credentials. 
 
    RID LOGIN THMUSER3
@@ -157,7 +159,6 @@ This guide contains the answer and steps necessary to get to them for the [Windo
    It appears we have indeed Admin privileges as our terminal is started in system32. Lets try and get our flag.
 
    RID FLAG 3
-   #
 
    ><details><summary>Click for answer</summary>Answer found online is: THM{TRUST_ME_IM_AN_ADMIN}</details>
 
