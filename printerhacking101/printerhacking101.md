@@ -1,7 +1,7 @@
 ![Printer Hacking 101 Banner](https://assets.tryhackme.com/room-banners/printerhacking101.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/printerhacking101_Cover.png" alt="Printer Hacking 101">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/printerhacking101/printerhacking101_Cover.png" alt="Printer Hacking 101">
 </p>
 
 # [Printer Hacking 101](https://github.com/Kevinovitz/TryHackMe_Writeups/tree/main/printerhacking101)
@@ -42,7 +42,7 @@ A video walkthrough of this room can be found [here](https://www.youtube.com/wat
 
    Lets navigate to the appropriate page `10.10.7.6:631`. Here we get a home page for the CUPS server. Navigating to the printers tab, we get a list of available printers.
    
-   ![Website Printers](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/Website_Printers.png)
+   ![Website Printers](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/printerhacking101/Website_Printers.png)
 
    ><details><summary>Click for answer</summary>Skidy's basement</details>
 
@@ -50,19 +50,19 @@ A video walkthrough of this room can be found [here](https://www.youtube.com/wat
 
    For this we can click on the printer in question and under the `maintenance` dropdown select `print test page`.
    
-   ![Website Printer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/Website_Printer.png)
+   ![Website Printer](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/printerhacking101/Website_Printer.png)
    
-   ![Test Page](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/Website_Test_Page.png)
+   ![Test Page](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/printerhacking101/Website_Test_Page.png)
    
    Now we can find more information for this job on the jobs page.
    
-   ![Test Job](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/Website_Test_Job.png)
+   ![Test Job](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/printerhacking101/Website_Test_Job.png)
 
    ><details><summary>Click for answer</summary>1k</details>
 
 **Extra** I tried logging into the printer by brute-forcing the password. Unfortunately, Hydra kept crashing (the try rate was very slow). 
 
-![Hydra Attempt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/printerhacking101/Printer_Hydra.png)
+![Hydra Attempt](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/printerhacking101/Printer_Hydra.png)
 
 So I was unable to get the password. But several other walkthroughs listed the password with which I could log in. Have yet to try out things to do after that.
 
