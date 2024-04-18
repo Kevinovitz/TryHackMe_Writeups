@@ -1,7 +1,7 @@
 ![Hacking with PowerShell Banner](https://assets.tryhackme.com/additional/banners/powershell.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/powershell/Hacking_Powershell_Cover.png" alt="Hacking with PowerShell Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/powershell/Hacking_Powershell_Cover.png" alt="Hacking with PowerShell Logo">
 </p>
 
 # Hacking with PowerShell
