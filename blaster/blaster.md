@@ -1,7 +1,7 @@
 ![Blaster Background](https://i.imgur.com/MbNgkRQ.png)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Blaster_Cover.png" alt="Blaster Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Blaster_Cover.png" alt="Blaster Logo">
 </p>
 
 # Blaster
@@ -26,7 +26,7 @@ In this task we will gather information about our target machine to log in to it
    sudo nmap 10.10.133.12 -Pn -sS -sV
    ```
    
-   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Scanning_Nmap_Scan.png)
+   ![Nmap Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Scanning_Nmap_Scan.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -34,7 +34,7 @@ In this task we will gather information about our target machine to log in to it
 
    We find a server running on port 80. We can navigate to this URL in our browser to find the webpage.
    
-   ![Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Scanning_Webpage.png)
+   ![Webpage](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Scanning_Webpage.png)
 
    ><details><summary>Click for answer</summary>IIS Windows Server</details>
 
@@ -46,7 +46,7 @@ In this task we will gather information about our target machine to log in to it
    dirsearch -u 10.10.133.12 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r
    ```
    
-   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Scanning_Directory.png)
+   ![Directory](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Scanning_Directory.png)
 
    ><details><summary>Click for answer</summary>/retro</details>
 
@@ -54,7 +54,7 @@ In this task we will gather information about our target machine to log in to it
 
    Browsing through some of the pages we see one name recuring several times.
    
-   ![Webpage Username](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Scanning_Username.png)
+   ![Webpage Username](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Scanning_Username.png)
 
    ><details><summary>Click for answer</summary>Wade</details>
 
@@ -62,7 +62,7 @@ In this task we will gather information about our target machine to log in to it
 
    On one of the blog entries we see him talking about difficulties logging in. Then in a comment, he mentions his password.
    
-   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Scanning_Password.png)
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Scanning_Password.png)
 
    ><details><summary>Click for answer</summary>Parzival</details>
 
@@ -70,7 +70,7 @@ In this task we will gather information about our target machine to log in to it
 
    Using Reminna we can remotely log into the machine and find the flag and the desktop.
    
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Scanning_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Scanning_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{HACK_PLAYER_ONE}</details>
 
@@ -102,7 +102,7 @@ After another Google [search](https://github.com/nobodyatall648/CVE-2019-1388) I
    
 I this case we can open the `.exe` file on the desktop to open a UAC prompt and view the certificate.
    
-![View Certificate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Breach_Root_Certificate.png)
+![View Certificate](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Breach_Root_Certificate.png)
    
    Clicking on the link for the certificate issuer should spawn a browser instance with elevated priveleges as it originates from the `.exe`.
    
@@ -110,7 +110,7 @@ I this case we can open the `.exe` file on the desktop to open a UAC prompt and 
    
 In the opened browser window we get a connection error, but we can ignore that. We need to save this page as. Either through the menu or with `Ctrl + S`. 
    
-![Save as Prompt](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Breach_Save_Page.png)
+![Save as Prompt](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Breach_Save_Page.png)
    
 In the path bar we write: `C:\Windows\System32\cmd.exe` and press Enter.
    
@@ -118,7 +118,7 @@ In the path bar we write: `C:\Windows\System32\cmd.exe` and press Enter.
 
    A cmd shell should openen with elevated priveleges. Lets check.
    
-   ![Cmd Window](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Breach_Elevated_Shell.png)
+   ![Cmd Window](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Breach_Elevated_Shell.png)
    
    ><details><summary>Click for answer</summary>nt authority\system</details>
 
@@ -126,7 +126,7 @@ In the path bar we write: `C:\Windows\System32\cmd.exe` and press Enter.
 
    Now we can navigate to the Administrator folder and read the flag.
 
-   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Breach_Root_Flag.png) 
+   ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Breach_Root_Flag.png) 
 
    ><details><summary>Click for answer</summary>THM{COIN_OPERATED_EXPLOITATION}</details>
 
@@ -148,7 +148,7 @@ search exploit delivery
 
    Type `show targets` or `info` to find which target we must use.
    
-   ![Targetse](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Targets.png)
+   ![Targetse](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Targets.png)
 
    ><details><summary>Click for answer</summary>2</details>
 
@@ -156,9 +156,9 @@ search exploit delivery
 
 First we must view the options and then we can set the correct options.
 
-![Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Options.png)
+![Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Options.png)
 
-![Set Options](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Set_Options.png)
+![Set Options](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Set_Options.png)
 
 **Note:** The `SRVHOST` and `SRVPORT` do not have to be changed. `LHOST` needs to be our attack machine.
 
@@ -170,23 +170,23 @@ We need to set the correct payload with:
 set payload payload/windows/meterpreter/reverse_http
 ```
 
-![Set Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Set_Payload.png)
+![Set Payload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Set_Payload.png)
 
 Now we can run the exploit as a background job with `run -j`.
 
-![Run Module](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Run_Exploit.png)
+![Run Module](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Run_Exploit.png)
 
 *Return to the terminal we spawned with our exploit. In this terminal, paste the command output by Metasploit after the job was launched. In this case, I've found it particularly helpful to host a simple python web server (python3 -m http.server) and host the command in a text file as copy and paste between the machines won't always work. Once you've run this command, return to our attacker machine and note that our reverse shell has spawned.*
 
 Copy the entire command we are presented with and paste it into the terminal we previously spawned on our target machine. Then we should see a reverse shell appear in our meterpreter session.
 
-![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Reverse_Shell.png)
+![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Reverse_Shell.png)
 
 6. Last but certainly not least, let's look at persistence mechanisms via Metasploit. What command can we run in our meterpreter console to setup persistence which automatically starts when the system boots? Don't include anything beyond the base command and the option for boot startup. 
 
    On this website https://www.offensive-security.com/metasploit-unleashed/meterpreter-service/ we can find more information on persistence in a meterpreter session. Unfortunately, the script was not found on my machine.
    
-   ![Script Not Found](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/blaster/Adoption_Script_Not_Found.png)
+   ![Script Not Found](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/blaster/Adoption_Script_Not_Found.png)
 
    ><details><summary>Click for answer</summary>run persistence -X</details>
 
