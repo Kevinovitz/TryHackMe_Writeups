@@ -32,6 +32,7 @@ The following rooms are available/in progress:
 - [x] [**Common Linux Privesc***](commonlinuxprivesc/commonlinuxprivesc.md) [Answered]
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
+- [x] [**DAST***](dastzapdastzap.md) [WiP]
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
@@ -65,6 +66,7 @@ The following rooms are available/in progress:
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
 - [x] [Rootme](rrootme/rrootme.md) [Answered]
+- [x] [**SAST***](sast/sast.md) [WiP]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
