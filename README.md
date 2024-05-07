@@ -32,7 +32,7 @@ The following rooms are available/in progress:
 - [x] [**Common Linux Privesc***](commonlinuxprivesc/commonlinuxprivesc.md) [Answered]
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
-- [x] [**DAST***](dastzapdastzap.md) [WiP]
+- [x] [**DAST***](dastzap/dastzap.md)
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
