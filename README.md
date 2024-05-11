@@ -11,7 +11,7 @@ An alternative version can be found here: https://kevinovitz.github.io/TryHackMe
 
 The following rooms are available/in progress:
 
-- [x] [Active Directory Basics](winadbasics/winadbasics.md) [Answered]
+- [x] [Active Directory Basics](winadbasics/winadbasics.md)
 - [x] [Advent of Cyber 1 [2019]](25daysofchristmas/25daysofchristmas.md)
 - [x] [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
 - [x] [Advent of Cyber 2023](adventofcyber2023/adventofcyber2023.md)
