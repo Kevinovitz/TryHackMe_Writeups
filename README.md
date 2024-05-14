@@ -52,6 +52,7 @@ The following rooms are available/in progress:
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [x] [**Metasploit: Exploitation***](metasploitexploitation/metasploitexploitation.md) [Answered]
 - [ ] [Metasploit: Meterpreter](meterpreter/meterpreter.md) [WiP]
+- [ ] [**Mother's Secret***](codeanalysis/codeanalysis.md) [WiP]
 - [x] [Nessus](rpnessusredux/rpnessusredux.md) [Answered]
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
