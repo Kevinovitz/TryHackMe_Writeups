@@ -24,7 +24,7 @@ This guide contains the answer and steps necessary to get to them for the [Mothe
 
    In the api routes file we downloaded, we can find two endpoints. Yaml and Nostromo. Visiting either one gives us a message telling us we are hitting the wrong route.
 
-   WRONG ROUTE
+   ![Wrong Route](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Wrong_Route.png)
 
    I looked through the routes using semgrep for static analysis and ZAP spiders and scans for Dynamic analysis. Both without any results.
 
@@ -32,17 +32,17 @@ This guide contains the answer and steps necessary to get to them for the [Mothe
 
    Since hitting the endpoint doesn't seem to do anything, we can capture the api request in Burpsuite and modify it to contain the 'file_path' variable. We can either modify it and forward the request or send it to repeater. The latter would be better as it would enable us to test various payloads.
 
-   TO REPEATER
+   ![To Repeater](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_To_Repeater.png)
 
    We must change it to a POST request and add two lines. Our payload should contain the variable name and its value. If this value is not a yaml file, we get an error back.
 
    If it is a yaml file extension, we get a message telling us the system is unable to read the file. This means we are on the right track.
 
-   YAML ENDPOINT FILE
+   ![Yaml Endpoint File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Yaml_Endpoint_File.png)
 
    We just need to create the right payload/filename. It might be the code for the 'alian loaders' we got in the beginning (100375). The webpage on ALien Loader mentions a 'YAML' loaders that parses and loads YAML data. This is exactly what the yaml endpoint does judging from the api routes file.
 
-   YAML ORDER NUMBER.
+   ![Yaml Order Number](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Yaml_Order_Number.png)
 
    Looks like this was correct. The message gives us the order number!
 
@@ -52,11 +52,11 @@ This guide contains the answer and steps necessary to get to them for the [Mothe
 
    Our next step would be to follow the Nostromo endpoint as suggested in the message. We capture it again in Burpsuite to modify the request in Repeater.
 
-   NOSTROMO ENDPOINT
+   ![Nostromo Endpoint](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Nostromo_Endpoint.png)
 
    Again we change the request to a POST request and add our payload in the form of the order number filename.
 
-   NOSTROMO MESSAGE
+   ![Nostromo Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Nostromo_Message.png)
 
    Here we find our first hidden flag.
 
@@ -66,9 +66,11 @@ This guide contains the answer and steps necessary to get to them for the [Mothe
 
    If we had used a different filename, we would have gotten an error message that we are not the Science Officer. This is also apparent from the route file.
 
+   ![Nostromo Permission](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Nostromo_Permission.png)
+
    So apparently we have now been identified as a Science Officer. If we look at the web application and navigate to role, we can see the name of this Science Officer.
 
-   NAME
+   ![Name](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Name.png)
 
    ><details><summary>Click for answer</summary>ash</details>
 
@@ -84,7 +86,7 @@ This guide contains the answer and steps necessary to get to them for the [Mothe
 
    In the text we are give a clue for a file located at this endpoint, 'secret.txt'. Lets try it and use it as the filename in our api request.
 
-   SECRET
+   ![Secret](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Secret.png)
 
    ><details><summary>Click for answer</summary>/opt/m0th3r</details>
 
@@ -100,6 +102,6 @@ This guide contains the answer and steps necessary to get to them for the [Mothe
 
    Success! If we try with fewer folder up movements, we can see that it won't work.
 
-   SECRET MESSAGE
+   ![Secret Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/codeanalysis/Mothers_Secret_Secret_Message.png)
 
    ><details><summary>Click for answer</summary>Flag{Ensure_return_of_organism_meow_meow!}</details>
