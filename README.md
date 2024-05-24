@@ -33,6 +33,7 @@ The following rooms are available/in progress:
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [x] [**DAST***](dastzap/dastzap.md)
+- [] [**Data Exfiltration***](dataxexfilt/dataxexfilt.md) [WiP]
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
