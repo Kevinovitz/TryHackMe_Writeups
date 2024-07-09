@@ -1,5 +1,17 @@
-.md-header{
-    background-color: #5B7B9C; /*#D71600; /*#275e8e;*/
+:root {
+    --md-primary-fg-color:        #5B7B9C;
+    --md-primary-fg-color--light: #6386AA;
+    --md-primary-fg-color--dark:  #526F8C;
+  }
+  
+/*.md-header{*/
+/*    background-color: #5B7B9C; /*#D71600; /*#275e8e;*/
+/*}*/
+
+.md-nav--primary .md-nav__title[for="__drawer"] {
+	background-color: hsl(210.4, 29.5%, 52.7%);
+	color: var(--md-primary-bg-color);
+	font-weight: 700;
 }
 
 .md-grid{
