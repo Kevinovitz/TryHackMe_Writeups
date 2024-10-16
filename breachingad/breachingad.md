@@ -77,9 +77,9 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
 1. What type of attack can be performed against LDAP Authentication systems not commonly found against Windows Authentication systems?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>LDAP Pass-back Attack</details>
 
 2. What two authentication mechanisms do we allow on our rogue LDAP server to downgrade the authentication and make it clear text?
 
