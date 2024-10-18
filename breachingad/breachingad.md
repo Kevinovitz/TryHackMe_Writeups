@@ -83,23 +83,74 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
 2. What two authentication mechanisms do we allow on our rogue LDAP server to downgrade the authentication and make it clear text?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>LOGIN,PLAIN</details>
 
 3. What is the password associated with the svcLDAP account?
 
+   Since I didn't have OpenLPAD installed on my machine I had to do so manually with:
 
+   ```cmd
+   sudo apt-get -y install slapd ldap-utils && sudo systemctl enable slapd
 
-   ><details><summary>Click for answer</summary></details>
+   sudo dpkg-reconfigure -p low slapd
+   ```
+
+   On the config screen we start the server config process.
+
+   LDAP CONFIG 1
+
+   We use `za.tryhackme.com` as the domain and the company name.
+
+   LDAP CONFIG 2
+
+   Next, we create a file called `` with the following contents:
+
+   ```ldif
+   #olcSaslSecProps.ldif
+   dn: cn=config
+   replace: olcSaslSecProps
+   olcSaslSecProps: noanonymous,minssf=0,passcred
+   ```
+
+   We then update the LDAP server with:
+
+   ```cmd
+   sudo ldapmodify -Y EXTERNAL -H ldapi:// -f ./olcSaslSecProps.ldif && sudo service slapd restart
+   ```
+
+   LDAP CONFIG 3
+
+   Using `` we can see if the configuration has been completed successfully.
+
+   LDAP CONFIG 4
+
+   After testing the connection again on the printer page, we get the error message telling us we succeeded.
+
+   LDAP SYNTAX.
+
+   Now we can monitor the network traffic to intercept the password.
+
+   Using Wireshark we use the `breachad` interface to collect the correct data. We can clear up the screen by only looking at the data coming from the printer.
+
+   ```cmd
+   ip.src == 10.200.24.201 and ldap
+   ```
+
+   After a few tries, we get the credentials in one of the calls in cleartext.
+
+   LDAP CREDENTIALS
+
+   ><details><summary>Click for answer</summary>tryhackmeldappass1@</details>
 
 ### Authentication Relays
 
 1. What is the name of the tool we can use to poison and capture authentication requests on the network?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Responder</details>
 
 2. What is the username associated with the challenge that was captured?
 
