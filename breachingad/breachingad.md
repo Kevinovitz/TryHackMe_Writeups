@@ -154,15 +154,33 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
 2. What is the username associated with the challenge that was captured?
 
+   First, we setup Responder to listen for authentication requests.
 
+   ```cmd
+   sudo responder -I breachad
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   AUTH RESPONDER
+
+   After a while, we see it has intercepted a request. This request contains the name and password hash of the user.
+
+   AUTH EVENT
+
+   With this hash and the provided password list, we can attempt to crack the hash using hascat. Hashtype 5600 is for NTLMv2-SSP.
+
+   ```cmd
+   hashcat -a 0 -m 5600 ntlmhash passwordlist-1647876320267.txt --force
+   ```
+
+   AUTH CRACKED
+
+   ><details><summary>Click for answer</summary>svcFileCopy</details>
 
 3. What is the value of the cracked password associated with the challenge that was captured?
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>FPassword1!</details>
 
 ### Microsoft Deployment Toolkit
 
