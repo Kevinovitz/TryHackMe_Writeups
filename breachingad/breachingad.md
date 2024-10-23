@@ -41,7 +41,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
    We first download the pyton script and place it on our machine. Herein we can see we have four arguments we need to supply (-u, -f, -p, -a).
 
-   NTLM SCRIPT
+   ![NTLM Script.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_NTLM_Script.png)
 
    Using `Changeme123` as the password, we use the following command to start the spray attack:
 
@@ -49,7 +49,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    python3 ntlm_passwordspray.py -u usernames.txt -f za.tryhackme.com -p Changeme123 -a http://ntlmauth.za.tryhackme.com/
    ```
 
-   NTLM CREDENTIALS
+   ![NTLM Credentials.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_NTLM_Credentials.png)
 
    We found four sets of credentials using this attack!
 
@@ -65,11 +65,11 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
    On `http://ntlmauth.za.tryhackme.com/` we get a login screen where we can use our previously found credentials.
 
-   NTLM LOGIN
+   ![NTLM Login.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_NTLM_Login.png)
 
    Logging in on Firefox didn't work, so I had to switch to Chrome.
 
-   NTLM WELCOME
+   ![NTLM Welcome.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_NTLM_Welcome.png)
 
    ><details><summary>Click for answer</summary>Hello World</details>
 
@@ -99,11 +99,11 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
    On the config screen we start the server config process.
 
-   LDAP CONFIG 1
+   ![LDAP Config 1.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_LDAP_Config_1.png)
 
    We use `za.tryhackme.com` as the domain and the company name.
 
-   LDAP CONFIG 2
+   ![LDAP Config 2.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_LDAP_Config_2.png)
 
    Next, we create a file called `` with the following contents:
 
@@ -120,15 +120,15 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    sudo ldapmodify -Y EXTERNAL -H ldapi:// -f ./olcSaslSecProps.ldif && sudo service slapd restart
    ```
 
-   LDAP CONFIG 3
+   ![LDAP Config 3.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_LDAP_Config_3.png)
 
    Using `` we can see if the configuration has been completed successfully.
 
-   LDAP CONFIG 4
+   ![LDAP Config 4.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_LDAP_Config_4.png)
 
    After testing the connection again on the printer page, we get the error message telling us we succeeded.
 
-   LDAP SYNTAX.
+   ![LDAP Syntax.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_LDAP_Syntax.png)
 
    Now we can monitor the network traffic to intercept the password.
 
@@ -140,7 +140,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
    After a few tries, we get the credentials in one of the calls in cleartext.
 
-   LDAP CREDENTIALS
+   ![LDAP Credentials.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_LDAP_Credentials.png)
 
    ><details><summary>Click for answer</summary>tryhackmeldappass1@</details>
 
@@ -160,11 +160,11 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    sudo responder -I breachad
    ```
 
-   AUTH RESPONDER
+   ![Auth Responder.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Auth_Responder.png)
 
    After a while, we see it has intercepted a request. This request contains the name and password hash of the user.
 
-   AUTH EVENT
+   ![Auth Event.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Auth_Event.png)
 
    With this hash and the provided password list, we can attempt to crack the hash using hascat. Hashtype 5600 is for NTLMv2-SSP.
 
@@ -172,7 +172,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    hashcat -a 0 -m 5600 ntlmhash passwordlist-1647876320267.txt --force
    ```
 
-   AUTH CRACKED
+   ![Auth Cracked.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Auth_Cracked.png)
 
    ><details><summary>Click for answer</summary>svcFileCopy</details>
 
@@ -207,7 +207,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    cd Kevinovitz
    ```
 
-   MDT SSH
+   ![Mdt Ssh.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Mdt_Ssh.png)
 
    I then looked up the IP for the MDT server with `nslookup`:
 
@@ -215,17 +215,17 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    nslookup thmmdt.za.tryhackme.com
    ```
 
-   MDT IP
+   ![Mdt Ip.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Mdt_Ip.png)
 
    Now we can transfer the bcd file using `tftp`, using the file name we found on the MDT server.
 
-   MDT Files
+   ![Mdt Files.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Mdt_Files.png)
 
    ```powershell
    tftp -i 10.200.24.202 GET "\tmp\x64uefi{D2CDF2F6-30D2-430D-84C0-32C200D1D39A}.bcd" conf.bcd
    ```
 
-   MDT TFTP
+   ![Mdt Tftp.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Mdt_Tftp.png)
 
    Here we get the path to the pxe boot file. We can download it with `tftp` using this path.
 
@@ -233,7 +233,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    tftp -i 10.200.24.202 GET "\Boot\x64\Images\LiteTouchPE_x64.wim" pxeboot.wim
    ```
 
-   MDT PXE
+   ![Mdt Pxe.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Mdt_Pxe.png)
 
    Now we can attempt to exfiltrate the credentials.
 
@@ -241,7 +241,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    Get-FindCredentials -WimFile pxeboot.wim
    ```
 
-   MDT CREDENTIALS
+   ![Mdt Credentials.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Mdt_Credentials.png)
 
    ><details><summary>Click for answer</summary>svcMDT</details>
 
@@ -277,7 +277,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
    First we look up where the ma.db file is located. Namely: cd C:\ProgramData\McAfee\Agent\DB.
 
-   CONFIGUIRATION FILE
+   ![Configuration File.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Configuration_File.png)
 
    We then transfer this file to our machine.
 
@@ -285,7 +285,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    scp thm@thmjmp1.za.tryhackme.com:C:/ProgramData/McAfee/Agent/DB/ma.db .
    ```
 
-   CONFIGURATION transfer
+   ![Configuration Transfer.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Configuration_Transfer.png)
 
    Opening this database in sqlitebrowser, we can open the table containing the credentials.
 
@@ -295,7 +295,7 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
    Here we navigate to the AGENT_REPOSITORIES table and find the credentials we are looking for.
 
-   CONFIGURATION CREDENTIALS
+   ![Configuration Credentials.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Configuration_Credentials.png)
 
    ><details><summary>Click for answer</summary>svcAV</details>
 
@@ -307,6 +307,6 @@ This guide contains the answer and steps necessary to get to them for the [Breac
    python2 mcafee_sitelist_pwd_decrypt.py jWbTyS7BL1Hj7PkO5Di/QhhYmcGj5cOoZ2OkDTrFXsR/abAFPM9B3Q==
    ```
 
-   CONFIGUIRATION PASSWORD
+   ![Configuration Password.png](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/breachingad/Breaching_Active_Directory_Configuration_Password.png)
 
    ><details><summary>Click for answer</summary>MyStrongPassword!</details>
