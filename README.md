@@ -16,6 +16,7 @@ The following rooms are available/in progress:
 - [x] [Advent of Cyber 2 [2020]](adventofcyber2/adventofcyber2.md)
 - [x] [Advent of Cyber 2023](adventofcyber2023/adventofcyber2023.md)
 - [ ] [Advent of Cyber '23 Side Quest](adventofcyber23sidequest/adventofcyber23sidequest.md) [WiP]
+- [ ] [Advent of Cyber 2024](adventofcyber2024/adventofcyber2024.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
