@@ -16,6 +16,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it.](#day-3-even-if-i-wanted-to-go-their-vulnerabilities-wouldnt-allow-it)
 - [Day 4: I’m all atomic inside!](#day-4-im-all-atomic-inside)
 - [Day 5: SOC-mas XX-what-ee?](#day-5-socmas-xxwhatee)
+- [Day 6: If I can't find a nice malware to use, I'm not going.](#day-6-if-i-cant-find-a-nice-malware-to-use-im-not-going)
 
 ### Join our community
 
@@ -238,4 +239,20 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 
    ><details><summary>Click for answer</summary></details>
+
+### Day 6: If I can't find a nice malware to use, I'm not going.
+
+1. What is the flag displayed in the popup window after the EDR detects the malware?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the flag found in the malstrings.txt document after running floss.exe, and opening the file in a text editor?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. If you want to more about sandboxes, have a look at the roomFlareVM: Arsenal of Tools.
 
