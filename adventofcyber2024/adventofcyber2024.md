@@ -17,6 +17,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 4: I’m all atomic inside!](#day-4-im-all-atomic-inside)
 - [Day 5: SOC-mas XX-what-ee?](#day-5-socmas-xxwhatee)
 - [Day 6: If I can't find a nice malware to use, I'm not going.](#day-6-if-i-cant-find-a-nice-malware-to-use-im-not-going)
+- [Day 7: Oh, no. I'M SPEAKING IN CLOUDTRAIL!](#day-7-oh-no-im-speaking-in-cloudtrail)
 
 ### Join our community
 
@@ -255,4 +256,70 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 3. If you want to more about sandboxes, have a look at the roomFlareVM: Arsenal of Tools.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 7: Oh, no. I'M SPEAKING IN CLOUDTRAIL!
+
+1. What is the other activity made by the user glitch aside from the ListObject action?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the source IP related to the S3 bucket activities of the user glitch?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Based on the eventSource field, what AWS service generates the ConsoleLogin event?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. When did the anomalous user trigger the ConsoleLogin event?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What was the name of the user that was created by the mcskidy user?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. What type of access was assigned to the anomalous user?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+7. Which IP does Mayor Malware typically use to log into AWS?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+8. What is McSkidy's actual IP address?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+9. What is the bank account number owned by Mayor Malware?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+10. Want to learn more about log analysis and how to interpret logs from different sources? Check outthe Log Universeroom!
+
+
+
+   ><details><summary>Click for answer</summary></details>
 
