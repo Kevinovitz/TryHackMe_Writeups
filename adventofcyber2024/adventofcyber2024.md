@@ -18,6 +18,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 5: SOC-mas XX-what-ee?](#day-5-socmas-xxwhatee)
 - [Day 6: If I can't find a nice malware to use, I'm not going.](#day-6-if-i-cant-find-a-nice-malware-to-use-im-not-going)
 - [Day 7: Oh, no. I'M SPEAKING IN CLOUDTRAIL!](#day-7-oh-no-im-speaking-in-cloudtrail)
+- [Day 8: Shellcodes of the world, unite!](#day-8-shellcodes-of-the-world-unite)
+- [Day 9: Nine o'clock, make GRC fun, tell no one.](#day-9-nine-oclock-make-grc-fun-tell-no-one)
 
 ### Join our community
 
@@ -318,6 +320,40 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 10. Want to learn more about log analysis and how to interpret logs from different sources? Check outthe Log Universeroom!
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 8: Shellcodes of the world, unite!
+
+1. What is the flag value once Glitch gets reverse shell on the digital vault using port 4444? Note: The flag may take around a minute to appear in theC:\Users\glitch\Desktopdirectory. You can view the content of the flag by using the commandtype C:\Users\glitch\Desktop\flag.txt.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. Are you interested in learning more about evasion? Take a look at theAV Evasion: Shellcoderoom.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 9: Nine o'clock, make GRC fun, tell no one.
+
+1. What does GRC stand for?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the flag you receive after performing the risk assessment?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. If you enjoyed this task, feel free to check out theRisk Managementroom.
 
 
 
