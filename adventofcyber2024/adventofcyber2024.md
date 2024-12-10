@@ -20,6 +20,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 7: Oh, no. I'M SPEAKING IN CLOUDTRAIL!](#day-7-oh-no-im-speaking-in-cloudtrail)
 - [Day 8: Shellcodes of the world, unite!](#day-8-shellcodes-of-the-world-unite)
 - [Day 9: Nine o'clock, make GRC fun, tell no one.](#day-9-nine-oclock-make-grc-fun-tell-no-one)
+- [Day 10: He had a brain full of macros, and had shells in his soul.](#day-10-he-had-a-brain-full-of-macros-and-had-shells-in-his-soul)
 
 ### Join our community
 
@@ -354,6 +355,20 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 3. If you enjoyed this task, feel free to check out theRisk Managementroom.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 10: He had a brain full of macros, and had shells in his soul.
+
+1. What is the flag value inside theflag.txtfile that’s located on the Administrator’s desktop?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. If you enjoyed this task, feel free to check out thePhishingmodule.
 
 
 
