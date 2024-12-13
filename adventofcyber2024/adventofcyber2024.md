@@ -21,6 +21,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 8: Shellcodes of the world, unite!](#day-8-shellcodes-of-the-world-unite)
 - [Day 9: Nine o'clock, make GRC fun, tell no one.](#day-9-nine-oclock-make-grc-fun-tell-no-one)
 - [Day 10: He had a brain full of macros, and had shells in his soul.](#day-10-he-had-a-brain-full-of-macros-and-had-shells-in-his-soul)
+- [Day 11: If you'd like to WPA, press the star key!](#day-11-if-youd-like-to-wpa-press-the-star-key)
+- [Day 12: If I can’t steal their money, I’ll steal their joy!](#day-12-if-i-cant-steal-their-money-ill-steal-their-joy)
 
 ### Join our community
 
@@ -369,6 +371,58 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 2. If you enjoyed this task, feel free to check out thePhishingmodule.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 11: If you'd like to WPA, press the star key!
+
+1. What is the BSSID of our wireless interface?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the SSID and BSSID of the access point? Format: SSID, BSSID
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the BSSID of the wireless interface that is already connected to the access point?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What is the PSK after performing the WPA cracking attack?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. If you enjoyed this task, feel free to check out theNetworkingmodule.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 12: If I can’t steal their money, I’ll steal their joy!
+
+1. What is the flag value after transferring over $2000 from Glitch's account?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. If you enjoyed this task, feel free to check out theRace Conditionsroom!
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Where balances shift and numbers soar, look for an entry - an open door!
 
 
 
