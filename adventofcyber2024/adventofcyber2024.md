@@ -23,6 +23,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 10: He had a brain full of macros, and had shells in his soul.](#day-10-he-had-a-brain-full-of-macros-and-had-shells-in-his-soul)
 - [Day 11: If you'd like to WPA, press the star key!](#day-11-if-youd-like-to-wpa-press-the-star-key)
 - [Day 12: If I can’t steal their money, I’ll steal their joy!](#day-12-if-i-cant-steal-their-money-ill-steal-their-joy)
+- [Day 13: It came without buffering! It came without lag!](#day-13-it-came-without-buffering-it-came-without-lag)
+- [Day 14: Even if we're horribly mismanaged, there'll be no sad faces on SOC-mas!](#day-14-even-if-were-horribly-mismanaged-therell-be-no-sad-faces-on-socmas)
+- [Day 15: Be it ever so heinous, there's no place like Domain Controller.](#day-15-be-it-ever-so-heinous-theres-no-place-like-domain-controller)
 
 ### Join our community
 
@@ -423,6 +426,108 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 3. Where balances shift and numbers soar, look for an entry - an open door!
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 13: It came without buffering! It came without lag!
+
+1. What is the value of Flag1?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the value of Flag2?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. If you enjoyed this task, feel free to check out theBurp Suitemodule.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 14: Even if we're horribly mismanaged, there'll be no sad faces on SOC-mas!
+
+1. What is the name of the CA that has signed the Gift Scheduler certificate?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. Look inside the POST requests in the HTTP history. What is the password for thesnowballelfaccount?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Use the credentials for any of the elves to authenticate to the Gift Scheduler website. What is the flag shown on the elves’ scheduling page?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What is the password for Marta May Ware’s account?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. Mayor Malware finally succeeded in his evil intent: with Marta May Ware’s username and password, he can finally access the administrative console for the Gift Scheduler. G-Day is cancelled!What is the flag shown on the admin page?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. If you enjoyed this task, feel free to check out theBurp Suitemodule.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 15: Be it ever so heinous, there's no place like Domain Controller.
+
+1. Use the "Security" tab within Event Viewer to answer questions 1 and 2.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. On what day was Glitch_Malware last logged in?Answer format: DD/MM/YYYY
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What event ID shows the login of the Glitch_Malware user?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. Read the PowerShell history of the Administrator account. What was the command that was used to enumerate Active Directory users?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. Look in the PowerShell log file located inApplication and Services Logs -> Windows PowerShell. What was Glitch_Malware's set password?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. Review the Group Policy Objects present on the machine. What is the name of the installed GPO?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+7. If you enjoyed this task, feel free to check out theActive Directory Hardeningroom.
 
 
 
