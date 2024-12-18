@@ -26,6 +26,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 13: It came without buffering! It came without lag!](#day-13-it-came-without-buffering-it-came-without-lag)
 - [Day 14: Even if we're horribly mismanaged, there'll be no sad faces on SOC-mas!](#day-14-even-if-were-horribly-mismanaged-therell-be-no-sad-faces-on-socmas)
 - [Day 15: Be it ever so heinous, there's no place like Domain Controller.](#day-15-be-it-ever-so-heinous-theres-no-place-like-domain-controller)
+- [Day 16: The Wareville’s Key Vault grew three sizes that day.](#day-16-the-warevilles-key-vault-grew-three-sizes-that-day)
+- [Day 17: He analyzed and analyzed till his analyzer was sore!](#day-17-he-analyzed-and-analyzed-till-his-analyzer-was-sore)
+- [Day 18: I could use a little AI interaction!](#day-18-i-could-use-a-little-ai-interaction)
 
 ### Join our community
 
@@ -528,6 +531,102 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 7. If you enjoyed this task, feel free to check out theActive Directory Hardeningroom.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 16: The Wareville’s Key Vault grew three sizes that day.
+
+1. What is the password for backupware that was leaked?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the group ID of the Secret Recovery Group?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the name of the vault secret?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What are the contents of the secret stored in the vault?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. Liked today's task? Check theExploiting Active Directoryroom to practice user and group enumeration in a similar yet different environment!
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 17: He analyzed and analyzed till his analyzer was sore!
+
+1. Extract all the events from the cctv_feed logs. How many logs were captured associated with the successful login?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the Session_id associated with the attacker who deleted the recording?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the name of the attacker found in the logs, who deleted the CCTV footage?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. Check out theSplunk: Data Manipulationroom to learn more about parsing and manipulating data in Splunk.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. Good thing we had a backup of the CCTV application from yesterday. We got it running again in no time!
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 18: I could use a little AI interaction!
+
+1. What is the technical term for a set of rules and instructions given to a chatbot?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What query should we use if we wanted to get the "status" of the health service from the in-house API?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. Perform a prompt injection attack that leads to a reverse shell on the target machine.CompleteHint
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. After achieving a reverse shell, look around for a flag.txt. What is the value?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. If you liked today's task, you can practice your skills by prompt injecting "Van Chatty" (Day 1) ofAdvent of Cyber 2023.
 
 
 
