@@ -29,6 +29,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 16: The Wareville’s Key Vault grew three sizes that day.](#day-16-the-warevilles-key-vault-grew-three-sizes-that-day)
 - [Day 17: He analyzed and analyzed till his analyzer was sore!](#day-17-he-analyzed-and-analyzed-till-his-analyzer-was-sore)
 - [Day 18: I could use a little AI interaction!](#day-18-i-could-use-a-little-ai-interaction)
+- [Day 19: I merely noticed that you’re improperly stored, my dear secret!](#day-19-i-merely-noticed-that-youre-improperly-stored-my-dear-secret)
+- [Day 20: If you utter so much as one packet…](#day-20-if-you-utter-so-much-as-one-packet)
 
 ### Join our community
 
@@ -627,6 +629,76 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 5. If you liked today's task, you can practice your skills by prompt injecting "Van Chatty" (Day 1) ofAdvent of Cyber 2023.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 19: I merely noticed that you’re improperly stored, my dear secret!
+
+1. What is the OTP flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the billionaire item flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What is the biometric flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. If you liked today's task, you can practice your skills with "Memories of Christmas Past" fromAdvent of Cyber 2023.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. The second penguin gave pretty solid advice. Maybe you should listen to him more.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 20: If you utter so much as one packet…
+
+1. What was the first message the payload sent to Mayor Malware’s C2?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What was the IP address of the C2 server?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What was the command sent by the C2 server to the target machine?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What was the filename of the critical file exfiltrated by the C2 server?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What secret message was sent back to the C2 in an encrypted format through beacons?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. Learn more about WireShark in ourWireshark: Traffic Analysisroom.
 
 
 
