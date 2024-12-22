@@ -31,6 +31,8 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 18: I could use a little AI interaction!](#day-18-i-could-use-a-little-ai-interaction)
 - [Day 19: I merely noticed that you’re improperly stored, my dear secret!](#day-19-i-merely-noticed-that-youre-improperly-stored-my-dear-secret)
 - [Day 20: If you utter so much as one packet…](#day-20-if-you-utter-so-much-as-one-packet)
+- [Day 21: HELP ME...I'm REVERSE ENGINEERING!](#day-21-help-meim-reverse-engineering)
+- [Day 22: It's because I'm kubed, isn't it?](#day-22-its-because-im-kubed-isnt-it)
 
 ### Join our community
 
@@ -616,7 +618,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    ><details><summary>Click for answer</summary></details>
 
-3. Perform a prompt injection attack that leads to a reverse shell on the target machine.CompleteHint
+3. Perform a prompt injection attack that leads to a reverse shell on the target machine.
 
 
 
@@ -699,6 +701,94 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 6. Learn more about WireShark in ourWireshark: Traffic Analysisroom.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 21: HELP ME...I'm REVERSE ENGINEERING!
+
+1. What is the function name that downloads and executes files in the WarevilleApp.exe?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. Once you execute the WarevilleApp.exe, it downloads another binary to the Downloads folder. What is the name of the binary?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What domain name is the one from where the file is downloaded after running WarevilleApp.exe?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. The stage 2 binary is executed automatically and creates a zip file comprising the victim's computer data; what is the name of the zip file?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. What is the name of the C2 server where the stage 2 binary tries to upload files?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. If you enjoyed this task, feel free to check out thex86 Assembly Crash Courseroom.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 22: It's because I'm kubed, isn't it?
+
+1. What is the name of the webshell that was used by Mayor Malware?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What file did Mayor Malware read from the pod?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. What tool did Mayor Malware search for that could be used to create a remote connection from the pod?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+4. What IP connected to the docker registry that was unexpected?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+5. At what time is the first connection made from this IP to the docker registry?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+6. At what time is the updated malicious image pushed to the registry?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+7. What is the value stored in the "pull-creds" secret?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+8. Enjoy today's lesson? Check out ourIntro to Kubernetesfor a more in-depth introduction to Kubernetes!
 
 
 
