@@ -33,6 +33,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 20: If you utter so much as one packet…](#day-20-if-you-utter-so-much-as-one-packet)
 - [Day 21: HELP ME...I'm REVERSE ENGINEERING!](#day-21-help-meim-reverse-engineering)
 - [Day 22: It's because I'm kubed, isn't it?](#day-22-its-because-im-kubed-isnt-it)
+- [Day 23: You wanna know what happens to your hashes?](#day-23-you-wanna-know-what-happens-to-your-hashes)
+- [Day 24: You can’t hurt SOC-mas, Mayor Malware!](#day-24-you-cant-hurt-socmas-mayor-malware)
+- [Thank you, and congratulations!](#thank-you-and-congratulations)
 
 ### Join our community
 
@@ -789,6 +792,48 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ><details><summary>Click for answer</summary></details>
 
 8. Enjoy today's lesson? Check out ourIntro to Kubernetesfor a more in-depth introduction to Kubernetes!
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 23: You wanna know what happens to your hashes?
+
+1. Crack the hash value stored inhash1.txt. What was the password?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. What is the flag at the top of theprivate.pdffile?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+3. To learn more about cryptography, we recommend theCryptographymodule. If you want to practice more hash cracking, please consider theJohn the Ripper: The Basicsroom.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Day 24: You can’t hurt SOC-mas, Mayor Malware!
+
+1. What is the flag?
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+2. If you enjoyed this task, feel free to check out theWiresharkmodule.
+
+
+
+   ><details><summary>Click for answer</summary></details>
+
+### Thank you, and congratulations!
+
+1. What is the flag you get at the end of thesurvey?
 
 
 
