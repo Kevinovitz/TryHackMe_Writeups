@@ -1,0 +1,49 @@
+:root {
+    --md-primary-fg-color:        #5B7B9C;
+    --md-primary-fg-color--light: #6386AA;
+    --md-primary-fg-color--dark:  #526F8C;
+  }
+  
+/*.md-header{*/
+/*    background-color: #5B7B9C; /*#D71600; /*#275e8e;*/
+/*}*/
+
+.md-nav--primary .md-nav__title[for="__drawer"] {
+	background-color: hsl(210.4, 29.5%, 52.7%);
+	color: var(--md-primary-bg-color);
+	font-weight: 700;
+}
+
+.md-grid{
+    max-width: initial;
+}
+
+@media screen and (min-width: 790px) {
+    .md-grid{
+        max-width: 90%;
+    }
+
+    .md-sidebar{
+        width: auto;
+    } 
+}
+
+/* Fix padding Chrome browsers */
+@supports selector(::-webkit-scrollbar) {
+    .md-sidebar__scrollwrap {
+        scrollbar-gutter: auto
+    }
+
+    [dir=ltr] .md-sidebar__inner {
+        padding-right: 0;
+    }
+
+    [dir=rtl] .md-sidebar__inner {
+        padding-left: calc(90% - 11.5rem)
+    }
+}
+
+/* Fix inconsistent titles */
+.md-ellipsis {
+    text-transform: capitalize
+}
