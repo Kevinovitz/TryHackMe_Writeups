@@ -34,6 +34,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 - [Day 22: It's because I'm kubed, isn't it?](#day-22-its-because-im-kubed-isnt-it)
 - [Day 23: You wanna know what happens to your hashes?](#day-23-you-wanna-know-what-happens-to-your-hashes)
 - [Day 24: You can’t hurt SOC-mas, Mayor Malware!](#day-24-you-cant-hurt-socmas-mayor-malware)
+- [### Thank you, and congratulations!](#thank-you-and-congratulations)
 
 ### Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?
 
@@ -354,7 +355,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    After executing the malware, a pop-up window appears with the flag. The event is also displayed in the powershell terminal.
 
-   FLAG 1
+   ![Flag 1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_6_Flag_1.png)
 
    ><details><summary>Click for answer</summary>THM{GlitchWasHere}</details>
 
@@ -368,7 +369,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Now we can open the resulting text file and look for the flag.
 
-   FLAG 2
+   ![Flag 2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_6_Flag_2.png)
 
    ><details><summary>Click for answer</summary>THM{HiddenClue}</details>
 
@@ -480,6 +481,48 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 10. Want to learn more about log analysis and how to interpret logs from different sources? Check outthe Log Universeroom!
 
+### Day 8: Shellcodes of the world, unite!
+
+1. What is the flag value once Glitch gets reverse shell on the digital vault using port 4444? Note: The flag may take around a minute to appear in theC:\Users\glitch\Desktopdirectory. You can view the content of the flag by using the commandtype C:\Users\glitch\Desktop\flag.txt.
+
+   I first tried using my own attackbox, but I couldn't reliably copy the script to the target machine. Through RDP there was not clipboard sharing. I could only use a tool to send clipboard as keystrokes. But this didn't paste everything correctly. And I would get many errors while executing. Running the entire script would also trigger MS Defender, so we indeed must paste it in parts.
+
+   ![Errors](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_8_Errors.png)
+
+   There seems to be an issue with copy pasting on this task. Nothing seems to work. In the end I tried transferring the script file from my attack box to the target machine by setting up an http server on port 80.
+
+   ```cmd
+   python3 -m http.server 80
+   ```
+
+   But I couldn't copy the entire script in one turn. No sir. MS Defender would flag and remove it. And since I don't have admin right, I can't restore it. So I had to send the script in three parts (just how we need to paste it into powershell). 
+
+   ![Transfer](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_8_Transfer.png)
+
+   Now we finally have our script on the target machine. Now we can simply paste each text file, because it is already split up.
+
+   First set up a listener on our attack box.
+
+   ```cmd
+   nc -nlvp 1337 
+   ```
+
+   Nevermind, please don't make my mistake by using your elite port choice (1337) and use what is mentioned in the text (4444)...
+
+   Copy paste the first shell part. Copy paste the second shell part and hit enter.
+
+   Now copy paste the third part and hit enter. We should get a shell back.
+
+   ![Reverse Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_8_Reverse_Shell.png)
+
+   Finally, we made it! Now we can look for the flag in the desktop folder.
+
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_8_Flag.png)
+
+   ><details><summary>Click for answer</summary>AOC{GOT _MY_ACCESS_B@CK007}</details>
+
+2. Are you interested in learning more about evasion? Take a look at theAV Evasion: Shellcoderoom.
+
 ### Day 9: Nine o'clock, make GRC fun, tell no one.
 
 1. What does GRC stand for?
@@ -572,7 +615,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    To find the BSSID of our wireless interface we can use `iw dev`.
 
-   BSSID
+   ![Bssid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_11_Bssid.png)
 
    ><details><summary>Click for answer</summary>02:00:00:00:02:00</details>
 
@@ -580,7 +623,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    To find the SSID and BSSID of the access point we can use: `sudo iw dev wlan2 scan`.
 
-   SSID
+   ![Ssid](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_11_Ssid.png)
 
    ><details><summary>Click for answer</summary>MalwareM_AP, 02:00:00:00:00:00</details>
 
@@ -614,7 +657,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    sudo airodump-ng -c 6 --bssid 02:00:00:00:00:00 -w output-file wlan2
    ```
 
-   CLIENT
+   ![Client](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_11_Client.png)
 
    Next step is to disconnect the client whilst monitoring traffic.
 
@@ -622,9 +665,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    sudo aireplay-ng -0 1 -a 02:00:00:00:00:00 -c 02:00:00:00:01:00 wlan2
    ```
 
-   DISCONNECT
+   ![Disconnect](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_11_Disconnect.png)
 
-   CAPTURED
+   ![Captured](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_11_Captured.png)
 
    Now we can crack this handshake using `aircrack-ng`.
 
@@ -632,7 +675,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    sudo aircrack-ng -a 2 -b 02:00:00:00:00:00 -w /home/glitch/rockyou.txt output*cap 
    ```
 
-   PASSWORD
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_11_Password.png)
 
    ><details><summary>Click for answer</summary>fluffy/champ24</details>
 
@@ -779,6 +822,56 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 6. If you enjoyed this task, feel free to check out theBurp Suitemodule.
 
+### Day 15: Be it ever so heinous, there's no place like Domain Controller.
+
+1. Use the "Security" tab within Event Viewer to answer questions 1 and 2.
+
+2. On what day was Glitch_Malware last logged in?Answer format: DD/MM/YYYY
+
+   To answer our first question, we should first filter the Security eventlog by eventID 4624. Then we can search for username "Glitch_Malware" for any logon attempts by this account.
+
+   ![Logon](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_15_Logon.png)
+
+   ><details><summary>Click for answer</summary>07/11/2024</details>
+
+3. What event ID shows the login of the Glitch_Malware user?
+
+   This is the same as the eventID we used to filter on successfull logon attempts.
+
+   ><details><summary>Click for answer</summary>4624</details>
+
+4. Read the PowerShell history of the Administrator account. What was the command that was used to enumerate Active Directory users?
+
+   We can look for the PowerShell command history in the following file: "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt"
+
+   ![Powershell](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_15_Powershell.png)
+
+   ><details><summary>Click for answer</summary>Get-ADUser -Filter * -Properties MemberOf | Select-Object Name</details>
+
+5. Look in the PowerShell log file located inApplication and Services Logs -> Windows PowerShell. What was Glitch_Malware's set password?
+
+   Make sure to look in the correct log file!
+
+   In this log, look for any entries related to "password". Check entries related to the Glitch_Malware account.
+
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_15_Password.png)
+
+   ><details><summary>Click for answer</summary>SuperSecretP@ssw0rd!</details>
+
+6. Review the Group Policy Objects present on the machine. What is the name of the installed GPO?
+
+   We can view these GPOs through the Group Policy Management Window or with Powershell.
+
+   In the GPM window we can see the installed GPOs under: Domains -> wareville.thm -> GPOs in wareville.thm
+
+   With PowerShell we can use `Get-GPO -All`.
+
+   ![Gpo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_15_Gpo.png)
+
+   ><details><summary>Click for answer</summary>Malicious GPO - Glitch_Malware Persistence</details>
+
+7. If you enjoyed this task, feel free to check out theActive Directory Hardeningroom.
+
 ### Day 16: The Wareville’s Key Vault grew three sizes that day.
 
 1. What is the password for backupware that was leaked?
@@ -860,7 +953,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Now we can filter the logs. Looking at the event type filter, we can see how many logs are associated with a successful login.
 
-   LOGIN
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_17_Login.png)
 
    ><details><summary>Click for answer</summary>642</details>
 
@@ -868,7 +961,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    In the same filter, we can select the 'DeleteRecording' filter. Here we can see which Session_id is connected to this event.
 
-   SESSION
+   ![Session](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_17_Session.png)
 
    ><details><summary>Click for answer</summary>rij5uu4gt204q0d3eb7jj86okt</details>
 
@@ -880,7 +973,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    index=web_logs *rij5uu4gt204q0d3eb7jj86okt* | table _time clientip status uri file
    ```
 
-   IP
+   ![Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_17_Ip.png)
 
    We can now look for more session ids associated with this IP address using the following:
 
@@ -889,7 +982,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    | stats count by status
    ```
 
-   SESSIONS
+   ![Sessions](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_17_Sessions.png)
 
    In the cctv log we can look which username is associated to both sessions ids we found.
 
@@ -897,7 +990,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    index="cctv_feed" (Session_id = "lsr1743nkskt3r722momvhjcs3" OR Session_id = "b063lipf3rt6mclqen7ov9i9d8")
    ```
 
-   USERNAME
+   ![Username](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_17_Username.png)
 
    ><details><summary>Click for answer</summary>mmalware</details>
 
@@ -906,9 +999,6 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 5. Good thing we had a backup of the CCTV application from yesterday. We got it running again in no time!
 
 ### Day 18: I could use a little AI interaction!
-
-
-
 
 1. What is the technical term for a set of rules and instructions given to a chatbot?
 
@@ -984,7 +1074,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    log('Parameter:' + args[0].toInt32());
    ```
 
-   JS OTP
+   ![Js Otp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Js_Otp.png)
 
    Now we can start the game again using frida and intercept the argument.
 
@@ -992,11 +1082,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    frida-trace ./TryUnlockMe -i 'libaocgame.so!*'
    ```
 
-   CONSOLE OTP
+   ![Console Otp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Console_Otp.png)
 
    We can see when interacting with the penguin, the argument is logged in the console. Using this we can complete the first challenge and get the first flag.
 
-   FLAG OTP
+   ![Flag Otp](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Flag_Otp.png)
 
    ><details><summary>Click for answer</summary>THM{one_though_password}</details>
 
@@ -1010,11 +1100,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    log('Parameter 2: ' + args[2].toInt32());
    ```
 
-   JS PURCHASE
+   ![Js Purchase](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Js_Purchase.png)
 
    Again we run the game with frida and can intercept the argument from this function.
 
-   CONSOLE PURCHASE
+   ![Console Purchase](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Console_Purchase.png)
 
    We can see three arguments indeed. The first one is related to the chosen item, the second is related to the item cost, and the third argument is related to the players money.
 
@@ -1024,11 +1114,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    args[1] = ptr(0)
    ```
 
-   JS PURCHASE ALTER
+   ![Js Purchase Alter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Js_Purchase_Alter.png)
 
    Running the game again, we can see the selected item has a price of 0! Now we can get the second flag.
 
-   FLAG PURCHASE
+   ![Flag Purchase](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Flag_Purchase.png)
 
    ><details><summary>Click for answer</summary>THM{credit_card_undeclined}</details>
 
@@ -1040,7 +1130,9 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    log('The return value is: ' + retval)
    ```
 
-   JS BIO
+   ![Js Bio](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Js_Bio.png)
+
+   ![Console Bio](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Console_Bio.png)
 
    Now we can see a value being returned of `0x0`. As mentioned, this could be a bolean and we should alter it to be 1. This can be achieved by replacing the retval with our pointer.
 
@@ -1048,11 +1140,11 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    retval.replace(ptr(1))
    ```
 
-   JS BIO ALTER
+   ![Js Bio Alter](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Js_Bio_Alter.png)
 
    When trying the final challenge we see we pass the challenge and get our final flag.
 
-   FLAG BIO
+   ![Flag Bio](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_19_Flag_Bio.png)
 
    ><details><summary>Click for answer</summary>THM{dont_smash_your_keyboard}</details>
 
@@ -1070,7 +1162,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
    ip.src==10.10.229.217 and http
    ```
 
-   MESSAGE
+   ![Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_20_Message.png)
 
    ><details><summary>Click for answer</summary>I am in Mayor!</details>
 
@@ -1084,7 +1176,7 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    For this we should look at the packets related to the GET /command stream.
 
-   COMMAND
+   ![Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_20_Command.png)
 
    ><details><summary>Click for answer</summary>whoami</details>
 
@@ -1092,21 +1184,23 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
    Here we also follow the http stream, but for the POST /exfiltrate request.
 
-   FILE
+   ![File](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_20_File.png)
 
    ><details><summary>Click for answer</summary>credentials.txt</details>
 
 5. What secret message was sent back to the C2 in an encrypted format through beacons?
 
+   ![Packets](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_20_Packets.png)
+   
    In the exfiltration message, we can see which encryption and key is used. In the beacon packets, we can actually find the secret.
 
-   SECRET
+   ![Secret](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_20_Secret.png)
 
    Using CyberChef, we can decrypt this message. 
 
    Use AES decryption with ECB mode.
 
-   FLAG
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_20_Flag.png)
 
    ><details><summary>Click for answer</summary>THM_Secret_101</details>
 
@@ -1284,21 +1378,36 @@ This guide contains the answer and steps necessary to get to them for the [Adven
 
 1. What is the flag?
 
+   After starting the challenge.sh script, we can see various windows pop up. One of them is the interface for the lights, but nothing works sadly.
 
+   ![Light Interface](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_24_Light_Interface.png)
 
-   ><details><summary>Click for answer</summary></details>
+   Lets open the capture file in Wireshark and investigate. Since we are looking at packets related to MQTT we can add a filter on `mqtt`.
+
+   In several packets we can see a command beiing sent. However, it is encoded. 
+
+   ![Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_24_Message.png)
+
+   Lets try to decode this message to find the information we need. We can use CyberChef and decode from Bae64.
+
+   ![Base64](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_24_Base64.png)
+
+   Looks like this is related to the lights. If we use this as our message/topic together with the `on` command, we should be able to turn the lights back on.
+
+   ```cmd
+   mosquitto_pub -h localhost -t d2FyZXZpbGxl/Y2hyaXN0bWFzbGlnaHRz -m on
+   ```
+
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber2024/Advent_of_Cyber_2024_Day_24_Flag.png)
+
+   It worked! The lights are back on and we just got the flag for the final day in the advent of cyber!
+
+   ><details><summary>Click for answer</summary>THM{Ligh75on-day54ved}</details>
 
 2. If you enjoyed this task, feel free to check out theWiresharkmodule.
-
-
-
-   ><details><summary>Click for answer</summary></details>
 
 ### Thank you, and congratulations!
 
 1. What is the flag you get at the end of thesurvey?
 
-
-
-   ><details><summary>Click for answer</summary></details>
-
+   ><details><summary>Click for answer</summary>THM{we_will_be_back_in_2025}</details>
