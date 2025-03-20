@@ -41,6 +41,7 @@ The following rooms are available/in progress:
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
+- [ ] [Hackfinity Battle](HackfinityBattle/HackfinityBattle.md) [WiP]
 - [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
