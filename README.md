@@ -48,6 +48,7 @@ The following rooms are available/in progress:
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
 - [x] [Kenobi](kenobi/kenobi.md) [Answered]
+- [x] [Lateral Movement and Pivoting](lateralmovementandpivoting/lateralmovementandpivoting.md) [WiP]
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md)
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md)
