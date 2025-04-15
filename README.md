@@ -39,6 +39,7 @@ The following rooms are available/in progress:
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [Enumerating Active Directory](adenumeration/adenumeration.md)
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
+- [ ] [**Exploiting Active Directory**](exploitingad/exploitingad.md) [WiP]
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
 - [ ] [Hackfinity Battle](HackfinityBattle/HackfinityBattle.md) [WiP]
