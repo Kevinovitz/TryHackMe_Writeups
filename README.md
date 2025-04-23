@@ -69,6 +69,7 @@ The following rooms are available/in progress:
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
+- [ ] [**Persisting Active Directory***](persistingad/persistingad.md) [WiP]
 - [ ] [Post-Exploitation Basics](postexploit/postexploit.md) [WiP]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
