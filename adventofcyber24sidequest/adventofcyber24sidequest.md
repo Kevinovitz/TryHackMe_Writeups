@@ -29,29 +29,29 @@ In the hint we are led to the github repos we have been looking at for the AoC t
 sudo nmap -sS -Pn 10.10.156.173
 ```
 
-NMAP
+![Key Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Nmap.png)
 
 Besides ssh and the regular webpage, there seems to be another http server on port 8000.
 
 Navigating there, we can see there is a hidden C2 server login page.
 
-LOGIN
+![Key Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Login.png)
 
 We don't have any credentials, but this might be where the github repos come in. We can see another user that commented on the issue.
 
-GITHUB ISSUE
+![Key Github Issue](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Issue.png)
 
 Looking on his profile page, we can see some repos. This C2 repo might be of interest.
 
-GITHUB REPO
+![Key Github Repo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Repo.png)
 
 In this repo there is a script used for the server in flask.
 
-GITHUB C2
+![Key Github C2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_C2.png)
 
 In this script we can see various functions including a login function and several endpoints. It also includes default credentials and a secret. 
 
-GITHUB SCRIPT
+![Key Github Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Script.png)
 
 I already tried the default credentials, but this didn't work. However, since we have a secret key, we can try to force a session cookie using `flask-unsign`.
 
@@ -66,7 +66,7 @@ We can try with the admin user to forge a session cookie using the following com
 flask-unsign -s --cookie "{'logged_in': True, 'username':'admin'}" --secret "@09JKD0934jd712?djD"
 ```
 
-FLASK COMMAND
+![Key Flask Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Flask_Command.png)
 
 In our browser we open the developer console and add a cookie whilst on the login page. Make sure to use the following values:
 
@@ -74,15 +74,15 @@ In our browser we open the developer console and add a cookie whilst on the logi
 - value = <our forged cookie>
 - path = / (this enables the cookie for all endpoints)
 
-LOGIN COOKIE
+![Key Login Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Login_Cookie.png)
 
 Now we simply reload the page and we should be able to look at the dashboard.
 
-DASHBOARD
+![Key Dashboard](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Dashboard.png)
 
 Success! Now we can look at the data page and get out keycard for the first challenge.
 
-KEY CARD
+![Key Card](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Card.png)
 
 References:
 https://blog.paradoxis.nl/defeating-flasks-session-management-65706ba9d3ce
@@ -98,7 +98,7 @@ https://flask.palletsprojects.com/en/stable/config/
    http contains "POST" and http contains "register.php"
    ```
 
-   REGISTERED CREDENTIALS
+   ![Registered Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Registered_Credentials.png)
 
    ><details><summary>Click for answer</summary>QU9DMjAyNHtUaW55X1R</details>
 
@@ -110,7 +110,7 @@ https://flask.palletsprojects.com/en/stable/config/
    http contains "POST" and http contains "login.php"
    ```
 
-   CAPTURED CREDENTIALS
+   ![Captured Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Captured_Credentials.png)
 
    ><details><summary>Click for answer</summary>pbnlfVGlueV9TaDNsbF</details>
 
