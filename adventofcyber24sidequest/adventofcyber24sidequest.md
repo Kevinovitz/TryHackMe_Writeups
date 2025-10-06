@@ -116,15 +116,63 @@ https://flask.palletsprojects.com/en/stable/config/
 
 3. What is the password of the zip file transferred by the attacker?
 
+   We are looking for a zip archive. This wasn't found in the http objects unfortunately. I did find two interesting looking executables which my be of interest later on.
 
+   ![Http Objects](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Http_Objects.png)
 
-   ><details><summary>Click for answer</summary></details>
+   We could look for the magic bytes of a zip file. Which in this case would be 'PK' or '50 4B' in Hex form.
+
+   ![Signature](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Signature.png)
+
+   We can filter out the traffic from port 22 and 80 to make things more clear. In this filter we can look for the hex value of '50 4B'.
+
+   ![Archive Packet](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Archive_Packet.png)
+
+   We see something in packet 158339 coming from the host to the assumed attack machine via port 9002. It also contains something similar to an sql database called 'elves.sql'.
+
+   ![Database Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Database_Name.png)
+
+   To extract this archive we must follow the TCP stream. Then make sure to format the data in 'raw' format instead of 'ASCII'. Save it as a '.zip' file.
+
+   ![Extract Archive](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Extract_Archive.png)
+
+   Unfortunately, the zip archive is password protected which we don't have. Yet.
+
+   We do however, have two executable that we found were downloaded from the attack machine to the host machine: 'ff' and 'exp_file_credentials'. Running their has through virustotal gives us an idea of what we are working with. It seems to be some kind of Linux backdoor. More specifically (from the community notes), a Tinyshell backdoor. https://github.com/creaktive/tsh/
+
+   Now the next few steps were a bit lost on me (maybe if I put a little more time into it, I might understand), so I followed some steps in the following [write-up](https://0xb0b.gitbook.io/writeups/tryhackme/2024/advent-of-cyber-24-side-quest/t1-operation-tiny-frostbite#decrypt-the-traffic).
+
+   The basic idea is that we have a copy of a malware executable as well as its source code. This source code tells us how it encrypts the data (i.e., the network traffic we logged on port 9001) and what we need to decrypt the data. 
+
+   It starts with a secret and two initialization vectors. This secret is stored in the executable. Using a reverse-engineering program such as Binary Ninja we can look through the file and find the secret in the data header.
+
+   ![Secret](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Secret.png)
+
+   Now that we have the secret, we should use a script that performs the same steps as the malware to decrypt the data. This was also used from the above mentioned link. Take not that it is required to export the relevant entries to a text file using:
+
+   ```cmd
+   tshark -r traffic.pcap -Y "tcp.dstport == 9001" -T fields -e data > port_9001_data.txt
+   ```
+
+   We can now run the script and we should see some of the commands that have been executed via the shell.
+
+   ```cmd
+   python3 extract-commands.py
+   ```
+
+   ![Decrypted Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Decrypted_Commands.png)
+
+   We can see the command that has been used to create the archive at then end (including the password). It also shows us some of the sql commands used which reveal the password we need for the next question. If this was not the case, however, we could use the archive password to open the database and look for the password inside.
+
+   ><details><summary>Click for answer</summary>9jYW5fRW5jcnlwVF9iVXR</details>
 
 4. What is McSkidy's password that was inside the database file stolen by the attacker?
 
+   With the password we can extract the database file and open it to find the password. Be sure to note, this isn't an actual database file. It is a dump file containing various commands. Simply opening it up in a text editor should be enough to find the password.
 
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Password.png)
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>faXRfSXNfTjB0X0YwMGxwcm8wZn0</details>
 
 ### T2: Yin and Yang
 
