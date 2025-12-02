@@ -1,7 +1,7 @@
 ![Linux CLI - Shells Bells Banner](https://tryhackme-images.s3.eu-west-1.amazonaws.com/room-icons/678ecc92c80aa206339f0f23-1762176216100)
 
 <p align="center">
-   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxcli-aoc2025-o1fpqkvxti/Linux_CLI_Shells_Bells_Cover.png" alt="Linux CLI - Shells Bells Logo">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_Cover.png" alt="Linux CLI - Shells Bells Logo">
 </p>
 
 # Linux CLI - Shells Bells
