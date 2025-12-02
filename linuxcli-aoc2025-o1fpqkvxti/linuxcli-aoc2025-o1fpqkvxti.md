@@ -33,7 +33,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    Here we find the file '.guide.txt' which will hold the first flag. Opening it (`cat .guide.txt`) will automatically answer the question in Tryhackme.
 
-   ![Guide](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/raw/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_Cli_Guide.png)
+   ![Guide](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_Cli_Guide.png)
 
    ><details><summary>Click for answer</summary>THM{learning-linux-cli}</details>
 
@@ -60,7 +60,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    Here we see a possibly malicious script file. Opening it reveals the next flag.
 
-   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/raw/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_Script.png)
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_Script.png)
 
    ><details><summary>Click for answer</summary>THM{sir-carrotbane-attacks}</details>
 
@@ -74,7 +74,7 @@ This guide contains the answer and steps necessary to get to them for the [Linux
 
    To view the bash history of the roort user, we must first switch to the root user using `sudo su`. Now we can use `history` to view the used bash commands.
 
-   ![History](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/raw/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_History.png)
+   ![History](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/linuxcli-aoc2025-o1fpqkvxti/Linux_Cli_Shells_Bells_History.png)
 
    Indeed we find the flag left behind for us.
 
