@@ -18,6 +18,7 @@ The following rooms are available/in progress:
 - [ ] [Advent of Cyber '23 Side Quest](adventofcyber23sidequest/adventofcyber23sidequest.md) [WiP]
 - [x] [Advent of Cyber 2024](adventofcyber2024/adventofcyber2024.md)
 - [ ] [Advent of Cyber '24 Side Quest](adventofcyber24sidequest/adventofcyber24sidequest.md) [WiP]
+- [ ] [Advent of Cyber 2025](adventofcyber25/adventofcyber25.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
@@ -51,6 +52,7 @@ The following rooms are available/in progress:
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
 - [x] [Kenobi](kenobi/kenobi.md) [Answered]
 - [x] [Lateral Movement and Pivoting](lateralmovementandpivoting/lateralmovementandpivoting.md) [WiP]
+- [x] [Linux CLI - Shells Bells](linuxcli-aoc2025-o1fpqkvxti/linuxcli-aoc2025-o1fpqkvxti.md)
 - [x] [Linux Fundamentals Part 1](linuxfundamentalspart1/linuxfundamentalspart1.md)
 - [x] [Linux Fundamentals Part 2](linuxfundamentalspart2/linuxfundamentalspart2.md)
 - [x] [Linux Fundamentals Part 3](linuxfundamentalspart3/linuxfundamentalspart3.md)
