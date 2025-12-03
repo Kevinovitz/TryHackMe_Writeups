@@ -12,7 +12,7 @@ This year, the layout has changed from a single room with all the tasks, to a ro
 
 ## Tasks
 
-- [Day 1: Linux CLI - Shells Bells](linuxcli-aoc2025-o1fpqkvxti/linuxcli-aoc2025-o1fpqkvxti.md)
+- [Day 1: Linux CLI - Shells Bells](../linuxcli-aoc2025-o1fpqkvxti/linuxcli-aoc2025-o1fpqkvxti.md)
 - [Day 2: ]()
 - [Day 3: ]()
 - [Day 4: ]()
