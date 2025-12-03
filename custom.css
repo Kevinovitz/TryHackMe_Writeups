@@ -14,6 +14,10 @@
 	font-weight: 700;
 }
 
+.md-typesetset h3 {
+    font-weight:600;
+}
+
 .md-grid{
     max-width: initial;
 }
