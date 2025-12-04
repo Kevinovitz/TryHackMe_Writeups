@@ -4,7 +4,7 @@
 [comment]:   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Cover.png" alt="Phishing - Merry Clickmas Logo">
 [comment]:</p>
 
-# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/6645aa8c024f7893371eb7ac-1761822143495" alt="image" height="50px" align="center" /> Phishing - Merry Clickmas
+# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/6645aa8c024f7893371eb7ac-1761822143495" alt="image" height="50px" style="vertical-align: middle" /> Phishing - Merry Clickmas
 
 
 This guide contains the answer and steps necessary to get to them for the [Phishing - Merry Clickmas](https://tryhackme.com/room/phishing-aoc2025-h2tkye9fzU) room.
@@ -23,10 +23,12 @@ This guide contains the answer and steps necessary to get to them for the [Phish
     ./server.py
     ```
 
-    SERVER
+    ![Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Server.png)
 
     Now we create our phishing email using `setoolkit`.
 
+    ![Tool](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Tool.png)
+    
     Choose the following options:
 
     - 1 - Social-Engineering Attacks
@@ -55,7 +57,7 @@ This guide contains the answer and steps necessary to get to them for the [Phish
 
     After setting things up, the mail should be sent. And after a few minutes we receive a notification.
 
-    CREDENTIALS
+    ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Credentials.png)
 
     ><details><summary>Click for answer</summary>unranked-wisdom-anthem</details>
 
@@ -63,11 +65,11 @@ This guide contains the answer and steps necessary to get to them for the [Phish
 
     We can use these credentials to log into the email server.
 
-    LOGIN
+    ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Login.png)
 
     This works and we can se the amount in one of the received emails.
 
-    TOYS
+    ![Toys](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Toys.png)
 
     ><details><summary>Click for answer</summary>1984000</details>
 
