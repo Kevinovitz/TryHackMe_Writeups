@@ -18,17 +18,19 @@ This guide contains the answer and steps necessary to get to them for the [AI in
 
    For this flag we need to progress through all stages of the showcase. 
 
-   ><details><summary>Click for answer</summary>THM{SQLI_EXPLOIT}</details>
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Flag.png)
+
+   ><details><summary>Click for answer</summary>THM{AI_MANIA}</details>
 
 2. Execute the exploit provided by the red team agent against the vulnerable web application hosted at 10.82.155.191:5000. What flag is provided in the script's output after it?Remember, you will need to update the IP address placeholder in the script with the IP of your vulnerable machine (10.82.155.191:5000)
 
    In the second part of the task there is a red team exercise to generate a script to exploit a vulnerable application. After tasking the AI to generate the script, we can take its output and place it into a python file.
 
-   SCRIPT
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Script.png)
 
    Make sure to update the IP with your current target machine IP. Then run the exploit. It will exploit the SQL injection vulnerability which will enable us to log into the admin account without having its password. This gives us our flag.
 
-   LOGIN
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Login.png)
 
    ><details><summary>Click for answer</summary>THM{SQLI_EXPLOIT}</details>
 

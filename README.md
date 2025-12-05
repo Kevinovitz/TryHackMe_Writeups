@@ -20,6 +20,7 @@ The following rooms are available/in progress:
 - [ ] [Advent of Cyber '24 Side Quest](adventofcyber24sidequest/adventofcyber24sidequest.md) [WiP]
 - [ ] [Advent of Cyber 2025](adventofcyber25/adventofcyber25.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
+- [x] [AI in Security - old sAInt nick](AIforcyber-aoc2025-y9wWQ1zRgB/AIforcyber-aoc2025-y9wWQ1zRgB.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md)
@@ -73,6 +74,7 @@ The following rooms are available/in progress:
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
 - [ ] [**Persisting Active Directory***](persistingad/persistingad.md) [WiP]
+- [x] [Phishing - Merry Clickmas](phishing-aoc2025-h2tkye9fzU/phishing-aoc2025-h2tkye9fzU.md)
 - [ ] [Post-Exploitation Basics](postexploit/postexploit.md) [WiP]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
@@ -81,6 +83,7 @@ The following rooms are available/in progress:
 - [x] [**SAST***](sast/sast.md) [WiP]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
+- [x] [Splunk Basics - Did you SIEM?](splunkforloganalysis-aoc2025-x8fj2k4rqp/splunkforloganalysis-aoc2025-x8fj2k4rqp.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
