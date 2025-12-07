@@ -1,10 +1,10 @@
 ![Phishing - Merry Clickmas Banner](https://tryhackme-images.s3.eu-west-1.amazonaws.com/room-icons/5f9c7574e201fe31dad228fc-1762630275389)
 
-[comment]:<p align="center">
-[comment]:   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Cover.png" alt="Phishing - Merry Clickmas Logo">
-[comment]:</p>
+<p align="center">
+   <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Cover.png" alt="Phishing - Merry Clickmas Logo">
+</p>
 
-# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/6645aa8c024f7893371eb7ac-1761822143495" alt="image" height="50px" style="vertical-align: middle" /> Phishing - Merry Clickmas
+# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/6645aa8c024f7893371eb7ac-1761822143495" alt="image" style="vertical-align: middle;height: 50px;" /> Phishing - Merry Clickmas | Advent of Cyber 2025 - Day 2
 
 
 This guide contains the answer and steps necessary to get to them for the [Phishing - Merry Clickmas](https://tryhackme.com/room/phishing-aoc2025-h2tkye9fzU) room.

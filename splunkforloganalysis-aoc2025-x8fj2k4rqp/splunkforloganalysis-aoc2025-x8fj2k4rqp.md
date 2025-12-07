@@ -4,7 +4,7 @@
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Cover.png" alt="Splunk Basics - Did you SIEM? Logo">
 </p>
 
-# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/5e8dd9a4a45e18443162feab-1762518888961" alt="image" height="50px" style="vertical-align: middle" /> Splunk Basics - Did you SIEM?
+# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/5e8dd9a4a45e18443162feab-1762518888961" alt="image" style="vertical-align: middle;height: 50px;" /> Splunk Basics - Did you SIEM? | Advent of Cyber 2025 - Day 3
 
 This guide contains the answer and steps necessary to get to them for the [Splunk Basics - Did you SIEM?](https://tryhackme.com/room/splunkforloganalysis-aoc2025-x8fj2k4rqp) room.
 
@@ -24,7 +24,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
 
     If we now look at the IP addresses found, we see there is one standing out in numbers from the rest. This might be our attacker.
 
-    IP
+    ![Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Ip.png)
 
     ><details><summary>Click for answer</summary>198.51.100.55</details>
 
@@ -39,7 +39,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
     reverse
     ```
 
-    DAY
+    ![Day](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Day.png)
 
     ><details><summary>Click for answer</summary>2025-10-12</details>
 
@@ -51,7 +51,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
     user_agent="*Havij*
     ```
 
-    USERAGENT
+    ![Useragent](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Useragent.png)
 
     ><details><summary>Click for answer</summary>993</details>
 
@@ -63,7 +63,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
     index=main sourcetype="web_traffic" client_ip="198.51.100.55" AND path="*..*"
     ```
 
-    PATH
+    ![Path](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Path.png)
 
     ><details><summary>Click for answer</summary>658</details>
 

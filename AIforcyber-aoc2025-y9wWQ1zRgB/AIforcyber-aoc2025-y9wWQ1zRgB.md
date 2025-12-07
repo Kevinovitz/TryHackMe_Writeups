@@ -4,7 +4,7 @@
    <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Cover.png" alt="AI in Security - old sAInt nick Logo">
 </p>
 
-# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/5de96d9ca744773ea7ef8c00-1762182384720" alt="image" height="50px" style="vertical-align: middle" /> AI in Security - old sAInt nick
+# <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/5de96d9ca744773ea7ef8c00-1762182384720" alt="image" style="vertical-align: middle;height: 50px;" /> AI in Security - old sAInt nick | Advent of Cyber 2025 - Day 4
 
 This guide contains the answer and steps necessary to get to them for the [AI in Security - old sAInt nick](https://tryhackme.com/room/AIforcyber-aoc2025-y9wWQ1zRgB) room.
 
