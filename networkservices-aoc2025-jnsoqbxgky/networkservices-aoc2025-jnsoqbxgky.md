@@ -16,7 +16,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
 
 1.  What evil message do you see on top of the website?
 
-
+    
 
     ><details><summary>Click for answer</summary></details>
 

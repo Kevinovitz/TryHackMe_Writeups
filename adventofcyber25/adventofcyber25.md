@@ -13,7 +13,7 @@ This year, the layout has changed from a single room with all the tasks, to a ro
 - [Day 3: Splunk Basics - Did you SIEM?](../splunkforloganalysis-aoc2025-x8fj2k4rqp/splunkforloganalysis-aoc2025-x8fj2k4rqp.md)
 - [Day 4: AI in Security - old sAInt nick](../AIforcyber-aoc2025-y9wWQ1zRgB/AIforcyber-aoc2025-y9wWQ1zRgB.md)
 - [Day 5: IDOR - Santa’s Little IDOR](../idor-aoc2025-zl6MywQid9/idor-aoc2025-zl6MywQid9.md)
-- [Day 6: Malware Analysis - Egg-xecutable](../malware-sandbox-aoc2025-SD1zn4fZQt/malware-sandbox-aoc2025-SD1zn4fZQt.md) (WiP)
+- [Day 6: Malware Analysis - Egg-xecutable](../malware-sandbox-aoc2025-SD1zn4fZQt/malware-sandbox-aoc2025-SD1zn4fZQt.md)
 - [Day 7: Network Discovery - Scan-ta Clause](../networkservices-aoc2025-jnsoqbxgky/networkservices-aoc2025-jnsoqbxgky.md) (WiP)
 - [Day 8: ](../)
 - [Day 9: ](../)
