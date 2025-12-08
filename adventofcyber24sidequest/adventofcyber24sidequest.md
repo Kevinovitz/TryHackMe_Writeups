@@ -29,29 +29,29 @@ In the hint we are led to the github repos we have been looking at for the AoC t
 sudo nmap -sS -Pn 10.10.156.173
 ```
 
-![Key Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Nmap.png)
+![Key Nmap](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Nmap.png)
 
 Besides ssh and the regular webpage, there seems to be another http server on port 8000.
 
 Navigating there, we can see there is a hidden C2 server login page.
 
-![Key Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Login.png)
+![Key Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Login.png)
 
 We don't have any credentials, but this might be where the github repos come in. We can see another user that commented on the issue.
 
-![Key Github Issue](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Issue.png)
+![Key Github Issue](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Issue.png)
 
 Looking on his profile page, we can see some repos. This C2 repo might be of interest.
 
-![Key Github Repo](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Repo.png)
+![Key Github Repo](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Repo.png)
 
 In this repo there is a script used for the server in flask.
 
-![Key Github C2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_C2.png)
+![Key Github C2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_C2.png)
 
 In this script we can see various functions including a login function and several endpoints. It also includes default credentials and a secret. 
 
-![Key Github Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Script.png)
+![Key Github Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Github_Script.png)
 
 I already tried the default credentials, but this didn't work. However, since we have a secret key, we can try to force a session cookie using `flask-unsign`.
 
@@ -66,7 +66,7 @@ We can try with the admin user to forge a session cookie using the following com
 flask-unsign -s --cookie "{'logged_in': True, 'username':'admin'}" --secret "@09JKD0934jd712?djD"
 ```
 
-![Key Flask Command](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Flask_Command.png)
+![Key Flask Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Flask_Command.png)
 
 In our browser we open the developer console and add a cookie whilst on the login page. Make sure to use the following values:
 
@@ -74,15 +74,15 @@ In our browser we open the developer console and add a cookie whilst on the logi
 - value = <our forged cookie>
 - path = / (this enables the cookie for all endpoints)
 
-![Key Login Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Login_Cookie.png)
+![Key Login Cookie](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Login_Cookie.png)
 
 Now we simply reload the page and we should be able to look at the dashboard.
 
-![Key Dashboard](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Dashboard.png)
+![Key Dashboard](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Dashboard.png)
 
 Success! Now we can look at the data page and get out keycard for the first challenge.
 
-![Key Card](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Card.png)
+![Key Card](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Key_Card.png)
 
 References:
 https://blog.paradoxis.nl/defeating-flasks-session-management-65706ba9d3ce
@@ -98,7 +98,7 @@ https://flask.palletsprojects.com/en/stable/config/
    http contains "POST" and http contains "register.php"
    ```
 
-   ![Registered Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Registered_Credentials.png)
+   ![Registered Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Registered_Credentials.png)
 
    ><details><summary>Click for answer</summary>QU9DMjAyNHtUaW55X1R</details>
 
@@ -110,7 +110,7 @@ https://flask.palletsprojects.com/en/stable/config/
    http contains "POST" and http contains "login.php"
    ```
 
-   ![Captured Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Captured_Credentials.png)
+   ![Captured Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/9b9fbc9a60808308a2443e5db9e1239ad379c49e/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Captured_Credentials.png)
 
    ><details><summary>Click for answer</summary>pbnlfVGlueV9TaDNsbF</details>
 
@@ -118,23 +118,23 @@ https://flask.palletsprojects.com/en/stable/config/
 
    We are looking for a zip archive. This wasn't found in the http objects unfortunately. I did find two interesting looking executables which my be of interest later on.
 
-   ![Http Objects](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Http_Objects.png)
+   ![Http Objects](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Http_Objects.png)
 
    We could look for the magic bytes of a zip file. Which in this case would be 'PK' or '50 4B' in Hex form.
 
-   ![Signature](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Signature.png)
+   ![Signature](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Signature.png)
 
    We can filter out the traffic from port 22 and 80 to make things more clear. In this filter we can look for the hex value of '50 4B'.
 
-   ![Archive Packet](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Archive_Packet.png)
+   ![Archive Packet](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Archive_Packet.png)
 
    We see something in packet 158339 coming from the host to the assumed attack machine via port 9002. It also contains something similar to an sql database called 'elves.sql'.
 
-   ![Database Name](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Database_Name.png)
+   ![Database Name](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Database_Name.png)
 
    To extract this archive we must follow the TCP stream. Then make sure to format the data in 'raw' format instead of 'ASCII'. Save it as a '.zip' file.
 
-   ![Extract Archive](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Extract_Archive.png)
+   ![Extract Archive](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Extract_Archive.png)
 
    Unfortunately, the zip archive is password protected which we don't have. Yet.
 
@@ -146,7 +146,7 @@ https://flask.palletsprojects.com/en/stable/config/
 
    It starts with a secret and two initialization vectors. This secret is stored in the executable. Using a reverse-engineering program such as Binary Ninja we can look through the file and find the secret in the data header.
 
-   ![Secret](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Secret.png)
+   ![Secret](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Secret.png)
 
    Now that we have the secret, we should use a script that performs the same steps as the malware to decrypt the data. This was also used from the above mentioned link. Take not that it is required to export the relevant entries to a text file using:
 
@@ -160,7 +160,7 @@ https://flask.palletsprojects.com/en/stable/config/
    python3 extract-commands.py
    ```
 
-   ![Decrypted Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Decrypted_Commands.png)
+   ![Decrypted Commands](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Decrypted_Commands.png)
 
    We can see the command that has been used to create the archive at then end (including the password). It also shows us some of the sql commands used which reveal the password we need for the next question. If this was not the case, however, we could use the archive password to open the database and look for the password inside.
 
@@ -170,7 +170,7 @@ https://flask.palletsprojects.com/en/stable/config/
 
    With the password we can extract the database file and open it to find the password. Be sure to note, this isn't an actual database file. It is a dump file containing various commands. Simply opening it up in a text editor should be enough to find the password.
 
-   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Password.png)
+   ![Password](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/adventofcyber24sidequest/Advent_of_Cyber_'24_Side_Quest_Q1_Password.png)
 
    ><details><summary>Click for answer</summary>faXRfSXNfTjB0X0YwMGxwcm8wZn0</details>
 

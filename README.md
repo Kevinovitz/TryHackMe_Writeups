@@ -49,6 +49,7 @@ The following rooms are available/in progress:
 - [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
+- [x] [IDOR - Santa’s Little IDOR](idor-aoc2025-zl6MywQid9/idor-aoc2025-zl6MywQid9.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
 - [x] [Kenobi](kenobi/kenobi.md) [Answered]
@@ -61,11 +62,13 @@ The following rooms are available/in progress:
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
+- [ ] [Malware Analysis - Egg-xecutable](malware-sandbox-aoc2025-SD1zn4fZQt/malware-sandbox-aoc2025-SD1zn4fZQt.md) (WiP)
 - [x] [**Metasploit: Exploitation***](metasploitexploitation/metasploitexploitation.md) [Answered]
 - [ ] [Metasploit: Meterpreter](meterpreter/meterpreter.md) [WiP]
 - [x] [**Mother's Secret***](codeanalysis/codeanalysis.md)
 - [x] [Nessus](rpnessusredux/rpnessusredux.md) [Answered]
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
+- [ ] [Network Discovery - Scan-ta Clause](networkservices-aoc2025-jnsoqbxgky/networkservices-aoc2025-jnsoqbxgky.md) (WiP)
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
