@@ -16,25 +16,70 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
 
 1.  What evil message do you see on top of the website?
 
-    
+    We can do an nmap scan of the server to find any exposed applications.
 
-    ><details><summary>Click for answer</summary></details>
+    ```cmd
+    nmap -sV -p- 10.82.172.20 --script=banner
+    ```
+
+    This will run a stealth scan on all ports and display some more information about any exposed servies.
+
+    SCAN
+
+    We can see there is a webserver active on port 80. This should be viewable in the browser.
+
+    The answer can be found by navigating to the application hosted on the compromised server '10.82.172.20'.
+
+    MESSAGE
+
+    ><details><summary>Click for answer</summary>Pwned by HopSec</details>
 
 2.  What is the first key part found on the FTP server?
 
+    Another service we found to be of interest is an FTP server on port 21212.
 
+    We can connect to the server using `ftp 10.82.172.20 21212`. Use 'anonymous' as login name.
 
-    ><details><summary>Click for answer</summary></details>
+    We can now look through the directory and download any interesting files.
+
+    ```cmd
+    ls
+    get tbfc_qa_key1 - 
+    ```
+
+    KEY1!
+
+    ><details><summary>Click for answer</summary>3aster_</details>
 
 3.  What is the second key part found in the TBFC app?
 
+    The app can be found on port 25251. Our best bet is to use netcat `nc` to connect to it. Doing so we can use the help command to find any handy commands.
 
+    Looks like there is a simple command to get the key. Lets use that!
 
-    ><details><summary>Click for answer</summary></details>
+    ```cmd
+    nc 10.82.172.20 25251
+    HELP
+    GET KEY
+    ```
+
+    KEY2
+
+    ><details><summary>Click for answer</summary>15_th3_</details>
 
 4.  What is the third key part found in the DNS records?
 
+    For this key we will take a look at any open ports using UDP.
 
+    ```cmd
+    nmap -sU 10.82.172.20
+    ```
+
+    SCAN2
+
+    We can see there is a service on port 53, which is usually used by DNS. Lets query it with the given command.
+
+    
 
     ><details><summary>Click for answer</summary></details>
 
