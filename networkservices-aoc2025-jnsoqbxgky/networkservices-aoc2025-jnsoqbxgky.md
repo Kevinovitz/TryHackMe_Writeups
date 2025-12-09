@@ -24,13 +24,13 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
 
     This will run a stealth scan on all ports and display some more information about any exposed servies.
 
-    SCAN
+    ![Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Scan.png)
 
     We can see there is a webserver active on port 80. This should be viewable in the browser.
 
     The answer can be found by navigating to the application hosted on the compromised server '10.82.172.20'.
 
-    MESSAGE
+    ![Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Message.png)
 
     ><details><summary>Click for answer</summary>Pwned by HopSec</details>
 
@@ -47,7 +47,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     get tbfc_qa_key1 - 
     ```
 
-    KEY1!
+    ![Key1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key1.png)
 
     ><details><summary>Click for answer</summary>3aster_</details>
 
@@ -63,7 +63,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     GET KEY
     ```
 
-    KEY2
+    ![Key2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key2.png)
 
     ><details><summary>Click for answer</summary>15_th3_</details>
 
@@ -75,29 +75,50 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     nmap -sU 10.82.172.20
     ```
 
-    SCAN2
+    ![Scan2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Scan2.png)
 
     We can see there is a service on port 53, which is usually used by DNS. Lets query it with the given command.
 
-    
+    ```cmd
+    dig @10.81.184.96 TXT key3.tbfc.local +short
+    ```
 
-    ><details><summary>Click for answer</summary></details>
+    ![Key3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key3.png)
+
+    Here we are given our third key in return.
+
+    ><details><summary>Click for answer</summary>n3w_xm45</details>
 
 5.  Which port was the MySQL database running on?
 
+    Now that we have our three keys we can unlock the dashboard.
 
+    ![Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Website.png)
 
-    ><details><summary>Click for answer</summary></details>
+    Combine all three keys and add them to the box. Now we should get access to the secret terminal.
+
+    ![Unlock](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Unlock.png)
+
+    Here we can run `ss -tulnp` to list its open ports.
+
+    ![Console](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Console.png)
+
+    We can see the default MySQL port is open.
+
+    ><details><summary>Click for answer</summary>3306</details>
 
 6.  Finally, what's the flag you found in the database?
 
+    To enumerate the database, we will use `mysql`. Since we are logged into the host, we shouldn't need to autheticate to the database and can directly access it. We are given the database name to use.
 
+    ```cmd
+    mysql -D tbfcqa01
+    show tables;
+    select * from flags;
+    ```
 
-    ><details><summary>Click for answer</summary></details>
+    ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Flag.png)
+
+    ><details><summary>Click for answer</summary>THM{4ll_s3rvice5_d1sc0vered}</details>
 
 7.  If you enjoyed today's room, feel free to check out theNmap: The Basicsroom.
-
-
-
-    ><details><summary>Click for answer</summary></details>
-

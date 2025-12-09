@@ -68,7 +68,7 @@ The following rooms are available/in progress:
 - [x] [**Mother's Secret***](codeanalysis/codeanalysis.md)
 - [x] [Nessus](rpnessusredux/rpnessusredux.md) [Answered]
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
-- [ ] [Network Discovery - Scan-ta Clause](networkservices-aoc2025-jnsoqbxgky/networkservices-aoc2025-jnsoqbxgky.md) (WiP)
+- [x] [Network Discovery - Scan-ta Clause](networkservices-aoc2025-jnsoqbxgky/networkservices-aoc2025-jnsoqbxgky.md)
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
@@ -80,6 +80,7 @@ The following rooms are available/in progress:
 - [x] [Phishing - Merry Clickmas](phishing-aoc2025-h2tkye9fzU/phishing-aoc2025-h2tkye9fzU.md)
 - [ ] [Post-Exploitation Basics](postexploit/postexploit.md) [WiP]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
+- [ ] [Prompt Injection - Sched-yule conflict](promptinjection-aoc2025-sxUMnCkvLO/promptinjection-aoc2025-sxUMnCkvLO.md) (WiP)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
 - [x] [Rootme](rrootme/rrootme.md) [Answered]
