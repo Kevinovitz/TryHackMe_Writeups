@@ -75,12 +75,13 @@ The following rooms are available/in progress:
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
+- [ ] [Passwords - A Cracking Christmas](attacks-on-ecrypted-files-aoc2025-asdfghj123/attacks-on-ecrypted-files-aoc2025-asdfghj123.md) (WiP)
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
 - [ ] [**Persisting Active Directory***](persistingad/persistingad.md) [WiP]
 - [x] [Phishing - Merry Clickmas](phishing-aoc2025-h2tkye9fzU/phishing-aoc2025-h2tkye9fzU.md)
 - [ ] [Post-Exploitation Basics](postexploit/postexploit.md) [WiP]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
-- [ ] [Prompt Injection - Sched-yule conflict](promptinjection-aoc2025-sxUMnCkvLO/promptinjection-aoc2025-sxUMnCkvLO.md) (WiP)
+- [x] [Prompt Injection - Sched-yule conflict](promptinjection-aoc2025-sxUMnCkvLO/promptinjection-aoc2025-sxUMnCkvLO.md) (WiP)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
 - [x] [Rootme](rrootme/rrootme.md) [Answered]
