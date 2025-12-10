@@ -75,7 +75,7 @@ The following rooms are available/in progress:
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
-- [ ] [Passwords - A Cracking Christmas](attacks-on-ecrypted-files-aoc2025-asdfghj123/attacks-on-ecrypted-files-aoc2025-asdfghj123.md) (WiP)
+- [x] [Passwords - A Cracking Christmas](attacks-on-ecrypted-files-aoc2025-asdfghj123/attacks-on-ecrypted-files-aoc2025-asdfghj123.md)
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
 - [ ] [**Persisting Active Directory***](persistingad/persistingad.md) [WiP]
 - [x] [Phishing - Merry Clickmas](phishing-aoc2025-h2tkye9fzU/phishing-aoc2025-h2tkye9fzU.md)
@@ -88,6 +88,7 @@ The following rooms are available/in progress:
 - [x] [**SAST***](sast/sast.md) [WiP]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
 - [x] [Simple CTF](easyctf/easyctf.md)
+- [ ] [SOC Alert Triaging - Tinsel Triage](azuresentinel-aoc2025-a7d3h9k0p2/azuresentinel-aoc2025-a7d3h9k0p2.md) (WiP)
 - [x] [Splunk Basics - Did you SIEM?](splunkforloganalysis-aoc2025-x8fj2k4rqp/splunkforloganalysis-aoc2025-x8fj2k4rqp.md)
 - [x] [SQL Injection](sql_injection/sql_injection.md)
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
