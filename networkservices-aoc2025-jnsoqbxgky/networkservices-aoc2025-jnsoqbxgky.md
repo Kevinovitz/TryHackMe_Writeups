@@ -24,13 +24,13 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
 
     This will run a stealth scan on all ports and display some more information about any exposed servies.
 
-    ![Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Scan.png)
+    ![Scan](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Scan.png)
 
     We can see there is a webserver active on port 80. This should be viewable in the browser.
 
     The answer can be found by navigating to the application hosted on the compromised server '10.82.172.20'.
 
-    ![Message](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Message.png)
+    ![Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Message.png)
 
     ><details><summary>Click for answer</summary>Pwned by HopSec</details>
 
@@ -47,7 +47,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     get tbfc_qa_key1 - 
     ```
 
-    ![Key1](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key1.png)
+    ![Key1](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key1.png)
 
     ><details><summary>Click for answer</summary>3aster_</details>
 
@@ -63,7 +63,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     GET KEY
     ```
 
-    ![Key2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key2.png)
+    ![Key2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key2.png)
 
     ><details><summary>Click for answer</summary>15_th3_</details>
 
@@ -75,7 +75,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     nmap -sU 10.82.172.20
     ```
 
-    ![Scan2](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Scan2.png)
+    ![Scan2](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Scan2.png)
 
     We can see there is a service on port 53, which is usually used by DNS. Lets query it with the given command.
 
@@ -83,7 +83,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     dig @10.81.184.96 TXT key3.tbfc.local +short
     ```
 
-    ![Key3](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key3.png)
+    ![Key3](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Key3.png)
 
     Here we are given our third key in return.
 
@@ -93,15 +93,15 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
 
     Now that we have our three keys we can unlock the dashboard.
 
-    ![Website](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Website.png)
+    ![Website](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Website.png)
 
     Combine all three keys and add them to the box. Now we should get access to the secret terminal.
 
-    ![Unlock](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Unlock.png)
+    ![Unlock](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Unlock.png)
 
     Here we can run `ss -tulnp` to list its open ports.
 
-    ![Console](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Console.png)
+    ![Console](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Console.png)
 
     We can see the default MySQL port is open.
 
@@ -117,7 +117,7 @@ This guide contains the answer and steps necessary to get to them for the [Netwo
     select * from flags;
     ```
 
-    ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Flag.png)
+    ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/networkservices-aoc2025-jnsoqbxgky/Network_Discovery_-_Scan-ta_Clause_Flag.png)
 
     ><details><summary>Click for answer</summary>THM{4ll_s3rvice5_d1sc0vered}</details>
 

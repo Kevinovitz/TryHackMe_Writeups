@@ -24,7 +24,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
 
     If we now look at the IP addresses found, we see there is one standing out in numbers from the rest. This might be our attacker.
 
-    ![Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Ip.png)
+    ![Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Ip.png)
 
     ><details><summary>Click for answer</summary>198.51.100.55</details>
 
@@ -39,7 +39,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
     reverse
     ```
 
-    ![Day](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Day.png)
+    ![Day](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Day.png)
 
     ><details><summary>Click for answer</summary>2025-10-12</details>
 
@@ -51,7 +51,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
     user_agent="*Havij*
     ```
 
-    ![Useragent](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Useragent.png)
+    ![Useragent](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Useragent.png)
 
     ><details><summary>Click for answer</summary>993</details>
 
@@ -63,7 +63,7 @@ This guide contains the answer and steps necessary to get to them for the [Splun
     index=main sourcetype="web_traffic" client_ip="198.51.100.55" AND path="*..*"
     ```
 
-    ![Path](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Path.png)
+    ![Path](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/splunkforloganalysis-aoc2025-x8fj2k4rqp/Splunk_Basics_-_Did_you_SIEM_Path.png)
 
     ><details><summary>Click for answer</summary>658</details>
 

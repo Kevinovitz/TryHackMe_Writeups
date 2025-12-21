@@ -35,6 +35,7 @@ The following rooms are available/in progress:
 - [x] [**Burp Suite: Other Modules***](burpsuiteom/burpsuiteom.md) [Answered]
 - [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [**Common Linux Privesc***](commonlinuxprivesc/commonlinuxprivesc.md) [Answered]
+- [x] [Containers - DoorDasher's Demise](container-security-aoc2025-z0x3v6n9m2/container-security-aoc2025-z0x3v6n9m2.md)
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
 - [x] [**DAST***](dastzap/dastzap.md)
@@ -44,11 +45,13 @@ The following rooms are available/in progress:
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
 - [x] [**Exploiting Active Directory**](exploitingad/exploitingad.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
+- [x] [Forensics - Registry Furensics](registry-forensics-aoc2025-h6k9j2l5p8/registry-forensics-aoc2025-h6k9j2l5p8.md)
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
 - [ ] [Hackfinity Battle](HackfinityBattle/HackfinityBattle.md) [WiP]
 - [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
 - [x] [Ice](ice/ice.md)
+- [x] [ICS/Modbus - Claus for Concern](ICS-modbus-aoc2025-g3m6n9b1v4/ICS-modbus-aoc2025-g3m6n9b1v4.md)
 - [x] [IDOR - Santa’s Little IDOR](idor-aoc2025-zl6MywQid9/idor-aoc2025-zl6MywQid9.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
@@ -70,6 +73,7 @@ The following rooms are available/in progress:
 - [x] [**Net Sec Challenge***](netsecchallenge/netsecchallenge.md) [Answered]
 - [x] [Network Discovery - Scan-ta Clause](networkservices-aoc2025-jnsoqbxgky/networkservices-aoc2025-jnsoqbxgky.md)
 - [x] [**Network Security***](intronetworksecurity/intronetworksecurity.md)
+- [x] [Obfuscation - The Egg Shell File](obfuscation-aoc2025-e5r8t2y6u9/obfuscation-aoc2025-e5r8t2y6u9.md)
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
@@ -79,9 +83,11 @@ The following rooms are available/in progress:
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
 - [ ] [**Persisting Active Directory***](persistingad/persistingad.md) [WiP]
 - [x] [Phishing - Merry Clickmas](phishing-aoc2025-h2tkye9fzU/phishing-aoc2025-h2tkye9fzU.md)
+- [x] [Phishing - Phishmas Greetings](spottingphishing-aoc2025-r2g4f6s8l0/spottingphishing-aoc2025-r2g4f6s8l0.md)
 - [ ] [Post-Exploitation Basics](postexploit/postexploit.md) [WiP]
 - [x] [Printer Hacking 101](printerhacking101/printerhacking101.md)
 - [x] [Prompt Injection - Sched-yule conflict](promptinjection-aoc2025-sxUMnCkvLO/promptinjection-aoc2025-sxUMnCkvLO.md) (WiP)
+- [x] [Race Conditions - Toy to The World](race-conditions-aoc2025-d7f0g3h6j9/race-conditions-aoc2025-d7f0g3h6j9.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
 - [x] [Rootme](rrootme/rrootme.md) [Answered]
@@ -101,6 +107,7 @@ The following rooms are available/in progress:
 - [x] [**Vulnerability Management***](vulnerabilitymanagementkj/vulnerabilitymanagementkj.md) [Answered]
 - [x] [Vulnversity](vulnversity/vulnversity.md)
 - [x] [Walking An Application](walkinganapplication/walkinganapplication.md) [Answered]
+- [x] [Web Attack Forensics - Drone Alone](webattackforensics-aoc2025-b4t7c1d5f8/webattackforensics-aoc2025-b4t7c1d5f8.md)
 - [x] [**Weaponization***](weaponization/weaponization.md) [Answered]
 - [x] [Windows Fundamentals 1](windowsfundamentals1/windowsfundamentals.md) [Answered]
 - [x] [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [Answered]
@@ -111,6 +118,8 @@ The following rooms are available/in progress:
 - [x] [Wireshark: The Basics](wiresharkthebasics/wiresharkthebasics.md)
 - [ ] [**Wireshark: Packet Operations***](wiresharkpacketoperations/wiresharkpacketoperations.md) [WiP]
 - [x] [Wonderland](wonderland/wonderland.md) [WiP]
+- [x] [XSS - Merry XSSMas](xss-aoc2025-c5j8b1m4t6/xss-aoc2025-c5j8b1m4t6.md)
+- [x] [YARA Rules - YARA mean one!](yara-aoc2025-q9w1e3y5u7/yara-aoc2025-q9w1e3y5u7.md) [WiP]
 - more to come
 
 Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.

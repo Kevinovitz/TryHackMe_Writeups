@@ -23,11 +23,11 @@ This guide contains the answer and steps necessary to get to them for the [Phish
     ./server.py
     ```
 
-    ![Server](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Server.png)
+    ![Server](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Server.png)
 
     Now we create our phishing email using `setoolkit`.
 
-    ![Tool](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Tool.png)
+    ![Tool](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Tool.png)
     
     Choose the following options:
 
@@ -57,7 +57,7 @@ This guide contains the answer and steps necessary to get to them for the [Phish
 
     After setting things up, the mail should be sent. And after a few minutes we receive a notification.
 
-    ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Credentials.png)
+    ![Credentials](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Credentials.png)
 
     ><details><summary>Click for answer</summary>unranked-wisdom-anthem</details>
 
@@ -65,11 +65,11 @@ This guide contains the answer and steps necessary to get to them for the [Phish
 
     We can use these credentials to log into the email server.
 
-    ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Login.png)
+    ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Login.png)
 
     This works and we can se the amount in one of the received emails.
 
-    ![Toys](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Toys.png)
+    ![Toys](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/phishing-aoc2025-h2tkye9fzU/Phishing_-_Merry_Clickmas_Toys.png)
 
     ><details><summary>Click for answer</summary>1984000</details>
 

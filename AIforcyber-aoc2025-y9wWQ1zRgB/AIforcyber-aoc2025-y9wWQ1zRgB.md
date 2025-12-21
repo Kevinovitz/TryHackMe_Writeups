@@ -18,7 +18,7 @@ This guide contains the answer and steps necessary to get to them for the [AI in
 
    For this flag we need to progress through all stages of the showcase. 
 
-   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Flag.png)
+   ![Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Flag.png)
 
    ><details><summary>Click for answer</summary>THM{AI_MANIA}</details>
 
@@ -26,11 +26,11 @@ This guide contains the answer and steps necessary to get to them for the [AI in
 
    In the second part of the task there is a red team exercise to generate a script to exploit a vulnerable application. After tasking the AI to generate the script, we can take its output and place it into a python file.
 
-   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Script.png)
+   ![Script](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Script.png)
 
    Make sure to update the IP with your current target machine IP. Then run the exploit. It will exploit the SQL injection vulnerability which will enable us to log into the admin account without having its password. This gives us our flag.
 
-   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Login.png)
+   ![Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/AIforcyber-aoc2025-y9wWQ1zRgB/AI_in_Security_-_old_sAInt_nick_Login.png)
 
    ><details><summary>Click for answer</summary>THM{SQLI_EXPLOIT}</details>
 

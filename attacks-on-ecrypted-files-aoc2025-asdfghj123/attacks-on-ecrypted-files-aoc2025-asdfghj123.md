@@ -22,11 +22,11 @@ This guide contains the answer and steps necessary to get to them for the [Passw
     pdfcrack -f flag.pdf -w /usr/share/wordlists/rockyou.txt
     ```
 
-    ![Pdfcrack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Pdfcrack.png)
+    ![Pdfcrack](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Pdfcrack.png)
 
     We can see that `pdfcrack` managed to get a password. Now we can get our flag by unlocking the pdf file with this key.
 
-    ![Pdf Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Pdf_Flag.png)
+    ![Pdf Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Pdf_Flag.png)
 
     ><details><summary>Click for answer</summary>THM{Cr4ck1ng_PDFs_1s_34$y}</details>
 
@@ -39,11 +39,11 @@ This guide contains the answer and steps necessary to get to them for the [Passw
     john --wordlist=/usr/share/wordlists/rockyou.txt ziphash.txt
     ```
 
-    ![Zipcrack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Zipcrack.png)
+    ![Zipcrack](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Zipcrack.png)
 
     We can see it managed to obtain the used password. Now we can extract the file using this password and get our second flag.
 
-    ![Zip Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Zip_Flag.png)
+    ![Zip Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/attacks-on-ecrypted-files-aoc2025-asdfghj123/Passwords_-_A_Cracking_Christmas_Zip_Flag.png)
 
     ><details><summary>Click for answer</summary>THM{Cr4ck1n6_z1p$_1s_34$yyyy}</details>
 

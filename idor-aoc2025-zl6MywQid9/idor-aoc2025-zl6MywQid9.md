@@ -30,7 +30,7 @@ This guide contains the answer and steps necessary to get to them for the [IDOR 
 
     After loggin in, we can see that our user id is 10 from the developer tools.
 
-    ![Id](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Id.png)
+    ![Id](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Id.png)
 
     This ID is stored in the sessions ... variable. We can change this to allow us to see information from other accounts. Lets change it a few times and reload the page untill we find the account with ten children.
 
@@ -38,13 +38,13 @@ This guide contains the answer and steps necessary to get to them for the [IDOR 
 
     First, make sure to enable the Burpsuite proxy in the Firefox "Foxy Proxy" extension. This enables Burpsuite to intercept the requests from the browser.
 
-    ![Proxy](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Proxy.png)
+    ![Proxy](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Proxy.png)
 
     In Burpsuite, enable the intercept switch on the Proxy tab. Now reload the page in your browser. The page should not load and Burpsuite should indicate in received and intercepted a request.
 
     Make sure to select the correct request (the one with the user id). So you can forward any request that are not related. Now send this request to Intruder.
 
-    ![Send](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Send.png)
+    ![Send](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Send.png)
 
     In the Intruder tab we must prepare the request and payload for our attack. Add the variable to the user id part of the request (remove the number).
 
@@ -52,13 +52,13 @@ This guide contains the answer and steps necessary to get to them for the [IDOR 
 
     Select "sniper attack" and run the attack.
 
-    ![Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Attack.png)
+    ![Attack](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Attack.png)
 
     After the attack is done, we can see all the responses. Some of the ids have no valid account behind them as indicated by the "404" response. We can now go through each of the responses and determine how many children are linked to the account. However, if we look closely at the list, we can see that one of the responses is longer than the others. This could indicate a longer children list. 
 
     Looking at the response we can indeed see there are 10 children listen under this account (the first child has id "11").
 
-    ![Account](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Account.png)
+    ![Account](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/idor-aoc2025-zl6MywQid9/IDOR_-_Santas_Little_IDOR_Account.png)
 
     ><details><summary>Click for answer</summary>15</details>
 
