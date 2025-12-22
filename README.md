@@ -38,6 +38,7 @@ The following rooms are available/in progress:
 - [x] [Containers - DoorDasher's Demise](container-security-aoc2025-z0x3v6n9m2/container-security-aoc2025-z0x3v6n9m2.md)
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
+- [x] [CyberChef - Hoperation Save McSkidy](encoding-decoding-aoc2025-s1a4z7x0c3/encoding-decoding-aoc2025-s1a4z7x0c3.md)
 - [x] [**DAST***](dastzap/dastzap.md)
 - [ ] [**Data Exfiltration***](dataxexfilt/dataxexfilt.md) [WiP]
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
@@ -66,6 +67,7 @@ The following rooms are available/in progress:
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [x] [Malware Analysis - Egg-xecutable](malware-sandbox-aoc2025-SD1zn4fZQt/malware-sandbox-aoc2025-SD1zn4fZQt.md)
+- [x] [Malware Analysis - Malhare.exe](htapowershell-aoc2025-p2l5k8j1h4/htapowershell-aoc2025-p2l5k8j1h4.md)
 - [x] [**Metasploit: Exploitation***](metasploitexploitation/metasploitexploitation.md) [Answered]
 - [ ] [Metasploit: Meterpreter](meterpreter/meterpreter.md) [WiP]
 - [x] [**Mother's Secret***](codeanalysis/codeanalysis.md)

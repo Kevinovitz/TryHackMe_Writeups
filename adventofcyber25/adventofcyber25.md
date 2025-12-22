@@ -24,11 +24,11 @@ This year, the layout has changed from a single room with all the tasks, to a ro
 - [Day 14: Containers - DoorDasher's Demise](../container-security-aoc2025-z0x3v6n9m2/container-security-aoc2025-z0x3v6n9m2.md)
 - [Day 15: Web Attack Forensics - Drone Alone](../webattackforensics-aoc2025-b4t7c1d5f8/webattackforensics-aoc2025-b4t7c1d5f8.md) [WiP]
 - [Day 16: Forensics - Registry Furensics](../registry-forensics-aoc2025-h6k9j2l5p8/registry-forensics-aoc2025-h6k9j2l5p8.md)
-- [Day 17: ](../)
+- [Day 17: CyberChef - Hoperation Save McSkidy](../encoding-decoding-aoc2025-s1a4z7x0c3/encoding-decoding-aoc2025-s1a4z7x0c3.md)
 - [Day 18: Obfuscation - The Egg Shell File](../obfuscation-aoc2025-e5r8t2y6u9/obfuscation-aoc2025-e5r8t2y6u9.md)
 - [Day 19: ICS/Modbus - Claus for Concern](../ICS-modbus-aoc2025-g3m6n9b1v4/ICS-modbus-aoc2025-g3m6n9b1v4.md)
 - [Day 20: Race Conditions - Toy to The World](../race-conditions-aoc2025-d7f0g3h6j9/race-conditions-aoc2025-d7f0g3h6j9.md)
-- [Day 21: ](../)
+- [Day 21: Malware Analysis - Malhare.exe](../htapowershell-aoc2025-p2l5k8j1h4/htapowershell-aoc2025-p2l5k8j1h4.md)
 - [Day 22: ](../)
 - [Day 23: ](../)
 - [Day 24: ](../)
