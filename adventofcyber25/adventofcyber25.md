@@ -29,6 +29,6 @@ This year, the layout has changed from a single room with all the tasks, to a ro
 - [Day 19: ICS/Modbus - Claus for Concern](../ICS-modbus-aoc2025-g3m6n9b1v4/ICS-modbus-aoc2025-g3m6n9b1v4.md)
 - [Day 20: Race Conditions - Toy to The World](../race-conditions-aoc2025-d7f0g3h6j9/race-conditions-aoc2025-d7f0g3h6j9.md)
 - [Day 21: Malware Analysis - Malhare.exe](../htapowershell-aoc2025-p2l5k8j1h4/htapowershell-aoc2025-p2l5k8j1h4.md)
-- [Day 22: C2 Detection - Command & Carol](../detecting-c2-with-rita-aoc2025-m9n2b5v8c1/detecting-c2-with-rita-aoc2025-m9n2b5v8c1.md) [WiP]
+- [Day 22: C2 Detection - Command & Carol](../detecting-c2-with-rita-aoc2025-m9n2b5v8c1/detecting-c2-with-rita-aoc2025-m9n2b5v8c1.md)
 - [Day 23: ](../)
 - [Day 24: ](../)
