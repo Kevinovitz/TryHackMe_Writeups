@@ -24,7 +24,7 @@ This guide contains the answer and steps necessary to get to them for the [C2 De
 
     We can now verify that the logs have been created.
 
-    ![Preparation](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Preparation.png)
+    ![Preparation](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Preparation.png)
 
     Now we import these logs into `rita`:
 
@@ -32,7 +32,7 @@ This guide contains the answer and steps necessary to get to them for the [C2 De
     rita import --logs zeek_logs/rita_challenge/ --database ritachallenge
     ```
 
-    ![Import](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Import.png)
+    ![Import](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Import.png)
 
     And then we can run `rita` to analyze the logs.
 
@@ -40,7 +40,7 @@ This guide contains the answer and steps necessary to get to them for the [C2 De
     rita view ritachallenge
     ```
 
-    ![Dashboard](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Dashboard.png)
+    ![Dashboard](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Dashboard.png)
 
     In the list we can see several hosts that er communicating with 'rabbithole.malhare.net'.
 
@@ -56,7 +56,7 @@ This guide contains the answer and steps necessary to get to them for the [C2 De
 
     Looking through the entries with destination 'rabbithole.malhare.net', we can see on the right which one has the highest 'connection count'.
 
-    ![Connections](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Connections.png)
+    ![Connections](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Connections.png)
 
     ><details><summary>Click for answer</summary>40</details>
 
@@ -66,7 +66,7 @@ This guide contains the answer and steps necessary to get to them for the [C2 De
     
     To search for something greater than, we must use: `column:>value`. And sorting can be done using: `sort:column-order`.
 
-    ![Sort](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Sort.png)
+    ![Sort](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Sort.png)
 
     ><details><summary>Click for answer</summary>dst:rabbithole.malhare.net beacon:>70 sort:duration-desc</details>
 
@@ -80,6 +80,6 @@ This guide contains the answer and steps necessary to get to them for the [C2 De
 
     The entry shows us the port used in the details pane.
 
-    ![Port](https://github.com/Kevinovitz/TryHackMe_Writeups/blob/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Port.png)
+    ![Port](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/detecting-c2-with-rita-aoc2025-m9n2b5v8c1/C2_Detection_-_Command_%26_Carol_Port.png)
 
     ><details><summary>Click for answer</summary>80</details>

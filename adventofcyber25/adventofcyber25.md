@@ -30,5 +30,5 @@ This year, the layout has changed from a single room with all the tasks, to a ro
 - [Day 20: Race Conditions - Toy to The World](../race-conditions-aoc2025-d7f0g3h6j9/race-conditions-aoc2025-d7f0g3h6j9.md)
 - [Day 21: Malware Analysis - Malhare.exe](../htapowershell-aoc2025-p2l5k8j1h4/htapowershell-aoc2025-p2l5k8j1h4.md)
 - [Day 22: C2 Detection - Command & Carol](../detecting-c2-with-rita-aoc2025-m9n2b5v8c1/detecting-c2-with-rita-aoc2025-m9n2b5v8c1.md)
-- [Day 23: ](../)
+- [Day 23: AWS Security - S3cret Santa](../cloudenum-aoc2025-y4u7i0o3p6/cloudenum-aoc2025-y4u7i0o3p6.md)
 - [Day 24: ](../)

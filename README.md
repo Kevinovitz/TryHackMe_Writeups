@@ -22,6 +22,7 @@ The following rooms are available/in progress:
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [AI in Security - old sAInt nick](AIforcyber-aoc2025-y9wWQ1zRgB/AIforcyber-aoc2025-y9wWQ1zRgB.md)
 - [x] [Anonymous](anonymous/anonymous.md)
+- [x] [AWS Security - S3cret Santa](cloudenum-aoc2025-y4u7i0o3p6/cloudenum-aoc2025-y4u7i0o3p6.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md)
 - [ ] [Blaster](blaster/blaster.md) [WiP]
