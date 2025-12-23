@@ -80,7 +80,7 @@ This guide contains the answer and steps necessary to get to them for the [Malwa
 
     ><details><summary>Click for answer</summary>GET</details>
 
-10.  After reviewing the function intended to get the survey questions, it seems that the data from the download of the questions is actually being executed. What is the line of code that executes the contents of the download?
+10. After reviewing the function intended to get the survey questions, it seems that the data from the download of the questions is actually being executed. What is the line of code that executes the contents of the download?
 
     Below the exfiltration function, we can see the line of code responsible to execute the contents of the download using powershell.
 
@@ -88,7 +88,7 @@ This guide contains the answer and steps necessary to get to them for the [Malwa
 
     ><details><summary>Click for answer</summary>runObject.Run "powershell.exe -nop -w hidden -c " & feedbackString, 0, False</details>
 
-11.  It seems as if the malware site has been taken down, so we cannot download the contents that the malware was executing. Fortunately, one of the elves created a copy when the site was still active. Download the contents from [here](https://assets.tryhackme.com/additional/aoc2025/files/blob.txt). What popular encoding scheme was used in an attempt to obfuscate the download?
+11. It seems as if the malware site has been taken down, so we cannot download the contents that the malware was executing. Fortunately, one of the elves created a copy when the site was still active. Download the contents from [here](https://assets.tryhackme.com/additional/aoc2025/files/blob.txt). What popular encoding scheme was used in an attempt to obfuscate the download?
 
     After downloading and opening the asset, we can see there is some encoding used. Find out which one it is using the magic recipe in CyberChef for example.
 
@@ -96,7 +96,7 @@ This guide contains the answer and steps necessary to get to them for the [Malwa
 
     ><details><summary>Click for answer</summary>Base64</details>
 
-12.  Decode the payload. It seems as if additional steps where taken to hide the malware! What common encryption scheme was used in the script?
+12. Decode the payload. It seems as if additional steps where taken to hide the malware! What common encryption scheme was used in the script?
 
     If we look at the decoded script, we can see an encrpyted flag. The function show us how it is encrypted. It look to be substituting each character with another. This could indicate a ROT cipher. As for the amount of steps, this can be derived from the amount added to each character.
 
@@ -104,7 +104,7 @@ This guide contains the answer and steps necessary to get to them for the [Malwa
 
     ><details><summary>Click for answer</summary>ROT13</details>
 
-13.  Either run the script or decrypt the flag value using online tools such as CyberChef. What is the flag value?
+13. Either run the script or decrypt the flag value using online tools such as CyberChef. What is the flag value?
 
     We can get our flag by either decrypting it using CyberChef and the 'ROT13' recipe. Or we can execute the code with Powershell.
 
@@ -112,7 +112,7 @@ This guide contains the answer and steps necessary to get to them for the [Malwa
 
     ><details><summary>Click for answer</summary>THM{Malware.Analysed}</details>
 
-14.  For those who want another challenge, download the HTA file from [here](https://assets.tryhackme.com/additional/aoc2025/SQ4/NorthPole.zip) to get the key for Side Quest 4, accessible through our [Side Quest Hub](https://tryhackme.com/adventofcyber25/sidequest). The password for the file is CanYouREM3?.
+14. For those who want another challenge, download the HTA file from [here](https://assets.tryhackme.com/additional/aoc2025/SQ4/NorthPole.zip) to get the key for Side Quest 4, accessible through our [Side Quest Hub](https://tryhackme.com/adventofcyber25/sidequest). The password for the file is CanYouREM3?.
 
     In this file there is a base64 encoded string. Used `sed -n 's/.*"\([^"]*\)".*/\1/p' input.txt | tr -d '\n' > output.txt` to extract the string. Decoding this gives us a script with another base64 encoded string. This then needs to be decoded using a XOR recipe with decimal key 23 (or hex 17).
 
@@ -120,4 +120,4 @@ This guide contains the answer and steps necessary to get to them for the [Malwa
 
     ><details><summary>Click for answer</summary></details>
 
-15.  If you enjoyed today's room, you may also like the [MalDoc: Static Analysis](https://tryhackme.com/room/maldoc) room.
+15. If you enjoyed today's room, you may also like the [MalDoc: Static Analysis](https://tryhackme.com/room/maldoc) room.
