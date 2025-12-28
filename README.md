@@ -46,6 +46,7 @@ The following rooms are available/in progress:
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [Enumerating Active Directory](adenumeration/adenumeration.md)
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
+- [x] [Exploitation with cURL - Hoperation Eggsploit](webhackingusingcurl-aoc2025-w8q1a4s7d0/webhackingusingcurl-aoc2025-w8q1a4s7d0.md)
 - [x] [**Exploiting Active Directory**](exploitingad/exploitingad.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
 - [x] [Forensics - Registry Furensics](registry-forensics-aoc2025-h6k9j2l5p8/registry-forensics-aoc2025-h6k9j2l5p8.md)
@@ -123,7 +124,7 @@ The following rooms are available/in progress:
 - [ ] [**Wireshark: Packet Operations***](wiresharkpacketoperations/wiresharkpacketoperations.md) [WiP]
 - [x] [Wonderland](wonderland/wonderland.md) [WiP]
 - [x] [XSS - Merry XSSMas](xss-aoc2025-c5j8b1m4t6/xss-aoc2025-c5j8b1m4t6.md)
-- [x] [YARA Rules - YARA mean one!](yara-aoc2025-q9w1e3y5u7/yara-aoc2025-q9w1e3y5u7.md) [WiP]
+- [x] [YARA Rules - YARA mean one!](yara-aoc2025-q9w1e3y5u7/yara-aoc2025-q9w1e3y5u7.md)
 - more to come
 
 Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.
