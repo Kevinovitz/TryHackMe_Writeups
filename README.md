@@ -49,7 +49,7 @@ The following rooms are available/in progress:
 - [x] [Exploitation with cURL - Hoperation Eggsploit](webhackingusingcurl-aoc2025-w8q1a4s7d0/webhackingusingcurl-aoc2025-w8q1a4s7d0.md)
 - [x] [**Exploiting Active Directory**](exploitingad/exploitingad.md)
 - [ ] [File Inclusion](fileinc/fileinc.md) [WiP]
-- [ ] [First Shift CTF](first-shift-ctf/first-shift-ctf.md) [WiP]
+- [x] [First Shift CTF](first-shift-ctf/first-shift-ctf.md) [Closed]
 - [x] [Forensics - Registry Furensics](registry-forensics-aoc2025-h6k9j2l5p8/registry-forensics-aoc2025-h6k9j2l5p8.md)
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
 - [ ] [Hackfinity Battle](HackfinityBattle/HackfinityBattle.md) [WiP]
