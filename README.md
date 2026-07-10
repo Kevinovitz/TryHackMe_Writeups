@@ -106,6 +106,7 @@ The following rooms are available/in progress:
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
 - [x] [Threat Modelling](threatmodelling/threatmodelling.md) [Answered]
+- [x] [The Game](hfb1thegame/hfb1thegame.md)
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Traverse***](traverse/traverse.md)
 - [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
