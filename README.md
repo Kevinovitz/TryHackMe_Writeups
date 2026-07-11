@@ -43,6 +43,7 @@ The following rooms are available/in progress:
 - [x] [CyberChef - Hoperation Save McSkidy](encoding-decoding-aoc2025-s1a4z7x0c3/encoding-decoding-aoc2025-s1a4z7x0c3.md)
 - [x] [**DAST***](dastzap/dastzap.md)
 - [ ] [**Data Exfiltration***](dataxexfilt/dataxexfilt.md) [WiP]
+- [ ] [**Diskrupt****](diskrupt/diskrupt.md) [WiP]
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [Enumerating Active Directory](adenumeration/adenumeration.md)
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
@@ -131,7 +132,8 @@ The following rooms are available/in progress:
 
 Rooms with the [Answered] annotation only have some questions remaining which don't require an answer.
 
-*This room is only available with an subscription.
+*This room is only available with a Premium subscription.
+**This room is only available with a Max subscription.
 
 ### External Knowledge Bases
 
