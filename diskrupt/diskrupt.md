@@ -16,9 +16,17 @@ This guide contains the answer and steps necessary to get to them for the [Diskr
 
 1.  What are the corrupted bytes in the boot sector that caused the disk to be damaged?
 
+    We can see the image can indeed not be loaded using Autpsy.
 
+    MDR ISSUE
 
-    ><details><summary>Click for answer</summary></details>
+    If we open the image in a hex editor, we can see if the MDR signature at the end is intact. This is represented by two bytes (55 AA) at the end of the MDR section (which is 512 bytes long).
+
+    MDR FIX
+
+    Looks like that has been corrupted. Change it to '55 AA ', save it and reload in autopsy.
+
+    ><details><summary>Click for answer</summary>ACBD</details>
 
 2.  What are the bytes representing the total sector of the second partition? (Little Endian)
 
