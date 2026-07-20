@@ -43,7 +43,7 @@ The following rooms are available/in progress:
 - [x] [CyberChef - Hoperation Save McSkidy](encoding-decoding-aoc2025-s1a4z7x0c3/encoding-decoding-aoc2025-s1a4z7x0c3.md)
 - [x] [**DAST***](dastzap/dastzap.md)
 - [ ] [**Data Exfiltration***](dataxexfilt/dataxexfilt.md) [WiP]
-- [ ] [**Diskrupt****](diskrupt/diskrupt.md) [WiP]
+- [ ] [**Diskrupt****](diskrupt/diskrupt.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px;" /> [WiP]
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [Enumerating Active Directory](adenumeration/adenumeration.md)
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
@@ -60,7 +60,7 @@ The following rooms are available/in progress:
 - [x] [ICS/Modbus - Claus for Concern](ICS-modbus-aoc2025-g3m6n9b1v4/ICS-modbus-aoc2025-g3m6n9b1v4.md)
 - [x] [IDOR - Santa’s Little IDOR](idor-aoc2025-zl6MywQid9/idor-aoc2025-zl6MywQid9.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
-- [x] [**IronShade**](ironshade/ironshade.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 38px;" /> [Answered]
+- [x] [**IronShade**](ironshade/ironshade.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px;" /> [Answered]
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
 - [x] [Kenobi](kenobi/kenobi.md) [Answered]
 - [x] [Lateral Movement and Pivoting](lateralmovementandpivoting/lateralmovementandpivoting.md) [WiP]

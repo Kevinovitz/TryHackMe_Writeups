@@ -18,7 +18,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
 
     To get detailed system information, we can use the command `hostnamectl`.
 
-    MACHINE ID
+    ![Machine Id](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Machine_Id.png)
 
     ><details><summary>Click for answer</summary>dc7c8ac5c09a4bbfaf3d09d399f10d96</details>
 
@@ -33,7 +33,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
 
     We can see at least three 'normal' user accounts.
 
-    USERS
+    ![Users](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Users.png)
 
     We can confirm this by looking at the home folder.
 
@@ -58,7 +58,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
 
     First we check which users have cronjobs configured. We then inspect them for each user. The root users seems to have a suspicious entry that runs after each reboot. It runs something from the backdoor user account directory as well.
 
-    CRONJOB
+    ![Cronjob](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Cronjob.png)
 
     ><details><summary>Click for answer</summary>@reboot /home/mircoservice/printer_app</details>
 
@@ -70,7 +70,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
     SELECT pid, name, path, cmdline, start_time FROM processes WHERE cmdline LIKE '%mircoservice%';
     ```
 
-    SERVICES
+    ![Services](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Services.png)
 
     Here we see another suspicious process running.
 
@@ -92,7 +92,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
     ls -la /
     ```
 
-    HIDDEN FILE
+    ![Hidden File](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Hidden_File.png)
 
     ><details><summary>Click for answer</summary>.systmd</details>
 
@@ -100,7 +100,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
 
     We can use `ls -la /etc/systemd/system` to list all installed services.
 
-    INSTALLED SERVICES
+    ![Installed Services](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Installed_Services.png)
 
     From this we can identify two suspicious services. One is the strokes service, we also found earlier. The other is the backup service. We can check the service to confirm this is correct.
 
@@ -108,7 +108,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
     systemctl cat backup.service
     ```
 
-    BACKUP SERVICE
+    ![Backup Service](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Backup_Service.png)
 
     This service executes a file from the backdoor account.
 
@@ -122,7 +122,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
     grep -a "useradd" /var/log/auth.log*
     ```
 
-    ACCOUNT CREATION
+    ![Account Creation](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Account_Creation.png)
 
     ><details><summary>Click for answer</summary>Aug  5 22:05:33</details>
 
@@ -134,7 +134,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
     grep -a "ssh" /var/log/auth.log* | grep -i "mircoservice" | grep -i "port"
     ```
 
-    SSH
+    ![Ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Ssh.png)
 
     ><details><summary>Click for answer</summary>10.11.75.247</details>
 
@@ -146,7 +146,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
      grep -a "ssh" /var/log/auth.log* | grep -i "mircoservice" | grep -i "Failed password"
      ```
 
-     FAILED SSH
+     ![Failed Ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Failed_Ssh.png)
 
      We can see a few single fails, and two double fail messages. These need to be added together (4x1)+(2x2).
 
@@ -160,7 +160,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
      select name, version, source, maintainer, admindir from deb_packages where maintainer not like '%ubuntu%';
      ```
 
-     PACKAGES
+     ![Packages](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Packages.png)
 
      This list one package with a weird maintainer name and the filename also raises suspicion.
 
@@ -174,7 +174,7 @@ This guide contains the answer and steps necessary to get to them for the [IronS
      apt show pscanner
      ```
 
-     META
+     ![Meta](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/ironshade/Ironshade_Meta.png)
 
      ><details><summary>Click for answer</summary>{_tRy_Hack_ME_}</details>
 
