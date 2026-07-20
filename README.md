@@ -60,6 +60,7 @@ The following rooms are available/in progress:
 - [x] [ICS/Modbus - Claus for Concern](ICS-modbus-aoc2025-g3m6n9b1v4/ICS-modbus-aoc2025-g3m6n9b1v4.md)
 - [x] [IDOR - Santa’s Little IDOR](idor-aoc2025-zl6MywQid9/idor-aoc2025-zl6MywQid9.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
+- [x] [**IronShade**](ironshade/ironshade.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 38px;" /> [Answered]
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
 - [x] [Kenobi](kenobi/kenobi.md) [Answered]
 - [x] [Lateral Movement and Pivoting](lateralmovementandpivoting/lateralmovementandpivoting.md) [WiP]
