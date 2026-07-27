@@ -30,7 +30,7 @@ This guide contains the answer and steps necessary to get to them for the [The B
 
     Looking for this account only, gave me a hit.
 
-    ![Instagram](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-thebrochure-081f3e36/The_Brochure_Instagram.png)
+    ![Instagram](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-thebrochure-081f3e36/The_Brochure_Instragram.png)
 
     I looked through the posts, its comments, source page for hidden clues etc. Nothing.
 
