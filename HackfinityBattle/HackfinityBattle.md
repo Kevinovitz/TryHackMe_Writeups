@@ -60,7 +60,7 @@ This guide contains the answer and steps necessary to get to them for the [Hackf
 
 
 
-   ><details><summary>Click for answer</summary></details>
+   ><details><summary>Click for answer</summary>thm{coringa_do_beco}</details>
 
 ### Catch Me if You Can 2
 

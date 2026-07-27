@@ -53,6 +53,7 @@ The following rooms are available/in progress:
 - [x] [First Shift CTF](first-shift-ctf/first-shift-ctf.md) [Closed]
 - [x] [Forensics - Registry Furensics](registry-forensics-aoc2025-h6k9j2l5p8/registry-forensics-aoc2025-h6k9j2l5p8.md)
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
+- [ ] [Hacker Holidays](/hackerholidays/hackerholidays.md) (WiP)
 - [ ] [Hackfinity Battle](HackfinityBattle/HackfinityBattle.md) [WiP]
 - [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
@@ -108,6 +109,8 @@ The following rooms are available/in progress:
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
 - [x] [Threat Modelling](threatmodelling/threatmodelling.md) [Answered]
+- [x] [The Brochure](/hh-thebrochure-081f3e36/hh-thebrochure-081f3e36.md) [Answered]
+- [ ] [The Concierge Knows Too Much](/hh-theconciergeknows-2d7eb4d9/hh-theconciergeknows-2d7eb4d9.md) [WiP]
 - [x] [The Game](hfb1thegame/hfb1thegame.md)
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Traverse***](traverse/traverse.md)
