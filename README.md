@@ -125,6 +125,7 @@ The following rooms are available/in progress:
 - [x] [Windows Fundamentals 2](windowsfundamentals2/windowsfundamentals2.md) [Answered]
 - [x] [Windows Fundamentals 3](windowsfundamentals3/windowsfundamentals3.md) [Answered]
 - [ ] [**Windows Local Persistence***](windowslocalpersistence/windowslocalpersistence.md) [Answered]
+- [x] [**Windows Network Analysis**](/windowsnetworkanalysis/windowsnetworkanalysis.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px; top: -2px; position: relative" /> [Answered]
 - [x] [**Windows Privilege Escalation***](windowsprivesc20/windowsprivesc20.md) [Answered]
 - [x] [Windows PrivEsc](windows10privesc/windows10privesc.md)
 - [x] [Wireshark: The Basics](wiresharkthebasics/wiresharkthebasics.md)
