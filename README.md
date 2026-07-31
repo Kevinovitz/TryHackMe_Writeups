@@ -100,6 +100,7 @@ The following rooms are available/in progress:
 - [x] [Race Conditions - Toy to The World](race-conditions-aoc2025-d7f0g3h6j9/race-conditions-aoc2025-d7f0g3h6j9.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
+- [x] [Room 404](hh-room404-804573bf/hh-room404-804573bf.md) [Answered]
 - [x] [Rootme](rrootme/rrootme.md) [Answered]
 - [x] [**SAST***](sast/sast.md) [WiP]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
