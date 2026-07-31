@@ -10,9 +10,9 @@ I will present you with this overview of tasks in a convenient place. However, t
 
 - [Day 0: The Brochure](../hh-thebrochure-081f3e36/hh-thebrochure-081f3e36.md)
 - [Day 1: The Concierge Knows Too Much](../hh-theconciergeknows-2d7eb4d9/hh-theconciergeknows-2d7eb4d9.md)
+- [Day 2: Room 404](../hh-room404-804573bf/hh-room404-804573bf.md)
+- [Day 3: Complimentary](../hh-complimentary-05e0b604/hh-complimentary-05e0b604.md)
 <!-- 
-- [Day 2: Phishing - Merry Clickmas]()
-- [Day 3: Splunk Basics - Did you SIEM?]()
 - [Day 4: AI in Security - old sAInt nick]()
 - [Day 5: IDOR - Santa’s Little IDOR](../)
 - [Day 6: Malware Analysis - Egg-xecutable](../)

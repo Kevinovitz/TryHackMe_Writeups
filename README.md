@@ -37,6 +37,7 @@ The following rooms are available/in progress:
 - [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [C2 Detection - Command & Carol](detecting-c2-with-rita-aoc2025-m9n2b5v8c1/detecting-c2-with-rita-aoc2025-m9n2b5v8c1.md)
 - [x] [**Common Linux Privesc***](commonlinuxprivesc/commonlinuxprivesc.md) [Answered]
+- [x] [Complimentary](hh-complimentary-05e0b604/hh-complimentary-05e0b604.md) [Answered]
 - [x] [Containers - DoorDasher's Demise](container-security-aoc2025-z0x3v6n9m2/container-security-aoc2025-z0x3v6n9m2.md)
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
