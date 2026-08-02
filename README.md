@@ -25,6 +25,7 @@ The following rooms are available/in progress:
 - [x] [AWS Security - S3cret Santa](cloudenum-aoc2025-y4u7i0o3p6/cloudenum-aoc2025-y4u7i0o3p6.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md)
+- [ ] [Beach Bar](hh-beachbar-d849f7f7/hh-beachbar-d849f7f7.md) [WiP]
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
@@ -89,6 +90,7 @@ The following rooms are available/in progress:
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
+- [x] [Packed Light](hh-packedlight-02e5330c/hh-packedlight-02e5330c.md) [Answered]
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Passwords - A Cracking Christmas](attacks-on-ecrypted-files-aoc2025-asdfghj123/attacks-on-ecrypted-files-aoc2025-asdfghj123.md)
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
