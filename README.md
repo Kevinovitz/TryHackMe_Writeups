@@ -88,6 +88,7 @@ The following rooms are available/in progress:
 - [x] [Obfuscation - The Egg Shell File](obfuscation-aoc2025-e5r8t2y6u9/obfuscation-aoc2025-e5r8t2y6u9.md)
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
+- [x] [Overheard at Breakfast](hh-overheardatbreakfast-6f01793c/hh-overheardatbreakfast-6f01793c.md) [Answered]
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
 - [x] [Packed Light](hh-packedlight-02e5330c/hh-packedlight-02e5330c.md) [Answered]

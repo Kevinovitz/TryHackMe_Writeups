@@ -14,8 +14,8 @@ I will present you with this overview of tasks in a convenient place. However, t
 - [Day 3: Complimentary](../hh-complimentary-05e0b604/hh-complimentary-05e0b604.md)
 - [Day 4: Packed Light](../hh-packedlight-02e5330c/hh-packedlight-02e5330c.md)
 - [Day 5: Beach Bar](../hh-beachbar-d849f7f7/hh-beachbar-d849f7f7.md)
+- [Day 6: Overheard at Breakfast](../hh-overheardatbreakfast-6f01793c/hh-overheardatbreakfast-6f01793c.md)
 <!-- 
-- [Day 6: Malware Analysis - Egg-xecutable](../)
 - [Day 7: Network Discovery - Scan-ta Clause](../)
 - [Day 8: Prompt Injection - Sched-yule conflict]()
 - [Day 9: Passwords - A Cracking Christmas]()
