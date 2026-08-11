@@ -25,7 +25,7 @@ The following rooms are available/in progress:
 - [x] [AWS Security - S3cret Santa](cloudenum-aoc2025-y4u7i0o3p6/cloudenum-aoc2025-y4u7i0o3p6.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md)
-- [ ] [Beach Bar](hh-beachbar-d849f7f7/hh-beachbar-d849f7f7.md) [WiP]
+- [x] [Beach Bar](hh-beachbar-d849f7f7/hh-beachbar-d849f7f7.md) [Answered]
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
@@ -88,6 +88,7 @@ The following rooms are available/in progress:
 - [x] [Obfuscation - The Egg Shell File](obfuscation-aoc2025-e5r8t2y6u9/obfuscation-aoc2025-e5r8t2y6u9.md)
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
+- [x] [Overheard at Breakfast](hh-overheardatbreakfast-6f01793c/hh-overheardatbreakfast-6f01793c.md) [Answered]
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
 - [x] [Packed Light](hh-packedlight-02e5330c/hh-packedlight-02e5330c.md) [Answered]

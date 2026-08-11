@@ -43,7 +43,7 @@ This guide contains the answer and steps necessary to get to them for the [Beach
     args: ['id']
     ```
 
-    ![Test](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_Test.png)
+    ![Invalid Test](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_Invalid_Test.png)
 
     A this returns "0", which likely comes from the exit code (success), we might be on this something.
 
@@ -71,20 +71,39 @@ This guide contains the answer and steps necessary to get to them for the [Beach
 
 2.  What is the root flag?
 
+    Tried looking for binaries with their SUID bit set that we can exploit, but no luck.
 
+    ```console
+    find / -perm -4000 -type f 2>/dev/null
+    ```
 
-    ><details><summary>Click for answer</summary></details>
+    Nothing to be found of use looking at the cron jobs either.
+    
+    One of the hints we get from the room description is related to a 'service' that is announcing something. Lets take a look at these running services.
 
+    ```console
+    Any would work:
+    ps aux
+    ps auxf -> Used in this case
+    pstree -aups
+    ```
 
-Tried 
-find / -perm -4000 -type f 2>/dev/null
-Nothing really
-no crontabs I believe
-ls -la /etc/cron.*
+    This indeed lists us a jukeboxd service that is showing some sort of credential in the output. Whats more, this service is running as root!
 
+    ![Service](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_Service.png)
 
+    Lets trto see what this is used for. Maybe for ssh access or user password.
 
+    Unfortunately, we cannot connect through ssh (public key, permission denied).
 
+    ![Ssh](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_Ssh.png)
 
+    Lets try switching to another user. Ubuntu didn't work, but root did!
 
-![](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_.png)
+    ![Su](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_Su.png)
+
+    Now lets look for our second flag in the root folder.
+
+    ![Root Flag](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-beachbar-d849f7f7/Beach_Bar_Root_Flag.png)
+
+    ><details><summary>Click for answer</summary>THM{cr3d3nt14l_r3us3_4t_th3_b34ch_b4r}</details>
