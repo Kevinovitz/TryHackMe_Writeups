@@ -55,7 +55,7 @@ The following rooms are available/in progress:
 - [x] [First Shift CTF](first-shift-ctf/first-shift-ctf.md) [Closed]
 - [x] [Forensics - Registry Furensics](registry-forensics-aoc2025-h6k9j2l5p8/registry-forensics-aoc2025-h6k9j2l5p8.md)
 - [x] [**Governance & Regulation***](cybergovernanceregulation/cybergovernanceregulation.md)
-- [ ] [Hacker Holidays](/hackerholidays/hackerholidays.md) [WiP]
+- [ ] [Hacker Holidays](hackerholidays/hackerholidays.md) [WiP]
 - [ ] [Hackfinity Battle](HackfinityBattle/HackfinityBattle.md) [WiP]
 - [ ] [Hacking with PowerShell](powershell/powershell.md) [WiP]
 - [x] [Hydra](hydra/hydra.md)
@@ -74,7 +74,7 @@ The following rooms are available/in progress:
 - [x] [Linux System Hardening](linuxsystemhardening/linuxsystemhardening.md)
 - [x] [Linux PrivEsc](linuxprivesc/linuxprivesc.md)
 - [x] [Linux Privilege Escalation](linprivesc/linprivesc.md) [Answered]
-- [x] [**Logless Hunt**](/loglesshunt/loglesshunt.md) [Answered]
+- [x] [**Logless Hunt**](loglesshunt/loglesshunt.md) [Answered]
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [x] [Malware Analysis - Egg-xecutable](malware-sandbox-aoc2025-SD1zn4fZQt/malware-sandbox-aoc2025-SD1zn4fZQt.md)
 - [x] [Malware Analysis - Malhare.exe](htapowershell-aoc2025-p2l5k8j1h4/htapowershell-aoc2025-p2l5k8j1h4.md)
@@ -114,8 +114,8 @@ The following rooms are available/in progress:
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
 - [x] [Threat Modelling](threatmodelling/threatmodelling.md) [Answered]
-- [x] [The Brochure](/hh-thebrochure-081f3e36/hh-thebrochure-081f3e36.md) [Answered]
-- [x] [The Concierge Knows Too Much](/hh-theconciergeknows-2d7eb4d9/hh-theconciergeknows-2d7eb4d9.md) [Answered]
+- [x] [The Brochure](hh-thebrochure-081f3e36/hh-thebrochure-081f3e36.md) [Answered]
+- [x] [The Concierge Knows Too Much](hh-theconciergeknows-2d7eb4d9/hh-theconciergeknows-2d7eb4d9.md) [Answered]
 - [x] [The Game](hfb1thegame/hfb1thegame.md)
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
 - [x] [**Traverse***](traverse/traverse.md)
