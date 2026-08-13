@@ -21,7 +21,7 @@ The following rooms are available/in progress:
 - [ ] [Advent of Cyber 2025](adventofcyber25/adventofcyber25.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [AI in Security - old sAInt nick](AIforcyber-aoc2025-y9wWQ1zRgB/AIforcyber-aoc2025-y9wWQ1zRgB.md)
-- [ ] [After Hours](hh-afterhours-b090d1f0/hh-afterhours-b090d1f0.md) [WiP]
+- [x] [After Hours](hh-afterhours-b090d1f0/hh-afterhours-b090d1f0.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [AWS Security - S3cret Santa](cloudenum-aoc2025-y4u7i0o3p6/cloudenum-aoc2025-y4u7i0o3p6.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
