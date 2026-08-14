@@ -10,7 +10,8 @@ This guide contains the answer and steps necessary to get to them for the [Do No
 
 ## Table of contents
 
-- [Task 2 - Hacker Holidays: Day 7](#task-2---hacker-holidays-day-7)
+- [Table of contents](#table-of-contents)
+  - [Task 2 - Hacker Holidays: Day 7](#task-2---hacker-holidays-day-7)
 
 ### Task 2 - Hacker Holidays: Day 7
 
@@ -95,6 +96,6 @@ This guide contains the answer and steps necessary to get to them for the [Do No
 
 
 
-    ><details><summary>Click for answer</summary></details>
+    ><details><summary>Click for answer</summary>THM{r4w_d1sk_4cc3ss_w4s_t00_much}</details>
 
 ![](https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/hh-donotdisturb-84a45644/Do_Not_Disturb_.png)

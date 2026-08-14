@@ -21,11 +21,12 @@ The following rooms are available/in progress:
 - [ ] [Advent of Cyber 2025](adventofcyber25/adventofcyber25.md) [WiP]
 - [x] [Agent Sudo](agentsudoctf/agentsudoctf.md)
 - [x] [AI in Security - old sAInt nick](AIforcyber-aoc2025-y9wWQ1zRgB/AIforcyber-aoc2025-y9wWQ1zRgB.md)
+- [x] [After Hours](hh-afterhours-b090d1f0/hh-afterhours-b090d1f0.md)
 - [x] [Anonymous](anonymous/anonymous.md)
 - [x] [AWS Security - S3cret Santa](cloudenum-aoc2025-y4u7i0o3p6/cloudenum-aoc2025-y4u7i0o3p6.md)
 - [x] [**Auditing and Monitoring***](auditingandmonitoringse/auditingandmonitoringse.md)
 - [x] [**Authentication Bypass***](authenticationbypass/authenticationbypass.md)
-- [x] [Beach Bar](hh-beachbar-d849f7f7/hh-beachbar-d849f7f7.md) [Answered]
+- [x] [Beach Bar](hh-beachbar-d849f7f7/hh-beachbar-d849f7f7.md)
 - [ ] [Blaster](blaster/blaster.md) [WiP]
 - [x] [Blue](blue/blue.md)
 - [ ] [Bounty Hacker](cowboyhacker/cowboyhacker.md) [WiP]
@@ -38,14 +39,16 @@ The following rooms are available/in progress:
 - [x] [Burp Suite: Repeater](burpsuiterepeater/burpsuiterepeater.md)
 - [x] [C2 Detection - Command & Carol](detecting-c2-with-rita-aoc2025-m9n2b5v8c1/detecting-c2-with-rita-aoc2025-m9n2b5v8c1.md)
 - [x] [**Common Linux Privesc***](commonlinuxprivesc/commonlinuxprivesc.md) [Answered]
-- [x] [Complimentary](hh-complimentary-05e0b604/hh-complimentary-05e0b604.md) [Answered]
+- [x] [Complimentary](hh-complimentary-05e0b604/hh-complimentary-05e0b604.md)
 - [x] [Containers - DoorDasher's Demise](container-security-aoc2025-z0x3v6n9m2/container-security-aoc2025-z0x3v6n9m2.md)
 - [x] [Content Discovery](contentdiscovery/contentdiscovery.md)
 - [x] [Crack the Hash](crackthehash/crackthehash.md)
+- [x] [CryptoCabana](hh-cryptocabana-f81cac95/hh-cryptocabana-f81cac95.md)
 - [x] [CyberChef - Hoperation Save McSkidy](encoding-decoding-aoc2025-s1a4z7x0c3/encoding-decoding-aoc2025-s1a4z7x0c3.md)
 - [x] [**DAST***](dastzap/dastzap.md)
 - [ ] [**Data Exfiltration***](dataxexfilt/dataxexfilt.md) [WiP]
 - [ ] [**Diskrupt****](diskrupt/diskrupt.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px; top: -2px; position: relative" /> [WiP]
+- [x] [Do Not Disturb](hh-donotdisturb-84a45644/hh-donotdisturb-84a45644.md)
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [Enumerating Active Directory](adenumeration/adenumeration.md)
 - [x] [**Enumeration***](enumerationpe/enumerationpe.md) [Answered]
@@ -62,6 +65,7 @@ The following rooms are available/in progress:
 - [x] [Ice](ice/ice.md)
 - [x] [ICS/Modbus - Claus for Concern](ICS-modbus-aoc2025-g3m6n9b1v4/ICS-modbus-aoc2025-g3m6n9b1v4.md)
 - [x] [IDOR - Santa’s Little IDOR](idor-aoc2025-zl6MywQid9/idor-aoc2025-zl6MywQid9.md)
+- [x] [Infinity Pool](hh-infinitypool-5b3548af/hh-infinitypool-5b3548af.md)
 - [x] [Introduction to Cryptography](cryptographyintro/cryptographyintro.md)
 - [x] [**IronShade**](ironshade/ironshade.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px; top: -2px; position: relative" /> [Answered]
 - [x] [**John The Ripper***](johntheripper0/johntheripper0.md)
@@ -78,6 +82,7 @@ The following rooms are available/in progress:
 - [x] [MAL: Malware Introductory](malmalintroductory/malmalintroductory.md) [Answered]
 - [x] [Malware Analysis - Egg-xecutable](malware-sandbox-aoc2025-SD1zn4fZQt/malware-sandbox-aoc2025-SD1zn4fZQt.md)
 - [x] [Malware Analysis - Malhare.exe](htapowershell-aoc2025-p2l5k8j1h4/htapowershell-aoc2025-p2l5k8j1h4.md)
+- [ ] [Management Wants a Word](hh-managementwantsaword-6bf3cc41/hh-managementwantsaword-6bf3cc41.md) [WiP]
 - [x] [**Metasploit: Exploitation***](metasploitexploitation/metasploitexploitation.md) [Answered]
 - [ ] [Metasploit: Meterpreter](meterpreter/meterpreter.md) [WiP]
 - [x] [**Mother's Secret***](codeanalysis/codeanalysis.md)
@@ -88,10 +93,10 @@ The following rooms are available/in progress:
 - [x] [Obfuscation - The Egg Shell File](obfuscation-aoc2025-e5r8t2y6u9/obfuscation-aoc2025-e5r8t2y6u9.md)
 - [x] [OhSINT](ohsint/ohsint.md)
 - [x] [**Operating System Security***](operatingsystemsecurity/operatingsystemsecurity.md)
-- [x] [Overheard at Breakfast](hh-overheardatbreakfast-6f01793c/hh-overheardatbreakfast-6f01793c.md) [Answered]
+- [x] [Overheard at Breakfast](hh-overheardatbreakfast-6f01793c/hh-overheardatbreakfast-6f01793c.md)
 - [x] [OWASP Top 10 - 2021](owasptop102021/owasptop102021.md) [Answered]
 - [x] [OWASP Juice Shop](owaspjuiceshop/owaspjuiceshop.md) [Answered]
-- [x] [Packed Light](hh-packedlight-02e5330c/hh-packedlight-02e5330c.md) [Answered]
+- [x] [Packed Light](hh-packedlight-02e5330c/hh-packedlight-02e5330c.md)
 - [x] [**Password Attacks***](passwordattacks/passwordattacks.md) [Answered]
 - [x] [Passwords - A Cracking Christmas](attacks-on-ecrypted-files-aoc2025-asdfghj123/attacks-on-ecrypted-files-aoc2025-asdfghj123.md)
 - [x] [Pickle Rick](picklerick/picklerick.md) [Answered]
@@ -104,7 +109,7 @@ The following rooms are available/in progress:
 - [x] [Race Conditions - Toy to The World](race-conditions-aoc2025-d7f0g3h6j9/race-conditions-aoc2025-d7f0g3h6j9.md)
 - [x] [Red Team Recon](redteamrecon/redteamrecon.md)
 - [x] [**Risk Management***](seriskmanagement/seriskmanagement.md) [Answered]
-- [x] [Room 404](hh-room404-804573bf/hh-room404-804573bf.md) [Answered]
+- [x] [Room 404](hh-room404-804573bf/hh-room404-804573bf.md)
 - [x] [Rootme](rrootme/rrootme.md) [Answered]
 - [x] [**SAST***](sast/sast.md) [WiP]
 - [ ] [Shodan.io](shodan/shodan.md) [WiP]
@@ -115,10 +120,13 @@ The following rooms are available/in progress:
 - [x] [**Steel Mountain***](steelmountain/steelmountain.md) [Answered]
 - [x] [**The Lay of the Land***](thelayoftheland/thelayoftheland.md) [Answered]
 - [x] [Threat Modelling](threatmodelling/threatmodelling.md) [Answered]
-- [x] [The Brochure](hh-thebrochure-081f3e36/hh-thebrochure-081f3e36.md) [Answered]
-- [x] [The Concierge Knows Too Much](hh-theconciergeknows-2d7eb4d9/hh-theconciergeknows-2d7eb4d9.md) [Answered]
+- [x] [The Brochure](hh-thebrochure-081f3e36/hh-thebrochure-081f3e36.md)
+- [x] [The Concierge Knows Too Much](hh-theconciergeknows-2d7eb4d9/hh-theconciergeknows-2d7eb4d9.md)
 - [x] [The Game](hfb1thegame/hfb1thegame.md)
+- [ ] [The Guestbook](hh-theguestbook-0130ffaf/hh-theguestbook-0130ffaf.md) [WiP]
+- [x] [The Hollow Shell](hh-thehollowshell-ddb582ac/hh-thehollowshell-ddb582ac.md)
 - [ ] [The Return of the Yeti](adv3nt0fdbopsjcap/adv3nt0fdbopsjcap.md) [WiP]
+- [x] [Towel on the Sunbed](hh-towelonthesunbed-61271709/hh-towelonthesunbed-61271709.md)
 - [x] [**Traverse***](traverse/traverse.md)
 - [x] [**Upload Vulnerabilities**](uploadvulns/uploadvulns.md) [Answered]
 - [x] [**Vulnerability Capstone***](vulnerabilitycapstone/vulnerabilitycapstone.md) [Answered]
