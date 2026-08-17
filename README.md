@@ -47,7 +47,7 @@ The following rooms are available/in progress:
 - [x] [CyberChef - Hoperation Save McSkidy](encoding-decoding-aoc2025-s1a4z7x0c3/encoding-decoding-aoc2025-s1a4z7x0c3.md)
 - [x] [**DAST***](dastzap/dastzap.md)
 - [ ] [**Data Exfiltration***](dataxexfilt/dataxexfilt.md) [WiP]
-- [ ] [**Diskrupt****](diskrupt/diskrupt.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px; top: -2px; position: relative" /> [WiP]
+- [x] [**Diskrupt****](diskrupt/diskrupt.md) <img src="https://github.com/Kevinovitz/TryHackMe_Writeups/raw/main/THM_MAX_animated_logo.gif" alt="MAX" style="vertical-align: middle;height: 20px; top: -2px; position: relative" /> [Answered]
 - [x] [Do Not Disturb](hh-donotdisturb-84a45644/hh-donotdisturb-84a45644.md)
 - [x] [Encryption - Crypto 101](encryptioncrypto101/encryptioncrypto101.md) [Answered]
 - [x] [Enumerating Active Directory](adenumeration/adenumeration.md)
